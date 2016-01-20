@@ -1,0 +1,143 @@
+@import "_variables";
+@import "_flexbox";
+
+@mixin perspective($value:200px, $origin: 50% 0) {
+    -moz-perspective-origin: $origin;
+    -moz-perspective: $value;
+    -webkit-perspective-origin: $origin;
+    -webkit-perspective: $value;
+    perspective-origin: origin;
+    perspective: $value;
+}
+
+// Mixins for font
+@mixin font-kerning() {
+    -webkit-font-kerning: normal;
+    -moz-font-kerning: normal;
+    font-kerning: normal;
+}
+
+@mixin font-feature-settings() {
+    -webkit-font-feature-settings: "liga";
+    -moz-font-feature-settings: "liga", "kern";
+    font-feature-settings: "liga", "kern";
+}
+
+@mixin font-smoothing() {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin text-adjust() {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+// ========
+
+@mixin calc($property, $expression) {
+    #{$property}: -webkit-calc(#{$expression});
+    #{$property}: calc(#{$expression});
+}
+
+@mixin gradient($deg-prefix, $deg, $arguments...) {
+    background: -webkit-linear-gradient($deg-prefix, $arguments);
+    background: -o-linear-gradient($deg-prefix, $arguments);
+    background: -ms-linear-gradient($deg-prefix, $arguments);
+    background: linear-gradient($deg, $arguments);
+}
+
+// loops through all arguments and prefixes the ones that need it (in this case only transform)
+@function vendor-args($arg, $vendor) {
+    $result: ();
+    @each $i in $arg {
+        @if $i == transform { $result: append($result, #{$vendor}$i); }
+        @else { $result: append($result, $i); }
+    }
+    @return $result;
+}
+
+// general vendor mixin
+@mixin vendor($property, $args...) {
+    @each $vendor in ("-webkit-", "-moz-", "-ms-", "-o-", "") {
+        $type: null;
+
+        @each $arg in nth($args, 1) {
+            $type: ($type, vendor-args($arg, $vendor));
+        }
+        #{$vendor}#{$property}: $type;
+    }
+}
+
+// general transition mixin
+@mixin transition($args...) {
+    @include vendor(transition, $args);
+}
+
+@mixin transform($values...) {
+    -ms-transform: $values;
+    -webkit-transform: $values;
+    transform: $values;
+}
+
+@mixin keyframes($anim-name) {
+    @keyframes #{$anim-name} {
+        @content;
+    }
+    @-webkit-keyframes #{$anim-name} {
+        @content;
+    }
+}
+
+@mixin animation($values...) {
+    // name, duration, timing-function, delay, direction, iteration-count, fill-mode, play-state
+    -webkit-animation: $values;
+    -moz-animation: $values;
+    -o-animation: $values;
+    animation: $values;
+}
+
+// Mixins for media queries
+@mixin mq-min($width) {
+    @media screen and (min-device-width: $width) {
+        @content;
+    }
+}
+
+@mixin mq-max($width) {
+    @media screen and (max-device-width: $width) {
+        @content;
+    }
+}
+
+@mixin mq-min-max($min-width, $max-width) {
+    @media screen and (min-width: $min-width) and (max-width: $max-width) {
+        @content;
+    }
+}
+// ========
+
+// RANKING STARS MIXIN
+// ===================
+
+// Set hover + selected label for star ranking
+@mixin rating-stars($stars, $star-width, $c-hover, $c-selected) {
+    > label {
+        position: absolute;
+        top: 4px;
+        &:hover { color: $c-hover; }
+    }
+
+    @for $i from 1 through length($stars) {
+        > label:nth-of-type(n + #{$i}):hover ~ label { color: $c-hover; }
+
+        // position the stars in reversed order
+        > label:nth-of-type(n+#{$i}) {
+            left: ($star-width * length($stars)) - ($star-width * $i);
+        }
+
+        // Set selected color on all label siblings based on the checked radio
+        > input[type="radio"]:nth-of-type(n + #{$i}):checked  ~ label {
+            color: $c-selected;
+        }
+    }
+}

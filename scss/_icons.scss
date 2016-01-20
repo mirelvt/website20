@@ -1,0 +1,30 @@
+// This is NOT a Sass file. Font Custom will use this template to create a Sass
+// file in the location configured (../../sass/_font-icons.scss) each compile.
+
+@font-face {
+  font-family: "mvt-icons";
+  src: url("../fonts/mvt-icons.eot");
+  src: url("../fonts/mvt-icons.eot?#iefix") format("embedded-opentype"),
+       url("../fonts/mvt-icons.woff") format("woff"),
+       url("../fonts/mvt-icons.ttf") format("truetype"),
+       url("../fonts/mvt-icons.svg#mvt-icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "mvt-icons";
+    src: url("../fonts/mvt-icons.svg#mvt-icons") format("svg");
+  }
+}
+
+$font-icons: (
+    "star": "\f100",
+);
+
+@each $icon, $unicode in $font-icons {
+  .icon-#{$icon}:before {
+    content: $unicode;
+  }
+}

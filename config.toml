@@ -1,0 +1,33 @@
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+builddrafts = false
+# baseurl = "http://www.mirellavanteulingen.nl/"
+baseurl = "http://localhost:1313/"
+languageCode = "en-us"
+title = "Mirella van Teulingen"
+canonifyurls = true
+
+[blackfriday]
+    plainIdAnchors = true
+
+[params]
+    page_name = "page_name"
+    css = "css"
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+[[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 2
+[[menu.main]]
+    name = "Fronteers"
+    url = "/fronteers/"
+    weight = 3
+[[menu.main]]
+    name = "About me"
+    url = "/about/"
+    weight = 4

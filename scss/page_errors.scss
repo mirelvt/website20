@@ -1,0 +1,37 @@
+@import "_generic";
+@import "_menu";
+
+[role="main"],
+[role="article"] {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.messages-block {
+  position: relative;
+  margin: 0 auto;
+  width: 130px;
+  padding: 35px 0;
+  text-align: center;
+  font-family: $font-headers;
+  font-size: 5rem;
+  color: #fff;
+  background: $c-main;
+  border-radius: 10px;
+
+  // Arrow
+  &:before {
+    position: absolute;
+    @include transform(translateY(50%));
+    left: -20px;
+    display: block;
+    content:"";
+    width: 0;
+    height: 0;
+    border: {
+      width: 15px 20px 15px 0;
+      style: solid;
+      color: transparent $c-main transparent transparent;
+    }
+  }
+}

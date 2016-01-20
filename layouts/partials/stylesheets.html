@@ -1,0 +1,7 @@
+<!-- Load stylesheet -->
+{{ if eq .Section "blog" }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}{{ .Params.css }}">
+{{ else }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/home.css">
+{{ end }}
+</head>

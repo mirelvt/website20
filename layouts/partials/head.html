@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <!-- Set description -->
+    {{if isset .Params "page_name" }}
+        <meta name="description" content="{{ .Description }}">
+    {{ else }}
+        <meta name="description" content="Mirella van Teulingen is a Dutch front end developer and this is her professional blog.">
+    {{ end }}
+
+    <!-- Set page title -->
+    {{ if eq .Section "blog" }}
+        <title>{{ .Site.Title }} - {{ .Title }} </title>
+    {{ else }}
+        <title>{{ .Site.Title }} - front end developer </title>
+    {{ end }}
+
+    <link rel="icon" type="image/ico" href="img/favicon.ico"/>

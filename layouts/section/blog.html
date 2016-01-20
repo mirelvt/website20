@@ -1,0 +1,16 @@
+{{ partial "head.html" . }}
+<link rel="stylesheet" href="{{ .Site.BaseURL }}css/blog.css">
+<body>
+    {{ partial "nav_main.html" . }}
+
+    <div class="header-img"></div>
+    <div role="main">
+        <h1>Blog</h1>
+        <ul role="list">
+            {{ range .Data.Pages }}
+                {{ .Render "li" }}
+            {{ end }}
+        </ul>
+    </div>
+</div>
+</body>

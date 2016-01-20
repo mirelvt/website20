@@ -1,0 +1,102 @@
+@import "_variables";
+@import "_generic";
+@import "_menu";
+@import "_code";
+
+.header-img {
+    @include mq-min(517px) {
+        width: 100%;
+        height: 300px;
+        margin-bottom: 30px;
+        background: url(../img/paardebloemen.jpg) no-repeat;
+        background-size: cover;
+        background-position: 0 10%;
+    }
+}
+
+h2 { margin-top: 4rem; }
+
+[role="main"],
+[role="article"] {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+[role="article"] {
+    ul {
+        margin: 0 0 15px;
+        padding: 0;
+        list-style-type: none;
+
+        li {
+            position: relative;
+            padding-left: 25px;
+
+            &:before {
+                position: absolute;
+                left: 0;
+                top: 8px;
+                display: block;
+                width: 10px;
+                height: 10px;
+                content: "";
+                background-color: $c-main;
+            }
+        }
+    }
+}
+
+[role="list"] {
+    margin: 4rem 0 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+[role="listitem"] {
+    margin-bottom: 4rem;
+
+    h2 { margin-bottom: 0.5rem; }
+}
+
+.blog-date { font-size: 88.88%; }
+
+// ============
+// RATING STARS
+// ------------
+[class^="icon-"]:before,
+[class*=" icon-"] {
+    font-family: mvt-icons;
+    line-height: 1px;
+}
+
+.remove-rating-wrapper { margin-bottom: 1.2rem; }
+
+$stars-list: (
+    1,
+    2,
+    3,
+    4
+);
+
+.rating {
+    @include rating-stars($stars-list, 32px, orange, #f5d76d);
+    position: relative;
+    overflow: hidden;
+    height: 32px;
+
+    // Hide radio buttons
+    input[type="radio"] {
+        margin-left: -19px;
+    }
+
+    label {
+        cursor: pointer;
+        // pointer-events: none; // Disable click event on the custom label
+    }
+    .icon-star { font-size: 3rem; }
+}
+// ------------------
+// @END RANKING STARS
+// ==================
+
+@import "_print";
