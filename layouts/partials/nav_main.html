@@ -7,32 +7,13 @@
           <div class="menu-text">Menu</div>
         </div>
         <div class="mobile-wrapper">
-        {{ $currentNode := . }}
             {{ range .Site.Menus.main }}
-            <a role="menuitem" {{if $currentNode.IsMenuCurrent "main" . }}class="selected"{{end}} href="{{.URL}}">{{ .Name }}</a>
+            <a role="menuitem" href="{{.URL}}"
+                {{if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+                    class="selected"{{end}}
+                {{ if $.IsPage }}
+                    {{ if eq .Identifier $.Type }}class="selected"{{ end }}
+                {{ end }}>{{ .Name }}</a>
             {{ end }}
         </div>
     </nav>
-
-
-    <!-- <nav role="navigation">
-      <div class="hamburger-wrapper">
-          <div class="hamburger"></div>
-          <div class="menu-text">Menu</div>
-      </div>
-      <div class="mobile-wrapper">
-        <a href="/" role="menuitem" class="<%- source == 'index' ? 'selected' : '' %>">
-          <span class="menu-text">Home</span>
-        </a>
-        <a href="/blog" role="menuitem" class="<%- source == 'blog' ? 'selected' : '' %>">
-          <span class="menu-text">Blog</span>
-        </a>
-        <a href="/fronteers" role="menuitem" class="<%- source == 'fronteers' ? 'selected' : '' %>">
-          <span class="menu-text">Fronteers</span>
-        </a>
-        <a href="/about" role="menuitem" class="<%- source == 'about' ? 'selected' : '' %>">
-          <span class="menu-text">About me</span>
-        </a>
-      </div>
-    </nav>
- -->

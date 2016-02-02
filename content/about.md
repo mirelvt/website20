@@ -1,6 +1,6 @@
 +++
 css = "css/about_me.css"
-page_name = "about"
+page_name = "About"
 title = "About me"
 description = "My key areas of experience: HTML, CSS, SASS, Django templating, jQuery, DOM scripting"
 +++

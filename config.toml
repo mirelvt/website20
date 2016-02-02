@@ -21,10 +21,12 @@ canonifyurls = true
     weight = 1
 [[menu.main]]
     name = "Blog"
+    identifier = "blog"
     url = "/blog/"
     weight = 2
 [[menu.main]]
     name = "Fronteers"
+    identifier = "fronteers"
     url = "/fronteers/"
     weight = 3
 [[menu.main]]

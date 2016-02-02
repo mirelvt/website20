@@ -1,6 +1,7 @@
     {{ partial "head.html" . }}
     {{ partial "stylesheets.html" . }}
     <body>
-      {{ .Content }}
+        {{ partial "nav_main.html" . }}
+        {{ .Content }}
     </body>
 </html>
