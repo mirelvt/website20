@@ -50,8 +50,11 @@
 @function vendor-args($arg, $vendor) {
     $result: ();
     @each $i in $arg {
-        @if $i == transform { $result: append($result, #{$vendor}$i); }
-        @else { $result: append($result, $i); }
+        @if $i == transform {
+            $result: append($result, $vendor$i);
+        } @else {
+            $result: append($result, $i);
+        }
     }
     @return $result;
 }
@@ -96,21 +99,22 @@
     animation: $values;
 }
 
-// Mixins for media queries
-@mixin mq-min($width) {
-    @media screen and (min-device-width: $width) {
-        @content;
-    }
-}
-
+// EM units are used for mediaqueries, see blog post: http://zellwk.com/blog/media-query-units/
+// 400 ÷ 16 = 25
 @mixin mq-max($width) {
-    @media screen and (max-device-width: $width) {
+    @media screen and (max-width: ($width / 16) + em) {
         @content;
     }
 }
 
-@mixin mq-min-max($min-width, $max-width) {
-    @media screen and (min-width: $min-width) and (max-width: $max-width) {
+@mixin mq-min($width) {
+    @media screen and (min-width: (($width + 1) / 16) + em) {
+        @content;
+    }
+}
+
+@mixin mq-minmax($min, $max) {
+    @media screen and (min-width: (($min + 1) / 16) + em) and (max-width: ($max / 16) + em) {
         @content;
     }
 }

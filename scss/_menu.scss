@@ -1,4 +1,5 @@
-@import "_mixins";
+@import "mixins";
+@import "flexbox";
 
 // ====
 // MENU
@@ -9,7 +10,7 @@
 // Breakpoints
 // -----------
 
-@include mq-max(517px) {
+@include mq-max(517) {
   // Position the menu outside the viewport
   [role="navigation"] {
     position: absolute;
@@ -126,7 +127,7 @@
 }
 
 // Show the main menu horizontal with the gradient border top + bottom
-@include mq-min(517px) {
+@include mq-min(517) {
   [role="navigation"] {
     position:relative;
     margin-bottom: 50px;

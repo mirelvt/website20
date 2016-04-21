@@ -1,40 +1,37 @@
-@import "_variables";
-@import "_generic";
-@import "_menu";
+@import url(base.min.css);
+
+@import "variables";
+@import "mixins";
 
 .photos {
-  position: relative;
-  height: 286px;
+    position: relative;
+    height: 286px;
 }
 
 .photo-side,
 .photo-front {
-  position: absolute;
-  max-width: 100%;
-  border: 10px solid #fff;
-  box-shadow:1px 1px 8px 0 $c-shadow;
+    position: absolute;
+    max-width: 100%;
+    border: 10px solid #fff;
+    box-shadow: 1px 1px 8px 0 $c-shadow;
 }
 
 .photo-side {
-  top: 20px;
-  &:first-child {
-    left: 0;
-    @include transform(rotate(5deg));
-  }
-  &:nth-of-type(2) {
-    left: 59%;
-    @include transform(rotate(-5deg));
-  }
+    top: 20px;
+
+    &:first-child {
+        left: 0;
+        @include transform(rotate(5deg));
+    }
+
+    &:nth-of-type(2) {
+        left: 59%;
+        @include transform(rotate(-5deg));
+    }
 }
 
 .photo-front {
-  top: 10px;
-  left: 50%;
-  @include transform(translateX(-50%));
-}
-
-[role="main"],
-[role="article"] {
-  max-width: 800px;
-  margin: 0 auto;
+    top: 10px;
+    left: 50%;
+    @include transform(translateX(-50%));
 }

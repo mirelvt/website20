@@ -1,6 +1,21 @@
-@import "_variables";
-@import "_generic";
-@import "_menu";
+@import url(base.min.css);
+
+@import "variables";
+@import "mixins";
+@import "flexbox";
+
+section {
+    @include mq-min(900) {
+        @include flexbox();
+        padding-top: 50px;
+    }
+}
+
+[role="navigation"] {
+    @include mq-min(517) {
+        @include animation(menu-anim 1.25s ease-out);
+    }
+}
 
 // ===========
 // HOME BLOCKS
@@ -21,27 +36,24 @@
     img { vertical-align: top; }
 }
 
-.block-home-visual {
-    @include perspective();
-    margin-bottom: 2rem;
-}
+.block-home {
 
-// Blog
-.block-home:nth-child(3n-1) .img-border {
-    padding-top: 23px;
-    padding-left: 21px;
-    background-color: $c-main;
-}
+    &:nth-child(3n-1) .img-border {
+        padding-top: 23px;
+        padding-left: 21px;
+        background-color: $c-main;
+    }
 
-// ===========
-// BREAKPOINTS
-// -----------
-@include mq-max(467px) {
-    .block-home { @include justify-content(center) }
-}
+    &-visual {
+        @include perspective();
+        margin-bottom: 2rem;
+    }
 
-@include mq-max(900px) {
-    .block-home {
+    @include mq-max(467) {
+        @include justify-content(center);
+    }
+
+    @include mq-max(900) {
         @include flexbox();
         @include flex-flow(row wrap);
         margin-bottom: 20px;
@@ -52,29 +64,18 @@
         }
 
         &-text { @include flex(1, 0, 250px); }
-
-    };
-}
-
-@include mq-min(900px) {
-    section {
-        @include flexbox();
-        padding-top: 50px;
     }
 
-    .block-home {
+    @include mq-min(900) {
         @include flex-grow(1);
         @include flex-shrink(1);
 
         &:not(:last-child) { margin-right: 30px; }
         &-visual { text-align: center; }
     }
-}
 
-@include mq-min(517px) {
-    [role="navigation"] { @include animation(menu-anim 1.25s ease-out) }
-
-    .block-home {
+    // animate blocks
+    @include mq-min(517) {
         opacity: 0;
         @for $i from 1 through 3 {
             &:nth-child(#{$i}) {
@@ -111,8 +112,5 @@
         @include transform(scale(1));
     }
 }
-// ----------------
-// @END BREAKPOINTS
-// ================
 
 @import "_print";

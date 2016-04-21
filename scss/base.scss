@@ -1,0 +1,349 @@
+@import "_mixins";
+
+* { box-sizing: border-box; }
+
+// * 1: Computes to 10px by the browsers so we can use rem the nice way
+// * 2: Specifies a size adjustment for displaying text content on smartphones.
+// * 3: Improve text-rendering in Webkit browsers and firefox on OSX.
+// * 4: Set the kerning and ligatures for current and future browsers.
+//      Smashing Booke #4 Chapter 9.
+
+:root {
+    @include text-adjust; // * 2 *
+    @include font-smoothing; // * 3 *
+    @include font-kerning; // * 4 *
+    @include font-feature-settings; // * 4 *
+    height: 100%;
+    font-size: 62.5%; // * 1 *
+    color: $c-text;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: $font-main;
+    font-size: 1.8rem;
+    background-color: #f2f4f3;
+}
+
+a {
+    @include transition(color 0.25s);
+    color: $c-main;
+
+    &:hover { color: $c-hover; }
+
+    h2 &,
+    h3 &,
+    h4 &,
+    h5 &,
+    h6 & { text-decoration: none; }
+}
+
+p {
+    margin-top: 1.8rem;
+    margin-bottom: 1.8rem;
+}
+
+blockquote {
+    position: relative;
+    margin-left: 0;
+    padding-left: 3.5rem;
+    font: {
+        weight: normal;
+        style: italic;
+        size: 111%;
+        weight: bold;
+    }
+
+    &::before {
+        position: absolute;
+        top: 12px;
+        left: 0;
+        font-size: 333.33%;
+        content: "\2018";
+        color: $c-main;
+    }
+}
+
+cite {
+    display: block;
+    font-size: 90%;
+    font-style: normal;
+    font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $font-headers;
+    font-weight: normal;
+    color: $c-main;
+}
+
+h1 { font-size: 5rem; }
+h2 { font-size: 3.6rem; }
+h3 { font-size: 3.2rem; }
+h4 { font-size: 2.8rem; }
+h5 { font-size: 2.4rem; }
+h6 { font-size: 2rem; }
+
+@include mq-max(600) {
+    h1 { font-size: 4rem; }
+    h2 { font-size: 3.2rem; }
+    h3 { font-size: 2.6rem; }
+    h4 { font-size: 2.2rem; }
+    h5 { font-size: 1.8rem; }
+    h6 { font-size: 1.6rem; }
+}
+
+h1,
+h2 { margin-bottom: 1.5rem; }
+
+h3,
+h4,
+h5,
+h6 { margin-bottom: 0; }
+
+figure {
+    margin: 0;
+    text-align: center;
+
+    img {
+        display: inline-block;
+        border: 10px solid #fff;
+        box-shadow: 0 0 8px 0 rgba($c-text, 0.6);
+        max-width: 100%;
+    }
+
+    figcaption {
+        margin-top: 0.5rem;
+        font-style: italic;
+        font-size: 83.33%;
+        color: lighten($c-text, 30%);
+    }
+
+    + p { margin-top: 2rem; }
+}
+
+.visualwrapper {
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+
+    @include mq-max(517) {
+        padding: 100px 30px 10px;
+    }
+
+    @include mq-min(517) {
+        padding: 36px 30px;
+        box-shadow: 0 0 4px 0 rgba(#000, 0.25);
+    }
+}
+// ====
+// MENU
+// ----
+
+[role="navigation"] { font-family: $font-menu; }
+[role="menuitem"] { text-decoration: none; }
+
+// Breakpoints
+// -----------
+
+@include mq-max(517) {
+    // Position the menu outside the viewport
+    [role="navigation"] {
+        @include transform(translateX(-230px) translateZ(0));
+        @include transition(transform 0.5s ease-in-out);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 200px;
+        font-size: 1.6rem;
+        background-color: $c-main;
+        z-index: 2;
+
+        &.active {
+            @include transform(translateX(-30px));
+            box-shadow: 2px 0 6px 0 rgba(#000, 0.5);
+        }
+    }
+
+    // Position items as a list
+    [role="menuitem"] {
+        display: block;
+        color: #fff;
+        padding: 0.4rem 0.8rem 0.4rem 1.2rem;
+        border-top: 1px solid hsla(0, 0, 100%, 0.25);
+        border-bottom: 1px solid hsla(0, 0, 30%, 0.25);
+
+        &:first-of-type { margin-top: 40px; }
+
+        &.selected {
+            background-color: darken($c-main, 10%);
+            border-bottom: 1px solid hsla(0, 0, 25%, 0.25);
+        }
+
+        &:hover { color: #fff; }
+    }
+
+    .mobile-wrapper {
+        border-top: 1px solid hsla(0, 0, 25%, 0.25);
+        border-bottom: 1px solid hsla(0, 0, 100%, 0.25);
+    }
+
+    // Hamburger animation changes which toggles to X icon
+    // ---------------------------------------------------
+    .hamburger-wrapper {
+        @include flexbox();
+        @include transform(translateX(200px) translateZ(0));
+        @include transition(transform 0.5s ease-in-out);
+        position: absolute;
+        top: 0;
+        width: 105px;
+        height: 30px;
+        padding: 20px 13px 19px;
+        color: #fff;
+        background-color: $c-main;
+        cursor: pointer;
+
+        .active & { @include transform(translateX(0)) }
+    }
+
+    .menu-text {
+        @include flex-grow(1);
+        margin-top: -10px;
+        margin-left: 10px;
+    }
+
+    .hamburger {
+        @include flex(0, 0, 21px);
+        @include transform(translateZ(0));
+        @include transition(transform 0.5s, background-color 0.3s);
+        position: relative;
+        width: 20px;
+        height: 2px;
+        background-color: #fff;
+
+        &::after,
+        &::before {
+            @include transition(transform 0.5s, background-color 0.3s);
+            position: absolute;
+            display: block;
+            width: 21px;
+            height: 2px;
+            content: "";
+            background-color: #fff;
+        }
+
+        &::after { top: 6px; }
+        &::before { top: -6px; }
+
+        &.active {
+            background-color: transparent;
+
+            &::before { @include transform(translateY(6px) rotate(45deg)) }
+            &::after { @include transform(translateY(-6px) rotate(-45deg)) }
+        }
+    }
+    // @End  hamburger icon animation
+    // ------------------------------
+
+    .overlay {
+        display: none;
+
+        &.active {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: block;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+    }
+
+    .scroll-disabled { overflow: hidden; }
+}
+
+// Show the main menu horizontal with the gradient border top + bottom
+@include mq-min(517) {
+    [role="navigation"] {
+        position: relative;
+        margin-bottom: 50px;
+        padding: 10px 25px;
+        text-align: center;
+        font-size: 2rem;
+
+        &::before,
+        &::after {
+            position: absolute;
+            left: 0;
+            right: 0;
+            display: block;
+            height: 1px;
+            content: "";
+            @include gradient(left, to right,
+                rgba($c-main, 0) 0,
+                $c-main 25%,
+                $c-main 75%,
+                rgba($c-main, 0) 100%);
+        }
+
+        &::before { top: 0; }
+        &::after { bottom: 0; }
+    }
+
+    [role="menuitem"] {
+        display: inline-block;
+        padding: 0 8px;
+        color: $c-main;
+
+        &.selected {
+            &::before { content: "{"; }
+            &::after { content: "}"; }
+        }
+    }
+
+    .hamburger-wrapper { display: none; }
+}
+
+// ---------
+// @END MENU
+// =========
+
+[role="main"],
+[role="article"] {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+[role="article"] ul {
+    margin: 0 0 15px;
+    padding: 0;
+    list-style-type: none;
+
+    li {
+        position: relative;
+        padding-left: 25px;
+
+        &::before {
+            position: absolute;
+            left: 0;
+            top: 8px;
+            display: block;
+            width: 10px;
+            height: 10px;
+            content: "";
+            background-color: $c-main;
+        }
+    }
+}
+
+@import "_fonts";

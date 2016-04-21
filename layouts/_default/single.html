@@ -2,6 +2,9 @@
     {{ partial "stylesheets.html" . }}
     <body>
         {{ partial "nav_main.html" . }}
-        {{ .Content }}
+
+        <article role="main">
+            {{ .Content }}
+        </article>
     </body>
 </html>

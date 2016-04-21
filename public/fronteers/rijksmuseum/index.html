@@ -18,7 +18,7 @@
 
     
 
-    <link rel="stylesheet" href="http://localhost:1313/css/blog.css">
+    <link rel="stylesheet" href="http://localhost:1313/css/blog.min.css">
 
 </head>
     <body>
@@ -65,8 +65,10 @@
                 title="Accessibility is also UX design"></a>
             
             
-                <a href="http://localhost:1313/fronteers/oocss/" class="arrow-next"
-                    alt="There&#39;s a class for that"></a>
+                
+                        <a href="http://localhost:1313/fronteers/oocss/" class="arrow-next"
+                            alt="There&#39;s a class for that"></a>
+                
             
         </div>
         <article role="article"><h1>The zoom interface of www.rijksmuseum.nl</h1><p class="subtitle">Remco Veldkamp - Twitter: @remcoder</p><p>08-01-2013 <br>All 135.000 images of the collection of National Museum Amsterdam are to be admired in ultra high resolution and full screen on every smartphone, tablet and personal computer. Remco talked about the challenges he encountered and how close you can zoom in on a painting.</p><h2>Creating tiles</h2><p>For the small screen resolutions they created tiles of the paintings. The database contains 125.000 images with a total of 690GB! That's a lot. To make programming easier, they created the product WorkQueue. With this product they can easily create tiles. For every zoom level there is a scaled version of the tile. To experience the site, it is advised to have wi-fi connection, because of the image data that needs to be downloaded.</p><h2>Leaflet for zooming</h2><p>For the zoom mechanism Q42 uses <a href="http://leafletjs.com/">Leaflet</a>. This is an open source javascript library for mobile-friendly interactive maps. And it works on iOS and Android. Other mechanisms they use for the zoom magic is CSS transitions and transforms, overlays and markers.</p><p>Leaflet works with longitude and latitude coordinates. That doesn't really make sense for paintings. Remco made some tweaks in the library to be able to work with x and y coordinates. They also had a projection problem. Maps are globe like, for the paintings they needed a square projection.</p><h2>Overall impression</h2><p>It is very impressive how Q42 managed to build such a user experience. The website has more to offer than zooming on paintings. You can download a painting to the online studio, where you can create snippets from the details of paintings you like most, create posters, post cards etc. It is really a fun and interesting way to experience our <a href="http://www.rijksmuseum.nl">National Museum</a>.</p></article>
