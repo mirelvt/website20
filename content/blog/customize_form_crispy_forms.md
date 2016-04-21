@@ -1,119 +1,114 @@
 +++
-css = "css/blog.css"
+css = "css/blog.min.css"
 date = "2014-09-21"
 page_name = "Blog"
 title = "Django form customization using Crispy Forms"
 description = "At Dreamsolution we regularly use Crispy Forms to generate  complex forms in Django. I want to share some practical customization examples with Crispy Forms using the formhelper API."
 +++
-<article role="article">
-  <h1>Django form customization using Crispy Forms</h1>
-  <p>
-    21-09-2014 <br>
-    At <a href="http://www.dreamsolution.nl">Dreamsolution</a> we regularly use Crispy Forms to generate
-      complex forms in Django. I want to share some practical customization examples
-      with Crispy Forms using the formhelper API. The examples are how to:
-    </p>
-    <ul>
-        <li>create Fieldsets</li>
-        <li>wrap fields together</li>
-        <li>insert HTML between fields</li>
-    </ul>
-  <h2>Create Fieldsets</h2>
-  <p>
-    In Crispy forms you can define a layout and structure the fields using
-    the Fieldset layout object. However this means you have to add every field
-    you want in the Fieldset layout object, and this can become a long list:
-  </p>
-  <pre class="python" rel="Python"><code>Layout(
-    Fieldset(
-        <span class="string">'Your legend'</span>,
-        <span class="string">'first_name'</span>,
-        <span class="string">'last_name'</span>,
-        <span class="string">'street'</span>,
-        <span class="string">'house_number'</span>,
-        <span class="string">'addition'</span>,
-        <span class="string">'zip_code'</span>,
-        <span class="string">'city'</span>
-    )
+  At <a href="http://www.dreamsolution.nl">Dreamsolution</a> we regularly use Crispy Forms to generate
+    complex forms in Django. I want to share some practical customization examples
+    with Crispy Forms using the formhelper API. The examples are how to:
+  <ul>
+      <li>create Fieldsets</li>
+      <li>wrap fields together</li>
+      <li>insert HTML between fields</li>
+  </ul>
+<h2>Create Fieldsets</h2>
+<p>
+  In Crispy forms you can define a layout and structure the fields using
+  the Fieldset layout object. However this means you have to add every field
+  you want in the Fieldset layout object, and this can become a long list:
+</p>
+<pre class="python" rel="Python"><code>Layout(
+  Fieldset(
+      <span class="string">'Your legend'</span>,
+      <span class="string">'first_name'</span>,
+      <span class="string">'last_name'</span>,
+      <span class="string">'street'</span>,
+      <span class="string">'house_number'</span>,
+      <span class="string">'addition'</span>,
+      <span class="string">'zip_code'</span>,
+      <span class="string">'city'</span>
+  )
 )</code></pre>
-  <p>
-    There is another way to create fieldsets and or manipulate the layout structure.
-    You can use the API from the formhelper instance. In the example below we
-    use the formhelper API to slice the layout into fieldsets. We wrap the first 2 fields in
-    a fieldset and the rest goes in the second fieldset:
-  </p><pre class="python" rel="Python"><code><span class="statement">self</span>.helper = FormHelper(form=<span class="statement">self</span>)
+<p>
+  There is another way to create fieldsets and or manipulate the layout structure.
+  You can use the API from the formhelper instance. In the example below we
+  use the formhelper API to slice the layout into fieldsets. We wrap the first 2 fields in
+  a fieldset and the rest goes in the second fieldset:
+</p><pre class="python" rel="Python"><code><span class="statement">self</span>.helper = FormHelper(form=<span class="statement">self</span>)
 
 <span class="statement">self</span>.helper[<span class="number">0</span>:<span class="number">2</span>].wrap_together(layout.Fieldset, <span class="string">'Your name'</span>)
 <span class="statement">self</span>.helper[<span class="number">1</span>:<span class="number">6</span>].wrap_together(layout.Fieldset, <span class="string">'Your Address'</span>)
 </code></pre>
-  <p>As you can see we only need 2 lines of code to create two fieldsets.</p>
-  <!-- <p class="example-img"> -->
-  <figure>
-    <img src="../img/crispy-fieldsets.png" alt="Example Crispy forms Fieldset">
-    <figcaption>Example Crispy forms Fieldset</figcaption>
-  </figure>
+<p>As you can see we only need 2 lines of code to create two fieldsets.</p>
+<!-- <p class="example-img"> -->
+<figure>
+  <img src="../img/crispy-fieldsets.png" alt="Example Crispy forms Fieldset">
+  <figcaption>Example Crispy forms Fieldset</figcaption>
+</figure>
 
-  <h2>Wrap fields together</h2>
-  <p>
-    Let's say you want to display 2 fields on 1 line, for example:
-    house number and addition. In this example we create a wrapper div around the
-    2 fields and assign an extra class for each field to be able to style the
-    two fields the way we want:
-  </p>
-  <pre class="python" rel="Python"><code><span class="statement">self</span>.helper[<span class="number">3</span>:<span class="number">5</span>].wrap_together(layout.Div, <span class="crispy-attribute">css_class</span>=<span class="string">"housenumber-wrapper"</span>)
+<h2>Wrap fields together</h2>
+<p>
+  Let's say you want to display 2 fields on 1 line, for example:
+  house number and addition. In this example we create a wrapper div around the
+  2 fields and assign an extra class for each field to be able to style the
+  two fields the way we want:
+</p>
+<pre class="python" rel="Python"><code><span class="statement">self</span>.helper[<span class="number">3</span>:<span class="number">5</span>].wrap_together(layout.Div, <span class="crispy-attribute">css_class</span>=<span class="string">"housenumber-wrapper"</span>)
 <span class="statement">self</span>.helper[<span class="string">'house_number'</span>].wrap(layout.Field, <span class="crispy-attribute">wrapper_class</span>=<span class="string">"housenumber"</span>)
 <span class="statement">self</span>.helper[<span class="string">'addition'</span>].wrap(layout.Field, <span class="crispy-attribute">wrapper_class</span>=<span class="string">"addition"</span>)
 </code></pre>
-  <figure>
-    <img src="../img/crispy-field-manipulation-code.png" alt="">
-    <figcaption>Wrapper around 2 fields</figcaption>
-  </figure>
-  <p>
-  Now you can style and manipulate the 2 fields without touching the other fields. However there are three things you need to be aware of:
-  </p>
-  <ol>
-    <li>
-      If you want to manipulate the layout of the fields and also want to
-      create fieldsets, first do the manipulation.
-    </li>
-    <li>
-      When you use the API to create a fieldset, it changes the field order structure.
-      For example, the fields "first_name" and "last_name" are in the first fieldset. This changes fields order position into:
-      <br>
-       0: Fieldset <br>
-       1: street <br>
-       2: house_number <br>
-       3: addition <br>
-       etc... <br>
-       To fetch "addition" you target to 3 instead of 4 (its position in the original field order).
-    </li>
-    <li>
-      If you want to insert extra content between fields you do this
-      <i>after</i> the fieldsets are created.
-    </li>
-  </ol>
-  <figure>
-      <img src="../img/crispy-field-manipulation.png" alt="">
-      <figcaption>Example form where the field "Addition" is positioned next to the field "House number"</figcaption>
-  </figure>
-  <h2>Insert HTML between fields</h2>
-  <p>
-    There are cases you want to add extra information between the fields.
-    You can do this by using the insert option. In this example we
-    add extra information above the "zipcode" field. Note that we look up the
-    second layout and the field precedent to "zipcode". Because in the first
-    step we created 2 fieldsets:
-  </p><pre class="python" rel="Python"><code><span class="statement">self</span>.helper.layout[<span class="number">1</span>].insert(<span class="number">2</span>,layout.HTML(
-    <span class="string">'&lt;p&gt;No spaces in the zipcode, please.&lt;/p&gt;'</span>
+<figure>
+  <img src="../img/crispy-field-manipulation-code.png" alt="">
+  <figcaption>Wrapper around 2 fields</figcaption>
+</figure>
+<p>
+Now you can style and manipulate the 2 fields without touching the other fields. However there are three things you need to be aware of:
+</p>
+<ol>
+  <li>
+    If you want to manipulate the layout of the fields and also want to
+    create fieldsets, first do the manipulation.
+  </li>
+  <li>
+    When you use the API to create a fieldset, it changes the field order structure.
+    For example, the fields "first_name" and "last_name" are in the first fieldset. This changes fields order position into:
+    <br>
+     0: Fieldset <br>
+     1: street <br>
+     2: house_number <br>
+     3: addition <br>
+     etc... <br>
+     To fetch "addition" you target to 3 instead of 4 (its position in the original field order).
+  </li>
+  <li>
+    If you want to insert extra content between fields you do this
+    <i>after</i> the fieldsets are created.
+  </li>
+</ol>
+<figure>
+    <img src="../img/crispy-field-manipulation.png" alt="">
+    <figcaption>Example form where the field "Addition" is positioned next to the field "House number"</figcaption>
+</figure>
+<h2>Insert HTML between fields</h2>
+<p>
+  There are cases you want to add extra information between the fields.
+  You can do this by using the insert option. In this example we
+  add extra information above the "zipcode" field. Note that we look up the
+  second layout and the field precedent to "zipcode". Because in the first
+  step we created 2 fieldsets:
+</p><pre class="python" rel="Python"><code><span class="statement">self</span>.helper.layout[<span class="number">1</span>].insert(<span class="number">2</span>,layout.HTML(
+  <span class="string">'&lt;p&gt;No spaces in the zipcode, please.&lt;/p&gt;'</span>
 ))
 </code></pre>
- <figure>
-    <img src="../img/crispy-add-content.png" alt="">
-    <figcaption>Example form with extra content</figcaption>
-  </figure>
-  <p>
-    The complete code with all the examples in the right order:
-  </p><pre class="python" rel="Python"><code><span class="comment"># Wrapping the fields "housenumber and addition". Assign extra class to the fields</span>
+<figure>
+  <img src="../img/crispy-add-content.png" alt="">
+  <figcaption>Example form with extra content</figcaption>
+</figure>
+<p>
+  The complete code with all the examples in the right order:
+</p><pre class="python" rel="Python"><code><span class="comment"># Wrapping the fields "housenumber and addition". Assign extra class to the fields</span>
 <span class="statement">self</span>.helper[<span class="number">3</span>:<span class="number">5]</span>.wrap_together(layout.Div, <span class="crispy-attribute">css_class</span>=<span class="string">"housenumber-wrapper"</span>)
 <span class="statement">self</span>.helper[<span class="string">'house_number'</span>].wrap(layout.Field, <span class="crispy-attribute">wrapper_class</span>=<span class="string">"housenumber"</span>)
 <span class="statement">self</span>.helper[<span class="string">'addition'</span>].wrap(layout.Field, <span class="crispy-attribute">wrapper_class</span>=<span class="string">"addition"</span>)
@@ -124,7 +119,6 @@ description = "At Dreamsolution we regularly use Crispy Forms to generate  compl
 
 <span class="comment"># insert text above "zipcode"</span>
 <span class="statement">self</span>.helper.layout[<span class="number">1</span>].insert(<span class="number">2</span>,layout.HTML(
-    <span class="string">'&lt;p&gt;No spaces in the zipcode, please.&lt;/p&gt;'</span>
+  <span class="string">'&lt;p&gt;No spaces in the zipcode, please.&lt;/p&gt;'</span>
 ))
-  </code></pre>
-</article>
+</code></pre>

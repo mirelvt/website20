@@ -32,73 +32,102 @@
         </div>
         <div class="mobile-wrapper">
             
+            <a role="menuitem" href="http://localhost:1313/"
+                
+                
+                    
+                >Home</a>
+            
+            <a role="menuitem" href="http://localhost:1313/blog/"
+                
+                
+                    class="selected"
+                >Blog</a>
+            
+            <a role="menuitem" href="http://localhost:1313/fronteers/"
+                
+                
+                    
+                >Fronteers</a>
+            
+            <a role="menuitem" href="http://localhost:1313/about/"
+                
+                
+                    
+                >About me</a>
+            
         </div>
     </nav>
 
+        <div class="nav-arrows">
+            
+            
+                <a href="http://localhost:1313/blog/rating_stars_sass/" class="arrow-next"
+                    alt="Create clickable rating stars with only SASS and HTML"></a>
+            
+        </div>
         <article role="article">
-    <h1>Font icons with Fontcustom and SASS</h1>
-    <p>
-        05-08-2015 <br>
-        In 2013 and 2014 I used <a href="http://www.icomoon.io">Icomoon</a> to create font icons.
-        It is a nice library and tool. You can choose icons from their library and
-        they have the feature to upload your own svgs to create the font icon set. It is a great tool if you only need to generate the font icon once. But not when you have to add new ones to the set.
-    </p>
-    <p>
-        At Dreamsolution the company where I'm employed, the development and design goes in iterations.
-        When the first design is approved I can create with Icomoon the font icon set at once.
-        But as the development and design iterations continues, new icons are created.
-        When using Icomoon I have to go through several steps to update my font icon set:
-    </p>
-    <ul>
-        <li>Uploading the json file in icomoon. We keep the generated selection.json file in our VCS <a href="https://mercurial.selenic.com">Mercurial</a>.
-            <li>Add the new icons to the selection.</li>
-            <li>Generate the font.</li>
-            <li>Replace the old font icon files with the new ones.</li>
-            <li>Update your scss file.</li>
-            <li>Compile scss file to css.</li>
-        </li>
-    </ul>
-    <p>
-        That is quite a few steps I have to go through, to update my font icon set. So how can this workflow
-        be more efficient? 3 Months ago I read somewhere about <a href="http://fontcustom.com">Fontcustom</a>,
-        not sure if it was an article in <a href="http://css-weekly.com">cssweekly</a> or the <a href="http://www.webdesignermagazine.nl">Webdesigner Magazine</a> (Dutch version),
-        but it caught my attention. Fontcustom is a command line tool to generate the font icon, based on
-        a selection of svg files. It generates the css + preview html on the fly.
-        And with Fontcustom I am able to speed up my workflow when new icons are to be implemented.
-    </p>
-    <h2>How to set up Fontcustom to speed up my workflow</h2>
-    <p>In my daily work I use SASS, and Fontcustom has the feature to generate .scss file. This is very neat, but the generated .scss file is similar to the generated css file: it defines for each icon an icon class, and when you have, let's say 30 icons, it's get cluttered.</p>
+            <h1>Font icons with Fontcustom and SASS</h1>
+            November 21, 2015 <br>
+            <p>In 2013 and 2014 I used <a href="http://www.icomoon.io">Icomoon</a> to create font icons.
+It is a nice library and tool. You can choose icons from their library and
+they have the feature to upload your own svgs to create the font icon set. It is a great tool if you only need to generate the font icon once. But not when you have to add new ones to the set.
+<p>
+    At Dreamsolution the company where I&rsquo;m employed, the development and design goes in iterations.
+    When the first design is approved I can create with Icomoon the font icon set at once.
+    But as the development and design iterations continues, new icons are created.
+    When using Icomoon I have to go through several steps to update my font icon set:
+</p>
+<ul>
+    <li>Uploading the json file in icomoon. We keep the generated selection.json file in our VCS <a href="https://mercurial.selenic.com">Mercurial</a>.
+        <li>Add the new icons to the selection.</li>
+        <li>Generate the font.</li>
+        <li>Replace the old font icon files with the new ones.</li>
+        <li>Update your scss file.</li>
+        <li>Compile scss file to css.</li>
+    </li>
+</ul>
+<p>
+    That is quite a few steps I have to go through, to update my font icon set. So how can this workflow
+    be more efficient? 3 Months ago I read somewhere about <a href="http://fontcustom.com">Fontcustom</a>,
+    not sure if it was an article in <a href="http://css-weekly.com">cssweekly</a> or the <a href="http://www.webdesignermagazine.nl">Webdesigner Magazine</a> (Dutch version),
+    but it caught my attention. Fontcustom is a command line tool to generate the font icon, based on
+    a selection of svg files. It generates the css + preview html on the fly.
+    And with Fontcustom I am able to speed up my workflow when new icons are to be implemented.
+</p>
+<h2>How to set up Fontcustom to speed up my workflow</h2>
+<p>In my daily work I use SASS, and Fontcustom has the feature to generate .scss file. This is very neat, but the generated .scss file is similar to the generated css file: it defines for each icon an icon class, and when you have, let&rsquo;s say 30 icons, it&rsquo;s get cluttered.</p></p>
 
-    <pre class="language-scss" rel="SCSS"><code><span class="selector">.icon-arrow-down</span>:before {
-    <span class="property">content</span>: "";
+<pre class="language-scss" rel="SCSS"><code><span class="selector">.icon-arrow-down</span>:before {
+<span class="property">content</span>: "";
 }
 <span class="selector">.icon-arrow-left</span>:before {
-    <span class="property">content</span>: "";
+<span class="property">content</span>: "";
 } </code></pre>
-    <p>
-        I wanted to use the SASS maps feature to get a nice list of all the icons and use an @each loop to generate the classes. How do I get Fontcustom generate the output I want? First you need to have your project structure ready and <a href="http://fontcustom.com">Fontcustom</a> installed. My project structure looks like this:
-    </p><pre rel="Folder structure"><code>FOO-project/
-   static/
-      foo-icons/
-         fontcustom.yml
-         _icons.scss <span class="comment">/* Is the template which will create the _icons.scss partial file */</span>
-         foo-icons-preview.html <span class="comment">/* This file is generated by fontcustom * /</span>
-         svg/
-            checkmark.svg
-            arrow-right.svg
-            arrow-left.svg
-            trash.svg
-       fonts/
-       scss/
-          base.scss
-          _fonts.scss</code></pre>
-    <h2>Fontcustom.yml</h2>
-    <p>
-        The two main files which will do the work are <strong>fontcustom.yml</strong> config file and the
-        <strong>_icons.scss</strong> fontcustom template file. There are a lot of configuration options,
-        but in this example I highlight the ones which are important for this example. Personally I run the fontcustom command from the root of the project directory, that's why I use the complete path in the config file. Now let's take a look at my fontcustom.yml file:
-    </p>
-    <pre class="language-yml" rel="YAML"><code><span class="comment"># =============================================
+<p>
+    I wanted to use the SASS maps feature to get a nice list of all the icons and use an @each loop to generate the classes. How do I get Fontcustom generate the output I want? First you need to have your project structure ready and <a href="http://fontcustom.com">Fontcustom</a> installed. My project structure looks like this:
+</p><pre rel="Folder structure"><code>FOO-project/
+static/
+  foo-icons/
+     fontcustom.yml
+     _icons.scss <span class="comment">/* Is the template which will create the _icons.scss partial file */</span>
+     foo-icons-preview.html <span class="comment">/* This file is generated by fontcustom * /</span>
+     svg/
+        checkmark.svg
+        arrow-right.svg
+        arrow-left.svg
+        trash.svg
+   fonts/
+   scss/
+      base.scss
+      _fonts.scss</code></pre>
+<h2>Fontcustom.yml</h2>
+<p>
+    The two main files which will do the work are <strong>fontcustom.yml</strong> config file and the
+    <strong>_icons.scss</strong> fontcustom template file. There are a lot of configuration options,
+    but in this example I highlight the ones which are important for this example. Personally I run the fontcustom command from the root of the project directory, that's why I use the complete path in the config file. Now let's take a look at my fontcustom.yml file:
+</p>
+<pre class="language-yml" rel="YAML"><code><span class="comment"># =============================================
 # Font Custom Configuration, for more info,
 # visit https://github.com/FontCustom/fontcustom.
 # ===============================================
@@ -112,34 +141,34 @@
 <span class="selector">force</span>: false
 
 <span class="selector">input</span>:
-   <span class="property">vectors</span>: FOO-project/static/foo-icons/svg
-   <span class="property">templates</span>: FOO-project/static/foo-icons
+<span class="property">vectors</span>: FOO-project/static/foo-icons/svg
+<span class="property">templates</span>: FOO-project/static/foo-icons
 
 <span class="selector">output</span>:
-   <span class="property">fonts</span>: FOO-project/static/fonts
-   <span class="property">preview</span>: FOO-project/static/foo-icons
-   <span class="property">_icons.scss</span>: FOO-project/static/scss
+<span class="property">fonts</span>: FOO-project/static/fonts
+<span class="property">preview</span>: FOO-project/static/foo-icons
+<span class="property">_icons.scss</span>: FOO-project/static/scss
 
 <span class="selector">templates</span>: [_icons.scss, preview]</code></pre>
-    <h2>SCSS fontcustom template</h2>
-    <p>
-        The configuration file is ready, now I have to create the _icons.scss template which will output the desired scss partial :
-    </p>
-    <pre class="language-scss" rel="Fontcustom SCSS template"><code><span class="comment">// This will generate the @font-face</span>
+<h2>SCSS fontcustom template</h2>
+<p>
+    The configuration file is ready, now I have to create the _icons.scss template which will output the desired scss partial :
+</p>
+<pre class="language-scss" rel="Fontcustom SCSS template"><code><span class="comment">// This will generate the @font-face</span>
 &lt;%= font_face(path: "fonts/" + font_name) %&gt;
 
 <span class="comment">// This generates the SASS map:</span>
 <span class="variable">$font-icons</span>: (&lt;% @glyphs.each do |name, value| %&gt;
-    "&lt;%= name.to_s %&gt;": "\&lt;%= value[:codepoint].to_s(16) %&gt;",&lt;% end %&gt;
+"&lt;%= name.to_s %&gt;": "\&lt;%= value[:codepoint].to_s(16) %&gt;",&lt;% end %&gt;
 );
 
 @each <span class="variable">$icon</span>, <span class="variable">$unicode</span> in <span class="variable">$font-icons</span> {
-  <span class="selector">.icon-#{</span><span class="variable">$icon</span><span class="selector">}</span>:before {
-    content: <span class="variable">$unicode</span>;
-  }
+<span class="selector">.icon-#{</span><span class="variable">$icon</span><span class="selector">}</span>:before {
+content: <span class="variable">$unicode</span>;
+}
 }</code></pre>
 
-<h2>Generate the font icon and _icons.scss partial</h2>
+<p><h2>Generate the font icon and _icons.scss partial</h2>
 <p>
 Everything is in place and I can run the fontcustom command from the root of the directory to generate the font icon set and scss partial.
 </p>
@@ -147,97 +176,97 @@ Everything is in place and I can run the fontcustom command from the root of the
 </code></pre>
 <p>The project structure is updated with the font icon and scss partial:</p>
 <pre rel="Folder structure"><code>FOO-project/
-   static/
-      foo-icons/
-         fontcustom.yml
-         _icons.scss <span class="comment">/* Is the template which will create the _icons.scss partial file */</span>
-         foo-icons-preview.html <span class="comment">/* This file is generated by fontcustom * /</span>
-         svg/
-            checkmark.svg
-            arrow-right.svg
-            arrow-left.svg
-            trash.svg
-       fonts/
-          foo-icons.eot
-          foo-icons.svg
-          foo-icons.ttf
-          foo-icons.woff
-       scss/
-          base.scss
-          _fonts.scss
-          _icons.scss <span class="comment">/* generated icons partial */</span></code></pre>
+static/
+  foo-icons/
+     fontcustom.yml
+     _icons.scss <span class="comment">/* Is the template which will create the _icons.scss partial file <em>/</span>
+     foo-icons-preview.html <span class="comment">/</em> This file is generated by fontcustom * /</span>
+     svg/
+        checkmark.svg
+        arrow-right.svg
+        arrow-left.svg
+        trash.svg
+   fonts/
+      foo-icons.eot
+      foo-icons.svg
+      foo-icons.ttf
+      foo-icons.woff
+   scss/
+      base.scss
+      _fonts.scss
+      _icons.scss <span class="comment">/* generated icons partial */</span></code></pre>
 <p>
-    Let's take a look at the generated _.icons.scss file. It contains the structure and info I wanted: @font-face declaration, the SASS map and the @each loop:
+Let&rsquo;s take a look at the generated _.icons.scss file. It contains the structure and info I wanted: @font-face declaration, the SASS map and the @each loop:
 </p>
 <pre class="language-scss" rel="SCSS"><code><span class="selector">@font-face</span> {
-  <span class="property">font-family</span>: "foo-icons";
-  src: url("fonts/foo-icons.eot");
-  src: url("fonts/foo-icons.eot?#iefix") format("embedded-opentype"),
-       url("fonts/foo-icons.woff") format("woff"),
-       url("fonts/foo-icons.ttf") format("truetype"),
-       url("fonts/foo-icons.svg#foo-icons") format("svg");
-  <span class="property">font-weight</span>: normal;
-  <span class="property">font-style</span>: normal;
+<span class="property">font-family</span>: &ldquo;foo-icons&rdquo;;
+src: url(&ldquo;fonts/foo-icons.eot&rdquo;);
+src: url(&ldquo;fonts/foo-icons.eot?#iefix&rdquo;) format(&ldquo;embedded-opentype&rdquo;),
+   url(&ldquo;fonts/foo-icons.woff&rdquo;) format(&ldquo;woff&rdquo;),
+   url(&ldquo;fonts/foo-icons.ttf&rdquo;) format(&ldquo;truetype&rdquo;),
+   url(&ldquo;fonts/foo-icons.svg#foo-icons&rdquo;) format(&ldquo;svg&rdquo;);
+<span class="property">font-weight</span>: normal;
+<span class="property">font-style</span>: normal;
+}</p>
+
+<p><span class="selector">@media screen and (-webkit-min-device-pixel-ratio:0)</span> {
+<span class="selector">@font-face</span> {
+<span class="property">font-family</span>: &ldquo;foo-icons&rdquo;;
+<span class="property">src</span>: url(&ldquo;fonts/foo-icons.svg#foo-icons&rdquo;) format(&ldquo;svg&rdquo;);
 }
+}</p>
 
-<span class="selector">@media screen and (-webkit-min-device-pixel-ratio:0)</span> {
-  <span class="selector">@font-face</span> {
-    <span class="property">font-family</span>: "foo-icons";
-    <span class="property">src</span>: url("fonts/foo-icons.svg#foo-icons") format("svg");
-  }
+<p><span class="variable">$font-icons</span>: (
+<span class="variable">&ldquo;arrow-down&rdquo;</span>: &ldquo;\f100&rdquo;,
+<span class="variable">&ldquo;arrow-left&rdquo;</span>: &ldquo;\f101&rdquo;,
+<span class="variable">&ldquo;arrow-right&rdquo;</span>: &ldquo;\f102&rdquo;,
+<span class="variable">&ldquo;arrow-up&rdquo;</span>: &ldquo;\f103&rdquo;,
+<span class="variable">&ldquo;calendar&rdquo;</span>: &ldquo;\f104&rdquo;,
+<span class="variable">&ldquo;checkmark&rdquo;</span>: &ldquo;\f10f&rdquo;,
+<span class="variable">&ldquo;close&rdquo;</span>: &ldquo;\f111&rdquo;,
+<span class="variable">&ldquo;edit&rdquo;</span>: &ldquo;\f110&rdquo;,
+<span class="variable">&ldquo;graph&rdquo;</span>: &ldquo;\f105&rdquo;,
+<span class="variable">&ldquo;help&rdquo;</span>: &ldquo;\f112&rdquo;,
+<span class="variable">&ldquo;lock-closed&rdquo;</span>: &ldquo;\f106&rdquo;,
+<span class="variable">&ldquo;lock-open&rdquo;</span>: &ldquo;\f107&rdquo;,
+<span class="variable">&ldquo;plus&rdquo;</span>: &ldquo;\f108&rdquo;,
+<span class="variable">&ldquo;projects&rdquo;</span>: &ldquo;\f113&rdquo;,
+<span class="variable">&ldquo;search&rdquo;</span>: &ldquo;\f109&rdquo;,
+<span class="variable">&ldquo;tag&rdquo;</span>: &ldquo;\f10a&rdquo;,
+<span class="variable">&ldquo;tags&rdquo;</span>: &ldquo;\f10b&rdquo;,
+<span class="variable">&ldquo;trash&rdquo;</span>: &ldquo;\f10c&rdquo;,
+<span class="variable">&ldquo;user&rdquo;</span>: &ldquo;\f10d&rdquo;,
+<span class="variable">&ldquo;users&rdquo;</span>: &ldquo;\f10e&rdquo;,
+);</p>
+
+<p>@each <span class="variable">$icon</span>, <span class="variable">$unicode</span> in <span class="variable">$font-icons</span> {
+<span class="property">.icon-#{</span><span class="variable">$icon</span><span class="property">}:before</span> {
+<span class="property">content</span>: <span class="variable">$unicode</span>;
 }
-
-<span class="variable">$font-icons</span>: (
-    <span class="variable">"arrow-down"</span>: "\f100",
-    <span class="variable">"arrow-left"</span>: "\f101",
-    <span class="variable">"arrow-right"</span>: "\f102",
-    <span class="variable">"arrow-up"</span>: "\f103",
-    <span class="variable">"calendar"</span>: "\f104",
-    <span class="variable">"checkmark"</span>: "\f10f",
-    <span class="variable">"close"</span>: "\f111",
-    <span class="variable">"edit"</span>: "\f110",
-    <span class="variable">"graph"</span>: "\f105",
-    <span class="variable">"help"</span>: "\f112",
-    <span class="variable">"lock-closed"</span>: "\f106",
-    <span class="variable">"lock-open"</span>: "\f107",
-    <span class="variable">"plus"</span>: "\f108",
-    <span class="variable">"projects"</span>: "\f113",
-    <span class="variable">"search"</span>: "\f109",
-    <span class="variable">"tag"</span>: "\f10a",
-    <span class="variable">"tags"</span>: "\f10b",
-    <span class="variable">"trash"</span>: "\f10c",
-    <span class="variable">"user"</span>: "\f10d",
-    <span class="variable">"users"</span>: "\f10e",
-);
-
-@each <span class="variable">$icon</span>, <span class="variable">$unicode</span> in <span class="variable">$font-icons</span> {
-  <span class="property">.icon-#{</span><span class="variable">$icon</span><span class="property">}:before</span> {
-    <span class="property">content</span>: <span class="variable">$unicode</span>;
-  }
 } </code></pre>
 <h2>Final steps</h2>
-<p>The final step is to make sure that every class that starts with or contains <strong>"icon-"</strong> will use the <strong>foo-icons</strong> font and that _icons.scss is included. I added the following code to my _fonts.scss:
+<p>The final step is to make sure that every class that starts with or contains <strong>&ldquo;icon-&rdquo;</strong> will use the <strong>foo-icons</strong> font and that _icons.scss is included. I added the following code to my _fonts.scss:
 </p>
-<pre class="language-scss" rel="_fonts.scss"><code><span class="selector">@import</span> <span class="variable">"_icons"</span>;
+<pre class="language-scss" rel="_fonts.scss"><code><span class="selector">@import</span> <span class="variable">&ldquo;_icons&rdquo;</span>;</p>
 
-<span class="selector">[class^="icon-"]:before</span>,
-<span class="selector">[class*=" icon-"]:before</span> {
-  <span class="property">display</span>: inline-block;
-  <span class="property">font-family</span>: "foo-icons";
-  <span class="property">speak</span>: none;
-  <span class="property">font-style</span>: normal;
-  <span class="property">font-weight</span>: normal;
-  <span class="property">font-variant</span>: normal;
-  <span class="property">text-transform</span>: none;
-  <span class="property">line-height</span>: 1px;
-  <span class="property">vertical-align</span>: top;
-  <span class="property">padding-top</span>: 7px;
+<p><span class="selector">[class^=&ldquo;icon-&rdquo;]:before</span>,
+<span class="selector">[class*=&rdquo; icon-&ldquo;]:before</span> {
+<span class="property">display</span>: inline-block;
+<span class="property">font-family</span>: &ldquo;foo-icons&rdquo;;
+<span class="property">speak</span>: none;
+<span class="property">font-style</span>: normal;
+<span class="property">font-weight</span>: normal;
+<span class="property">font-variant</span>: normal;
+<span class="property">text-transform</span>: none;
+<span class="property">line-height</span>: 1px;
+<span class="property">vertical-align</span>: top;
+<span class="property">padding-top</span>: 7px;
 } </code></pre>
 <p>
-    My configuration is in place and when I have new icons to add, I just have to add the new icons to my svg directory and run the fontcustom command and scss command. The 6 slow steps are reduced to 3 faster steps.
+My configuration is in place and when I have new icons to add, I just have to add the new icons to my svg directory and run the fontcustom command and scss command. The 6 slow steps are reduced to 3 faster steps.
 </p>
-<p>I hope this article is meaningful to you and if you have any questions or remarks you can find me on twitter @mirelvt or you can email me <a href="mailto:mailenm@mirellavanteulingen.nl">mailenm@mirellavanteulingen.nl</a>.</p>
-</article>
+<p>I hope this article is meaningful to you and if you have any questions or remarks you can find me on twitter @mirelvt or you can email me <a href="mailto:mailenm@mirellavanteulingen.nl">mailenm@mirellavanteulingen.nl</a>.</p></p>
 
+        </article>
     </body>
 </html>

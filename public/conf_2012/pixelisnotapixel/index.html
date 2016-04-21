@@ -1,0 +1,85 @@
+    <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    
+    
+        <meta name="description" content="">
+    
+
+    
+    
+        <title>Mirella van Teulingen - front end developer </title>
+    
+
+    <link rel="icon" type="image/ico" href="img/favicon.ico"/>
+
+    
+
+    <link rel="stylesheet" href="http://localhost:1313/css/blog.css">
+
+</head>
+    <body>
+        <div class="visualwrapper">
+    <div class="overlay"></div>
+
+    <nav role="navigation">
+        <div class="hamburger-wrapper">
+          <div class="hamburger"></div>
+          <div class="menu-text">Menu</div>
+        </div>
+        <div class="mobile-wrapper">
+            
+            <a role="menuitem" href="http://localhost:1313/"
+                
+                
+                    
+                >Home</a>
+            
+            <a role="menuitem" href="http://localhost:1313/blog/"
+                
+                
+                    
+                >Blog</a>
+            
+            <a role="menuitem" href="http://localhost:1313/fronteers/"
+                
+                
+                    
+                >Fronteers</a>
+            
+            <a role="menuitem" href="http://localhost:1313/about/"
+                
+                
+                    
+                >About me</a>
+            
+        </div>
+    </nav>
+
+        <div class="nav-arrows">
+            
+            <a href="http://localhost:1313/conf_2012/statehtml5video/" class="arrow-prev"
+                title="The State of HTML5 Video"></a>
+            
+            
+                <a href="http://localhost:1313/conf_2012/accessibility/" class="arrow-next"
+                    alt="Accessibility on the web"></a>
+            
+        </div>
+        <article role="article">
+            <h1>A Pixel is not a pixel</h1>
+            <p class="subtitle">
+                 - Peter-Paul Koch 
+                 - Twitter: @ppk 
+                
+                    - Video: <a href="http://vimeo.com/52851511">http://vimeo.com/52851511</a>
+                
+            </p>
+            <p>This was a fast paced and interesting presentation. I've learned a lot about pixels and where you can run into presenation issues on devices. I've heard of Peter-Paul Koch but never seen or attended his presentations. It was a great experience and worth while!</p><p>Let's start:</p><p>You have 3 kinds of pixels:</p><ul><li>css: like width:20px. Their size may be increased or decreased.</li><li>device: The actual pixels on the screen. When the number of device pixels increases would break sites, so density-independent pixels were invented.</li><li>densitiy independent</li></ul><p>Device pixels are the physical pixels on the the device. But they get higher and higher pixel densities, and the number of devic pixels increases.</p><p>When building sites for different media/resolutions, ask your self this question: What kind of pixels am I using? CSS pixels related to javascript or device pixels when used in the code? In Javascript pixels might not be CSS pixels all the time. Usually it's CSS pixel, but sometimes it might be device pixels (dips) when related to screen size.</p><h2>What is a viewport?</h2><p>It is the total amount of space available for css layouts:</p><ul><li>On desktop it's equal to the browser window. An HTML element has an implicit width: 100% and spans the entire viewport.</li></ul><h3>Viewport for mobile</h3><p>The viewport for mobile is quite a bit more complicated. If the narrow browser window were to be the viewport, many sites would be squeezed to death. And mobile browsers must render all sites correctly even if they haven't been mobile optimized.</p><blockquote>&ldquo;On Retina displays, device pixels are 640px, but device-independent pixels are still 320px to not break the Web on mobile&rdquo; <cite>- @ppk</cite></blockquote><p>To work around this the mobile browser vendors split viewport in 2:</p><ul><li>layout viewport: css</li><li>visual viewport: actually what you use/see.</li></ul><p>You can compare it with looking through a keyhole. If you want to know how much of the website the user is actually seeing, use window.innerWidth (works on virtually all browsers except IE9 and Android 2.0)</p><h4>What does zooming do with the viewport?</h4><ul><li>on desktop the viewport stays the same, the css pixels become larger and less.</li><li>mobile visual viewport becomes smaller but the layout viewport remains static, thus css declarations are not recomputed. The visual viewport now contains less css pixels.</li></ul><h4>Behavior of position:fixed</h4><p>What if you use/view position:fixed on the mobile? And what is fixed: the viewport. Ok, but which viewport? The layout viewport or the visual view?</p><p>It actually is browser dependent. There are differences in what browsers see as viewport:</p><ul><li>Android, Chrome and Blackberry browsers use the visual viewport.</li><li>IE9 the layout viewport.</li><li>Opera "hops".</li><li>And safari does something weird.</li><li>On layout viewport position: fixed behaves as absolute.</li><li>On Opera the fixed hops up and down.</li></ul><p>Use these demo pages on your device/browsers to see the difference in behavior: <a href="http://quirksmode.org/m/tests/positionfixed.html">http://quirksmode.org/m/tests/positionfixed.html</a> And <a href="http://quirksmode.org/m/tests/devicefixed.html">http://quirksmode.org/m/tests/devicefixed.html</a></p><p>You can use the javascript:pageOffset, it works the same on mobile and desktop.</p><h2>Media queries and Meta viewport</h2><h4>Media queries</h4><p>When using media queries, use width, and not device-width. Device-width is the width of your screen, that is not interesting.</p><p>Width: Gives the width of the layout viewport and is in css pixels</p><h4>Meta viewport</h4><p>The meta name viewport tag tells the browser to set the size of the layout viewport. With this tag you can give a pixel value, or a device-width.</p><p>The trick for responsive design: use the meta name viewport width="device-width" and media queries.</p>
+
+        </article>
+    </body>
+</html>

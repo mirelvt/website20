@@ -1,4 +1,4 @@
 +++
 page_name = "Blog"
-css = "../css/blog.css"
+css = "../css/blog.min.css"
 +++

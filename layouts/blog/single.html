@@ -1,0 +1,21 @@
+    {{ partial "head.html" . }}
+    {{ partial "stylesheets.html" . }}
+    <body>
+        {{ partial "nav_main.html" . }}
+        <div class="nav-arrows">
+            {{ if .NextInSection }}
+            <a href="{{ .NextInSection.Permalink }}" class="arrow-prev"
+                title="{{ .NextInSection.Title }}"></a>
+            {{ end }}
+            {{ if .PrevInSection }}
+                <a href="{{ .PrevInSection.Permalink }}" class="arrow-next"
+                    alt="{{ .PrevInSection.Title }}"></a>
+            {{ end }}
+        </div>
+        <article role="article">
+            <h1>{{ .Title }}</h1>
+            {{ .Date.Format "January 2, 2006" }} <br>
+            {{ .Content }}
+        </article>
+    </body>
+</html>

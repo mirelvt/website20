@@ -32,188 +32,218 @@
         </div>
         <div class="mobile-wrapper">
             
+            <a role="menuitem" href="http://localhost:1313/"
+                
+                
+                    
+                >Home</a>
+            
+            <a role="menuitem" href="http://localhost:1313/blog/"
+                
+                
+                    class="selected"
+                >Blog</a>
+            
+            <a role="menuitem" href="http://localhost:1313/fronteers/"
+                
+                
+                    
+                >Fronteers</a>
+            
+            <a role="menuitem" href="http://localhost:1313/about/"
+                
+                
+                    
+                >About me</a>
+            
         </div>
     </nav>
 
+        <div class="nav-arrows">
+            
+            <a href="http://localhost:1313/blog/customize_sublime/" class="arrow-prev"
+                title="Customize Sublime text editor"></a>
+            
+            
+        </div>
         <article role="article">
-  <h1>CSS Day 2013 Amsterdam</h1>
-  <p>
-    16-06-2013 <br>
-    Friday 14 june 2013 in Amsterdam I attended the CSSDay conference. Eight experts talked about 8 different CSS modules. The focus was on techniques of these modules we might not know about and the future of CSS. During the conference I learned that CSS is in very active development. It was an incredible, informative and awesome day. An high standard conference I've ever attended so far. I hope that there will be another one within 1 or 2 years.
-  </p>
-  <h2>Summary</h2>
-  <p>
-    Peter Paul Koch was the host of the day. Eric Meyer started the conference with his talk about fonts. Showing us a couple of creative ways to use different font types and browser quirks. Bert Bos, one of the people who invented CSS, talked about the history of CSS and the use of selectors. I didn't know that CSS was intended for simple documents with high quality typography. Stephen Hay gave a great, humouristic presentation about the power of Flexbox. Divya Manian showed us some really awesome demos of using filters and compositing. Tab Atkins talked about variables and conditional rules we hopefully can use in the near future. Daniel glazman gave an in-depth presentation about <a href="http://w3c.org/tr/css3-mediaqueries">media-queries</a> and shared his thoughts about future specifications. Peter Gaston presented in-detail all the properties and values of transitions and browser quirks.And Finally Lea Verou closed the conference with an enlightning demonstration of border radius. She demonstrated the possibilities and behaviors you probably wouldn't think of when using border-radius.
-  </p>
-  <p>
-    Below you'll find my notes of the conference. When the videos are available I will add the links in this post.
-  </p>
-  <h2>Fonts - Erik Meyer</h2>
-  <p>
-    When using @font-face the browser will always download the fonts required, even when the user has that font on its machine. You can avoid this to add src: local("font name") to @font-face. When the user has the font on its local machine it will use that one. Example:
-  </p>
-  <pre class="language-css" rel="CSS"><code><span class="selector">@font-face</span> {
-  <span class="property">font-family</span>: "Helvetica W01 Bold";
-  <span class="property">src</span>: url("fonts/f70da45a-a05c-490c-ad62-7db4894b012a.eot?#iefix");
-  <span class="property">src</span>: local("Helvetica W01 Bold"),
-       url("fonts/f70da45a-a05c-490c-ad62-7db4894b012a.eot?#iefix") format("eot"),
-  <span class="comment">// etc...</span>
-}</code></pre>
-  <p>
-    Giving the font-family a short name will save a few bites. Although when you use Helvetica don't use the short name H because Microsoft will display it as Arial(?).<br>
-  </p>
-  <p>You can also use unicode-range property:</p>
-  <pre class="language-css" rel="CSS"><code><span class="selector">@font-face</span> {
-  <span class="property">font-family</span>: STIXGeneral;
-  <span class="property">src</span>: local(STIXGeneral), url(/stixfonts/STIXGeneral.otf);
-       unicode-range: U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF;
-}</code></pre>
+            <h1>CSS Day 2013 Amsterdam</h1>
+            June 16, 2013 <br>
+            <p>Friday 14 june 2013 in Amsterdam I attended the CSSDay conference. Eight experts talked about 8 different CSS modules. The focus was on techniques of these modules we might not know about and the future of CSS. During the conference I learned that CSS is in very active development. It was an incredible, informative and awesome day. An high standard conference I&rsquo;ve ever attended so far. I hope that there will be another one within 1 or 2 years.</p>
 
-  <h2>CSS Selectors - Bert Bos</h2>
-  <p>
-    The goal of CSS is to style text, applicable to formats that are tree-structured and to be format independent. For example, when HTML dies, it can be used for another format.
-  </p>
-  <p>
-    However, the web/world is changing, there is no standard language for GUIs. We use HTML + CSS instead. This changes the focus of CSS from styling high quality typography to complex books, magazines and complex GUIs. Bert mentioned some selectors I didn't know and a few selector proposals:
-  </p>
-  <ul>
-    <li>@page, @top are also selectors for pages and running headers.
-    </li>
-    <li>form control parts: ::value, ::choices</li>
-    <li>proposal: list markers, footnote markers ::marker</li>
-    <li>proposal: templates/regions:  ::slot(), ::column(), @region</li>
-  </ul>
-
-  <p>
-    A good list of selectors with explanation can be found on:
-  </p>
-  <ul>
-      <li><a href="http://www.w3schools.com/cssref/css_selectors.asp">w3schools</a></li>
-      <li><a href="http://net.tutsplus.com/tutorials/html-css-techniques/the-30-css-selectors-you-must-memorize/">tutsplus</a></li>
-  </ul>
-  <h2>Flexbox - Stephen Hay</h2>
-  <blockquote>
-    One giant leap for web layout.
-    <cite>- Stephen Hay</cite>
-  </blockquote>
-  <p>
-    Flexbox has been rewritten multiple times, at the time of writing it has the Candidate Recommendation. Flexbox is for creating interfaces, not really suitable for layouts.
-    Flexbox has 12 properties. When using flex box, don't think in left to right or top to bottom, because it can go both ways. It has no fixed start or end point.
-  </p>
-  <p>
-    For more information about Flexbox, check out the following documentation:
-  </p>
-  <ul>
-    <li><a href="http://css-tricks.com/old-flexbox-and-new-flexbox/">Old and new flexbox</a></li>
-    <li><a href="http://coding.smashingmagazine.com/2013/05/22/centering-elements-with-flexbox/">Smashing magazine</a></li>
-    <li><a href="http://www.w3.org/TR/css3-flexbox/#overview-example">w3c.org css3 flexbox</a> </li>
-  </ul>
-  <h2>Filter effects &amp; compositing - Divya Manian</h2>
-  <p>
-    SVG filters are introduced by Adobe and work in Chrome and Safari. A filter changes the pixels of an element and creates a new stacking context. "Filter effects are a way of processing an element's rendering before it is displayed in the document. They are triggered by a style instruction (the ‘filter’ property)." <a href="https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html">w3c.org filters</a>
-  </p>
-  <p>There are 3 types of filters:</p>
-  <ul>
-    <li>built-in filters: support in Chrome, Safari and Opera 15+</li>
-    <li>svg filters: IE10, Firefox with no prefixes. Chrome, Safari and Opera with prefixes</li>
-    <li>custom filters</li>
-  </ul>
-  <p>
-    Built-in filters are: blur, brightness, contrast, drop-shadow, grayscale, hue-rotate, invert, opacity, saturate and sepia.
-  </p>
-  <p>Syntax example::</p>
-  <pre class="language-css" rel="CSS"><code><span class="selector">.box</span> {
-  <span class="property">-webkit-filter</span>: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5)) sepia(100%);
+<p><h2>Summary</h2>
+<p>
+  Peter Paul Koch was the host of the day. Eric Meyer started the conference with his talk about fonts. Showing us a couple of creative ways to use different font types and browser quirks. Bert Bos, one of the people who invented CSS, talked about the history of CSS and the use of selectors. I didn&rsquo;t know that CSS was intended for simple documents with high quality typography. Stephen Hay gave a great, humouristic presentation about the power of Flexbox. Divya Manian showed us some really awesome demos of using filters and compositing. Tab Atkins talked about variables and conditional rules we hopefully can use in the near future. Daniel glazman gave an in-depth presentation about <a href="http://w3c.org/tr/css3-mediaqueries">media-queries</a> and shared his thoughts about future specifications. Peter Gaston presented in-detail all the properties and values of transitions and browser quirks.And Finally Lea Verou closed the conference with an enlightning demonstration of border radius. She demonstrated the possibilities and behaviors you probably wouldn&rsquo;t think of when using border-radius.
+</p>
+<p>
+  Below you&rsquo;ll find my notes of the conference. When the videos are available I will add the links in this post.
+</p>
+<h2>Fonts - Erik Meyer</h2>
+<p>
+  When using @font-face the browser will always download the fonts required, even when the user has that font on its machine. You can avoid this to add src: local(&ldquo;font name&rdquo;) to @font-face. When the user has the font on its local machine it will use that one. Example:
+</p>
+<pre class="language-css" rel="CSS"><code><span class="selector">@font-face</span> {
+<span class="property">font-family</span>: &ldquo;Helvetica W01 Bold&rdquo;;
+<span class="property">src</span>: url(&ldquo;fonts/f70da45a-a05c-490c-ad62-7db4894b012a.eot?#iefix&rdquo;);
+<span class="property">src</span>: local(&ldquo;Helvetica W01 Bold&rdquo;),
+     url(&ldquo;fonts/f70da45a-a05c-490c-ad62-7db4894b012a.eot?#iefix&rdquo;) format(&ldquo;eot&rdquo;),
+<span class="comment">// etc&hellip;</span>
 }</code></pre>
-  <p>
-    The difference between the CSS box-shadow property and filter drop-shadow, is that the drop-shadow() filter operates on the entire element.
-  </p>
-  <p>
-    You can experiment with filters and compositing (in Photoshop known as blend modes) on adobe's <a href="http://html.adobe.com/webplatform/graphics/customfilters/cssfilterlab/">cssfilterlab</a>. You do need Safari or Chrome. More information about filters and blend modes can be found on:
-  </p>
-  <ul>
-    <li><a href="http://nimbu.in/cssday/#/step-1">Divya's slides</a></li>
-    <li><a href="https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html">W3C.org Filter Effects</a></li>
-    <li><a href="http://adobe.github.io/web-platform/demos/compositing/">Adobe github</a></li>
-  </ul>
-  <h2>Variables &amp; conditionals - Tab Atkins</h2>
-  <p>
-    Variables have been the number one developer request since 1998 but they all failed. With Frameworks like SASS and LESS we can use variables now. The CSS Working Group keeps an eye on what's happening around them. They do not tend to reinvent the wheel.
-  </p>
-  <p>
-    The specification is written and maintained by Tab Atkins and is still in working draft. Tab is creating a variable type which will be an addition to the variables in LESS/SASS. His new style is limited, you can use it in properties but not in media queries or selectors. However, he says it is very useful for web component theming. For Example:
-  </p>
-  <pre class="language-css" rel="CSS"><code><span class="selector">:root</span> {
-  <span class="property">var-main-color</span>: #000;
+<p>
+  Giving the font-family a short name will save a few bites. Although when you use Helvetica don&rsquo;t use the short name H because Microsoft will display it as Arial(?).<br>
+</p>
+<p>You can also use unicode-range property:</p>
+<pre class="language-css" rel="CSS"><code><span class="selector">@font-face</span> {
+<span class="property">font-family</span>: STIXGeneral;
+<span class="property">src</span>: local(STIXGeneral), url(/stixfonts/STIXGeneral.otf);
+     unicode-range: U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF;
+}</code></pre></p>
+
+<p><h2>CSS Selectors - Bert Bos</h2>
+<p>
+  The goal of CSS is to style text, applicable to formats that are tree-structured and to be format independent. For example, when HTML dies, it can be used for another format.
+</p>
+<p>
+  However, the web/world is changing, there is no standard language for GUIs. We use HTML + CSS instead. This changes the focus of CSS from styling high quality typography to complex books, magazines and complex GUIs. Bert mentioned some selectors I didn&rsquo;t know and a few selector proposals:
+</p>
+<ul>
+  <li>@page, @top are also selectors for pages and running headers.
+  </li>
+  <li>form control parts: ::value, ::choices</li>
+  <li>proposal: list markers, footnote markers ::marker</li>
+  <li>proposal: templates/regions:  ::slot(), ::column(), @region</li>
+</ul></p>
+
+<p><p>
+  A good list of selectors with explanation can be found on:
+</p>
+<ul>
+    <li><a href="http://www.w3schools.com/cssref/css_selectors.asp">w3schools</a></li>
+    <li><a href="http://net.tutsplus.com/tutorials/html-css-techniques/the-30-css-selectors-you-must-memorize/">tutsplus</a></li>
+</ul>
+<h2>Flexbox - Stephen Hay</h2>
+<blockquote>
+  One giant leap for web layout.
+  <cite>- Stephen Hay</cite>
+</blockquote>
+<p>
+  Flexbox has been rewritten multiple times, at the time of writing it has the Candidate Recommendation. Flexbox is for creating interfaces, not really suitable for layouts.
+  Flexbox has 12 properties. When using flex box, don&rsquo;t think in left to right or top to bottom, because it can go both ways. It has no fixed start or end point.
+</p>
+<p>
+  For more information about Flexbox, check out the following documentation:
+</p>
+<ul>
+  <li><a href="http://css-tricks.com/old-flexbox-and-new-flexbox/">Old and new flexbox</a></li>
+  <li><a href="http://coding.smashingmagazine.com/2013/05/22/centering-elements-with-flexbox/">Smashing magazine</a></li>
+  <li><a href="http://www.w3.org/TR/css3-flexbox/#overview-example">w3c.org css3 flexbox</a> </li>
+</ul>
+<h2>Filter effects &amp; compositing - Divya Manian</h2>
+<p>
+  SVG filters are introduced by Adobe and work in Chrome and Safari. A filter changes the pixels of an element and creates a new stacking context. &ldquo;Filter effects are a way of processing an element&rsquo;s rendering before it is displayed in the document. They are triggered by a style instruction (the ‘filter’ property).&rdquo; <a href="https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html">w3c.org filters</a>
+</p>
+<p>There are 3 types of filters:</p>
+<ul>
+  <li>built-in filters: support in Chrome, Safari and Opera 15+</li>
+  <li>svg filters: IE10, Firefox with no prefixes. Chrome, Safari and Opera with prefixes</li>
+  <li>custom filters</li>
+</ul>
+<p>
+  Built-in filters are: blur, brightness, contrast, drop-shadow, grayscale, hue-rotate, invert, opacity, saturate and sepia.
+</p>
+<p>Syntax example::</p>
+<pre class="language-css" rel="CSS"><code><span class="selector">.box</span> {
+<span class="property">-webkit-filter</span>: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5)) sepia(100%);
+}</code></pre>
+<p>
+  The difference between the CSS box-shadow property and filter drop-shadow, is that the drop-shadow() filter operates on the entire element.
+</p>
+<p>
+  You can experiment with filters and compositing (in Photoshop known as blend modes) on adobe&rsquo;s <a href="http://html.adobe.com/webplatform/graphics/customfilters/cssfilterlab/">cssfilterlab</a>. You do need Safari or Chrome. More information about filters and blend modes can be found on:
+</p>
+<ul>
+  <li><a href="http://nimbu.in/cssday/#/step-1">Divya&rsquo;s slides</a></li>
+  <li><a href="https://dvcs.w3.org/hg/FXTF/raw-file/tip/filters/index.html">W3C.org Filter Effects</a></li>
+  <li><a href="http://adobe.github.io/web-platform/demos/compositing/">Adobe github</a></li>
+</ul>
+<h2>Variables &amp; conditionals - Tab Atkins</h2>
+<p>
+  Variables have been the number one developer request since 1998 but they all failed. With Frameworks like SASS and LESS we can use variables now. The CSS Working Group keeps an eye on what&rsquo;s happening around them. They do not tend to reinvent the wheel.
+</p>
+<p>
+  The specification is written and maintained by Tab Atkins and is still in working draft. Tab is creating a variable type which will be an addition to the variables in LESS/SASS. His new style is limited, you can use it in properties but not in media queries or selectors. However, he says it is very useful for web component theming. For Example:
+</p>
+<pre class="language-css" rel="CSS"><code><span class="selector">:root</span> {
+<span class="property">var-main-color</span>: #000;
 }
 <span class="selector">.foo</span> {
-  <span class="property">color</span>: var(main-color);
+<span class="property">color</span>: var(main-color);
 }</code></pre>
-  <p>
-    Tab Atkins also showed how to use calculations and a variable like pi.
-  </p>
-   <pre class="language-css" rel="CSS"><code><span class="selector">:root</span> {
-  <span class="property">var-phi</span>: 1.618;
-  <span class="property">var-pi</span>: 3.14159;
+<p>
+  Tab Atkins also showed how to use calculations and a variable like pi.
+</p>
+ <pre class="language-css" rel="CSS"><code><span class="selector">:root</span> {
+<span class="property">var-phi</span>: 1.618;
+<span class="property">var-pi</span>: 3.14159;
 }
 <span class="selector">.foo</span> {
-  <span class="property">width</span>: calc(300px * var(phi));
-}</code></pre>
+<span class="property">width</span>: calc(300px * var(phi));
+}</code></pre></p>
 
-  <p>
-    An example of a conditional rule is @supports. With @supports you can test whether a property is supported or not. It is similar to Modernizr and other similar libraries.
-  </p>
-  <pre class="language-css" rel="CSS"><code><span class="selector">@supports</span> (display: flex) {
-  <span class="selector">body, #navigation, #article</span> {
-    <span class="property">display</span>: flex;
-    <span class="property">width</span>: auto;
-  }
+<p><p>
+  An example of a conditional rule is @supports. With @supports you can test whether a property is supported or not. It is similar to Modernizr and other similar libraries.
+</p>
+<pre class="language-css" rel="CSS"><code><span class="selector">@supports</span> (display: flex) {
+<span class="selector">body, #navigation, #article</span> {
+  <span class="property">display</span>: flex;
+  <span class="property">width</span>: auto;
+}
 }</code></pre>
-  <p>
-    All the features Tab showed us, really made me wanting it implemented tomorrow. You can find his slides on: <a href="http://www.xanthir.com/talks/2013-06-14">xanthir.com</a> (use chrome and your arrow keys to navigate).
-  </p>
-  <h2>Animations &amp; Transitions - Peter Gaston</h2>
-  <p>
-    2007 Safari6 introduces animations and transitions via CSS. But at the moment it is still buggy. With animation you have to specify every keyframe, otherwise the element will be set to its default setting. You can also transition the selectors ::after and ::before, except in Safari6. Transition on gradients don't work.
-  </p>
-  <p>Performance:</p>
-  <ul>
-    <li>Chrome uses graphics acceleration but Safari, especially for iOS, you must force it with this hack: -webkit-transition: rotateY(0deg)</li>
-    <li>CSS is better for performance than using jQuery animations.</li>
-  </ul>
-  <p>
-    Peter also showed us examples of specs violation, things that were in the specs but not applied in browsers.
-  </p>
-  <p>
-    Peter's slides are on <a href="https://speakerdeck.com/stopsatgreen/animations-and-transitions">speakerdeck</a>. You can also check out some nice animation/transition demos on
-     <a href="http://tympanus.net/Development/PseudoElementsAnimationsTransitions/index3.html">
-         tympanus.net
-     </a>.
-   </p>
-  <h2>The humble border radius - Lea verou</h2>
-  <p>
-    What you specify is not always what you get. If the border radius doesn't fit, all borders will apply the changes, they reduce proportionally. You cannot combine outline with border-radius, to fake an outline use box-shadow property.
-  </p>
-  <h3>border-radius and text</h3>
-  <p>
-    css-shapes future specification: shape-inside: rectangle(0,0,100%, 100%, 50px 50px); With this property the text in the element with border-radius will follow its shape.
-  </p>
-  <p>
-    More information about border-radius, border-corner-shape and corners:
-  </p>
-  <ul>
-    <li><a href="webplatform.org/css/properties/border-radius">webplatform border radius</a></li>
-    <li><a href="webplatform.org/css/properties/border-corner-shape">webplatform border corner shape</a></li>
-    <li><a href="w3.orgTR/css3-background/#corners">w3.org corners</a></li>
-  </ul>
-  <p>
-    The layout of the presentation really made me happy, nice colors and beautiful layout. Amazing how she talks and do live coding at once. I attended her talk last year at Fronteers Conference, that was already awesome and this time she pulled it off again.
-  </p>
-  <ul>
-    <li><a href="http://github.com/leaverou/csss">Lea's presentation framework</a></li>
-    <li><a href="http://lea.verou.me/humble-border-radius">Lea's presentation</a></li>
-  </ul>
-</article>
+<p>
+  All the features Tab showed us, really made me wanting it implemented tomorrow. You can find his slides on: <a href="http://www.xanthir.com/talks/2013-06-14">xanthir.com</a> (use chrome and your arrow keys to navigate).
+</p>
+<h2>Animations &amp; Transitions - Peter Gaston</h2>
+<p>
+  2007 Safari6 introduces animations and transitions via CSS. But at the moment it is still buggy. With animation you have to specify every keyframe, otherwise the element will be set to its default setting. You can also transition the selectors ::after and ::before, except in Safari6. Transition on gradients don&rsquo;t work.
+</p>
+<p>Performance:</p>
+<ul>
+  <li>Chrome uses graphics acceleration but Safari, especially for iOS, you must force it with this hack: -webkit-transition: rotateY(0deg)</li>
+  <li>CSS is better for performance than using jQuery animations.</li>
+</ul>
+<p>
+  Peter also showed us examples of specs violation, things that were in the specs but not applied in browsers.
+</p>
+<p>
+  Peter&rsquo;s slides are on <a href="https://speakerdeck.com/stopsatgreen/animations-and-transitions">speakerdeck</a>. You can also check out some nice animation/transition demos on
+   <a href="http://tympanus.net/Development/PseudoElementsAnimationsTransitions/index3.html">
+       tympanus.net
+   </a>.
+ </p>
+<h2>The humble border radius - Lea verou</h2>
+<p>
+  What you specify is not always what you get. If the border radius doesn&rsquo;t fit, all borders will apply the changes, they reduce proportionally. You cannot combine outline with border-radius, to fake an outline use box-shadow property.
+</p>
+<h3>border-radius and text</h3>
+<p>
+  css-shapes future specification: shape-inside: rectangle(0,0,100%, 100%, 50px 50px); With this property the text in the element with border-radius will follow its shape.
+</p>
+<p>
+  More information about border-radius, border-corner-shape and corners:
+</p>
+<ul>
+  <li><a href="webplatform.org/css/properties/border-radius">webplatform border radius</a></li>
+  <li><a href="webplatform.org/css/properties/border-corner-shape">webplatform border corner shape</a></li>
+  <li><a href="w3.orgTR/css3-background/#corners">w3.org corners</a></li>
+</ul>
+<p>
+  The layout of the presentation really made me happy, nice colors and beautiful layout. Amazing how she talks and do live coding at once. I attended her talk last year at Fronteers Conference, that was already awesome and this time she pulled it off again.
+</p>
+<ul>
+  <li><a href="http://github.com/leaverou/csss">Lea&rsquo;s presentation framework</a></li>
+  <li><a href="http://lea.verou.me/humble-border-radius">Lea&rsquo;s presentation</a></li>
+</ul></p>
 
+        </article>
     </body>
 </html>

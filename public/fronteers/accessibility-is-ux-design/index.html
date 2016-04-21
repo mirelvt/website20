@@ -1,0 +1,75 @@
+    <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    
+    
+        <meta name="description" content="On January 8, 2013 there was a Fronteers meeting at Q42 in The Hague. Johan Huijkman (Q42) and Arend van Baarsen let us experience some accessability/usability issues. And gave us tips and advise.">
+    
+
+    
+    
+        <title>Mirella van Teulingen - front end developer </title>
+    
+
+    <link rel="icon" type="image/ico" href="img/favicon.ico"/>
+
+    
+
+    <link rel="stylesheet" href="http://localhost:1313/css/blog.css">
+
+</head>
+    <body>
+        <div class="visualwrapper">
+    <div class="overlay"></div>
+
+    <nav role="navigation">
+        <div class="hamburger-wrapper">
+          <div class="hamburger"></div>
+          <div class="menu-text">Menu</div>
+        </div>
+        <div class="mobile-wrapper">
+            
+            <a role="menuitem" href="http://localhost:1313/"
+                
+                
+                    
+                >Home</a>
+            
+            <a role="menuitem" href="http://localhost:1313/blog/"
+                
+                
+                    
+                >Blog</a>
+            
+            <a role="menuitem" href="http://localhost:1313/fronteers/"
+                
+                
+                    class="selected"
+                >Fronteers</a>
+            
+            <a role="menuitem" href="http://localhost:1313/about/"
+                
+                
+                    
+                >About me</a>
+            
+        </div>
+    </nav>
+
+        <div class="nav-arrows">
+            
+            <a href="http://localhost:1313/fronteers/conf_2014/" class="arrow-prev"
+                title="Fronteers Conference 2014"></a>
+            
+            
+                <a href="http://localhost:1313/fronteers/rijksmuseum/" class="arrow-next"
+                    alt="The zoom interface of www.rijksmuseum.nl"></a>
+            
+        </div>
+        <article role="article" class="column-content"><h1>Accessibility is also UX design</h1><p class="subtitle">UX candy - Johan Huijkman Twitter: @huijkman - Arend van Baarsen</p><p>08-01-2013 <br>The presentation was held at <a href="http://www.q42.nl">Q42</a> in The Hague. A nice environment to work and to share knowledge. Johan and Arend went through some sites using the screen reader and showed us some examples how people with visual impairment are experiencing websites. You can test this as well with <a href="http://www.webformator.de/hollaendisch/index.php">webformator</a> for Windows or the Voice over application on the Mac OS.</p><p>He also showed google.nl as an example of a really bad accessibility experience. Even the Dutch news site nu.nl is not user friendly. It goes through all the links in the top, banners and links in the left navigation, before it finally starts reading the first news headline. We laughed about it during the presentation but it is quite sad, actually.</p><p>As humans we scan the headlines to see what article gets our interest to read. People who needs a screen reader are forced to scan the site lineair.</p><p><strong>Missasumption #1: The site should be accessible when javascript is off.</strong><br>It should also be accessible when javascript is on! One of the things that I didn't know is that screen readers read javascript. When you have a carrousel on your site it will read this code.</p><p><strong>Missasumption #2: Only a few cannot access your site, so why bother?</strong><br>In the Netherlands there are about 4 million users with a form of a disability! You cannot ignore them.</p><h2>What can you do to make sites more accessible?</h2><p>There are a number of ways to make your site accessible for the users. The easiest way to tackle some problems is using the following tips:</p><ol><li>Use a "skip" link, this is the safest way because <a href="http://www.w3.org/WAI/intro/aria.php">WAI-ARIA</a> standard is not completely accepted.</li><li>Add help text before the link, for example: "Go directly to...". It will make it more clear for the user.</li><li>Structure your HTML to place the important part (content) in the top section.</li></ol><p>Another thing Johan pointed out is that title tags are <a href="http://www.w3.org/html/wg/wiki/ChangeProposals/notitlev2#New_information:_Browser_vendors_have_not_made_a_commitment_to_provide_.28input.29_device_independent_access_to_title_attribute_content">not well supported by browsers</a>.</p><h2>It is not just about clean HTML code, it's about interaction</h2><p>Johan gave us 2 more examples to be aware of during development.</p><p><strong>How does someone with a screen reader experience your site? How does this person knows when something on the page has changed?</strong><br>Example filling in web forms. When the user makes a mistake in a form, don't reload the page and loose what was filled in correctly. There are people who have trouble typing. Also place the error message outside and in the top of the form with a link to the field which must be corrected. If the error is in the input field/form it will be ignored by the screen reader.</p><p>Another issue is using captcha. Arend let us listen to a captcha example. The screen reader talks jibberish when reading the captcha text. You cannot make any sense of it.</p><p><strong>What about people who has a visual impairment?</strong><br>There are people who have to zoom in so badly they only see a part of the site. For example the homepage of the Dutch public transport planner. People who zoom in might try to type in the fields, while this is really just an image, not the form.</p><p>And think of people who cannot drag,drop, pinch or zoom. How can you give them a better experience?</p><h2>Accessibility label is not the holy grail</h2><p>There are a number of accessibility labels in the Netherlands you can achieve for your site: <a href="http://www.drempelvrij.nl">drempelvrij.nl</a>, <a href="http://accessibility.nl">accessibility.nl</a>. When you're able to get one of these labels, it doesn't mean that your site is full proof accessible. Q42 created the website for the Dutch public transport travel planner. They made a new version of the travel planner which was still using a table. It was OK, at least good enough to get the accessibility label. But Q42 decided to hire people from <a href="http://visiris.com">visiris.com</a> to test the site. And it turns out that it was not working as it should. They changed the form using spans and divs and it worked like a charm. Johan used the screan reader for the audience to hear the difference between the 2 versions. The final travel planner made much more sense and more useful.</p><p>An accessibility label is, what I think a very good start to make your site more accessible, but as Johan pointed out, don't stare blindly on this label, also ask <em>real</em> users to test your site.</p><h2>Tips for development</h2><ol><li>Think content first (or mobile first). You will avoid a lot of accessibility issues.</li><li>Use your common sense.</li><li>Use a screen reader to test your site.</li><li>Navigate with your keyboard.</li><li>If you are a developer, talk to the UX designer and vice versa.</li><li>Try the Dutch <a href="http://www.frankwatching.com/gespot/bartimeus-zien-app-laat-zien-wat-een-slechtziende-ziet/" class="external-link">"ZIEN" app</a> for iPhone or iPad to experience what it's like when you have a visual impairment.</li><li>Q42 created a Chrome extension <a href="https://chrome.google.com/webstore/search-extensions/see?hl=nl">"See"</a>. It lets you view the web as a user with a visual impairment.</li><li>In the Netherlands there are about 4 million users with a form of a disability. You can ask them to test your site or hire someone from: <a href="http://www.viziris.nl">Viziris.com</a></li></ol><p>To be frank, I personally didn't think much about accessibility. At least not enough. After the presentation about <a href="../fronteers2012/accessibility">accessibility</a> on the Fronteers conference 2012, I did make a start. Every site I start to build (including my own site), I think about the structure first and use my keyboard once in a while for testing. But after this presentation I realized there is a lot more to it than just restructuring the HTML. It is, as Johan stated: "Accessibility is also UX design".</p></article>
+
+    </body>
+</html>

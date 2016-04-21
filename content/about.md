@@ -1,12 +1,12 @@
 +++
-css = "css/about_me.css"
+css = "css/about_me.min.css"
 page_name = "About"
 title = "About me"
 description = "My key areas of experience: HTML, CSS, SASS, Django templating, jQuery, DOM scripting"
 +++
 
 <div class="photos">
-    <img src="img/aboutme-front.jpg" alt="Portrait of me"
+    <img src="/img/aboutme-front.jpg" alt="Portrait of me"
         class="photo-front" role="img">
 </div>
 # About me

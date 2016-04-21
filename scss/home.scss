@@ -5,106 +5,111 @@
 // ===========
 // HOME BLOCKS
 // -----------
-.block-home-visual { margin-bottom: 2rem; }
 
 // portrait + fronteers logo, blog
 .img-border {
-  display: block;
-  width: 125px;
-  height: 125px;
-  margin: 0 auto;
-  border: 2px solid #fff;
-  box-shadow: 0 0 4px 0 $c-shadow;
-  @include transition(transform 0.75s ease);
+    display: block;
+    width: 125px;
+    height: 125px;
+    margin: 0 auto;
+    border: 2px solid #fff;
+    box-shadow: 0 0 4px 0 $c-shadow;
+    @include transition(transform 0.75s ease);
 
-  &:hover { @include transform(rotateY(5deg))}
+    &:hover { @include transform(rotateY(5deg))}
 
-  img { vertical-align: top; }
+    img { vertical-align: top; }
 }
 
-.block-home-visual { @include perspective(); }
+.block-home-visual {
+    @include perspective();
+    margin-bottom: 2rem;
+}
 
 // Blog
 .block-home:nth-child(3n-1) .img-border {
-  padding-top: 23px;
-  padding-left: 21px;
-  background-color: $c-main;
+    padding-top: 23px;
+    padding-left: 21px;
+    background-color: $c-main;
 }
 
 // ===========
 // BREAKPOINTS
 // -----------
 @include mq-max(467px) {
-  .block-home { @include justify-content(center) }
+    .block-home { @include justify-content(center) }
 }
 
 @include mq-max(900px) {
-  .block-home {
-    @include flexbox() ;
-    @include flex-flow(row wrap);
-    margin-bottom: 20px;
+    .block-home {
+        @include flexbox();
+        @include flex-flow(row wrap);
+        margin-bottom: 20px;
 
-    &-visual {
-      margin-right: 20px;
-      @include flex(0,0,125px);
-    }
-    &-text { @include flex(1,0,250px); }
+        &-visual {
+            margin-right: 20px;
+            @include flex(0, 0, 125px);
+        }
 
-  };
+        &-text { @include flex(1, 0, 250px); }
+
+    };
 }
 
 @include mq-min(900px) {
-  section {
-    @include flexbox();
-    padding-top: 50px;
-  }
+    section {
+        @include flexbox();
+        padding-top: 50px;
+    }
 
-  .block-home {
-    @include flex-grow(1);
-    @include flex-shrink(1);
+    .block-home {
+        @include flex-grow(1);
+        @include flex-shrink(1);
 
-    &:not(:last-child) { margin-right: 30px; }
-    &-visual { text-align: center; }
-  }
+        &:not(:last-child) { margin-right: 30px; }
+        &-visual { text-align: center; }
+    }
 }
 
 @include mq-min(517px) {
-  [role="navigation"] { @include animation(menu-anim 1.25s ease-out) }
+    [role="navigation"] { @include animation(menu-anim 1.25s ease-out) }
 
-  .block-home {
-    opacity: 0;
-    @for $i from 1 through 3 {
-      &:nth-child(#{$i}) {
-        @include animation(
-          blocks-anim 0.75s ease-out (0.75s + (0.25 * $i)) forwards
-        );
-      }
+    .block-home {
+        opacity: 0;
+        @for $i from 1 through 3 {
+            &:nth-child(#{$i}) {
+                @include animation(
+                    blocks-anim 0.75s ease-out (0.75s + (0.25 * $i)) forwards
+                    );
+            }
+        }
     }
-  }
 }
 
 @include keyframes(menu-anim) {
-  0% {
-    opacity: 0;
-    @include transform(translateY(-100px))
-  }
-  50% { opacity: 0; }
+    0% {
+        opacity: 0;
+        @include transform(translateY(-100px))
+    }
 
-  100% {
-    opacity: 1;
-    @include transform(translateY(0px));
-  }
+    50% { opacity: 0; }
+
+    100% {
+        opacity: 1;
+        @include transform(translateY(0));
+    }
 }
 
 @include keyframes(blocks-anim) {
-  from {
-    opacity: 0.25;
-    @include transform(scale(0.7));
-  }
-  to {
-    opacity: 1;
-    @include transform(scale(1));
-  }
+    from {
+        opacity: 0.25;
+        @include transform(scale(0.7));
+    }
+
+    to {
+        opacity: 1;
+        @include transform(scale(1));
+    }
 }
 // ----------------
 // @END BREAKPOINTS

@@ -1,0 +1,41 @@
+{{ if isset .Params "speaker" }}
+     <li role="listitem">
+        <h5><a href="{{ .Permalink }}" class="title">{{ .Title}}</a></h5>
+        {{ if isset .Params "speaker" }} - {{ .Params.speaker }} {{ end }}
+        {{ if isset .Params "twitter" }} - Twitter: {{ .Params.twitter }} {{ end }}
+        {{ if isset .Params "video" }}
+            - Video: <a href="{{ .Params.video }}">{{ .Params.video }}</a>
+        {{ end }}
+    </li>
+    {{ else }}
+         <li role="listitem">
+            <h5><a href="{{ .Permalink }}#alexgraul" class="title">Using JS to build bigger, better datavis to enlighten and elate</a></h5>
+            - Alex Graul - Twitter: @alexgraul - Video:
+            <a href="http://vimeo.com/52851512">http://vimeo.com/52851512</a>
+        </li>
+        <li role="listitem">
+            <h5><a href="{{ .Permalink }}#mathiasbynens" class="title">Ten things I didn't know about HTML</a></h5>
+            - Mathias Bynens - Twitter: @mathias - Video:
+            <a href="http://vimeo.com/52851509">http://vimeo.com/52851509</a>
+        </li>
+        <li role="listitem">
+            <h5><a href="{{ .Permalink }}#leaverou" class="title">More CSS secrets: Another 10 things you may not know about CSS</a></h5>
+            - Lea Verou - Twitter: @leaverou - Video:
+            <a href="http://vimeo.com/52851509">http://vimeo.com/52851509</a>
+        </li>
+        <li role="listitem">
+            <h5><a href="{{ .Permalink }}#peternederlof" class="title">Beyond simple transitions, with a pinch of JavaScript</a></h5>
+            - Peter Nederlof - Twitter: @peterlof - Video:
+            <a href="http://vimeo.com/53317255">http://vimeo.com/53317255</a>
+        </li>
+        <li role="listitem">
+            <h5><a href="{{ .Permalink }}#rebeccamurphey" class="title">JS Minty Fresh: Identifying and Eliminating Smells in Your Code Base</a></h5>
+            - Rebecca Murphey - Twitter: @rmurphey - Video:
+            <a href="http://vimeo.com/53416986">http://vimeo.com/53416986</a>
+        </li>
+        <li role="listitem">
+            <h5><a href="{{ .Permalink }}#rebeccamurphey" class="title">What the legacy web is keeping from us</a></h5>
+            - Alex Russell - Video:
+            <a href="http://vimeo.com/53373706">http://vimeo.com/53373706</a>
+        </li>
+{{ end }}

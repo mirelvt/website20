@@ -1,0 +1,7 @@
+ <li role="listitem">
+    <h2>
+        <a href="{{ if eq .Title "Fronteers Conference 2012" }}/conf_2012/{{ else }}{{ .Permalink }}{{ end }}" class="title">{{ .Title}}</a>
+    </h2>
+    <div class="blog-date">{{ .Date.Format "January 2, 2006" }}</div>
+    {{.Description}}
+</li>

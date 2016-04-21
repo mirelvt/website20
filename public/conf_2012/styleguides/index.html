@@ -1,0 +1,85 @@
+    <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    
+    
+        <meta name="description" content="">
+    
+
+    
+    
+        <title>Mirella van Teulingen - front end developer </title>
+    
+
+    <link rel="icon" type="image/ico" href="img/favicon.ico"/>
+
+    
+
+    <link rel="stylesheet" href="http://localhost:1313/css/blog.css">
+
+</head>
+    <body>
+        <div class="visualwrapper">
+    <div class="overlay"></div>
+
+    <nav role="navigation">
+        <div class="hamburger-wrapper">
+          <div class="hamburger"></div>
+          <div class="menu-text">Menu</div>
+        </div>
+        <div class="mobile-wrapper">
+            
+            <a role="menuitem" href="http://localhost:1313/"
+                
+                
+                    
+                >Home</a>
+            
+            <a role="menuitem" href="http://localhost:1313/blog/"
+                
+                
+                    
+                >Blog</a>
+            
+            <a role="menuitem" href="http://localhost:1313/fronteers/"
+                
+                
+                    
+                >Fronteers</a>
+            
+            <a role="menuitem" href="http://localhost:1313/about/"
+                
+                
+                    
+                >About me</a>
+            
+        </div>
+    </nav>
+
+        <div class="nav-arrows">
+            
+            <a href="http://localhost:1313/conf_2012/adapting-responsive-design/" class="arrow-prev"
+                title="Adapting to Responsive Design"></a>
+            
+            
+                <a href="http://localhost:1313/conf_2012/developer-toolbelt/" class="arrow-next"
+                    alt="The New And Improved Developer Toolbelt"></a>
+            
+        </div>
+        <article role="article">
+            <h1>Style guides are the new Photoshop</h1>
+            <p class="subtitle">
+                 - Stephen Hay 
+                 - Twitter: @stephenhay 
+                
+                    - Video: <a href="http://vimeo.com/52851510">http://vimeo.com/52851510</a>
+                
+            </p>
+            <p>I liked Stephen's chapter in Smashing book #3, so I was really looking forward to see this presentation. Stephen's presentation is about changing the process of building and designing systems.</p><p>His first advise is to manage clients expectations by designing in the browser instead of creating a static design in Photoshop. This way the customer learns to live with constraints.</p><h2>The disadvantages of Photoshop</h2><p>What are the disadvantages of Photoshop, according to Stephen Hay?</p><ul><li>Responsive design implies multiple and flexible layouts.</li><li>This is too much manual work.</li><li>And it makes the image editor as a dependency.</li><li>Design changes are therefore time consuming.</li></ul><h2>The advantages of Web technology</h2><ul><li>It is very practical for responsive design mockups</li><li>Making mockups in web tech gives a realistic presentation. Which also helps to manage the clients expectations.</li><li>It is free and open: everyone has a browser<xsl:text>&amp;</xsl:text>editor</li><li>No negative surprises for the client</li><li>Possible preperation for development</li><li>And they can be responsive</li></ul><blockquote>Stephen: &ldquo;What is it with designers that they are scared for the command line?&rdquo;<br>Audience: &ldquo;It's not natural. No GUI!&rdquo;<br>Stephen: &ldquo;Photoshop is pretty difficult too, for something like the LAB colorspace there are books of &gt; 600 pages!&rdquo;</blockquote><p>We need two things to replace Photoshop for mock ups. Number one, consider Photoshop not as a design tool for a complete mock up. Number two, use style guides.</p><h2>The advantages of style guides</h2><ul><li>No measuring, with looking at Photoshop and doing math for width etc.</li><li>State and breakpoint changes can be included.</li><li>Useful for future designers, developers<xsl:text>&amp;</xsl:text>others.</li><li>Design consistency and maintainability.</li></ul><p>See for some examples of style guides written by <a href="https://gimmebar.com/collection/4ecd439c2f0aaad734000022/front-end-styleguides">Anna Debenham</a>. And the <a href="http://www.bbc.co.uk/gel">BBC GEL</a>.</p><h2>What tools do you need for style guides?</h2><p>Stephen Hay has a wish list for the style guide approach:</p><ul><li>It should be free-form writable</li><li>Taking screenshots should be automated</li><li>Update code snippets automatically</li><li>Automatically update screenshots after change</li><li>Elements/modules should not have to be physically split into separate files.</li><li>Syntax highlight</li></ul><p>There are tools available on the internet which can fullfill these wishes:</p><ul><li><a href="http://www.dexy.it">Dexy</a>, which you can use for free-form documentation. It is the most flexible documentation tool ever.</li><li><a href="http://phantomjs.org/">Phantomjs</a> and <a href="http://casperjs.org">Casperjs</a> for updating screenshots.</li><li><a href="http://jinja.pocoo.org/docs">Jinja</a>. For code snippets. It is also a full featured template engine for Python.</li><li><a href="http://pygments.org/">Pygments</a> for syntax highlight. The "scary" part is that it involves the command line.</li></ul><p>He also states that the command line is not a scary thing. Photoshop is the most difficult and extensive program. A few command lines shouldn't be so hard to learn.</p><h2>Steps for using style guides</h2><ol><li>Create web based mock up:<br>Your goal is not to create production code when creating a web based mock up. The goal is to represent the design in the browser. Your CSS should be modular because it will end up in your style guide.</li><li>set up style guide:<br>Install dexy, phantom js, caspar js</li><li>Write your guide and use jinja templates.</li><li>All the CSS for your site should be modular, e.g. using a technique like <a href="http://smacss.com/">SMACSS</a></li><li>Mark the css you want to export</li><li>Run Dexy</li></ol><blockquote>&ldquo;We design websites, not pictures of websites.&rdquo; <cite>- Stephen Hay</cite></blockquote><p>From my personal view, it is a whole different approach for the designing and development process. I have experience with the eXtreme Programming method for building websites and applications. But the design has always been delivered in Photoshop. I think it will take time to use this approach and to make the work/process going smooth. But that is normal when learning new methods. I'm really interested in other people who use this approach and what they think of it, and most of all how the clients react. Does this approach suits every customer?</p>
+
+        </article>
+    </body>
+</html>
