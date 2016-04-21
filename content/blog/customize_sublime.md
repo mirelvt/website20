@@ -40,7 +40,7 @@ how to customize a theme and links to useful documentation. Let's get started.
   </li>
 </ul>
 <figure>
-  <img src="../img/packagemanager.png" alt="Sublime Package manager interface" />
+  <img src="/img/packagemanager.png" alt="Sublime Package manager interface" />
   <figcaption>Installing packages</figcaption>
 </figure>
 
@@ -102,37 +102,42 @@ how to customize a theme and links to useful documentation. Let's get started.
 </ul>
 
 <h2>Sublime customization</h2>
-<p>You can customize Sublime to your needs, like translating tab size to
-  spaces, font size, line highlight etc. These customizations are stored
-  in the user settings:
-    </p><ul>
-      <li>
-        <strong>"Preferences &gt; Settings-user"</strong> (on Linux), or
-      </li>
-      <li>
-        <strong>"Sublime Text 2 &gt; Preferences &gt; Settings-user"</strong>
-        (on OS X).
-      </li>
-    </ul>
-<p></p>
-Here's a list of useful settings. You can check the default_settings for
-the complete list you wish to override.
+
+You can customize Sublime to your needs, like translating tab size to
+spaces, font size, line highlight etc. These customizations are stored
+in the user settings:
+
+<ul>
+  <li>
+    <strong>"Preferences &gt; Settings-user"</strong> (on Linux), or
+  </li>
+  <li>
+    <strong>"Sublime Text 2 &gt; Preferences &gt; Settings-user"</strong>
+    (on OS X).
+  </li>
+</ul>
+
+<p>
+  Here's a list of useful settings. You can check the default_settings for
+  the complete list you wish to override.
+</p>
+
 <pre class="language-json" rel="json"><code><span class="punctuation">{</span>
-<span class="code-indent string">"font_size":</span> <span class="number">11</span>,
-<span class="code-indent string">"bold_folder_labels":</span><span class="boolean">true</span>,
-<span class="code-indent string">"caret_style":</span> "phase", <span class="comment">// it will fade in and out rather than blink.</span>
-<span class="code-indent string">"highlight_line":</span> <span class="boolean">true</span>,
-<span class="code-indent string">"ignored_packages":</span>
-<span class="code-indent token">[</span>
-<span class="code-indent-2 string">"Vintage"</span>
-<span class="code-indent token">]</span><span class="string">,</span>
-<span class="code-indent string">"match_tags":</span> <span class="boolean">true</span>,
-<span class="code-indent comment">// scroll_past_end is already set in default settings,</span>
-<span class="code-indent comment">// but on OS X, this value is overridden in the platform specific settings.</span>
-<span class="code-indent comment">// That's why you need to place this line in your user settings.</span>
-<span class="code-indent string">"scroll_past_end":</span> <span class="boolean">true</span>,
-<span class="code-indent string">"translate_tabs_to_spaces":</span><span class="boolean">true</span>,
-<span class="code-indent string">"trim_trailing_white_space_on_save":</span> <span class="boolean">true</span>
+  <span class="code-indent string">"font_size":</span> <span class="number">11</span>,
+  <span class="code-indent string">"bold_folder_labels":</span><span class="boolean">true</span>,
+  <span class="code-indent string">"caret_style":</span> "phase", <span class="comment">// it will fade in and out rather than blink.</span>
+  <span class="code-indent string">"highlight_line":</span> <span class="boolean">true</span>,
+  <span class="code-indent string">"ignored_packages":</span>
+  <span class="code-indent token">[</span>
+  <span class="code-indent-2 string">"Vintage"</span>
+  <span class="code-indent token">]</span><span class="string">,</span>
+  <span class="code-indent string">"match_tags":</span> <span class="boolean">true</span>,
+  <span class="code-indent comment">// scroll_past_end is already set in default settings,</span>
+  <span class="code-indent comment">// but on OS X, this value is overridden in the platform specific settings.</span>
+  <span class="code-indent comment">// That's why you need to place this line in your user settings.</span>
+  <span class="code-indent string">"scroll_past_end":</span> <span class="boolean">true</span>,
+  <span class="code-indent string">"translate_tabs_to_spaces":</span><span class="boolean">true</span>,
+  <span class="code-indent string">"trim_trailing_white_space_on_save":</span> <span class="boolean">true</span>
 <span class="punctuation">}</span></code>
 </pre>
 
@@ -163,7 +168,7 @@ the complete list you wish to override.
   </li>
 </ul>
 <figure>
-  <img src="../img/findfilestring.png" alt="Find file with class name in Sublime." />
+  <img src="/img/findfilestring.png" alt="Find file with class name in Sublime." />
   <figcaption>Find file with class name in Sublime.</figcaption>
 </figure>
 <h2>Open files via the terminal</h2>

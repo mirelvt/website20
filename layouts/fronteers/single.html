@@ -8,8 +8,11 @@
                 title="{{ .NextInSection.Title }}"></a>
             {{ end }}
             {{ if .PrevInSection }}
-                <a href="{{ .PrevInSection.Permalink }}" class="arrow-next"
-                    alt="{{ .PrevInSection.Title }}"></a>
+                {{ if eq .PrevInSection.Title "Fronteers Conference 2012" }}
+                    {{ else }}
+                        <a href="{{ .PrevInSection.Permalink }}" class="arrow-next"
+                            alt="{{ .PrevInSection.Title }}"></a>
+                {{ end }}
             {{ end }}
         </div>
         {{ .Content }}
