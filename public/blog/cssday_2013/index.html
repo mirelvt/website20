@@ -14,7 +14,7 @@
         <title>Mirella van Teulingen - CSS Day 2013 Amsterdam </title>
     
 
-    <link rel="icon" type="image/ico" href="img/favicon.ico"/>
+    <link rel="icon" type="image/ico" href="http://localhost:1313/img/favicon.ico"/>
 
     
 
@@ -73,13 +73,13 @@
 
 <p>Friday 14 june 2013 in Amsterdam I attended the CSSDay conference. Eight experts talked about 8 different CSS modules. The focus was on techniques of these modules we might not know about and the future of CSS. During the conference I learned that CSS is in very active development. It was an incredible, informative and awesome day. An high standard conference I&rsquo;ve ever attended so far. I hope that there will be another one within 1 or 2 years.</p>
 
-<h2 id="summary">Summary</h2>
+<h2 id="summary:1e7d288f8676c76188747e09782b171d">Summary</h2>
 
 <p>Peter Paul Koch was the host of the day. Eric Meyer started the conference with his talk about fonts. Showing us a couple of creative ways to use different font types and browser quirks. Bert Bos, one of the people who invented CSS, talked about the history of CSS and the use of selectors. I didn&rsquo;t know that CSS was intended for simple documents with high quality typography. Stephen Hay gave a great, humouristic presentation about the power of Flexbox. Divya Manian showed us some really awesome demos of using filters and compositing. Tab Atkins talked about variables and conditional rules we hopefully can use in the near future. Daniel glazman gave an in-depth presentation about <a href="http://w3c.org/tr/css3-mediaqueries">media-queries</a> and shared his thoughts about future specifications. Peter Gaston presented in-detail all the properties and values of transitions and browser quirks.And Finally Lea Verou closed the conference with an enlightning demonstration of border radius. She demonstrated the possibilities and behaviors you probably wouldn&rsquo;t think of when using border-radius.</p>
 
 <p>Below you&rsquo;ll find my notes of the conference. When the videos are available I will add the links in this post.</p>
 
-<h2 id="fonts-erik-meyer">Fonts - Erik Meyer</h2>
+<h2 id="fonts-erik-meyer:1e7d288f8676c76188747e09782b171d">Fonts - Erik Meyer</h2>
 
 <p>When using @font-face the browser will always download the fonts required, even when the user has that font on its machine. You can avoid this to add src: local(&ldquo;font name&rdquo;) to @font-face. When the user has the font on its local machine it will use that one. Example:</p>
 
@@ -101,7 +101,7 @@
       unicode-range: U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF;
 }</code></pre>
 
-<h2 id="css-selectors-bert-bos">CSS Selectors - Bert Bos</h2>
+<h2 id="css-selectors-bert-bos:1e7d288f8676c76188747e09782b171d">CSS Selectors - Bert Bos</h2>
 
 <p>The goal of CSS is to style text, applicable to formats that are tree-structured and to be format independent. For example, when HTML dies, it can be used for another format.</p>
 
@@ -121,7 +121,7 @@
 <li><a href="http://net.tutsplus.com/tutorials/html-css-techniques/the-30-css-selectors-you-must-memorize/">tutsplus</a></li>
 </ul>
 
-<h2 id="flexbox-stephen-hay">Flexbox - Stephen Hay</h2>
+<h2 id="flexbox-stephen-hay:1e7d288f8676c76188747e09782b171d">Flexbox - Stephen Hay</h2>
 
 <blockquote>
   One giant leap for web layout.
@@ -221,11 +221,11 @@ Performance:
        tympanus.net
    </a>.</p>
 
-<h2 id="the-humble-border-radius-lea-verou">The humble border radius - Lea verou</h2>
+<h2 id="the-humble-border-radius-lea-verou:1e7d288f8676c76188747e09782b171d">The humble border radius - Lea verou</h2>
 
 <p>What you specify is not always what you get. If the border radius doesn&rsquo;t fit, all borders will apply the changes, they reduce proportionally. You cannot combine outline with border-radius, to fake an outline use box-shadow property.</p>
 
-<h3 id="border-radius-and-text">border-radius and text</h3>
+<h3 id="border-radius-and-text:1e7d288f8676c76188747e09782b171d">border-radius and text</h3>
 
 <p>css-shapes future specification: shape-inside: rectangle(0,0,100%, 100%, 50px 50px); With this property the text in the element with border-radius will follow its shape.</p>
 

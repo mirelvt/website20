@@ -692,13 +692,13 @@ $ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime
 
 &lt;p&gt;Friday 14 june 2013 in Amsterdam I attended the CSSDay conference. Eight experts talked about 8 different CSS modules. The focus was on techniques of these modules we might not know about and the future of CSS. During the conference I learned that CSS is in very active development. It was an incredible, informative and awesome day. An high standard conference I&amp;rsquo;ve ever attended so far. I hope that there will be another one within 1 or 2 years.&lt;/p&gt;
 
-&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;h2 id=&#34;summary:1e7d288f8676c76188747e09782b171d&#34;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;Peter Paul Koch was the host of the day. Eric Meyer started the conference with his talk about fonts. Showing us a couple of creative ways to use different font types and browser quirks. Bert Bos, one of the people who invented CSS, talked about the history of CSS and the use of selectors. I didn&amp;rsquo;t know that CSS was intended for simple documents with high quality typography. Stephen Hay gave a great, humouristic presentation about the power of Flexbox. Divya Manian showed us some really awesome demos of using filters and compositing. Tab Atkins talked about variables and conditional rules we hopefully can use in the near future. Daniel glazman gave an in-depth presentation about &lt;a href=&#34;http://w3c.org/tr/css3-mediaqueries&#34;&gt;media-queries&lt;/a&gt; and shared his thoughts about future specifications. Peter Gaston presented in-detail all the properties and values of transitions and browser quirks.And Finally Lea Verou closed the conference with an enlightning demonstration of border radius. She demonstrated the possibilities and behaviors you probably wouldn&amp;rsquo;t think of when using border-radius.&lt;/p&gt;
 
 &lt;p&gt;Below you&amp;rsquo;ll find my notes of the conference. When the videos are available I will add the links in this post.&lt;/p&gt;
 
-&lt;h2 id=&#34;fonts-erik-meyer&#34;&gt;Fonts - Erik Meyer&lt;/h2&gt;
+&lt;h2 id=&#34;fonts-erik-meyer:1e7d288f8676c76188747e09782b171d&#34;&gt;Fonts - Erik Meyer&lt;/h2&gt;
 
 &lt;p&gt;When using @font-face the browser will always download the fonts required, even when the user has that font on its machine. You can avoid this to add src: local(&amp;ldquo;font name&amp;rdquo;) to @font-face. When the user has the font on its local machine it will use that one. Example:&lt;/p&gt;
 
@@ -720,7 +720,7 @@ $ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime
       unicode-range: U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF;
 }&lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;css-selectors-bert-bos&#34;&gt;CSS Selectors - Bert Bos&lt;/h2&gt;
+&lt;h2 id=&#34;css-selectors-bert-bos:1e7d288f8676c76188747e09782b171d&#34;&gt;CSS Selectors - Bert Bos&lt;/h2&gt;
 
 &lt;p&gt;The goal of CSS is to style text, applicable to formats that are tree-structured and to be format independent. For example, when HTML dies, it can be used for another format.&lt;/p&gt;
 
@@ -740,7 +740,7 @@ $ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime
 &lt;li&gt;&lt;a href=&#34;http://net.tutsplus.com/tutorials/html-css-techniques/the-30-css-selectors-you-must-memorize/&#34;&gt;tutsplus&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;flexbox-stephen-hay&#34;&gt;Flexbox - Stephen Hay&lt;/h2&gt;
+&lt;h2 id=&#34;flexbox-stephen-hay:1e7d288f8676c76188747e09782b171d&#34;&gt;Flexbox - Stephen Hay&lt;/h2&gt;
 
 &lt;blockquote&gt;
   One giant leap for web layout.
@@ -840,11 +840,11 @@ Performance:
        tympanus.net
    &lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;the-humble-border-radius-lea-verou&#34;&gt;The humble border radius - Lea verou&lt;/h2&gt;
+&lt;h2 id=&#34;the-humble-border-radius-lea-verou:1e7d288f8676c76188747e09782b171d&#34;&gt;The humble border radius - Lea verou&lt;/h2&gt;
 
 &lt;p&gt;What you specify is not always what you get. If the border radius doesn&amp;rsquo;t fit, all borders will apply the changes, they reduce proportionally. You cannot combine outline with border-radius, to fake an outline use box-shadow property.&lt;/p&gt;
 
-&lt;h3 id=&#34;border-radius-and-text&#34;&gt;border-radius and text&lt;/h3&gt;
+&lt;h3 id=&#34;border-radius-and-text:1e7d288f8676c76188747e09782b171d&#34;&gt;border-radius and text&lt;/h3&gt;
 
 &lt;p&gt;css-shapes future specification: shape-inside: rectangle(0,0,100%, 100%, 50px 50px); With this property the text in the element with border-radius will follow its shape.&lt;/p&gt;
 

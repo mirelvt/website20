@@ -1,6 +1,7 @@
 contentdir = "content"
 layoutdir = "layouts"
 publishdir = "public"
+staticdir = "static"
 builddrafts = false
 # baseurl = "http://www.mirellavanteulingen.nl/"
 baseurl = "http://localhost:1313/"

@@ -6,5 +6,7 @@
         <article role="main">
             {{ .Content }}
         </article>
+        <script src="{{ .Site.BaseURL }}js/base.min.js"></script>
+        {{ partial "scripts.html" . }}
     </body>
 </html>
