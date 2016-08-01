@@ -59,20 +59,20 @@
         </div>
     </nav>
 
-        <div class="nav-arrows">
-            
-            <a href="http://localhost:1313/blog/sass_fontcustom/" class="arrow-prev"
-                title="Font icons with Fontcustom and SASS"></a>
-            
-            
-                <a href="http://localhost:1313/blog/customize_form_crispy_forms/" class="arrow-next"
-                    alt="Django form customization using Crispy Forms"></a>
-            
-        </div>
-        <article role="article">
-            <h1>Create clickable rating stars with only SASS and HTML</h1>
-            July 3, 2015 <br>
-            <p>In May, Roy Tomeij wrote the article <a href="http://advancedsass.com/articles/configurable-star-rating-without-js.html">&ldquo;Configurable star rating without JS&rdquo;</a>. I was thinking how to do this using a font icon instead of a background image and make the stars clickable. I believe it would take less code to write, and it is. I had the code finished a couple of days later in May, but now I&rsquo;ve finally have the time to post my solution. So here we go:
+            <div class="nav-arrows">
+                
+                <a href="http://localhost:1313/blog/sass_fontcustom/" class="arrow-prev"
+                    title="Font icons with Fontcustom and SASS"></a>
+                
+                
+                    <a href="http://localhost:1313/blog/customize_form_crispy_forms/" class="arrow-next"
+                        alt="Django form customization using Crispy Forms"></a>
+                
+            </div>
+            <article role="article">
+                <h1>Create clickable rating stars with only SASS and HTML</h1>
+                July 3, 2015 <br>
+                <p>In May, Roy Tomeij wrote the article <a href="http://advancedsass.com/articles/configurable-star-rating-without-js.html">&ldquo;Configurable star rating without JS&rdquo;</a>. I was thinking how to do this using a font icon instead of a background image and make the stars clickable. I believe it would take less code to write, and it is. I had the code finished a couple of days later in May, but now I&rsquo;ve finally have the time to post my solution. So here we go:
 <h3>HTML structure</h3>
 <p>
 I place the radio buttons in reversed order in the DOM to be able to do the hover + checked state in the right order with SASS. For the star I created a font icon using <a href="http://www.fontcustom.com">Fontcustom</a> and <a href="http://www.bohemiancoding.com/sketch/">Sketch</a>.
@@ -176,6 +176,12 @@ The labels are positioned absolute and using a SASS loop, the stars can be posit
 <label for="star-1" name="4 stars" class="icon-star"></label>
 </div></p>
 
-        </article>
+            </article>
+        </div>
+        <script src="http://localhost:1313/js/fastclick.min.js"></script>
+<script src="http://localhost:1313/js/base.min.js"></script>
+
+
+
     </body>
 </html>

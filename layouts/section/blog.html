@@ -3,14 +3,15 @@
 <body>
     {{ partial "nav_main.html" . }}
 
-    <div class="header-img"></div>
-    <div role="main">
-        <h1>Blog</h1>
-        <ul role="list">
-            {{ range .Data.Pages }}
-                {{ .Render "li" }}
-            {{ end }}
-        </ul>
+        <div class="header-img"></div>
+        <div role="main">
+            <h1>Blog</h1>
+            <ul role="list">
+                {{ range .Data.Pages }}
+                    {{ .Render "li" }}
+                {{ end }}
+            </ul>
+        </div>
     </div>
-</div>
+    {{ partial "scripts.html" . }}
 </body>

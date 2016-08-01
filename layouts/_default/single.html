@@ -2,11 +2,10 @@
     {{ partial "stylesheets.html" . }}
     <body>
         {{ partial "nav_main.html" . }}
-
-        <article role="main">
-            {{ .Content }}
-        </article>
-        <script src="{{ .Site.BaseURL }}js/base.min.js"></script>
+            <article role="main">
+                {{ .Content }}
+            </article>
+        </div>
         {{ partial "scripts.html" . }}
     </body>
 </html>

@@ -1,4 +1,4 @@
-    {{ partial "head.html" . }}
+{{ partial "head.html" . }}
     {{ partial "stylesheets" . }}
     <body>
       {{ partial "nav_main.html" . }}
@@ -59,7 +59,7 @@
                 </div>
               </div>
           </section>
-        </div>
-        <!-- <script src="js/base_compiled.js"></script> -->
+      </div>
+      {{ partial "scripts.html" . }}
     </body>
 </html>

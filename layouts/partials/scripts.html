@@ -1,0 +1,6 @@
+<script src="{{ .Site.BaseURL }}js/fastclick.min.js"></script>
+<script src="{{ .Site.BaseURL }}js/base.min.js"></script>
+
+{{ if in .Params.page_name "About" }}
+<script src="{{ .Site.BaseURL }}js/about_me.min.js"></script>
+{{ end }}

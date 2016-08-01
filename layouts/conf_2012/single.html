@@ -2,26 +2,27 @@
     {{ partial "stylesheets.html" . }}
     <body>
         {{ partial "nav_main.html" . }}
-        <div class="nav-arrows">
-            {{ if .NextInSection }}
-            <a href="{{ .NextInSection.Permalink }}" class="arrow-prev"
-                title="{{ .NextInSection.Title }}"></a>
-            {{ end }}
-            {{ if .PrevInSection }}
-                <a href="{{ .PrevInSection.Permalink }}" class="arrow-next"
-                    alt="{{ .PrevInSection.Title }}"></a>
-            {{ end }}
+            <div class="nav-arrows">
+                {{ if .NextInSection }}
+                <a href="{{ .NextInSection.Permalink }}" class="arrow-prev"
+                    title="{{ .NextInSection.Title }}"></a>
+                {{ end }}
+                {{ if .PrevInSection }}
+                    <a href="{{ .PrevInSection.Permalink }}" class="arrow-next"
+                        alt="{{ .PrevInSection.Title }}"></a>
+                {{ end }}
+            </div>
+            <article role="article">
+                <h1>{{ .Title }}</h1>
+                <p class="subtitle">
+                    {{ if isset .Params "speaker" }} - {{ .Params.speaker }} {{ end }}
+                    {{ if isset .Params "twitter" }} - Twitter: {{ .Params.twitter }} {{ end }}
+                    {{ if isset .Params "video" }}
+                        - Video: <a href="{{ .Params.video }}">{{ .Params.video }}</a>
+                    {{ end}}
+                </p>
+                {{ .Content }}
+            </article>
         </div>
-        <article role="article">
-            <h1>{{ .Title }}</h1>
-            <p class="subtitle">
-                {{ if isset .Params "speaker" }} - {{ .Params.speaker }} {{ end }}
-                {{ if isset .Params "twitter" }} - Twitter: {{ .Params.twitter }} {{ end }}
-                {{ if isset .Params "video" }}
-                    - Video: <a href="{{ .Params.video }}">{{ .Params.video }}</a>
-                {{ end}}
-            </p>
-            {{ .Content }}
-        </article>
     </body>
 </html>
