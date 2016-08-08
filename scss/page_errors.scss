@@ -3,8 +3,7 @@
 @import "variables";
 @import "mixins";
 
-[role="main"],
-[role="article"] {
+section {
     max-width: 800px;
     margin: 0 auto;
 }

@@ -1,0 +1,16 @@
+{{ partial "head.html" . }}
+    <link rel="stylesheet" href="{{ .Site.BaseURL }}css/page_errors.min.css">
+    <body>
+        {{ partial "nav_main.html" . }}
+
+        <section>
+            <div class="messages-block">404!</div>
+            <h1>Oops</h1>
+            <p>
+                The page you are looking for cannot be found. Try one of the pages above
+                in the menu to find what you are looking for.
+            </p>
+        </div>
+        {{ partial "scripts.html" . }}
+    </body>
+</html>
