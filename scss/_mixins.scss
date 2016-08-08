@@ -46,34 +46,35 @@
     background: linear-gradient($deg, $arguments);
 }
 
-// loops through all arguments and prefixes the ones that need it (in this case only transform)
-@function vendor-args($arg, $vendor) {
+// Transition Mixin
+// ----------------
+// To create transition with vendor prefixes http://sassmeister.com/gist/9208634
+// This function loops through all arguments and check if we have transform as
+// attribute, if so, add prefixes.
+@function prefix-args($arg, $prefix) {
     $result: ();
+
     @each $i in $arg {
         @if $i == transform {
-            $result: append($result, $vendor$i);
-        } @else {
-            $result: append($result, $i);
-        }
+            $result: append($result, #{$prefix$i});
+        } @else { $result: append($result, $i); }
     }
     @return $result;
 }
 
-// general vendor mixin
-@mixin vendor($property, $args...) {
-    @each $vendor in ("-webkit-", "-moz-", "-ms-", "-o-", "") {
-        $type: null;
-
+// General prefix mixin
+@mixin prefix($property, $args...) {
+    @each $prefix in ("-webkit-", "-ms-", "") {
+        $settings: null;
         @each $arg in nth($args, 1) {
-            $type: ($type, vendor-args($arg, $vendor));
+            $settings: ($settings, prefix-args($arg, $prefix));
         }
-        #{$vendor}#{$property}: $type;
+        #{$prefix}#{$property}: $settings;
     }
 }
 
-// general transition mixin
 @mixin transition($args...) {
-    @include vendor(transition, $args);
+    @include prefix(transition, $args);
 }
 
 @mixin transform($values...) {
