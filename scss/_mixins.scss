@@ -77,6 +77,10 @@
     @include prefix(transition, $args);
 }
 
+@mixin transition-delay($args...) {
+    @include prefix(transition-delay, $args);
+}
+
 @mixin transform($values...) {
     -ms-transform: $values;
     -webkit-transform: $values;

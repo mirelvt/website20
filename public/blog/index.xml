@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Blogs on Mirella van Teulingen</title>
-    <link>http://localhost:1313/blog/</link>
+    <link>http://www.mirellavanteulingen.nl/blog/</link>
     <description>Recent content in Blogs on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 21 Nov 2015 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.mirellavanteulingen.nl/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Font icons with Fontcustom and SASS</title>
-      <link>http://localhost:1313/blog/sass_fontcustom/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/sass_fontcustom/</link>
       <pubDate>Sat, 21 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/sass_fontcustom/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/sass_fontcustom/</guid>
       <description>&lt;p&gt;In 2013 and 2014 I used &lt;a href=&#34;http://www.icomoon.io&#34;&gt;Icomoon&lt;/a&gt; to create font icons.
 It is a nice library and tool. You can choose icons from their library and
 they have the feature to upload your own svgs to create the font icon set. It is a great tool if you only need to generate the font icon once. But not when you have to add new ones to the set.
@@ -221,10 +221,10 @@ My configuration is in place and when I have new icons to add, I just have to ad
     
     <item>
       <title>Create clickable rating stars with only SASS and HTML</title>
-      <link>http://localhost:1313/blog/rating_stars_sass/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/rating_stars_sass/</link>
       <pubDate>Fri, 03 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/rating_stars_sass/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/rating_stars_sass/</guid>
       <description>&lt;p&gt;In May, Roy Tomeij wrote the article &lt;a href=&#34;http://advancedsass.com/articles/configurable-star-rating-without-js.html&#34;&gt;&amp;ldquo;Configurable star rating without JS&amp;rdquo;&lt;/a&gt;. I was thinking how to do this using a font icon instead of a background image and make the stars clickable. I believe it would take less code to write, and it is. I had the code finished a couple of days later in May, but now I&amp;rsquo;ve finally have the time to post my solution. So here we go:
 &lt;h3&gt;HTML structure&lt;/h3&gt;
 &lt;p&gt;
@@ -333,10 +333,10 @@ The labels are positioned absolute and using a SASS loop, the stars can be posit
     
     <item>
       <title>Django form customization using Crispy Forms</title>
-      <link>http://localhost:1313/blog/customize_form_crispy_forms/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/customize_form_crispy_forms/</link>
       <pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/customize_form_crispy_forms/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/customize_form_crispy_forms/</guid>
       <description>&lt;p&gt;At &lt;a href=&#34;http://www.dreamsolution.nl&#34;&gt;Dreamsolution&lt;/a&gt; we regularly use Crispy Forms to generate
     complex forms in Django. I want to share some practical customization examples
     with Crispy Forms using the formhelper API. The examples are how to:
@@ -381,7 +381,7 @@ The labels are positioned absolute and using a SASS loop, the stars can be posit
 &lt;p&gt;As you can see we only need 2 lines of code to create two fieldsets.&lt;/p&gt;
 
 &lt;figure&gt;
-  &lt;img src=&#34;http://localhost:1313/img/crispy-fieldsets.png&#34; alt=&#34;Example Crispy forms Fieldset&#34;&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-fieldsets.png&#34; alt=&#34;Example Crispy forms Fieldset&#34;&gt;
   &lt;figcaption&gt;Example Crispy forms Fieldset&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -399,7 +399,7 @@ The labels are positioned absolute and using a SASS loop, the stars can be posit
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;figure&gt;
-  &lt;img src=&#34;http://localhost:1313/img/crispy-field-manipulation-code.png&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-field-manipulation-code.png&#34; alt=&#34;&#34;&gt;
   &lt;figcaption&gt;Wrapper around 2 fields&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -428,7 +428,7 @@ Now you can style and manipulate the 2 fields without touching the other fields.
   &lt;/li&gt;
 &lt;/ol&gt;
 &lt;figure&gt;
-    &lt;img src=&#34;http://localhost:1313/img/crispy-field-manipulation.png&#34; alt=&#34;&#34;&gt;
+    &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-field-manipulation.png&#34; alt=&#34;&#34;&gt;
     &lt;figcaption&gt;Example form where the field &#34;Addition&#34; is positioned next to the field &#34;House number&#34;&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;h2&gt;Insert HTML between fields&lt;/h2&gt;
@@ -446,7 +446,7 @@ Now you can style and manipulate the 2 fields without touching the other fields.
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;figure&gt;
-  &lt;img src=&#34;http://localhost:1313/img/crispy-add-content.png&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-add-content.png&#34; alt=&#34;&#34;&gt;
   &lt;figcaption&gt;Example form with extra content&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;p&gt;
@@ -472,10 +472,10 @@ Now you can style and manipulate the 2 fields without touching the other fields.
     
     <item>
       <title>Customize Sublime text editor</title>
-      <link>http://localhost:1313/blog/customize_sublime/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/customize_sublime/</link>
       <pubDate>Wed, 12 Feb 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/customize_sublime/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/customize_sublime/</guid>
       <description>&lt;p&gt;Last year at the Fronteers conference in Amsterdam, Addy Osmani used Sublime Text Editor in his presentation.
 The editor looked really cool. Right after the conference I installed Sublime and looked around for
 packages which would make my life as front end developer easier and make editing more fun. After a
@@ -511,7 +511,7 @@ how to customize a theme and links to useful documentation. Let&amp;rsquo;s get 
   &lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;http://localhost:1313/img/packagemanager.png&#34; alt=&#34;Sublime Package manager interface&#34; /&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/packagemanager.png&#34; alt=&#34;Sublime Package manager interface&#34; /&gt;
   &lt;figcaption&gt;Installing packages&lt;/figcaption&gt;
 &lt;/figure&gt;&lt;/p&gt;
 
@@ -639,7 +639,7 @@ in the user settings:&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;http://localhost:1313/img/findfilestring.png&#34; alt=&#34;Find file with class name in Sublime.&#34; /&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/findfilestring.png&#34; alt=&#34;Find file with class name in Sublime.&#34; /&gt;
   &lt;figcaption&gt;Find file with class name in Sublime.&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;h2&gt;Open files via the terminal&lt;/h2&gt;
@@ -669,21 +669,21 @@ $ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime
     
     <item>
       <title>CSS Day 2013 Amsterdam</title>
-      <link>http://localhost:1313/blog/cssday_2013/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/cssday_2013/</link>
       <pubDate>Sun, 16 Jun 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://localhost:1313/blog/cssday_2013/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/cssday_2013/</guid>
       <description>
 
 &lt;p&gt;Friday 14 june 2013 in Amsterdam I attended the CSSDay conference. Eight experts talked about 8 different CSS modules. The focus was on techniques of these modules we might not know about and the future of CSS. During the conference I learned that CSS is in very active development. It was an incredible, informative and awesome day. An high standard conference I&amp;rsquo;ve ever attended so far. I hope that there will be another one within 1 or 2 years.&lt;/p&gt;
 
-&lt;h2 id=&#34;summary:1e7d288f8676c76188747e09782b171d&#34;&gt;Summary&lt;/h2&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
 
 &lt;p&gt;Peter Paul Koch was the host of the day. Eric Meyer started the conference with his talk about fonts. Showing us a couple of creative ways to use different font types and browser quirks. Bert Bos, one of the people who invented CSS, talked about the history of CSS and the use of selectors. I didn&amp;rsquo;t know that CSS was intended for simple documents with high quality typography. Stephen Hay gave a great, humouristic presentation about the power of Flexbox. Divya Manian showed us some really awesome demos of using filters and compositing. Tab Atkins talked about variables and conditional rules we hopefully can use in the near future. Daniel glazman gave an in-depth presentation about &lt;a href=&#34;http://w3c.org/tr/css3-mediaqueries&#34;&gt;media-queries&lt;/a&gt; and shared his thoughts about future specifications. Peter Gaston presented in-detail all the properties and values of transitions and browser quirks.And Finally Lea Verou closed the conference with an enlightning demonstration of border radius. She demonstrated the possibilities and behaviors you probably wouldn&amp;rsquo;t think of when using border-radius.&lt;/p&gt;
 
 &lt;p&gt;Below you&amp;rsquo;ll find my notes of the conference. When the videos are available I will add the links in this post.&lt;/p&gt;
 
-&lt;h2 id=&#34;fonts-erik-meyer:1e7d288f8676c76188747e09782b171d&#34;&gt;Fonts - Erik Meyer&lt;/h2&gt;
+&lt;h2 id=&#34;fonts-erik-meyer&#34;&gt;Fonts - Erik Meyer&lt;/h2&gt;
 
 &lt;p&gt;When using @font-face the browser will always download the fonts required, even when the user has that font on its machine. You can avoid this to add src: local(&amp;ldquo;font name&amp;rdquo;) to @font-face. When the user has the font on its local machine it will use that one. Example:&lt;/p&gt;
 
@@ -705,7 +705,7 @@ $ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime
       unicode-range: U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF;
 }&lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;css-selectors-bert-bos:1e7d288f8676c76188747e09782b171d&#34;&gt;CSS Selectors - Bert Bos&lt;/h2&gt;
+&lt;h2 id=&#34;css-selectors-bert-bos&#34;&gt;CSS Selectors - Bert Bos&lt;/h2&gt;
 
 &lt;p&gt;The goal of CSS is to style text, applicable to formats that are tree-structured and to be format independent. For example, when HTML dies, it can be used for another format.&lt;/p&gt;
 
@@ -725,7 +725,7 @@ $ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime
 &lt;li&gt;&lt;a href=&#34;http://net.tutsplus.com/tutorials/html-css-techniques/the-30-css-selectors-you-must-memorize/&#34;&gt;tutsplus&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;flexbox-stephen-hay:1e7d288f8676c76188747e09782b171d&#34;&gt;Flexbox - Stephen Hay&lt;/h2&gt;
+&lt;h2 id=&#34;flexbox-stephen-hay&#34;&gt;Flexbox - Stephen Hay&lt;/h2&gt;
 
 &lt;blockquote&gt;
   One giant leap for web layout.
@@ -825,11 +825,11 @@ Performance:
        tympanus.net
    &lt;/a&gt;.&lt;/p&gt;
 
-&lt;h2 id=&#34;the-humble-border-radius-lea-verou:1e7d288f8676c76188747e09782b171d&#34;&gt;The humble border radius - Lea verou&lt;/h2&gt;
+&lt;h2 id=&#34;the-humble-border-radius-lea-verou&#34;&gt;The humble border radius - Lea verou&lt;/h2&gt;
 
 &lt;p&gt;What you specify is not always what you get. If the border radius doesn&amp;rsquo;t fit, all borders will apply the changes, they reduce proportionally. You cannot combine outline with border-radius, to fake an outline use box-shadow property.&lt;/p&gt;
 
-&lt;h3 id=&#34;border-radius-and-text:1e7d288f8676c76188747e09782b171d&#34;&gt;border-radius and text&lt;/h3&gt;
+&lt;h3 id=&#34;border-radius-and-text&#34;&gt;border-radius and text&lt;/h3&gt;
 
 &lt;p&gt;css-shapes future specification: shape-inside: rectangle(0,0,100%, 100%, 50px 50px); With this property the text in the element with border-radius will follow its shape.&lt;/p&gt;
 

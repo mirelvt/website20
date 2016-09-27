@@ -1,19 +1,25 @@
-<div class="visualwrapper">
-    <div class="overlay"></div>
-
-    <nav role="navigation">
-        <div class="hamburger-wrapper">
-          <div class="hamburger"></div>
-          <div class="menu-text">Menu</div>
-        </div>
-        <div class="mobile-wrapper">
+<input type="checkbox" name="menu" id="toggle-menu" class="toggle-menu">
+<nav role="navigation">
+    <label class="hamburger-wrapper" for="toggle-menu">
+        <div class="hamburger"></div>
+        <div class="menu-text">Menu</div>
+    </label>
+    <div class="menu">
+        <ul>
             {{ range .Site.Menus.main }}
-            <a role="menuitem" href="{{.URL}}"
-                {{if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
-                    class="selected"{{end}}
-                {{ if $.IsPage }}
-                    {{ if eq .Identifier $.Type }}class="selected"{{ end }}
-                {{ end }}>{{ .Name }}</a>
+            <li role="menuitem" >
+                <a href="{{.URL}}"
+                    {{if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+                        class="selected"
+                    {{end}}
+                    {{ if $.IsPage }}
+                        {{ if eq .Identifier $.Type }}class="selected"{{ end }}
+                    {{ end }}>
+                    {{ .Name }}
+                </a>
+            </li>
             {{ end }}
-        </div>
-    </nav>
+        </ul>
+    </div>
+</nav>
+<div class="visualwrapper">
