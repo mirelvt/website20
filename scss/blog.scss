@@ -51,10 +51,10 @@ $stars-list: (
 );
 
 .rating {
-    @include rating-stars($stars-list, 32px, orange, #f5d76d);
+    @include rating-stars($stars-list, 32px, #F57C00, #FDD835);
     position: relative;
     overflow: hidden;
-    height: 32px;
+    height: 3.6rem;
 
     // Hide radio buttons
     [type="radio"] { margin-left: -19px; }
