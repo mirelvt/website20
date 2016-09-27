@@ -67,31 +67,27 @@ $stars-list: (
 
 // next + prev arrows
 .nav-arrows {
-    width: 100px;
+    width: 12rem;
     margin: 0 auto 30px;
 
     // arrow links
     a {
         display: inline-block;
-        border-style: solid;
-        @include transition(border-color 0.25s);
+
+        svg {
+            width: 3.2rem;
+            height: auto;
+
+            &:first-child { margin-right: 2.5rem; }
+        }
+
+        rect {
+            @include transition(fill 0.25s);
+            fill: $c-main;
+        }
+
+        &:hover rect { fill: $c-hover; }
     }
-}
-
-// Style the prev + left arrow including hover
-.arrow-prev {
-    margin-right: 20px;
-    border-width: 15px 20px 15px 0;
-    border-color: transparent $c-main transparent transparent;
-
-    &:hover { border-color: transparent $c-hover transparent transparent; }
-}
-
-.arrow-next {
-    border-width: 15px 0 15px 20px;
-    border-color: transparent transparent transparent $c-main;
-
-    &:hover { border-color: transparent transparent transparent $c-hover; }
 }
 
 @import "_print";

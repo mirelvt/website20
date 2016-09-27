@@ -1,4 +1,5 @@
 @import "_mixins";
+@import "flexbox";
 
 * { box-sizing: border-box; }
 
@@ -31,7 +32,7 @@ body {
 .scroll-disabled { overflow: hidden; }
 
 a {
-    transition: color 0.25s;
+    @include transition(color 0.25s);
     color: $c-main;
 
     &:hover { color: $c-hover; }
@@ -136,7 +137,7 @@ figure {
 .visualwrapper {
     max-width: 140rem;
     margin: 0 auto;
-    padding: 3vw;
+    padding: 6vw;
 }
 
 // ====
@@ -233,6 +234,12 @@ figure {
     text-align: center;
     opacity: 0;
 
+    @include mq-max(900) {
+        font-size: 2.5rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 0.5rem;
+    }
+
     a {
         color: #fff;
         text-decoration: none;
@@ -278,20 +285,6 @@ figure {
             #fff 75%,
             rgba(#fff, 0) 100%);
     }
-
-    // span {
-    //     position: relative;
-    //     display: block;
-    //     @include transition(transform 0.5s);
-    //
-    //     &::before {
-    //         position: absolute;
-    //         top: 100%;
-    //         color: #fff;
-    //         content: attr(data-hover);
-    //         @include transform(translate3d(0, 0, 0));
-    //     }
-    // }
 }
 
 // Show menu when checkbox is checked.
@@ -332,178 +325,10 @@ figure {
 }
 // scss-lint:enable NestingDepth
 
-
-
-// Breakpoints
-// -----------
-
-// @include mq-max(517) {
-//     // Position the menu outside the viewport
-//     [role="navigation"] {
-//         @include transform(translateX(-230px) translateZ(0));
-//         @include transition(transform 0.5s ease-in-out);
-//         position: absolute;
-//         top: 0;
-//         bottom: 0;
-//         width: 200px;
-//         font-size: 1.6rem;
-//         background-color: $c-main;
-//         z-index: 2;
-//
-//         &.active {
-//             @include transform(translateX(-30px));
-//             box-shadow: 2px 0 6px 0 rgba(#000, 0.5);
-//         }
-//     }
-//
-//     // Position items as a list
-//     [role="menuitem"] {
-//         display: block;
-//         color: #fff;
-//         padding: 0.4rem 0.8rem 0.4rem 1.2rem;
-//         border-top: 1px solid hsla(0, 0, 100%, 0.25);
-//         border-bottom: 1px solid hsla(0, 0, 30%, 0.25);
-//
-//         &:first-of-type { margin-top: 40px; }
-//
-//         &.selected {
-//             background-color: darken($c-main, 10%);
-//             border-bottom: 1px solid hsla(0, 0, 25%, 0.25);
-//         }
-//
-//         &:hover { color: #fff; }
-//     }
-//
-//     .mobile-wrapper {
-//         border-top: 1px solid hsla(0, 0, 25%, 0.25);
-//         border-bottom: 1px solid hsla(0, 0, 100%, 0.25);
-//     }
-//
-//     // Hamburger animation changes which toggles to X icon
-//     // ---------------------------------------------------
-//     .hamburger-wrapper {
-//         @include flexbox();
-//         @include transform(translateX(200px) translateZ(0));
-//         @include transition(transform 0.5s ease-in-out);
-//         position: absolute;
-//         top: 0;
-//         width: 105px;
-//         height: 30px;
-//         padding: 20px 13px 19px;
-//         color: #fff;
-//         background-color: $c-main;
-//         cursor: pointer;
-//
-//         .active & { @include transform(translateX(0)) }
-//     }
-//
-//     .menu-text {
-//         @include flex-grow(1);
-//         margin-top: -10px;
-//         margin-left: 10px;
-//     }
-//
-//     .hamburger {
-//         @include flex(0, 0, 21px);
-//         @include transform(translateZ(0));
-//         @include transition(transform 0.5s, background-color 0.3s);
-//         position: relative;
-//         width: 20px;
-//         height: 2px;
-//         background-color: #fff;
-//
-//         &::after,
-//         &::before {
-//             @include transition(transform 0.5s, background-color 0.3s);
-//             position: absolute;
-//             display: block;
-//             width: 21px;
-//             height: 2px;
-//             content: "";
-//             background-color: #fff;
-//         }
-//
-//         &::after { top: 6px; }
-//         &::before { top: -6px; }
-//
-//         &.active {
-//             background-color: transparent;
-//
-//             &::before { @include transform(translateY(6px) rotate(45deg)) }
-//             &::after { @include transform(translateY(-6px) rotate(-45deg)) }
-//         }
-//     }
-//     // @End  hamburger icon animation
-//     // ------------------------------
-//
-//     .overlay {
-//         display: none;
-//
-//         &.active {
-//             position: fixed;
-//             top: 0;
-//             left: 0;
-//             right: 0;
-//             bottom: 0;
-//             display: block;
-//             background-color: rgba(0, 0, 0, 0.5);
-//             z-index: 1;
-//         }
-//     }
-//
-//
-// }
-//
-// // Show the main menu horizontal with the gradient border top + bottom
-// @include mq-min(517) {
-//     [role="navigation"] {
-//         position: relative;
-//         margin-bottom: 50px;
-//         padding: 10px 25px;
-//         text-align: center;
-//         font-size: 2rem;
-//
-//         &::before,
-//         &::after {
-//             position: absolute;
-//             left: 0;
-//             right: 0;
-//             display: block;
-//             height: 1px;
-//             content: "";
-//             @include gradient(left, to right,
-//                 rgba($c-main, 0) 0,
-//                 $c-main 25%,
-//                 $c-main 75%,
-//                 rgba($c-main, 0) 100%);
-//         }
-//
-//         &::before { top: 0; }
-//         &::after { bottom: 0; }
-//     }
-//
-//     [role="menuitem"] {
-//         display: inline-block;
-//         padding: 0 8px;
-//         color: $c-main;
-//
-//         &.selected {
-//             &::before { content: "{"; }
-//             &::after { content: "}"; }
-//         }
-//     }
-//
-//     .hamburger-wrapper { display: none; }
-// }
-//
-// ---------
-// @END MENU
-// =========
-
 [role="main"],
 [role="article"] {
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 905px;
+    margin: 0 auto 6rem;
 }
 
 [role="article"] ul {
@@ -525,6 +350,30 @@ figure {
             content: "";
             background-color: $c-main;
         }
+    }
+}
+
+.read-more {
+    @include flexbox();
+    @include align-items(center);
+    margin-top: 0.8rem;
+    text-decoration: none;
+
+    &:hover rect { fill: $c-hover; }
+
+    rect {
+        @include transition(fill 0.25s);
+        fill: $c-main;
+    }
+
+    span,
+    svg { display: block; }
+
+    svg {
+        width: 1.8rem;
+        height: auto;
+        margin-top: 1px;
+        margin-left: 1rem;
     }
 }
 

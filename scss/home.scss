@@ -11,12 +11,6 @@ section {
     }
 }
 
-// [role="navigation"] {
-//     @include mq-min(517) {
-//         @include animation(menu-anim 1.25s ease-out);
-//     }
-// }
-
 // ===========
 // HOME BLOCKS
 // -----------
@@ -64,6 +58,8 @@ section {
         }
 
         &-text { @include flex(1, 0, 25rem); }
+
+        h2 { margin-top: 0; }
     }
 
     @include mq-min(900) {
