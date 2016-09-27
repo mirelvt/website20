@@ -146,7 +146,7 @@ figure {
 
 [role="navigation"] {
     height: 6rem;
-    padding-right: 1rem;
+    padding-right: 2rem;
     font-size: 1.6rem;
     background-color: $c-header;
 }
@@ -157,8 +157,8 @@ figure {
     @include align-items(center);
     position: relative;
     margin-left: auto;
-    width: 10.5rem;
-    padding: 2rem 1.3rem 1.9rem;
+    width: 8.5rem;
+    height: 6rem;
     color: #fff;
     cursor: pointer;
 }
