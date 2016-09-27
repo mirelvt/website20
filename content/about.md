@@ -29,8 +29,8 @@ Detailed information about my working experience can be found on
 
 Since 2012 am I a member of [Fronteers](http://www.fronteers.nl),
 a Dutch non-profit trade organisation for front end developers.
-Since the end of 2013 I'm a volunteer at the workshops committee. We
-organise [workshops](https://fronteers.nl/workshops) about
+From 2013 till 2015, I volunteered the workshops committee. This committee
+organises [workshops](https://fronteers.nl/workshops) about
 front end techniques, which everyone can attend for a small fee.
 
 
