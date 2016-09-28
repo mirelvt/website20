@@ -162,7 +162,7 @@ tooltip arrow.
     <span class="property">display</span>: inline-block;
 }
 
-@include keyframes(tooltip-anim) {
+<span class="include">@include keyframes(tooltip-anim)</span> {
     0% {
         <span class="include">@include transform(matrix(0.5, 0, 0, 0.8, 0, 0))</span>;
         <span class="property">opacity</span>: 0;

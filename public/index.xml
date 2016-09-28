@@ -171,7 +171,7 @@ tooltip arrow.&lt;/p&gt;
     &lt;span class=&#34;property&#34;&gt;display&lt;/span&gt;: inline-block;
 }
 
-@include keyframes(tooltip-anim) {
+&lt;span class=&#34;include&#34;&gt;@include keyframes(tooltip-anim)&lt;/span&gt; {
     0% {
         &lt;span class=&#34;include&#34;&gt;@include transform(matrix(0.5, 0, 0, 0.8, 0, 0))&lt;/span&gt;;
         &lt;span class=&#34;property&#34;&gt;opacity&lt;/span&gt;: 0;
