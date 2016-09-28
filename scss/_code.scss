@@ -52,38 +52,49 @@ code {
 .number { color: $c-header; }
 
 .language-css {
-    .selector { color: #7a8622; }
-    .property { color: #4c7cc1; }
+    .selector { color: $c-selector; }
+    .property { color: $c-property; }
 }
 
 .language-html {
-    .attribute { color: #7a8622; }
-    .tag { color: #4c7cc1; }
+    .attribute { color: $c-selector; }
+    .tag { color: $c-property; }
 }
 
 .language-scss {
-    .selector { color: #7a8622; }
-    .property { color: #4c7cc1; }
+    .selector { color: $c-selector; }
+    .property { color: $c-property; }
     .variable { color: $c-main; }
+    .include { color: $c-include; }
+}
+
+.language-js {
+    .property { color: $c-property; }
+    .variable { color: #EF5350; }
+    .function-label { color: $c-include; }
+    .type { color: #795548; }
+
+    .unit,
+    .selector { color: $c-selector; }
 }
 
 .python {
     .number,
     .statement {
-        color: #7a8622;
+        color: $c-selector;
     }
 
     .string { color: $c-main; }
 
     .crispy-attribute {
         font-style: italic;
-        color: #4976bc;
+        color: $c-property;
     }
 }
 
 .language-yml {
-    .selector { color: #4c7cc1; }
-    .property { color: #7a8622; }
+    .selector { color: $c-property; }
+    .property { color: $c-selector; }
 }
 
 // @End CODE STYLING

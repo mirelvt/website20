@@ -51,7 +51,7 @@ $stars-list: (
 );
 
 .rating {
-    @include rating-stars($stars-list, 32px, #F57C00, #FDD835);
+    @include rating-stars($stars-list, 32px, $c-orange, #FDD835);
     position: relative;
     overflow: hidden;
     height: 3.6rem;

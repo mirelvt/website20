@@ -6,8 +6,188 @@
     <description>Recent content on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Nov 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Sep 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://www.mirellavanteulingen.nl/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title> A vanilla js and css tooltip</title>
+      <link>http://www.mirellavanteulingen.nl/blog/css-js-tooltip/</link>
+      <pubDate>Wed, 28 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.mirellavanteulingen.nl/blog/css-js-tooltip/</guid>
+      <description>&lt;p&gt;In february 2016 I was looking for a tooltip plugin which must fix 2 design
+issues: overflow:hidden and the window corners. I also don&amp;rsquo;t want to need jQuery.
+During searching and testing a couple plugins, I thought, why not build one myself?
+It is a fun way to learn more about javascript and css animations.&lt;/p&gt;
+
+&lt;p&gt;In the same month I was also reading the book: &lt;em&gt;this &amp;amp; Object prototypes&lt;/em&gt;, from
+the series &lt;em&gt;You don&amp;rsquo;t know javascript&lt;/em&gt;. With this book I learned how to create
+objects and used this technique for the tooltip.&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;tooltip.create:&lt;/h2&gt;
+The javascript searches for the &lt;em&gt;tooltip-container&lt;/em&gt; element.
+This container is an empty element where the tooltip text will be injected.&lt;/p&gt;
+
+&lt;p&gt;Based on the position of the tooltip item in the viewport, the class names:
+&lt;em&gt;tooltip-left, tooltip-right&lt;/em&gt; or &lt;em&gt;tooltip-center&lt;/em&gt; are set on the tooltip-container.&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;tooltip.position:&lt;/h2&gt;
+The tooltip container gets positioned on the left, right or center bottom side
+of the tooltip item. I calculate its position using &lt;em&gt;getBoundingClientRect()&lt;/em&gt; function.&lt;/p&gt;
+
+&lt;p&gt;If the tooltip item is positioned near the edges of left or right side of the viewport
+the tooltip, will appear on the right or left side of the tooltip item. In
+other cases the tooltip appears right below the tooltip item.&lt;/p&gt;
+
+&lt;pre class=&#34;language-js&#34; rel=&#34;Javascript&#34;&gt;&lt;code&gt;&lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;Tooltip&lt;/span&gt; =  {
+    &lt;span class=&#34;property&#34;&gt;create:&lt;/span&gt; &lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt;(tooltip, elm) {
+        &lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.getBoundingClientRect(); &lt;span class=&#34;comment&#34;&gt;// relative to the viewport&lt;/span&gt;
+        &lt;span class=&#34;variable&#34;&gt;tooltip_text&lt;/span&gt; = document.createTextNode(&lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.getAttribute(&lt;span class=&#34;selector&#34;&gt;&#39;data-tooltip&#39;&lt;/span&gt;));
+        &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.appendChild(&lt;span class=&#34;variable&#34;&gt;tooltip_text&lt;/span&gt;);
+
+        &lt;span class=&#34;comment&#34;&gt;// Remove no-display + set the correct classname based on the position
+        // of the elm.&lt;/span&gt;
+        &lt;span class=&#34;function-label&#34;&gt;if&lt;/span&gt; (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; &gt; (&lt;span class=&#34;type&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;innerWidth&lt;/span&gt; - 100)) {
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;className&lt;/span&gt; = &lt;span class=&#34;selector&#34;&gt;&#39;tooltip-container tooltip-left&#39;&lt;/span&gt;;
+        } &lt;span class=&#34;function-label&#34;&gt;else if&lt;/span&gt; ((&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; + (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;width&lt;/span&gt; / 2)) &lt; 100) {
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;className&lt;/span&gt; = &lt;span class=&#34;selector&#34;&gt;&#39;tooltip-container tooltip-right&#39;&lt;/span&gt;;
+        } &lt;span class=&#34;function-label&#34;&gt;else&lt;/span&gt; {
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;className&lt;/span&gt; = &lt;span class=&#34;selector&#34;&gt;&#39;tooltip-container tooltip-center&#39;&lt;/span&gt;;
+        }
+    },
+    &lt;span class=&#34;property&#34;&gt;position:&lt;/span&gt; &lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt;(tooltip, elm) {
+        &lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;elm_top&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;top&lt;/span&gt; + &lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;height&lt;/span&gt; + 10; &lt;span class=&#34;comment&#34;&gt;// 10 = arrow height&lt;/span&gt;
+
+        &lt;span class=&#34;comment&#34;&gt;// position tooltip on the left side of the elm.
+        // 220 = the max width + arrow width of the tooltip.&lt;/span&gt;
+        &lt;span class=&#34;function-label&#34;&gt;if&lt;/span&gt; (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; &gt; (&lt;span class=&#34;type&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;innerWidth&lt;/span&gt; - 100)) {
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; = (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; - 220) + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;top&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;offsetTop&lt;/span&gt; + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+        } &lt;span class=&#34;function-label&#34;&gt;else if&lt;/span&gt; ((&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; + (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;width&lt;/span&gt; / 2)) &lt; 100) {
+            &lt;span class=&#34;comment&#34;&gt;// position tooltip on the right side of the elm.&lt;/span&gt;
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; = (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; + &lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;width&lt;/span&gt; + 20) + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;top&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;offsetTop&lt;/span&gt; + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+        } &lt;span class=&#34;function-label&#34;&gt;else&lt;/span&gt; {
+            &lt;span class=&#34;comment&#34;&gt;// Position the toolbox in the center of the elm.&lt;/span&gt;
+            &lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;centered&lt;/span&gt; = (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; + (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;width&lt;/span&gt; / 2)) - (&lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;offsetWidth&lt;/span&gt; / 2);
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;centered&lt;/span&gt; + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;top&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm_top&lt;/span&gt; + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+        }
+    },
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With the functions &lt;em&gt;showTooltip&lt;/em&gt; and &lt;em&gt;hideTooltip&lt;/em&gt; the tooltip is visible or
+hidden, using the EventListeners &lt;em&gt;mouseover&lt;/em&gt; and &lt;em&gt;mouseout&lt;/em&gt;.&lt;/p&gt;
+
+&lt;pre rel=&#34;Javascript&#34; class=&#34;language-js&#34;&gt;&lt;code&gt;&lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;property&#34;&gt;showTooltip&lt;/span&gt;(evt) {
+    &lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;item&lt;/span&gt; = Object.create(&lt;span class=&#34;variable&#34;&gt;Tooltip&lt;/span&gt;);
+    &lt;span class=&#34;variable&#34;&gt;item&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;create&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;, evt.currentTarget);
+    &lt;span class=&#34;variable&#34;&gt;item&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;position&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;, evt.currentTarget);
+}
+
+&lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;property&#34;&gt;hideTooltip&lt;/span&gt;() {
+    &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;className&lt;/span&gt; = &lt;span class=&#34;selector&#34;&gt;&#39;tooltip-container no-display&#39;&lt;/span&gt;;
+    &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.removeChild(&lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.firstChild);
+    &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.removeAttribute(&lt;span class=&#34;selector&#34;&gt;&#39;style&#39;&lt;/span&gt;);
+}
+
+&lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;property&#34;&gt;onReady&lt;/span&gt;() {
+    &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt; = document.documentElement.querySelector(&lt;span class=&#34;selector&#34;&gt;&#39;.tooltip-container&#39;&lt;/span&gt;);
+    &lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;tooltip_elms&lt;/span&gt; = document.documentElement.querySelectorAll(&lt;span class=&#34;selector&#34;&gt;&#39;[data-tooltip]&#39;&lt;/span&gt;);
+
+    Array.prototype.forEach.call(tooltip_elms, function(elm) {
+        &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.addEventListener(&lt;span class=&#34;selector&#34;&gt;&#39;mouseover&#39;&lt;/span&gt;,  showTooltip , false);
+        &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.addEventListener(&lt;span class=&#34;selector&#34;&gt;&#39;mouseout&#39;&lt;/span&gt;, hideTooltip, false);
+    });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The CSS handles the tooltip animation using animation keyframes.
+The class names &lt;em&gt;tooltip-left, tooltip-right&lt;/em&gt; and &lt;em&gt;tooltip-center&lt;/em&gt; positions the
+tooltip arrow.&lt;/p&gt;
+
+&lt;pre class=&#34;language-scss&#34; rel=&#34;SCSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;selector&#34;&gt;.tooltip-container&lt;/span&gt; {
+    &lt;span class=&#34;include&#34;&gt;@include transform(translateZ(0))&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;// GPU&lt;/span&gt;
+    &lt;span class=&#34;property&#34;&gt;position&lt;/span&gt;: absolute;
+    &lt;span class=&#34;property&#34;&gt;max-width&lt;/span&gt;: 200px;
+    &lt;span class=&#34;property&#34;&gt;padding&lt;/span&gt;: 8px 10px 10px;
+    &lt;span class=&#34;property&#34;&gt;font-size&lt;/span&gt;: 1.6rem;
+    &lt;span class=&#34;property&#34;&gt;background-color&lt;/span&gt;: #2d2d2d;
+    &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: #fff;
+    &lt;span class=&#34;property&#34;&gt;border-radius&lt;/span&gt;: 4px;
+    &lt;span class=&#34;property&#34;&gt;opacity&lt;/span&gt;: 1; &lt;span class=&#34;comment&#34;&gt;// scale animation setting&lt;/span&gt;
+
+    &amp;&lt;span class=&#34;selector&#34;&gt;[class*=&#34; tooltip-&#34;]&lt;/span&gt; {
+        &lt;span class=&#34;include&#34;&gt;@include animation(tooltip-anim 0.8s)&lt;/span&gt;;
+    }
+
+    &amp;&lt;span class=&#34;selector&#34;&gt;::after&lt;/span&gt; {
+        &lt;span class=&#34;property&#34;&gt;position&lt;/span&gt;: absolute;
+        &lt;span class=&#34;property&#34;&gt;display&lt;/span&gt;: block;
+        &lt;span class=&#34;property&#34;&gt;content&lt;/span&gt;: &#34;&#34;;
+    }
+
+    &lt;span class=&#34;comment&#34;&gt;// position arrow on the right of the tooltip&lt;/span&gt;
+    &amp;&lt;span class=&#34;selector&#34;&gt;.tooltip-left::after&lt;/span&gt; {
+        &lt;span class=&#34;include&#34;&gt;@include transform(translateY(-50%))&lt;/span&gt;;
+        &lt;span class=&#34;property&#34;&gt;right&lt;/span&gt;: -8px;
+        &lt;span class=&#34;property&#34;&gt;top&lt;/span&gt;: 50%;
+        &lt;span class=&#34;property&#34;&gt;border&lt;/span&gt;: {
+            &lt;span class=&#34;property&#34;&gt;style&lt;/span&gt;: solid;
+            &lt;span class=&#34;property&#34;&gt;width&lt;/span&gt;: 6px 0 6px 8px;
+            &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: transparent transparent transparent #2d2d2d;
+        }
+    }
+
+    &lt;span class=&#34;comment&#34;&gt;// position arrow on the left of the tooltip&lt;/span&gt;
+    &amp;&lt;span class=&#34;selector&#34;&gt;.tooltip-right::after&lt;/span&gt; {
+        &lt;span class=&#34;include&#34;&gt;@include transform(translateY(-50%))&lt;/span&gt;;
+        &lt;span class=&#34;property&#34;&gt;left&lt;/span&gt;: -8px;
+        &lt;span class=&#34;property&#34;&gt;top&lt;/span&gt;: 50%;
+        &lt;span class=&#34;property&#34;&gt;border&lt;/span&gt;: {
+            &lt;span class=&#34;property&#34;&gt;style&lt;/span&gt;: solid;
+            &lt;span class=&#34;property&#34;&gt;width&lt;/span&gt;: 6px 8px 6px 0;
+            &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: transparent #2d2d2d transparent transparent;
+        }
+    }
+
+    &lt;span class=&#34;comment&#34;&gt;// position arrow in the top center of the tooltip&lt;/span&gt;
+    &amp;&lt;span class=&#34;selector&#34;&gt;.tooltip-center::after&lt;/span&gt; {
+        &lt;span class=&#34;include&#34;&gt;@include transform(translateX(-50%))&lt;/span&gt;;
+        &lt;span class=&#34;property&#34;&gt;top&lt;/span&gt;: -8px;
+        &lt;span class=&#34;property&#34;&gt;left&lt;/span&gt;: 50%;
+        &lt;span class=&#34;property&#34;&gt;border&lt;/span&gt;: {
+            &lt;span class=&#34;property&#34;&gt;style&lt;/span&gt;: solid;
+            &lt;span class=&#34;property&#34;&gt;width&lt;/span&gt;: 0 6px 8px 6px;
+            &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: transparent transparent #2d2d2d transparent;
+        }
+    }
+}
+
+&lt;span class=&#34;selector&#34;&gt;[data-tooltip]&lt;/span&gt; {
+    &lt;span class=&#34;property&#34;&gt;cursor&lt;/span&gt;: pointer;
+    &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: #7cb342;
+    &lt;span class=&#34;property&#34;&gt;display&lt;/span&gt;: inline-block;
+}
+
+@include keyframes(tooltip-anim) {
+    0% {
+        &lt;span class=&#34;include&#34;&gt;@include transform(matrix(0.5, 0, 0, 0.8, 0, 0))&lt;/span&gt;;
+        &lt;span class=&#34;property&#34;&gt;opacity&lt;/span&gt;: 0;
+    }
+
+    20% { &lt;span class=&#34;include&#34;&gt;@include transform(matrix(1.1, 0, 0, 1.1, 0, 0))&lt;/span&gt;; }
+    40% { &lt;span class=&#34;property&#34;&gt;opacity&lt;/span&gt;: 1; }
+    70% { &lt;span class=&#34;include&#34;&gt;@include transform(matrix(1, 0, 0, 1, 0, 0))&lt;/span&gt;; }
+    100% { &lt;span class=&#34;include&#34;&gt;@include transform(matrix(1, 0, 0, 1, 0, 0))&lt;/span&gt;; }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see, not much code is written to get the tooltip to work. The complete
+code can be found on my &lt;a href=&#34;https://github.com/mirelvt/js-css-tooltip&#34;&gt;github page&lt;/a&gt;
+and I also created a simple demo page &lt;a href=&#34;http://www.mirellavanteulingen.nl/demos/tooltip/&#34;&gt;demo page&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Font icons with Fontcustom and SASS</title>
@@ -941,16 +1121,6 @@ Performance:
       
       <guid>http://www.mirellavanteulingen.nl/conf_2012/statehtml5video/</guid>
       <description>&lt;p&gt;&lt;p&gt;Jeroen Wijering shows how far JWPlayer is in using HTML5. There are some cool features. At the bottom of this article you find some links to demo&amp;rsquo;s.&lt;/p&gt;&lt;blockquote&gt;&amp;ldquo;One thing i would never do again: charge a $15 license for YouTube :)&amp;rdquo; &lt;cite&gt;- Jeroen Wijering&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;JW Player:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Currently JWPlayer is used by over a million websites, including the White House.&lt;/li&gt;&lt;li&gt;First sold to youtube in 1 year of existence.&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;JW6 Player is the first version defaulting to HTML5&lt;/h2&gt;&lt;p&gt;Why html5:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Apple iOS has no Flash support and Android is also stopping with supporting Flash.&lt;/li&gt;&lt;li&gt;Ease of use for developers as easy as inserting an image.&lt;/li&gt;&lt;li&gt;Video as First class citizen:&lt;ul&gt;&lt;li&gt;Accessible for humans and robots,&lt;/li&gt;&lt;li&gt;Existing tools (css styling js scripting)&lt;/li&gt;&lt;li&gt;Fast secure and stable (client&lt;a href=&#34;xsl:text&#34;&gt;xsl:text&lt;/a&gt;&amp;amp;&lt;a href=&#34;http://www.mirellavanteulingen.nl/xsl:text&#34;&gt;/xsl:text&lt;/a&gt;network)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Evolution&lt;/h2&gt;&lt;p&gt;First you had separate players, for example RealPlayer. Then you got Flash embedded players and now with HTML5 it is included. Over 80% of the world supports HTML5 video. 20% is IE8 and feature phones.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&#34;http://gs.statcounter.com&#34;&gt;http://gs.statcounter.com&lt;/a&gt; use of HTML5&lt;/li&gt;&lt;li&gt;current state 80% of world supports html5 video&lt;/li&gt;&lt;li&gt;MP4/web-m support is evenly split&lt;/li&gt;&lt;li&gt;MP4/h.264: most browsers + iOS and Android&lt;/li&gt;&lt;li&gt;web-m: Android, Firefox and Opera&lt;/li&gt;&lt;li&gt;Firefox is going for MP4&lt;/li&gt;&lt;li&gt;Full screen Api:must-have video, except IE for the moment&lt;/li&gt;&lt;li&gt;Chrome will replace h.254 for web-m&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;What can you do with WebVVT?&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;xsl:text&#34;&gt;xsl:text&lt;/a&gt;&amp;lt;track&amp;gt;&lt;a href=&#34;http://www.mirellavanteulingen.nl/xsl:text&#34;&gt;/xsl:text&lt;/a&gt;and webVTT are interesting innovations, available in Safari 6, Chrome 23 and IE 10. Code is free and usable:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;You can test the demo on: &lt;a href=&#34;http://demo.longtailvideo.com/track_demos/captions.html&#34;&gt;&lt;a href=&#34;xsl:text&#34;&gt;xsl:text&lt;/a&gt;&amp;lt;track&amp;gt;&lt;a href=&#34;http://www.mirellavanteulingen.nl/xsl:text&#34;&gt;/xsl:text&lt;/a&gt;demos&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://demo.longtailvideo.com/track_demos/chapters.html&#34;&gt;Chapter markers are available too in Chrome Canary&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://demo.longtailvideo.com/track_demos/descriptions.html&#34;&gt;Audio descriptions are available as well&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://demo.longtailvideo.com/track_demos/thumbs.html&#34;&gt;Preview thumbs&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://demo.longtailvideo.com/track_demos/page.html&#34;&gt;Page interaction&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://demo.longtailvideo.com/track_demos/search.html&#34;&gt;Video search&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>A Pixel is not a pixel</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/pixelisnotapixel/</link>
-      <pubDate>Thu, 04 Oct 2012 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/pixelisnotapixel/</guid>
-      <description>&lt;p&gt;This was a fast paced and interesting presentation. I&#39;ve learned a lot about pixels and where you can run into presenation issues on devices. I&#39;ve heard of Peter-Paul Koch but never seen or attended his presentations. It was a great experience and worth while!&lt;/p&gt;&lt;p&gt;Let&#39;s start:&lt;/p&gt;&lt;p&gt;You have 3 kinds of pixels:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;css: like width:20px. Their size may be increased or decreased.&lt;/li&gt;&lt;li&gt;device: The actual pixels on the screen. When the number of device pixels increases would break sites, so density-independent pixels were invented.&lt;/li&gt;&lt;li&gt;densitiy independent&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Device pixels are the physical pixels on the the device. But they get higher and higher pixel densities, and the number of devic pixels increases.&lt;/p&gt;&lt;p&gt;When building sites for different media/resolutions, ask your self this question: What kind of pixels am I using? CSS pixels related to javascript or device pixels when used in the code? In Javascript pixels might not be CSS pixels all the time. Usually it&#39;s CSS pixel, but sometimes it might be device pixels (dips) when related to screen size.&lt;/p&gt;&lt;h2&gt;What is a viewport?&lt;/h2&gt;&lt;p&gt;It is the total amount of space available for css layouts:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;On desktop it&#39;s equal to the browser window. An HTML element has an implicit width: 100% and spans the entire viewport.&lt;/li&gt;&lt;/ul&gt;&lt;h3&gt;Viewport for mobile&lt;/h3&gt;&lt;p&gt;The viewport for mobile is quite a bit more complicated. If the narrow browser window were to be the viewport, many sites would be squeezed to death. And mobile browsers must render all sites correctly even if they haven&#39;t been mobile optimized.&lt;/p&gt;&lt;blockquote&gt;&amp;ldquo;On Retina displays, device pixels are 640px, but device-independent pixels are still 320px to not break the Web on mobile&amp;rdquo; &lt;cite&gt;- @ppk&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;To work around this the mobile browser vendors split viewport in 2:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;layout viewport: css&lt;/li&gt;&lt;li&gt;visual viewport: actually what you use/see.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;You can compare it with looking through a keyhole. If you want to know how much of the website the user is actually seeing, use window.innerWidth (works on virtually all browsers except IE9 and Android 2.0)&lt;/p&gt;&lt;h4&gt;What does zooming do with the viewport?&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;on desktop the viewport stays the same, the css pixels become larger and less.&lt;/li&gt;&lt;li&gt;mobile visual viewport becomes smaller but the layout viewport remains static, thus css declarations are not recomputed. The visual viewport now contains less css pixels.&lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;Behavior of position:fixed&lt;/h4&gt;&lt;p&gt;What if you use/view position:fixed on the mobile? And what is fixed: the viewport. Ok, but which viewport? The layout viewport or the visual view?&lt;/p&gt;&lt;p&gt;It actually is browser dependent. There are differences in what browsers see as viewport:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Android, Chrome and Blackberry browsers use the visual viewport.&lt;/li&gt;&lt;li&gt;IE9 the layout viewport.&lt;/li&gt;&lt;li&gt;Opera &#34;hops&#34;.&lt;/li&gt;&lt;li&gt;And safari does something weird.&lt;/li&gt;&lt;li&gt;On layout viewport position: fixed behaves as absolute.&lt;/li&gt;&lt;li&gt;On Opera the fixed hops up and down.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Use these demo pages on your device/browsers to see the difference in behavior: &lt;a href=&#34;http://quirksmode.org/m/tests/positionfixed.html&#34;&gt;http://quirksmode.org/m/tests/positionfixed.html&lt;/a&gt; And &lt;a href=&#34;http://quirksmode.org/m/tests/devicefixed.html&#34;&gt;http://quirksmode.org/m/tests/devicefixed.html&lt;/a&gt;&lt;/p&gt;&lt;p&gt;You can use the javascript:pageOffset, it works the same on mobile and desktop.&lt;/p&gt;&lt;h2&gt;Media queries and Meta viewport&lt;/h2&gt;&lt;h4&gt;Media queries&lt;/h4&gt;&lt;p&gt;When using media queries, use width, and not device-width. Device-width is the width of your screen, that is not interesting.&lt;/p&gt;&lt;p&gt;Width: Gives the width of the layout viewport and is in css pixels&lt;/p&gt;&lt;h4&gt;Meta viewport&lt;/h4&gt;&lt;p&gt;The meta name viewport tag tells the browser to set the size of the layout viewport. With this tag you can give a pixel value, or a device-width.&lt;/p&gt;&lt;p&gt;The trick for responsive design: use the meta name viewport width=&#34;device-width&#34; and media queries.&lt;/p&gt;
 </description>
     </item>
     

@@ -6,8 +6,188 @@
     <description>Recent content in Blogs on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Nov 2015 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 28 Sep 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://www.mirellavanteulingen.nl/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title> A vanilla js and css tooltip</title>
+      <link>http://www.mirellavanteulingen.nl/blog/css-js-tooltip/</link>
+      <pubDate>Wed, 28 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.mirellavanteulingen.nl/blog/css-js-tooltip/</guid>
+      <description>&lt;p&gt;In february 2016 I was looking for a tooltip plugin which must fix 2 design
+issues: overflow:hidden and the window corners. I also don&amp;rsquo;t want to need jQuery.
+During searching and testing a couple plugins, I thought, why not build one myself?
+It is a fun way to learn more about javascript and css animations.&lt;/p&gt;
+
+&lt;p&gt;In the same month I was also reading the book: &lt;em&gt;this &amp;amp; Object prototypes&lt;/em&gt;, from
+the series &lt;em&gt;You don&amp;rsquo;t know javascript&lt;/em&gt;. With this book I learned how to create
+objects and used this technique for the tooltip.&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;tooltip.create:&lt;/h2&gt;
+The javascript searches for the &lt;em&gt;tooltip-container&lt;/em&gt; element.
+This container is an empty element where the tooltip text will be injected.&lt;/p&gt;
+
+&lt;p&gt;Based on the position of the tooltip item in the viewport, the class names:
+&lt;em&gt;tooltip-left, tooltip-right&lt;/em&gt; or &lt;em&gt;tooltip-center&lt;/em&gt; are set on the tooltip-container.&lt;/p&gt;
+
+&lt;p&gt;&lt;h2&gt;tooltip.position:&lt;/h2&gt;
+The tooltip container gets positioned on the left, right or center bottom side
+of the tooltip item. I calculate its position using &lt;em&gt;getBoundingClientRect()&lt;/em&gt; function.&lt;/p&gt;
+
+&lt;p&gt;If the tooltip item is positioned near the edges of left or right side of the viewport
+the tooltip, will appear on the right or left side of the tooltip item. In
+other cases the tooltip appears right below the tooltip item.&lt;/p&gt;
+
+&lt;pre class=&#34;language-js&#34; rel=&#34;Javascript&#34;&gt;&lt;code&gt;&lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;Tooltip&lt;/span&gt; =  {
+    &lt;span class=&#34;property&#34;&gt;create:&lt;/span&gt; &lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt;(tooltip, elm) {
+        &lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.getBoundingClientRect(); &lt;span class=&#34;comment&#34;&gt;// relative to the viewport&lt;/span&gt;
+        &lt;span class=&#34;variable&#34;&gt;tooltip_text&lt;/span&gt; = document.createTextNode(&lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.getAttribute(&lt;span class=&#34;selector&#34;&gt;&#39;data-tooltip&#39;&lt;/span&gt;));
+        &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.appendChild(&lt;span class=&#34;variable&#34;&gt;tooltip_text&lt;/span&gt;);
+
+        &lt;span class=&#34;comment&#34;&gt;// Remove no-display + set the correct classname based on the position
+        // of the elm.&lt;/span&gt;
+        &lt;span class=&#34;function-label&#34;&gt;if&lt;/span&gt; (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; &gt; (&lt;span class=&#34;type&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;innerWidth&lt;/span&gt; - 100)) {
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;className&lt;/span&gt; = &lt;span class=&#34;selector&#34;&gt;&#39;tooltip-container tooltip-left&#39;&lt;/span&gt;;
+        } &lt;span class=&#34;function-label&#34;&gt;else if&lt;/span&gt; ((&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; + (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;width&lt;/span&gt; / 2)) &lt; 100) {
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;className&lt;/span&gt; = &lt;span class=&#34;selector&#34;&gt;&#39;tooltip-container tooltip-right&#39;&lt;/span&gt;;
+        } &lt;span class=&#34;function-label&#34;&gt;else&lt;/span&gt; {
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;className&lt;/span&gt; = &lt;span class=&#34;selector&#34;&gt;&#39;tooltip-container tooltip-center&#39;&lt;/span&gt;;
+        }
+    },
+    &lt;span class=&#34;property&#34;&gt;position:&lt;/span&gt; &lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt;(tooltip, elm) {
+        &lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;elm_top&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;top&lt;/span&gt; + &lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;height&lt;/span&gt; + 10; &lt;span class=&#34;comment&#34;&gt;// 10 = arrow height&lt;/span&gt;
+
+        &lt;span class=&#34;comment&#34;&gt;// position tooltip on the left side of the elm.
+        // 220 = the max width + arrow width of the tooltip.&lt;/span&gt;
+        &lt;span class=&#34;function-label&#34;&gt;if&lt;/span&gt; (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; &gt; (&lt;span class=&#34;type&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;innerWidth&lt;/span&gt; - 100)) {
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; = (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; - 220) + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;top&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;offsetTop&lt;/span&gt; + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+        } &lt;span class=&#34;function-label&#34;&gt;else if&lt;/span&gt; ((&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; + (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;width&lt;/span&gt; / 2)) &lt; 100) {
+            &lt;span class=&#34;comment&#34;&gt;// position tooltip on the right side of the elm.&lt;/span&gt;
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; = (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; + &lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;width&lt;/span&gt; + 20) + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;top&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;offsetTop&lt;/span&gt; + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+        } &lt;span class=&#34;function-label&#34;&gt;else&lt;/span&gt; {
+            &lt;span class=&#34;comment&#34;&gt;// Position the toolbox in the center of the elm.&lt;/span&gt;
+            &lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;centered&lt;/span&gt; = (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; + (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;width&lt;/span&gt; / 2)) - (&lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;offsetWidth&lt;/span&gt; / 2);
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;centered&lt;/span&gt; + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;top&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm_top&lt;/span&gt; + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+        }
+    },
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With the functions &lt;em&gt;showTooltip&lt;/em&gt; and &lt;em&gt;hideTooltip&lt;/em&gt; the tooltip is visible or
+hidden, using the EventListeners &lt;em&gt;mouseover&lt;/em&gt; and &lt;em&gt;mouseout&lt;/em&gt;.&lt;/p&gt;
+
+&lt;pre rel=&#34;Javascript&#34; class=&#34;language-js&#34;&gt;&lt;code&gt;&lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;property&#34;&gt;showTooltip&lt;/span&gt;(evt) {
+    &lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;item&lt;/span&gt; = Object.create(&lt;span class=&#34;variable&#34;&gt;Tooltip&lt;/span&gt;);
+    &lt;span class=&#34;variable&#34;&gt;item&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;create&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;, evt.currentTarget);
+    &lt;span class=&#34;variable&#34;&gt;item&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;position&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;, evt.currentTarget);
+}
+
+&lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;property&#34;&gt;hideTooltip&lt;/span&gt;() {
+    &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;className&lt;/span&gt; = &lt;span class=&#34;selector&#34;&gt;&#39;tooltip-container no-display&#39;&lt;/span&gt;;
+    &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.removeChild(&lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.firstChild);
+    &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.removeAttribute(&lt;span class=&#34;selector&#34;&gt;&#39;style&#39;&lt;/span&gt;);
+}
+
+&lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;property&#34;&gt;onReady&lt;/span&gt;() {
+    &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt; = document.documentElement.querySelector(&lt;span class=&#34;selector&#34;&gt;&#39;.tooltip-container&#39;&lt;/span&gt;);
+    &lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;tooltip_elms&lt;/span&gt; = document.documentElement.querySelectorAll(&lt;span class=&#34;selector&#34;&gt;&#39;[data-tooltip]&#39;&lt;/span&gt;);
+
+    Array.prototype.forEach.call(tooltip_elms, function(elm) {
+        &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.addEventListener(&lt;span class=&#34;selector&#34;&gt;&#39;mouseover&#39;&lt;/span&gt;,  showTooltip , false);
+        &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.addEventListener(&lt;span class=&#34;selector&#34;&gt;&#39;mouseout&#39;&lt;/span&gt;, hideTooltip, false);
+    });
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The CSS handles the tooltip animation using animation keyframes.
+The class names &lt;em&gt;tooltip-left, tooltip-right&lt;/em&gt; and &lt;em&gt;tooltip-center&lt;/em&gt; positions the
+tooltip arrow.&lt;/p&gt;
+
+&lt;pre class=&#34;language-scss&#34; rel=&#34;SCSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;selector&#34;&gt;.tooltip-container&lt;/span&gt; {
+    &lt;span class=&#34;include&#34;&gt;@include transform(translateZ(0))&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;// GPU&lt;/span&gt;
+    &lt;span class=&#34;property&#34;&gt;position&lt;/span&gt;: absolute;
+    &lt;span class=&#34;property&#34;&gt;max-width&lt;/span&gt;: 200px;
+    &lt;span class=&#34;property&#34;&gt;padding&lt;/span&gt;: 8px 10px 10px;
+    &lt;span class=&#34;property&#34;&gt;font-size&lt;/span&gt;: 1.6rem;
+    &lt;span class=&#34;property&#34;&gt;background-color&lt;/span&gt;: #2d2d2d;
+    &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: #fff;
+    &lt;span class=&#34;property&#34;&gt;border-radius&lt;/span&gt;: 4px;
+    &lt;span class=&#34;property&#34;&gt;opacity&lt;/span&gt;: 1; &lt;span class=&#34;comment&#34;&gt;// scale animation setting&lt;/span&gt;
+
+    &amp;&lt;span class=&#34;selector&#34;&gt;[class*=&#34; tooltip-&#34;]&lt;/span&gt; {
+        &lt;span class=&#34;include&#34;&gt;@include animation(tooltip-anim 0.8s)&lt;/span&gt;;
+    }
+
+    &amp;&lt;span class=&#34;selector&#34;&gt;::after&lt;/span&gt; {
+        &lt;span class=&#34;property&#34;&gt;position&lt;/span&gt;: absolute;
+        &lt;span class=&#34;property&#34;&gt;display&lt;/span&gt;: block;
+        &lt;span class=&#34;property&#34;&gt;content&lt;/span&gt;: &#34;&#34;;
+    }
+
+    &lt;span class=&#34;comment&#34;&gt;// position arrow on the right of the tooltip&lt;/span&gt;
+    &amp;&lt;span class=&#34;selector&#34;&gt;.tooltip-left::after&lt;/span&gt; {
+        &lt;span class=&#34;include&#34;&gt;@include transform(translateY(-50%))&lt;/span&gt;;
+        &lt;span class=&#34;property&#34;&gt;right&lt;/span&gt;: -8px;
+        &lt;span class=&#34;property&#34;&gt;top&lt;/span&gt;: 50%;
+        &lt;span class=&#34;property&#34;&gt;border&lt;/span&gt;: {
+            &lt;span class=&#34;property&#34;&gt;style&lt;/span&gt;: solid;
+            &lt;span class=&#34;property&#34;&gt;width&lt;/span&gt;: 6px 0 6px 8px;
+            &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: transparent transparent transparent #2d2d2d;
+        }
+    }
+
+    &lt;span class=&#34;comment&#34;&gt;// position arrow on the left of the tooltip&lt;/span&gt;
+    &amp;&lt;span class=&#34;selector&#34;&gt;.tooltip-right::after&lt;/span&gt; {
+        &lt;span class=&#34;include&#34;&gt;@include transform(translateY(-50%))&lt;/span&gt;;
+        &lt;span class=&#34;property&#34;&gt;left&lt;/span&gt;: -8px;
+        &lt;span class=&#34;property&#34;&gt;top&lt;/span&gt;: 50%;
+        &lt;span class=&#34;property&#34;&gt;border&lt;/span&gt;: {
+            &lt;span class=&#34;property&#34;&gt;style&lt;/span&gt;: solid;
+            &lt;span class=&#34;property&#34;&gt;width&lt;/span&gt;: 6px 8px 6px 0;
+            &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: transparent #2d2d2d transparent transparent;
+        }
+    }
+
+    &lt;span class=&#34;comment&#34;&gt;// position arrow in the top center of the tooltip&lt;/span&gt;
+    &amp;&lt;span class=&#34;selector&#34;&gt;.tooltip-center::after&lt;/span&gt; {
+        &lt;span class=&#34;include&#34;&gt;@include transform(translateX(-50%))&lt;/span&gt;;
+        &lt;span class=&#34;property&#34;&gt;top&lt;/span&gt;: -8px;
+        &lt;span class=&#34;property&#34;&gt;left&lt;/span&gt;: 50%;
+        &lt;span class=&#34;property&#34;&gt;border&lt;/span&gt;: {
+            &lt;span class=&#34;property&#34;&gt;style&lt;/span&gt;: solid;
+            &lt;span class=&#34;property&#34;&gt;width&lt;/span&gt;: 0 6px 8px 6px;
+            &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: transparent transparent #2d2d2d transparent;
+        }
+    }
+}
+
+&lt;span class=&#34;selector&#34;&gt;[data-tooltip]&lt;/span&gt; {
+    &lt;span class=&#34;property&#34;&gt;cursor&lt;/span&gt;: pointer;
+    &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: #7cb342;
+    &lt;span class=&#34;property&#34;&gt;display&lt;/span&gt;: inline-block;
+}
+
+@include keyframes(tooltip-anim) {
+    0% {
+        &lt;span class=&#34;include&#34;&gt;@include transform(matrix(0.5, 0, 0, 0.8, 0, 0))&lt;/span&gt;;
+        &lt;span class=&#34;property&#34;&gt;opacity&lt;/span&gt;: 0;
+    }
+
+    20% { &lt;span class=&#34;include&#34;&gt;@include transform(matrix(1.1, 0, 0, 1.1, 0, 0))&lt;/span&gt;; }
+    40% { &lt;span class=&#34;property&#34;&gt;opacity&lt;/span&gt;: 1; }
+    70% { &lt;span class=&#34;include&#34;&gt;@include transform(matrix(1, 0, 0, 1, 0, 0))&lt;/span&gt;; }
+    100% { &lt;span class=&#34;include&#34;&gt;@include transform(matrix(1, 0, 0, 1, 0, 0))&lt;/span&gt;; }
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see, not much code is written to get the tooltip to work. The complete
+code can be found on my &lt;a href=&#34;https://github.com/mirelvt/js-css-tooltip&#34;&gt;github page&lt;/a&gt;
+and I also created a simple demo page &lt;a href=&#34;http://www.mirellavanteulingen.nl/demos/tooltip/&#34;&gt;demo page&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Font icons with Fontcustom and SASS</title>
