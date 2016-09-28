@@ -48,7 +48,7 @@ code {
 
 .code-indent { text-indent: $code-indent; }
 .code-indent-2 { text-indent: $code-indent * 2; }
-.boolean { color: $color-maintitle; }
+.boolean { color: $c-main; }
 .number { color: $c-header; }
 
 .language-css {
@@ -64,7 +64,7 @@ code {
 .language-scss {
     .selector { color: #7a8622; }
     .property { color: #4c7cc1; }
-    .variable { color: $color-maintitle; }
+    .variable { color: $c-main; }
 }
 
 .python {
@@ -73,7 +73,7 @@ code {
         color: #7a8622;
     }
 
-    .string { color: $color-maintitle; }
+    .string { color: $c-main; }
 
     .crispy-attribute {
         font-style: italic;
