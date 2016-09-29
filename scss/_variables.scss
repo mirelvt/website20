@@ -2,7 +2,6 @@ $c-text: #3c4946;
 $c-main: #7cb342;
 $c-shadow: #3c4946;
 $c-hover: #558b2f;
-$c-header: $c-main;
 
 $color-subtitle: #a9a9a9;
 $code-indent: 1.2rem;
@@ -12,7 +11,8 @@ $font-generic: arial, helvetica, sans-serif;
 $font-main: "Source Sans Pro", $font-generic;
 $font-code: "Droid Sans Mono", $font-generic;
 
-$c-orange: #F57C00;
+$c-orange: #f57c00;
 $c-property: #0d47a1;
 $c-selector: $c-hover;
 $c-include: #7b1fa2;
+$c-variable: #ef5350;

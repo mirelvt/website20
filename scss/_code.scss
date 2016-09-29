@@ -48,8 +48,8 @@ code {
 
 .code-indent { text-indent: $code-indent; }
 .code-indent-2 { text-indent: $code-indent * 2; }
-.boolean { color: $c-main; }
-.number { color: $c-header; }
+.boolean,
+.number { color: $c-main; }
 
 .language-css {
     .selector { color: $c-selector; }
@@ -64,13 +64,13 @@ code {
 .language-scss {
     .selector { color: $c-selector; }
     .property { color: $c-property; }
-    .variable { color: $c-main; }
+    .variable { color: $c-variable; }
     .include { color: $c-include; }
 }
 
 .language-js {
     .property { color: $c-property; }
-    .variable { color: #EF5350; }
+    .variable { color: $c-variable; }
     .function-label { color: $c-include; }
     .type { color: #795548; }
 
