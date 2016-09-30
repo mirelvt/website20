@@ -122,23 +122,26 @@ in the user settings:
   the complete list you wish to override.
 </p>
 
-<pre class="language-json" rel="json"><code><span class="punctuation">{</span>
-  <span class="code-indent string">"font_size":</span> <span class="number">11</span>,
-  <span class="code-indent string">"bold_folder_labels":</span><span class="boolean">true</span>,
-  <span class="code-indent string">"caret_style":</span> "phase", <span class="comment">// it will fade in and out rather than blink.</span>
-  <span class="code-indent string">"highlight_line":</span> <span class="boolean">true</span>,
-  <span class="code-indent string">"ignored_packages":</span>
-  <span class="code-indent token">[</span>
-  <span class="code-indent-2 string">"Vintage"</span>
-  <span class="code-indent token">]</span><span class="string">,</span>
-  <span class="code-indent string">"match_tags":</span> <span class="boolean">true</span>,
-  <span class="code-indent comment">// scroll_past_end is already set in default settings,</span>
-  <span class="code-indent comment">// but on OS X, this value is overridden in the platform specific settings.</span>
-  <span class="code-indent comment">// That's why you need to place this line in your user settings.</span>
-  <span class="code-indent string">"scroll_past_end":</span> <span class="boolean">true</span>,
-  <span class="code-indent string">"translate_tabs_to_spaces":</span><span class="boolean">true</span>,
-  <span class="code-indent string">"trim_trailing_white_space_on_save":</span> <span class="boolean">true</span>
-<span class="punctuation">}</span></code>
+<pre rel="json">
+<code class="json">
+{
+  "font_size": <span class="number">11,
+  "bold_folder_labels":true,
+  "caret_style": "phase", // it will fade in and out rather than blink.
+  "highlight_line": true,
+  "ignored_packages":
+  [
+  "Vintage"
+  ]<span class="string">,
+  "match_tags": true,
+  // scroll_past_end is already set in default settings,
+  // but on OS X, this value is overridden in the platform specific settings.
+  // That's why you need to place this line in your user settings.
+  "scroll_past_end": true,
+  "translate_tabs_to_spaces":true,
+  "trim_trailing_white_space_on_save": true
+}
+</code>
 </pre>
 
 <h2>Sublime Key commands</h2>
@@ -175,8 +178,11 @@ in the user settings:
 <p>
   I mostly use the terminal to navigate to folders and to open it in sublime. To use an easy command for it I created a symbolic link. In OS X the Application is in "/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl". If it is in another directory use that path in step 2. Open your terminal and type in the following commands:
 </p>
-<pre class="language-terminal" rel="Terminal"><code>$ cd /usr/local/bin
-$ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime</code>
+<pre rel="Terminal">
+<code class="dos">
+$ cd /usr/local/bin
+$ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime
+</code>
 </pre>
 <p>That's it. You can now use the command <em>"sublime"</em> in your terminal.</p>
 <h2>Find your theme</h2>

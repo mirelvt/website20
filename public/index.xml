@@ -1,20 +1,121 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mirella van Teulingen</title>
-    <link>http://www.mirellavanteulingen.nl/</link>
-    <description>Recent content on Mirella van Teulingen</description>
+    <title></title>
+    <link>/</link>
+    <description>Recent content on </description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 28 Sep 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://www.mirellavanteulingen.nl/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 02 Oct 2016 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>How to use svg icons in Django templates?</title>
+      <link>/blog/svg-icons-django-template/</link>
+      <pubDate>Sun, 02 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/svg-icons-django-template/</guid>
+      <description>&lt;p&gt;Normally we use icon fonts in our projects, which are created with
+&lt;a href=&#34;https://rsp.github.io/fontcustom/&#34;&gt;Fontcustom&lt;/a&gt;. It is a nice tool to
+generate the font icon from our own svg icons. Using the icon font in the last 3
+years I always bump into some styling issues. The icon font has anti-alias and
+doesn&amp;rsquo;t get as sharp as vector images. The most annoying thing is positioning
+the icon next another element or text. You have to take into account the vertical
+alignment, line-height, letter-spacing etc, after all, it is a font. To position
+it correctly in the latest browsers, you have to do a lot of tweaking.&lt;/p&gt;
+
+&lt;p&gt;I was curious if you can use inline svg icons in an maintainable way. After
+reading the article on
+&lt;a href=&#34;https://css-tricks.com/svg-symbol-good-choice-icons/&#34;&gt;CSS-tricks&lt;/a&gt;
+about svg symbols and Sara Soueidans&amp;rsquo; article about
+&lt;a href=&#34;https://24ways.org/2014/an-overview-of-svg-sprite-creation-techniques/&#34;&gt;
+svg sprites&lt;/a&gt;, I created a little demo page using this technique and discussed
+it with my colleagues to give this technique a chance in one of our projects.
+Because of the great advantages of svg, the decision was easily made.&lt;/p&gt;
+
+&lt;p&gt;The project we started to use svg symbols is build with Django Framework.
+The svgs icons are created separately and placed in a folder
+called &lt;em&gt;svg-icons&lt;/em&gt;. This folder is purely for version control.&lt;/p&gt;
+
+&lt;p&gt;In the &lt;em&gt;templates&lt;/em&gt; directory I created the include template file &lt;em&gt;include_svg_icon_sprite.html&lt;/em&gt;.
+It is a html file because at the time of writing we still need to support IE and IE does
+not support xlink to an svg file. I include this file in the base template at
+the bottom of te page. Using &amp;ldquo;include&amp;rdquo; in the file name we know it is a
+template snippet. In this file I have one svg file which contains all the symbols.
+The symbol contains the svg code copied from each svg icon from the &lt;em&gt;svg-icons&lt;/em&gt;
+directory.&lt;/p&gt;
+
+&lt;pre rel=&#34;SVG&#34;&gt;
+&lt;code class=&#34;html&#34;&gt;
+&amp;lt;&lt;span class=&#34;tag&#34;&gt;svg&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;xmlns&lt;/span&gt;=&#34;http://www.w3.org/2000/svg&#34;
+        &lt;span class=&#34;attribute&#34;&gt;xmlns:xlink&lt;/span&gt;=&#34;http://www.w3.org/1999/xlink&#34; &lt;span class=&#34;attribute&#34;&gt;class&lt;/span&gt;=&#34;svg-sprite&#34;
+        &lt;span class=&#34;attribute&#34;&gt;viewBox&lt;/span&gt;=&#34;0 0 512 512&#34; &lt;span class=&#34;attribute&#34;&gt;width&lt;/span&gt;=&#34;512px&#34; &lt;span class=&#34;attribute&#34;&gt;height&lt;/span&gt;=&#34;512px&#34;&amp;gt;
+    &amp;lt;&lt;span class=&#34;tag&#34;&gt;symbol&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;id&lt;/span&gt;=&#34;filter&#34;&lt;/span&gt;&amp;gt;
+        &amp;lt;&lt;span class=&#34;tag&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;d&lt;/span&gt;=&#34;M0 26h512v51.206L307.21 333.213v153.6l-102.404-51.208V333.213L0 77.206V26z&#34; /&amp;gt;
+    &amp;lt;/&lt;span class=&#34;tag&#34;&gt;symbol&lt;/span&gt;&amp;gt;
+    &amp;lt;&lt;span class=&#34;tag&#34;&gt;symbol&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;id&lt;/span&gt;=&#34;home&#34;&amp;gt;
+        &amp;lt;&lt;span class=&#34;tag&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;d&lt;/span&gt;=&#34;M512 296l-96-96V56h-64v80l-96-96L0 296v16h64v160h160v-96h64v96h160V312h64v-16z&#34; /&amp;gt;
+    &amp;lt;/&lt;span class=&#34;tag&#34;&gt;symbol&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span class=&#34;tag&#34;&gt;svg&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To use a symbol you could place the following code in the template every time you
+need an icon:
+&lt;pre rel=&#34;html&#34;&gt;
+&lt;code class=&#34;html&#34;&gt;
+&amp;lt;&lt;span class=&#34;tag&#34;&gt;svg&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;viewBox&lt;/span&gt;=&amp;ldquo;0 0 512 512&amp;rdquo; &lt;span class=&#34;attribute&#34;&gt;class&lt;/span&gt;=&amp;ldquo;icon-home&amp;rdquo;&amp;gt;
+    &amp;lt;&lt;span class=&#34;tag&#34;&gt;use&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;xlink:href&lt;/span&gt;=&amp;ldquo;#home&amp;rdquo;&amp;gt;&amp;lt;/&lt;span class=&#34;tag&#34;&gt;use&lt;/span&gt;&amp;gt;
+&amp;lt;/&lt;span class=&#34;tag&#34;&gt;svg&lt;/span&gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;It is still a lot of typing, to make it easier I created a template tag called
+icon.py. In the djangoproject documentation you can find more information about &lt;a href=&#34;https://docs.djangoproject.com/en/1.10/howto/custom-template-tags/#writing-custom-template-tags&#34;&gt;custom template tags&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre rel=&#34;Python&#34;&gt;
+&lt;code class=&#34;python&#34;&gt;
+&lt;span class=&#34;def&#34;&gt;from&lt;/span&gt; django &lt;span class=&#34;def&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;import&#34;&gt;template&lt;/span&gt;
+&lt;span class=&#34;def&#34;&gt;from&lt;/span&gt; django.utils.safestring &lt;span class=&#34;def&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;import&#34;&gt;mark_safe&lt;/span&gt;
+&lt;span class=&#34;def&#34;&gt;from&lt;/span&gt; django.utils.html &lt;span class=&#34;def&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;import&#34;&gt;format_html&lt;/span&gt;
+
+&lt;span class=&#34;attribute&#34;&gt;register&lt;/span&gt; = &lt;span class=&#34;import&#34;&gt;template&lt;/span&gt;.Library()
+
+
+&lt;span class=&#34;def&#34;&gt;@register.simple_tag(name=&#39;svg_icon&#39;)&lt;/span&gt;
+&lt;span class=&#34;def&#34;&gt;def svg_icon(icon_name, extra_class=&#39;&#39;)&lt;/span&gt;:
+    &lt;span class=&#34;attribute&#34;&gt;svg_tag&lt;/span&gt; = &lt;span class=&#34;import&#34;&gt;format_html&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&#39;&amp;lt;svg viewBox=&#34;0 0 512 512&#34; class=&#34;icon-{name} {extra}&#34;&amp;gt;&#39;
+               &#39;&amp;lt;use xlink:href=&#34;#{name}&#34; class=&#34;sym-{name}&#34;&amp;gt;&amp;lt;/use&amp;gt;&#39;
+               &#39;&amp;lt;/svg&amp;gt;&#39;&lt;/span&gt;, name=&lt;span class=&#34;attribute&#34;&gt;icon_name&lt;/span&gt;, extra=&lt;span class=&#34;attribute&#34;&gt;extra_class&lt;/span&gt;)
+
+    &lt;span class=&#34;statement&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;import&#34;&gt;mark_safe&lt;/span&gt;(&lt;span class=&#34;attribute&#34;&gt;svg_tag&lt;/span&gt;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To use the icon in your template you only have to load the template tag and then you
+can use the created tag everywhere in you template:&lt;/p&gt;
+
+&lt;pre rel=&#34;Django HTML&#34;&gt;
+&lt;code class=&#34;django&#34;&gt;
+{% load icon %}
+&amp;lt;ul&amp;gt;
+    &amp;lt;li&amp;gt;
+        &amp;lt;a href=&#34;{% url &#34;home&#34; %}&#34; class=&#34;menu-item&#34;&amp;gt;
+            {% svg_icon &#34;home&#34; %} Home
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+    &amp;lt;li&amp;gt;
+        &amp;lt;a href=&#34;{% url &#34;filter&#34; %}&#34; class=&#34;menu-item&#34;&amp;gt;
+            {% svg_icon &#34;filter&#34; %} Filter
+        &amp;lt;/a&amp;gt;
+    &amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title> A vanilla js and css tooltip</title>
-      <link>http://www.mirellavanteulingen.nl/blog/css-js-tooltip/</link>
+      <link>/blog/css-js-tooltip/</link>
       <pubDate>Wed, 28 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/css-js-tooltip/</guid>
+      <guid>/blog/css-js-tooltip/</guid>
       <description>&lt;p&gt;In february 2016 I was looking for a tooltip plugin which must fix 2 design
 issues: overflow:hidden and the window corners. I also don&amp;rsquo;t want to need jQuery.
 During searching and testing a couple plugins, I thought, why not build one myself?
@@ -39,162 +140,172 @@ of the tooltip item. I calculate its position using &lt;em&gt;getBoundingClientR
 the tooltip, will appear on the right or left side of the tooltip item. In
 other cases the tooltip appears right below the tooltip item.&lt;/p&gt;
 
-&lt;pre class=&#34;language-js&#34; rel=&#34;Javascript&#34;&gt;&lt;code&gt;&lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;Tooltip&lt;/span&gt; =  {
-    &lt;span class=&#34;property&#34;&gt;create:&lt;/span&gt; &lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt;(tooltip, elm) {
-        &lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.getBoundingClientRect(); &lt;span class=&#34;comment&#34;&gt;// relative to the viewport&lt;/span&gt;
-        &lt;span class=&#34;variable&#34;&gt;tooltip_text&lt;/span&gt; = document.createTextNode(&lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.getAttribute(&lt;span class=&#34;selector&#34;&gt;&#39;data-tooltip&#39;&lt;/span&gt;));
-        &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.appendChild(&lt;span class=&#34;variable&#34;&gt;tooltip_text&lt;/span&gt;);
+&lt;pre rel=&#34;Javascript&#34;&gt;
+&lt;code class=&#34;javascript&#34;&gt;
+var Tooltip =  {
+    create: function(tooltip, elm) {
+        elm_edges = elm.getBoundingClientRect(); // relative to the viewport
+        tooltip_text = document.createTextNode(elm.getAttribute(&#39;data-tooltip&#39;));
+        tooltip.appendChild(tooltip_text);
 
-        &lt;span class=&#34;comment&#34;&gt;// Remove no-display + set the correct classname based on the position
-        // of the elm.&lt;/span&gt;
-        &lt;span class=&#34;function-label&#34;&gt;if&lt;/span&gt; (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; &gt; (&lt;span class=&#34;type&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;innerWidth&lt;/span&gt; - 100)) {
-            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;className&lt;/span&gt; = &lt;span class=&#34;selector&#34;&gt;&#39;tooltip-container tooltip-left&#39;&lt;/span&gt;;
-        } &lt;span class=&#34;function-label&#34;&gt;else if&lt;/span&gt; ((&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; + (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;width&lt;/span&gt; / 2)) &lt; 100) {
-            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;className&lt;/span&gt; = &lt;span class=&#34;selector&#34;&gt;&#39;tooltip-container tooltip-right&#39;&lt;/span&gt;;
-        } &lt;span class=&#34;function-label&#34;&gt;else&lt;/span&gt; {
-            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;className&lt;/span&gt; = &lt;span class=&#34;selector&#34;&gt;&#39;tooltip-container tooltip-center&#39;&lt;/span&gt;;
+        // Remove no-display + set the correct classname based on the position
+        // of the elm.
+        if (elm_edges.left &gt; (window.innerWidth - 100)) {
+            tooltip.className =&#39;tooltip-container tooltip-left&#39;;
+        } else if ((elm_edges.left + (elm_edges.width / 2)) &lt; 100) {
+            tooltip.className = &#39;tooltip-container tooltip-right&#39;;
+        } else {
+            tooltip.className = &#39;tooltip-container tooltip-center&#39;;
         }
     },
-    &lt;span class=&#34;property&#34;&gt;position:&lt;/span&gt; &lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt;(tooltip, elm) {
-        &lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;elm_top&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;top&lt;/span&gt; + &lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;height&lt;/span&gt; + 10; &lt;span class=&#34;comment&#34;&gt;// 10 = arrow height&lt;/span&gt;
+    position: function(tooltip, elm) {
+        var elm_top = elm_edges.top + elm_edges.height + 10; // 10 = arrow height
 
-        &lt;span class=&#34;comment&#34;&gt;// position tooltip on the left side of the elm.
-        // 220 = the max width + arrow width of the tooltip.&lt;/span&gt;
-        &lt;span class=&#34;function-label&#34;&gt;if&lt;/span&gt; (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; &gt; (&lt;span class=&#34;type&#34;&gt;window&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;innerWidth&lt;/span&gt; - 100)) {
-            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; = (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; - 220) + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
-            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;top&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;offsetTop&lt;/span&gt; + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
-        } &lt;span class=&#34;function-label&#34;&gt;else if&lt;/span&gt; ((&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; + (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;width&lt;/span&gt; / 2)) &lt; 100) {
-            &lt;span class=&#34;comment&#34;&gt;// position tooltip on the right side of the elm.&lt;/span&gt;
-            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; = (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; + &lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;width&lt;/span&gt; + 20) + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
-            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;top&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;offsetTop&lt;/span&gt; + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
-        } &lt;span class=&#34;function-label&#34;&gt;else&lt;/span&gt; {
-            &lt;span class=&#34;comment&#34;&gt;// Position the toolbox in the center of the elm.&lt;/span&gt;
-            &lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;centered&lt;/span&gt; = (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; + (&lt;span class=&#34;variable&#34;&gt;elm_edges&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;width&lt;/span&gt; / 2)) - (&lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;offsetWidth&lt;/span&gt; / 2);
-            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;left&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;centered&lt;/span&gt; + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
-            &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;style&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;top&lt;/span&gt; = &lt;span class=&#34;variable&#34;&gt;elm_top&lt;/span&gt; + &lt;span class=&#34;unit&#34;&gt;&#39;px&#39;&lt;/span&gt;;
+        // position tooltip on the left side of the elm.
+        // 220 = the max width + arrow width of the tooltip.
+        if (elm_edges.left &gt; (window.innerWidth - 100)) {
+            tooltip.style.left = (elm_edges.left - 220) + &#39;px&#39;;
+            tooltip.style.top = elm.offsetTop + &#39;px&#39;;
+        } else if ((elm_edges.left + (elm_edges.width / 2)) &lt; 100) {
+            // position tooltip on the right side of the elm.
+            tooltip.style.left = (elm_edges.left + elm_edges.width + 20) + &#39;px&#39;;
+            tooltip.style.top = elm.offsetTop + &#39;px&#39;;
+        } else {
+            // Position the toolbox in the center of the elm.
+            var centered = (elm_edges.left + (elm_edges.width / 2)) - (tooltip.offsetWidth / 2);
+            tooltip.style.left = centered + &#39;px&#39;;
+            tooltip.style.top = elm_top + &#39;px&#39;;
         }
     },
 };
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;With the functions &lt;em&gt;showTooltip&lt;/em&gt; and &lt;em&gt;hideTooltip&lt;/em&gt; the tooltip is visible or
 hidden, using the EventListeners &lt;em&gt;mouseover&lt;/em&gt; and &lt;em&gt;mouseout&lt;/em&gt;.&lt;/p&gt;
 
-&lt;pre rel=&#34;Javascript&#34; class=&#34;language-js&#34;&gt;&lt;code&gt;&lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;property&#34;&gt;showTooltip&lt;/span&gt;(evt) {
-    &lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;item&lt;/span&gt; = Object.create(&lt;span class=&#34;variable&#34;&gt;Tooltip&lt;/span&gt;);
-    &lt;span class=&#34;variable&#34;&gt;item&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;create&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;, evt.currentTarget);
-    &lt;span class=&#34;variable&#34;&gt;item&lt;/span&gt;.&lt;span class=&#34;property&#34;&gt;position&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;, evt.currentTarget);
+&lt;pre rel=&#34;Javascript&#34;&gt;
+&lt;code class=&#34;Javascript&#34;&gt;
+function showTooltip(evt) {
+    var item = Object.create(Tooltip);
+    item.create(tooltip, evt.currentTarget);
+    item.position(tooltip, evt.currentTarget);
 }
 
-&lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;property&#34;&gt;hideTooltip&lt;/span&gt;() {
-    &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.&lt;span class=&#34;type&#34;&gt;className&lt;/span&gt; = &lt;span class=&#34;selector&#34;&gt;&#39;tooltip-container no-display&#39;&lt;/span&gt;;
-    &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.removeChild(&lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.firstChild);
-    &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt;.removeAttribute(&lt;span class=&#34;selector&#34;&gt;&#39;style&#39;&lt;/span&gt;);
+function hideTooltip() {
+    tooltip.className = &#39;tooltip-container no-display&#39;;
+    tooltip.removeChild(tooltip.firstChild);
+    tooltip.removeAttribute(&#39;style&#39;);
 }
 
-&lt;span class=&#34;function-label&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;property&#34;&gt;onReady&lt;/span&gt;() {
-    &lt;span class=&#34;variable&#34;&gt;tooltip&lt;/span&gt; = document.documentElement.querySelector(&lt;span class=&#34;selector&#34;&gt;&#39;.tooltip-container&#39;&lt;/span&gt;);
-    &lt;span class=&#34;function-label&#34;&gt;var&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;tooltip_elms&lt;/span&gt; = document.documentElement.querySelectorAll(&lt;span class=&#34;selector&#34;&gt;&#39;[data-tooltip]&#39;&lt;/span&gt;);
+function onReady() {
+    tooltip = document.documentElement.querySelector(&#39;.tooltip-container&#39;);
+    var tooltip_elms = document.documentElement.querySelectorAll(&#39;[data-tooltip]&#39;);
 
     Array.prototype.forEach.call(tooltip_elms, function(elm) {
-        &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.addEventListener(&lt;span class=&#34;selector&#34;&gt;&#39;mouseover&#39;&lt;/span&gt;,  showTooltip , false);
-        &lt;span class=&#34;variable&#34;&gt;elm&lt;/span&gt;.addEventListener(&lt;span class=&#34;selector&#34;&gt;&#39;mouseout&#39;&lt;/span&gt;, hideTooltip, false);
+        elm.addEventListener(&#39;mouseover&#39;,  showTooltip , false);
+        elm.addEventListener(&#39;mouseout&#39;, hideTooltip, false);
     });
 }
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;The CSS handles the tooltip animation using animation keyframes.
 The class names &lt;em&gt;tooltip-left, tooltip-right&lt;/em&gt; and &lt;em&gt;tooltip-center&lt;/em&gt; positions the
 tooltip arrow.&lt;/p&gt;
 
-&lt;pre class=&#34;language-scss&#34; rel=&#34;SCSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;selector&#34;&gt;.tooltip-container&lt;/span&gt; {
-    &lt;span class=&#34;include&#34;&gt;@include transform(translateZ(0))&lt;/span&gt;; &lt;span class=&#34;comment&#34;&gt;// GPU&lt;/span&gt;
-    &lt;span class=&#34;property&#34;&gt;position&lt;/span&gt;: absolute;
-    &lt;span class=&#34;property&#34;&gt;max-width&lt;/span&gt;: 200px;
-    &lt;span class=&#34;property&#34;&gt;padding&lt;/span&gt;: 8px 10px 10px;
-    &lt;span class=&#34;property&#34;&gt;font-size&lt;/span&gt;: 1.6rem;
-    &lt;span class=&#34;property&#34;&gt;background-color&lt;/span&gt;: #2d2d2d;
-    &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: #fff;
-    &lt;span class=&#34;property&#34;&gt;border-radius&lt;/span&gt;: 4px;
-    &lt;span class=&#34;property&#34;&gt;opacity&lt;/span&gt;: 1; &lt;span class=&#34;comment&#34;&gt;// scale animation setting&lt;/span&gt;
+&lt;pre rel=&#34;SCSS&#34;&gt;
+&lt;code class=&#34;scss&#34;&gt;
+.tooltip-container {
+    @include transform(translateZ(0)); // GPU
+    position: absolute;
+    max-width: 200px;
+    padding: 8px 10px 10px;
+    font-size: 1.6rem;
+    background-color: #2d2d2d;
+    color: #fff;
+    border-radius: 4px;
+    opacity: 1; // scale animation setting
 
-    &amp;&lt;span class=&#34;selector&#34;&gt;[class*=&#34; tooltip-&#34;]&lt;/span&gt; {
-        &lt;span class=&#34;include&#34;&gt;@include animation(tooltip-anim 0.8s)&lt;/span&gt;;
+    &amp;[class*=&#34; tooltip-&#34;] {
+        @include animation(tooltip-anim 0.8s);
     }
 
-    &amp;&lt;span class=&#34;selector&#34;&gt;::after&lt;/span&gt; {
-        &lt;span class=&#34;property&#34;&gt;position&lt;/span&gt;: absolute;
-        &lt;span class=&#34;property&#34;&gt;display&lt;/span&gt;: block;
-        &lt;span class=&#34;property&#34;&gt;content&lt;/span&gt;: &#34;&#34;;
+    &amp;::after {
+        position: absolute;
+        display: block;
+        content: &#34;&#34;;
     }
 
-    &lt;span class=&#34;comment&#34;&gt;// position arrow on the right of the tooltip&lt;/span&gt;
-    &amp;&lt;span class=&#34;selector&#34;&gt;.tooltip-left::after&lt;/span&gt; {
-        &lt;span class=&#34;include&#34;&gt;@include transform(translateY(-50%))&lt;/span&gt;;
-        &lt;span class=&#34;property&#34;&gt;right&lt;/span&gt;: -8px;
-        &lt;span class=&#34;property&#34;&gt;top&lt;/span&gt;: 50%;
-        &lt;span class=&#34;property&#34;&gt;border&lt;/span&gt;: {
-            &lt;span class=&#34;property&#34;&gt;style&lt;/span&gt;: solid;
-            &lt;span class=&#34;property&#34;&gt;width&lt;/span&gt;: 6px 0 6px 8px;
-            &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: transparent transparent transparent #2d2d2d;
+    // position arrow on the right of the tooltip
+    &amp;.tooltip-left::after {
+        @include transform(translateY(-50%));
+        right: -8px;
+        top: 50%;
+        border: {
+            style: solid;
+            width: 6px 0 6px 8px;
+            color: transparent transparent transparent #2d2d2d;
         }
     }
 
-    &lt;span class=&#34;comment&#34;&gt;// position arrow on the left of the tooltip&lt;/span&gt;
-    &amp;&lt;span class=&#34;selector&#34;&gt;.tooltip-right::after&lt;/span&gt; {
-        &lt;span class=&#34;include&#34;&gt;@include transform(translateY(-50%))&lt;/span&gt;;
-        &lt;span class=&#34;property&#34;&gt;left&lt;/span&gt;: -8px;
-        &lt;span class=&#34;property&#34;&gt;top&lt;/span&gt;: 50%;
-        &lt;span class=&#34;property&#34;&gt;border&lt;/span&gt;: {
-            &lt;span class=&#34;property&#34;&gt;style&lt;/span&gt;: solid;
-            &lt;span class=&#34;property&#34;&gt;width&lt;/span&gt;: 6px 8px 6px 0;
-            &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: transparent #2d2d2d transparent transparent;
+    // position arrow on the left of the tooltip
+    &amp;.tooltip-right::after {
+        @include transform(translateY(-50%));
+        left: -8px;
+        top: 50%;
+        border: {
+            style: solid;
+            width: 6px 8px 6px 0;
+            color: transparent #2d2d2d transparent transparent;
         }
     }
 
-    &lt;span class=&#34;comment&#34;&gt;// position arrow in the top center of the tooltip&lt;/span&gt;
-    &amp;&lt;span class=&#34;selector&#34;&gt;.tooltip-center::after&lt;/span&gt; {
-        &lt;span class=&#34;include&#34;&gt;@include transform(translateX(-50%))&lt;/span&gt;;
-        &lt;span class=&#34;property&#34;&gt;top&lt;/span&gt;: -8px;
-        &lt;span class=&#34;property&#34;&gt;left&lt;/span&gt;: 50%;
-        &lt;span class=&#34;property&#34;&gt;border&lt;/span&gt;: {
-            &lt;span class=&#34;property&#34;&gt;style&lt;/span&gt;: solid;
-            &lt;span class=&#34;property&#34;&gt;width&lt;/span&gt;: 0 6px 8px 6px;
-            &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: transparent transparent #2d2d2d transparent;
+    // position arrow in the top center of the tooltip
+    &amp;.tooltip-center::after {
+        @include transform(translateX(-50%));
+        top: -8px;
+        left: 50%;
+        border: {
+            style: solid;
+            width: 0 6px 8px 6px;
+            color: transparent transparent #2d2d2d transparent;
         }
     }
 }
 
-&lt;span class=&#34;selector&#34;&gt;[data-tooltip]&lt;/span&gt; {
-    &lt;span class=&#34;property&#34;&gt;cursor&lt;/span&gt;: pointer;
-    &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: #7cb342;
-    &lt;span class=&#34;property&#34;&gt;display&lt;/span&gt;: inline-block;
+[data-tooltip] {
+    cursor: pointer;
+    color: #7cb342;
+    display: inline-block;
 }
 
-&lt;span class=&#34;include&#34;&gt;@include keyframes(tooltip-anim)&lt;/span&gt; {
+@include keyframes(tooltip-anim) {
     0% {
-        &lt;span class=&#34;include&#34;&gt;@include transform(matrix(0.5, 0, 0, 0.8, 0, 0))&lt;/span&gt;;
-        &lt;span class=&#34;property&#34;&gt;opacity&lt;/span&gt;: 0;
+        @include transform(matrix(0.5, 0, 0, 0.8, 0, 0));
+        opacity: 0;
     }
 
-    20% { &lt;span class=&#34;include&#34;&gt;@include transform(matrix(1.1, 0, 0, 1.1, 0, 0))&lt;/span&gt;; }
-    40% { &lt;span class=&#34;property&#34;&gt;opacity&lt;/span&gt;: 1; }
-    70% { &lt;span class=&#34;include&#34;&gt;@include transform(matrix(1, 0, 0, 1, 0, 0))&lt;/span&gt;; }
-    100% { &lt;span class=&#34;include&#34;&gt;@include transform(matrix(1, 0, 0, 1, 0, 0))&lt;/span&gt;; }
-}&lt;/code&gt;&lt;/pre&gt;
+    20% { @include transform(matrix(1.1, 0, 0, 1.1, 0, 0)); }
+    40% { opacity: 1; }
+    70% { @include transform(matrix(1, 0, 0, 1, 0, 0)); }
+    100% { @include transform(matrix(1, 0, 0, 1, 0, 0)); }
+}
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;As you can see, not much code is written to get the tooltip to work. The complete
 code can be found on my &lt;a href=&#34;https://github.com/mirelvt/js-css-tooltip&#34;&gt;github page&lt;/a&gt;
-and I also created a simple demo page &lt;a href=&#34;http://www.mirellavanteulingen.nl/demos/tooltip/&#34;&gt;demo page&lt;/a&gt;.&lt;/p&gt;
+and I also created a simple &lt;a href=&#34;http://www.mirellavanteulingen.nl/demos/tooltip/&#34;&gt;demo page&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Font icons with Fontcustom and SASS</title>
-      <link>http://www.mirellavanteulingen.nl/blog/sass_fontcustom/</link>
+      <link>/blog/sass_fontcustom/</link>
       <pubDate>Sat, 21 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/sass_fontcustom/</guid>
+      <guid>/blog/sass_fontcustom/</guid>
       <description>&lt;p&gt;In 2013 and 2014 I used &lt;a href=&#34;http://www.icomoon.io&#34;&gt;Icomoon&lt;/a&gt; to create font icons.
 It is a nice library and tool. You can choose icons from their library and
 they have the feature to upload your own svgs to create the font icon set. It is a great tool if you only need to generate the font icon once. But not when you have to add new ones to the set.
@@ -215,7 +326,7 @@ they have the feature to upload your own svgs to create the font icon set. It is
 &lt;/ul&gt;
 &lt;p&gt;
     That is quite a few steps I have to go through, to update my font icon set. So how can this workflow
-    be more efficient? 3 Months ago I read somewhere about &lt;a href=&#34;http://fontcustom.com&#34;&gt;Fontcustom&lt;/a&gt;,
+    be more efficient? 3 Months ago I read somewhere about &lt;a href=&#34;https://rsp.github.io/fontcustom/&#34;&gt;Fontcustom&lt;/a&gt;,
     not sure if it was an article in &lt;a href=&#34;http://css-weekly.com&#34;&gt;cssweekly&lt;/a&gt; or the &lt;a href=&#34;http://www.webdesignermagazine.nl&#34;&gt;Webdesigner Magazine&lt;/a&gt; (Dutch version),
     but it caught my attention. Fontcustom is a command line tool to generate the font icon, based on
     a selection of svg files. It generates the css + preview html on the fly.
@@ -224,20 +335,26 @@ they have the feature to upload your own svgs to create the font icon set. It is
 &lt;h2&gt;How to set up Fontcustom to speed up my workflow&lt;/h2&gt;
 &lt;p&gt;In my daily work I use SASS, and Fontcustom has the feature to generate .scss file. This is very neat, but the generated .scss file is similar to the generated css file: it defines for each icon an icon class, and when you have, let&amp;rsquo;s say 30 icons, it&amp;rsquo;s get cluttered.&lt;/p&gt;&lt;/p&gt;
 
-&lt;pre class=&#34;language-scss&#34; rel=&#34;SCSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;selector&#34;&gt;.icon-arrow-down&lt;/span&gt;:before {
-    &lt;span class=&#34;property&#34;&gt;content&lt;/span&gt;: &#34;&#34;;
+&lt;pre rel=&#34;SCSS&#34;&gt;
+&lt;code class=&#34;scss&#34;&gt;
+.icon-arrow-down::before {
+    content: &#34;&#34;;
 }
-&lt;span class=&#34;selector&#34;&gt;.icon-arrow-left&lt;/span&gt;:before {
-    &lt;span class=&#34;property&#34;&gt;content&lt;/span&gt;: &#34;&#34;;
-} &lt;/code&gt;&lt;/pre&gt;
+.icon-arrow-left::before {
+    content: &#34;&#34;;
+}
+&lt;/code&gt;
+&lt;/pre&gt;
 &lt;p&gt;
     I wanted to use the SASS maps feature to get a nice list of all the icons and use an @each loop to generate the classes. How do I get Fontcustom generate the output I want? First you need to have your project structure ready and &lt;a href=&#34;http://fontcustom.com&#34;&gt;Fontcustom&lt;/a&gt; installed. My project structure looks like this:
-&lt;/p&gt;&lt;pre rel=&#34;Folder structure&#34;&gt;&lt;code&gt;FOO-project/
+&lt;/p&gt;
+&lt;pre rel=&#34;Folder structure&#34;&gt;
+&lt;code class=&#34;dts&#34;&gt;FOO-project/
 static/
   foo-icons/
      fontcustom.yml
-     _icons.scss &lt;span class=&#34;comment&#34;&gt;/* Is the template which will create the _icons.scss partial file */&lt;/span&gt;
-     foo-icons-preview.html &lt;span class=&#34;comment&#34;&gt;/* This file is generated by fontcustom * /&lt;/span&gt;
+     _icons.scss /* Is the template which will create the _icons.scss partial file \*/
+     foo-icons-preview.html /* This file is generated by fontcustom \*/
      svg/
         checkmark.svg
         arrow-right.svg
@@ -246,67 +363,83 @@ static/
    fonts/
    scss/
       base.scss
-      _fonts.scss&lt;/code&gt;&lt;/pre&gt;
+      _fonts.scss
+&lt;/code&gt;
+&lt;/pre&gt;
 &lt;h2&gt;Fontcustom.yml&lt;/h2&gt;
 &lt;p&gt;
     The two main files which will do the work are &lt;strong&gt;fontcustom.yml&lt;/strong&gt; config file and the
-    &lt;strong&gt;_icons.scss&lt;/strong&gt; fontcustom template file. There are a lot of configuration options,
+    &lt;b&gt;_icons.scss&lt;/b&gt; fontcustom template file. There are a lot of configuration options,
     but in this example I highlight the ones which are important for this example. Personally I run the fontcustom command from the root of the project directory, that&#39;s why I use the complete path in the config file. Now let&#39;s take a look at my fontcustom.yml file:
 &lt;/p&gt;
-&lt;pre class=&#34;language-yml&#34; rel=&#34;YAML&#34;&gt;&lt;code&gt;&lt;span class=&#34;comment&#34;&gt;# =============================================
+&lt;pre rel=&#34;YAML&#34;&gt;
+&lt;code class=&#34;yaml&#34;&gt;
+# =============================================
 # Font Custom Configuration, for more info,
 # visit https://github.com/FontCustom/fontcustom.
 # ===============================================
-&lt;/span&gt;
-&lt;span class=&#34;selector&#34;&gt;font_name&lt;/span&gt;: foo-icons
+font_name: foo-icons
 
-&lt;span class=&#34;comment&#34;&gt;# Generate fonts without asset-busting hashes.&lt;/span&gt;
-&lt;span class=&#34;selector&#34;&gt;no_hash&lt;/span&gt;: true
+# Generate fonts without asset-busting hashes.
+no_hash: true
 
-&lt;span class=&#34;comment&#34;&gt;# Forces compilation, even if inputs have not changed&lt;/span&gt;
-&lt;span class=&#34;selector&#34;&gt;force&lt;/span&gt;: false
+# Forces compilation, even if inputs have not changed
+force: false
 
-&lt;span class=&#34;selector&#34;&gt;input&lt;/span&gt;:
-  &lt;span class=&#34;property&#34;&gt;vectors&lt;/span&gt;: FOO-project/static/foo-icons/svg
-  &lt;span class=&#34;property&#34;&gt;templates&lt;/span&gt;: FOO-project/static/foo-icons
+input:
+  vectors: FOO-project/static/foo-icons/svg
+  templates: FOO-project/static/foo-icons
 
-&lt;span class=&#34;selector&#34;&gt;output&lt;/span&gt;:
-  &lt;span class=&#34;property&#34;&gt;fonts&lt;/span&gt;: FOO-project/static/fonts
-  &lt;span class=&#34;property&#34;&gt;preview&lt;/span&gt;: FOO-project/static/foo-icons
-  &lt;span class=&#34;property&#34;&gt;_icons.scss&lt;/span&gt;: FOO-project/static/scss
+output:
+  fonts: FOO-project/static/fonts
+  preview: FOO-project/static/foo-icons
+  _icons.scss: FOO-project/static/scss
 
-&lt;span class=&#34;selector&#34;&gt;templates&lt;/span&gt;: [_icons.scss, preview]&lt;/code&gt;&lt;/pre&gt;
+templates: [_icons.scss, preview]
+&lt;/code&gt;
+&lt;/pre&gt;
 &lt;h2&gt;SCSS fontcustom template&lt;/h2&gt;
 &lt;p&gt;
-    The configuration file is ready, now I have to create the _icons.scss template which will output the desired scss partial :
+    The configuration file is ready, now I have to create the
+    _icons.scss template which will output the desired scss partial :
 &lt;/p&gt;
-&lt;pre class=&#34;language-scss&#34; rel=&#34;Fontcustom SCSS template&#34;&gt;&lt;code&gt;&lt;span class=&#34;comment&#34;&gt;// This will generate the @font-face&lt;/span&gt;
+&lt;pre rel=&#34;Fontcustom SCSS template&#34;&gt;
+&lt;code&gt;
+// This will generate the @font-face
 &amp;lt;%= font_face(path: &#34;fonts/&#34; + font_name) %&amp;gt;
 
-&lt;span class=&#34;comment&#34;&gt;// This generates the SASS map:&lt;/span&gt;
-&lt;span class=&#34;variable&#34;&gt;$font-icons&lt;/span&gt;: (&amp;lt;% @glyphs.each do |name, value| %&amp;gt;
+// This generates the SASS map:
+$font-icons: (&amp;lt;% @glyphs.each do |name, value| %&amp;gt;
 &#34;&amp;lt;%= name.to_s %&amp;gt;&#34;: &#34;\&amp;lt;%= value[:codepoint].to_s(16) %&amp;gt;&#34;,&amp;lt;% end %&amp;gt;
 );
 
-@each &lt;span class=&#34;variable&#34;&gt;$icon&lt;/span&gt;, &lt;span class=&#34;variable&#34;&gt;$unicode&lt;/span&gt; in &lt;span class=&#34;variable&#34;&gt;$font-icons&lt;/span&gt; {
-    &lt;span class=&#34;selector&#34;&gt;.icon-#{&lt;/span&gt;&lt;span class=&#34;variable&#34;&gt;$icon&lt;/span&gt;&lt;span class=&#34;selector&#34;&gt;}&lt;/span&gt;:before {
-      content: &lt;span class=&#34;variable&#34;&gt;$unicode&lt;/span&gt;;
+@each $icon, $unicode in $font-icons {
+    .icon-#{$icon}::before {
+        content: $unicode;
     }
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;&lt;h2&gt;Generate the font icon and _icons.scss partial&lt;/h2&gt;
 &lt;p&gt;
 Everything is in place and I can run the fontcustom command from the root of the directory to generate the font icon set and scss partial.
 &lt;/p&gt;
-&lt;pre rel=&#34;Terminal&#34;&gt;&lt;code&gt;$ fontcustom compile -c static/foo-icons/fontcustom.yml
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre rel=&#34;Terminal&#34;&gt;
+&lt;code class=&#34;dos&#34;&gt;
+$ fontcustom compile -c static/foo-icons/fontcustom.yml
+&lt;/code&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
 &lt;p&gt;The project structure is updated with the font icon and scss partial:&lt;/p&gt;
-&lt;pre rel=&#34;Folder structure&#34;&gt;&lt;code&gt;FOO-project/
+&lt;pre rel=&#34;Folder structure&#34;&gt;
+&lt;code class=&#34;dts&#34;&gt;
+FOO-project/
 static/
   foo-icons/
      fontcustom.yml
-     _icons.scss &lt;span class=&#34;comment&#34;&gt;/* Is the template which will create the _icons.scss partial file &lt;em&gt;/&lt;/span&gt;
-     foo-icons-preview.html &lt;span class=&#34;comment&#34;&gt;/&lt;/em&gt; This file is generated by fontcustom * /&lt;/span&gt;
+     _icons.scss /* Is the template which will create the _icons.scss partial file */
+     foo-icons-preview.html /* This file is generated by fontcustom */
      svg/
         checkmark.svg
         arrow-right.svg
@@ -320,91 +453,98 @@ static/
    scss/
       base.scss
       _fonts.scss
-      _icons.scss &lt;span class=&#34;comment&#34;&gt;/* generated icons partial */&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;
-Let&amp;rsquo;s take a look at the generated _.icons.scss file. It contains the structure and info I wanted: @font-face declaration, the SASS map and the @each loop:
-&lt;/p&gt;&lt;/p&gt;
+      _icons.scss /* generated icons partial */
+&lt;/code&gt;
+&lt;/pre&gt;&lt;/p&gt;
 
-&lt;pre class=&#34;language-scss&#34; rel=&#34;SCSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;selector&#34;&gt;@font-face&lt;/span&gt; {
-    &lt;span class=&#34;property&#34;&gt;font-family&lt;/span&gt;: &#34;foo-icons&#34;;
+&lt;p&gt;Let&amp;rsquo;s take a look at the generated _.icons.scss file. It contains the structure and info I wanted: @font-face declaration, the SASS map and the @each loop:&lt;/p&gt;
+
+&lt;pre rel=&#34;SCSS&#34;&gt;
+&lt;code&gt;
+@font-face {
+    font-family: &#34;foo-icons&#34;;
         src: url(&#34;fonts/foo-icons.eot&#34;);
         src: url(&#34;fonts/foo-icons.eot?#iefix&#34;) format(&#34;embedded-opentype&#34;),
             url(&#34;fonts/foo-icons.woff&#34;) format(&#34;woff&#34;),
             url(&#34;fonts/foo-icons.ttf&#34;) format(&#34;truetype&#34;),
             url(&#34;fonts/foo-icons.svg#foo-icons&#34;) format(&#34;svg&#34;);
-    &lt;span class=&#34;property&#34;&gt;font-weight&lt;/span&gt;: normal;
-    &lt;span class=&#34;property&#34;&gt;font-style&lt;/span&gt;: normal;
+    font-weight: normal;
+    font-style: normal;
 }
 
-&lt;span class=&#34;selector&#34;&gt;@media screen and (-webkit-min-device-pixel-ratio:0)&lt;/span&gt; {
-      &lt;span class=&#34;selector&#34;&gt;@font-face&lt;/span&gt; {
-          &lt;span class=&#34;property&#34;&gt;font-family&lt;/span&gt;: &#34;foo-icons&#34;;
-          &lt;span class=&#34;property&#34;&gt;src&lt;/span&gt;: url(&#34;fonts/foo-icons.svg#foo-icons&#34;) format(&#34;svg&#34;);
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+      @font-face {
+          font-family: &#34;foo-icons&#34;;
+          src: url(&#34;fonts/foo-icons.svg#foo-icons&#34;) format(&#34;svg&#34;);
       }
   }
 
-  &lt;span class=&#34;variable&#34;&gt;$font-icons&lt;/span&gt;: (
-      &lt;span class=&#34;variable&#34;&gt;&#34;arrow-down&#34;&lt;/span&gt;: &#34;\f100&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;arrow-left&#34;&lt;/span&gt;: &#34;\f101&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;arrow-right&#34;&lt;/span&gt;: &#34;\f102&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;arrow-up&#34;&lt;/span&gt;: &#34;\f103&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;calendar&#34;&lt;/span&gt;: &#34;\f104&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;checkmark&#34;&lt;/span&gt;: &#34;\f10f&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;close&#34;&lt;/span&gt;: &#34;\f111&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;edit&#34;&lt;/span&gt;: &#34;\f110&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;graph&#34;&lt;/span&gt;: &#34;\f105&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;help&#34;&lt;/span&gt;: &#34;\f112&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;lock-closed&#34;&lt;/span&gt;: &#34;\f106&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;lock-open&#34;&lt;/span&gt;: &#34;\f107&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;plus&#34;&lt;/span&gt;: &#34;\f108&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;projects&#34;&lt;/span&gt;: &#34;\f113&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;search&#34;&lt;/span&gt;: &#34;\f109&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;tag&#34;&lt;/span&gt;: &#34;\f10a&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;tags&#34;&lt;/span&gt;: &#34;\f10b&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;trash&#34;&lt;/span&gt;: &#34;\f10c&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;user&#34;&lt;/span&gt;: &#34;\f10d&#34;,
-      &lt;span class=&#34;variable&#34;&gt;&#34;users&#34;&lt;/span&gt;: &#34;\f10e&#34;,
+  &lt;span class=&#34;variable&#34;&gt;$font-icons: (
+      &#34;arrow-down&#34;: &#34;\f100&#34;,
+      &#34;arrow-left&#34;: &#34;\f101&#34;,
+      &#34;arrow-right&#34;: &#34;\f102&#34;,
+      &#34;arrow-up&#34;: &#34;\f103&#34;,
+      &#34;calendar&#34;: &#34;\f104&#34;,
+      &#34;checkmark&#34;: &#34;\f10f&#34;,
+      &#34;close&#34;: &#34;\f111&#34;,
+      &#34;edit&#34;: &#34;\f110&#34;,
+      &#34;graph&#34;: &#34;\f105&#34;,
+      &#34;help&#34;: &#34;\f112&#34;,
+      &#34;lock-closed&#34;: &#34;\f106&#34;,
+      &#34;lock-open&#34;: &#34;\f107&#34;,
+      &#34;plus&#34;: &#34;\f108&#34;,
+      &#34;projects&#34;: &#34;\f113&#34;,
+      &#34;search&#34;: &#34;\f109&#34;,
+      &#34;tag&#34;: &#34;\f10a&#34;,
+      &#34;tags&#34;: &#34;\f10b&#34;,
+      &#34;trash&#34;: &#34;\f10c&#34;,
+      &#34;user&#34;: &#34;\f10d&#34;,
+      &#34;users&#34;: &#34;\f10e&#34;,
   );
 
-@each &lt;span class=&#34;variable&#34;&gt;$icon&lt;/span&gt;, &lt;span class=&#34;variable&#34;&gt;$unicode&lt;/span&gt; in &lt;span class=&#34;variable&#34;&gt;$font-icons&lt;/span&gt; {
-    &lt;span class=&#34;property&#34;&gt;.icon-#{&lt;/span&gt;&lt;span class=&#34;variable&#34;&gt;$icon&lt;/span&gt;&lt;span class=&#34;property&#34;&gt;}:before&lt;/span&gt; {
-        &lt;span class=&#34;property&#34;&gt;content&lt;/span&gt;: &lt;span class=&#34;variable&#34;&gt;$unicode&lt;/span&gt;;
+@each $icon, $unicode in $font-icons {
+    .icon-#{$icon}:before {
+        content: $unicode;
     }
-} &lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;&lt;h2&gt;Final steps&lt;/h2&gt;
 &lt;p&gt;The final step is to make sure that every class that starts with or contains &lt;strong&gt;&amp;ldquo;icon-&amp;rdquo;&lt;/strong&gt; will use the &lt;strong&gt;foo-icons&lt;/strong&gt; font and that _icons.scss is included. I added the following code to my _fonts.scss:
 &lt;/p&gt;&lt;/p&gt;
 
-&lt;pre class=&#34;language-scss&#34; rel=&#34;_fonts.scss&#34;&gt;&lt;code&gt;&lt;span class=&#34;selector&#34;&gt;@import&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;&#34;_icons&#34;&lt;/span&gt;;
+&lt;pre rel=&#34;_fonts.scss&#34;&gt;
+&lt;code&gt;
+@import &#34;_icons&#34;;
 
-&lt;span class=&#34;selector&#34;&gt;[class^=&#34;icon-&#34;]:before&lt;/span&gt;,
-&lt;span class=&#34;selector&#34;&gt;[class*=&#34; icon-&#34;]:before&lt;/span&gt; {
-    &lt;span class=&#34;property&#34;&gt;display&lt;/span&gt;: inline-block;
-    &lt;span class=&#34;property&#34;&gt;font-family&lt;/span&gt;: &#34;foo-icons&#34;;
-    &lt;span class=&#34;property&#34;&gt;speak&lt;/span&gt;: none;
-    &lt;span class=&#34;property&#34;&gt;font-style&lt;/span&gt;: normal;
-    &lt;span class=&#34;property&#34;&gt;font-weight&lt;/span&gt;: normal;
-    &lt;span class=&#34;property&#34;&gt;font-variant&lt;/span&gt;: normal;
-    &lt;span class=&#34;property&#34;&gt;text-transform&lt;/span&gt;: none;
-    &lt;span class=&#34;property&#34;&gt;line-height&lt;/span&gt;: 1px;
-    &lt;span class=&#34;property&#34;&gt;vertical-align&lt;/span&gt;: top;
-    &lt;span class=&#34;property&#34;&gt;padding-top&lt;/span&gt;: 7px;
-} &lt;/code&gt;&lt;/pre&gt;
+[class*=&#34; icon-&#34;]::before {
+    display: inline-block;
+    font-family: &#34;foo-icons&#34;;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1px;
+    vertical-align: top;
+    padding-top: 7px;
+}
+&lt;/code&gt;
+&lt;/pre&gt;
 
-&lt;p&gt;
-My configuration is in place and when I have new icons to add, I just have to add the new icons to my svg directory and run the fontcustom command and scss command. The 6 slow steps are reduced to 3 faster steps.
-&lt;/p&gt;
+&lt;p&gt;My configuration is in place and when I have new icons to add, I just have to add the new icons to my svg directory and run the fontcustom command and scss command. The 6 slow steps are reduced to 3 faster steps.&lt;/p&gt;
+
 &lt;p&gt;I hope this article is meaningful to you and if you have any questions or remarks you can find me on twitter @mirelvt or you can email me &lt;a href=&#34;mailto:mailenm@mirellavanteulingen.nl&#34;&gt;mailenm@mirellavanteulingen.nl&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Create clickable rating stars with only SASS and HTML</title>
-      <link>http://www.mirellavanteulingen.nl/blog/rating_stars_sass/</link>
+      <link>/blog/rating_stars_sass/</link>
       <pubDate>Fri, 03 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/rating_stars_sass/</guid>
+      <guid>/blog/rating_stars_sass/</guid>
       <description>&lt;p&gt;In May, Roy Tomeij wrote the article &lt;a href=&#34;http://advancedsass.com/articles/configurable-star-rating-without-js.html&#34;&gt;&amp;ldquo;Configurable star rating without JS&amp;rdquo;&lt;/a&gt;. I was thinking how to do this using a font icon instead of a background image and make the stars clickable. I believe it would take less code to write, and it is. I had the code finished a couple of days later in May, but now I&amp;rsquo;ve finally have the time to post my solution. So here we go:
 &lt;h3&gt;HTML structure&lt;/h3&gt;
 &lt;p&gt;
@@ -412,45 +552,51 @@ I place the radio buttons in reversed order in the DOM to be able to do the hove
 &lt;/p&gt;
 &lt;p&gt;I also add a &amp;ldquo;remove rating&amp;rdquo; option to be able to reset the rating.&lt;/p&gt;&lt;/p&gt;
 
-&lt;pre class=&#34;language-html&#34; rel=&#34;HTML&#34;&gt;&lt;code&gt;&amp;lt;&lt;span class=&#34;tag&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;class&lt;/span&gt;=&#34;remove-rating-wrapper&#34;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;type&lt;/span&gt;=&#34;radio&#34; &lt;span class=&#34;attribute&#34;&gt;name&lt;/span&gt;=&#34;4 stars&#34; &lt;span class=&#34;attribute&#34;&gt;id&lt;/span&gt;=&#34;remove-rating&#34;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;label&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;for&lt;/span&gt;=&#34;remove-rating&#34;&amp;gt;Remove rating&amp;lt;/&lt;span class=&#34;tag&#34;&gt;label&lt;/span&gt;&amp;gt;
-&amp;lt;/&lt;span class=&#34;tag&#34;&gt;div&lt;/span&gt;&amp;gt;
-&amp;lt;&lt;span class=&#34;tag&#34;&gt;div&lt;/span&gt; class=&#34;rating&#34;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;type&lt;/span&gt;=&#34;radio&#34; &lt;span class=&#34;attribute&#34;&gt;name&lt;/span&gt;=&#34;4 stars&#34; &lt;span class=&#34;attribute&#34;&gt;id&lt;/span&gt;=&#34;star-4&#34;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;&lt;span class=&#34;tag&#34;&gt;label&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;for&lt;/span&gt;=&#34;star-4&#34; &lt;span class=&#34;attribute&#34;&gt;class&lt;/span&gt;=&#34;icon-star&#34;&amp;gt;&amp;lt;/&lt;span class=&#34;tag&#34;&gt;label&lt;/span&gt;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;type&lt;/span&gt;=&#34;radio&#34; &lt;span class=&#34;attribute&#34;&gt;name&lt;/span&gt;=&#34;4 stars&#34; &lt;span class=&#34;attribute&#34;&gt;id&lt;/span&gt;=&#34;star-3&#34;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;&lt;span class=&#34;tag&#34;&gt;label&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;for&lt;/span&gt;=&#34;star-3&#34; &lt;span class=&#34;attribute&#34;&gt;class&lt;/span&gt;=&#34;icon-star&#34;&amp;gt;&amp;lt;/&lt;span class=&#34;tag&#34;&gt;label&lt;/span&gt;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;type&lt;/span&gt;=&#34;radio&#34; &lt;span class=&#34;attribute&#34;&gt;name&lt;/span&gt;=&#34;4 stars&#34; &lt;span class=&#34;attribute&#34;&gt;id&lt;/span&gt;=&#34;star-2&#34;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;&lt;span class=&#34;tag&#34;&gt;label&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;for&lt;/span&gt;=&#34;star-2&#34; &lt;span class=&#34;attribute&#34;&gt;class&lt;/span&gt;=&#34;icon-star&#34;&amp;gt;&amp;lt;/&lt;span class=&#34;tag&#34;&gt;label&lt;/span&gt;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;type&lt;/span&gt;=&#34;radio&#34; &lt;span class=&#34;attribute&#34;&gt;name&lt;/span&gt;=&#34;4 stars&#34; &lt;span class=&#34;attribute&#34;&gt;id&lt;/span&gt;=&#34;star-1&#34;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;&lt;span class=&#34;tag&#34;&gt;label&lt;/span&gt;&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;for&lt;/span&gt;=&#34;star-1&#34; &lt;span class=&#34;attribute&#34;&gt;name&lt;/span&gt;=&#34;4 stars&#34; &lt;span class=&#34;attribute&#34;&gt;class&lt;/span&gt;=&#34;icon-star&#34;&amp;gt;&amp;lt;/&lt;span class=&#34;tag&#34;&gt;label&lt;/span&gt;&amp;gt;
-&amp;lt;/&lt;span class=&#34;tag&#34;&gt;div&lt;/span&gt;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre rel=&#34;HTML&#34;&gt;
+&lt;code&gt;&amp;lt;div class=&#34;remove-rating-wrapper&#34;&amp;gt;
+    &amp;lt;input type=&#34;radio&#34; name=&#34;4 stars&#34; id=&#34;remove-rating&#34;&amp;gt;
+    &amp;lt;label for=&#34;remove-rating&#34;&amp;gt;Remove rating&amp;lt;/label&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;div class=&#34;rating&#34;&amp;gt;
+    &amp;lt;input type=&#34;radio&#34; name=&#34;4 stars&#34; id=&#34;star-4&#34;&amp;gt;
+    &amp;lt;label for=&#34;star-4&#34; class=&#34;icon-star&#34;&amp;gt;&amp;lt;/label&amp;gt;
+    &amp;lt;input type=&#34;radio&#34; name=&#34;4 stars&#34; id=&#34;star-3&#34;&amp;gt;
+    &amp;lt;label for=&#34;star-3&#34; class=&#34;icon-star&#34;&amp;gt;&amp;lt;/label&amp;gt;
+    &amp;lt;input type=&#34;radio&#34; name=&#34;4 stars&#34; id=&#34;star-2&#34;&amp;gt;
+    &amp;lt;label for=&#34;star-2&#34; class=&#34;icon-star&#34;&amp;gt;&amp;lt;/label&amp;gt;
+    &amp;lt;input type=&#34;radio&#34; name=&#34;4 stars&#34; id=&#34;star-1&#34;&amp;gt;
+    &amp;lt;label for=&#34;star-1&#34; name=&#34;4 stars&#34; class=&#34;icon-star&#34;&amp;gt;&amp;lt;/label&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;
 First I hide the radio boxes using a negative margin. On the labels I add the class &#34;icon-star&#34;, which triggers the icon font. Then I create a SASS map for the number of stars I want to show.
 &lt;/p&gt;
 
-&lt;pre class=&#34;language-scss&#34; rel=&#34;SCSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;variable&#34;&gt;$stars-list&lt;/span&gt;: (
+&lt;pre rel=&#34;SCSS&#34;&gt;
+&lt;code&gt;
+$stars-list: (
     1,
     2,
     3,
     4
 );
 
-&lt;span class=&#34;selector&#34;&gt;.rating&lt;/span&gt; {
-    &lt;span class=&#34;property&#34;&gt;position&lt;/span&gt;: relative;
-    &lt;span class=&#34;property&#34;&gt;overflow&lt;/span&gt;: hidden;
-    &lt;span class=&#34;property&#34;&gt;height&lt;/span&gt;: 32px;
-    &lt;span class=&#34;selector&#34;&gt;@include rating-stars&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;$stars-list&lt;/span&gt;, 32px, orange, #f5d76d, 85);
+.rating {
+    position: relative;
+    overflow: hidden;
+    height: 32px;
+    @include rating-stars($stars-list, 32px, orange, #f5d76d, 85);
 
-    &lt;span class=&#34;comment&#34;&gt;// Hide the radio buttons&lt;/span&gt;
-    &lt;span class=&#34;selector&#34;&gt;[type=&#34;radio&#34;]&lt;/span&gt; { &lt;span class=&#34;property&#34;&gt;margin-left&lt;/span&gt;: -19px; }
+    // Hide the radio buttons
+    [type=&#34;radio&#34;] { margin-left: -19px; }
 
-    &lt;span class=&#34;selector&#34;&gt;label&lt;/span&gt; { &lt;span class=&#34;property&#34;&gt;cursor&lt;/span&gt;: pointer; }
-    &lt;span class=&#34;selector&#34;&gt;.icon-star&lt;/span&gt; { &lt;span class=&#34;property&#34;&gt;font-size&lt;/span&gt;: 3rem; }
+    label { cursor: pointer; }
+    .icon-star { font-size&lt;/span&gt;: 3rem; }
 }
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;
 The rating stars mixin is where it all happens, it contains 4 arguments:
@@ -463,34 +609,37 @@ The rating stars mixin is where it all happens, it contains 4 arguments:
 The labels are positioned absolute and using a SASS loop, the stars can be positioned in the right order. Within the loop I use the sibling selector ~ to handle the hover and the selected state of the stars properly.
 &lt;/p&gt;
 
-&lt;pre class=&#34;language-scss&#34; rel=&#34;SCSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;comment&#34;&gt;// Set hover + selected label for star rating&lt;/span&gt;
-&lt;span class=&#34;selector&#34;&gt;@mixin rating-stars&lt;/span&gt;(&lt;span class=&#34;variable&#34;&gt;$stars&lt;/span&gt;, &lt;span class=&#34;variable&#34;&gt;$star-width&lt;/span&gt;, &lt;span class=&#34;variable&#34;&gt;$c-hover&lt;/span&gt;, &lt;span class=&#34;variable&#34;&gt;$c-selected&lt;/span&gt;) {
-    &gt; &lt;span class=&#34;selector&#34;&gt;label&lt;/span&gt; {
-        &lt;span class=&#34;property&#34;&gt;position&lt;/span&gt;: absolute;
-        &lt;span class=&#34;property&#34;&gt;top&lt;/span&gt;: 4px;
+&lt;pre rel=&#34;SCSS&#34;&gt;
+&lt;code&gt;
+// Set hover + selected label for star rating&lt;/span&gt;
+@mixin rating-stars($stars, $star-width, $c-hover, $c-selected) {
+    &gt; label {
+        position: absolute;
+        top: 4px;
 
-        &lt;span class=&#34;selector&#34;&gt;&amp;&lt;/span&gt;:hover { &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: &lt;span class=&#34;variable&#34;&gt;$hover&lt;/span&gt;; }
+        &amp;:hover { color: $hover; }
     }
 
-    &lt;span class=&#34;comment&#34;&gt;// Loop through the stars to position them in the right order,
-    and set the hover + checked color&lt;/span&gt;
-    &lt;span class=&#34;selector&#34;&gt;@for&lt;/span&gt; &lt;span class=&#34;variable&#34;&gt;$i&lt;/span&gt; from 1 through length(&lt;span class=&#34;variable&#34;&gt;$stars&lt;/span&gt;) {
+    // Loop through the stars to position them in the right order,
+    and set the hover + checked color
+    @for $i from 1 through length($stars) {
 
-        &lt;span class=&#34;comment&#34;&gt;// position the stars in reversed order&lt;/span&gt;
-        &gt; &lt;span class=&#34;selector&#34;&gt;label:nth-of-type(n + #{&lt;/span&gt;&lt;span class=&#34;variable&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;selector&#34;&gt;})&lt;/span&gt; {
-           &lt;span class=&#34;property&#34;&gt;left&lt;/span&gt;: (&lt;span class=&#34;variable&#34;&gt;$star-width&lt;/span&gt; * length(&lt;span class=&#34;variable&#34;&gt;$stars&lt;/span&gt;)) - (&lt;span class=&#34;variable&#34;&gt;$star-width&lt;/span&gt; * &lt;span class=&#34;variable&#34;&gt;$i&lt;/span&gt;);
+        // position the stars in reversed order
+        &gt; label:nth-of-type(n + #{$i}) {
+           left: ($star-width * length($stars)) - ($star-width * $i);
         }
 
-        &lt;span class=&#34;comment&#34;&gt;// Handle the hover&lt;/span&gt;
-        &gt; &lt;span class=&#34;selector&#34;&gt;label:nth-of-type(n + #{&lt;/span&gt;&lt;span class=&#34;variable&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;selector&#34;&gt;})&lt;/span&gt;&lt;span class=&#34;selector&#34;&gt;:hover&lt;/span&gt; ~ &lt;span class=&#34;selector&#34;&gt;label&lt;/span&gt; { &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: &lt;span class=&#34;variable&#34;&gt;$hover&lt;/span&gt;; }
+        // Handle the hover
+        &gt; label:nth-of-type(n + #{$i}):hover ~ label { color: $hover; }
 
-        &lt;span class=&#34;comment&#34;&gt;// Set selected color on all label siblings based on the checked radio&lt;/span&gt;
-        &gt; &lt;span class=&#34;selector&#34;&gt;input[type=&#34;radio&#34;]:nth-of-type(n + #{&lt;/span&gt;&lt;span class=&#34;variable&#34;&gt;$i&lt;/span&gt;&lt;span class=&#34;selector&#34;&gt;}):checked&lt;/span&gt; ~ &lt;span class=&#34;selector&#34;&gt;label&lt;/span&gt; {
-            &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: &lt;span class=&#34;variable&#34;&gt;$selected&lt;/span&gt;;
+        // Set selected color on all label siblings based on the checked radio
+        &gt; input[type=&#34;radio&#34;]:nth-of-type(n + #{$i}):checked ~ label {
+            color: $selected;
         }
     }
 }
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;&lt;h2&gt;Demo&lt;/h2&gt;
 &lt;p&gt;And here a demo, as you can see it is not much code and it works in all latest browsers. I hope the article is meaningful to you.&lt;/p&gt;
@@ -513,25 +662,25 @@ The labels are positioned absolute and using a SASS loop, the stars can be posit
     
     <item>
       <title>Fronteers Conference 2014</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/conf_2014/</link>
+      <link>/fronteers/conf_2014/</link>
       <pubDate>Wed, 15 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/conf_2014/</guid>
+      <guid>/fronteers/conf_2014/</guid>
       <description>&lt;article role=&#34;article&#34;&gt;
     &lt;h1&gt;Fronteers Conference 2014&lt;/h1&gt;
     &lt;p&gt;
         15-10-2014
         &lt;br&gt;
-        On 9 and 10 october was the big event. Two days of inspiring talks and where you meet old friends and make new ones. This article gives a summary of most of the talks. The master of ceremony for this conference was &lt;a href=&#34;http://jakearchibald.com/&#34;&gt;Jake Archibald&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;Day 1&lt;/h2&gt;&lt;p&gt;The first day Heydon Pickering &lt;a href=&#34;https://www.twitter.com/heydonworks&#34;&gt;@heydonworks&lt;/a&gt; talked about best practises on developing with html and CSS. It is all about semantics, it is more readable, understandable and maintainable. For example use &lt;em&gt;[role=&#34;tab&#34;][aria-selected=&#34;true&#34;]&lt;/em&gt; instead of .tab-active. He mentioned that the difference in performance is extremely minimal whether using attributes or class names.&lt;/p&gt;&lt;p&gt;Daniel Espeset &lt;a href=&#34;https://www.twitter.com/danielespeset&#34;&gt;@danielespeset&lt;/a&gt; gave a peak in how they set up their infrastructure for front end development at Etsy.&lt;/p&gt;&lt;p&gt;Arnout Kazemier&#39;s talk was about pushing the realtime web forward. He discussed the pro&#39;s and cons of the latest technology to use for realtime web. For example, Websockets, it is supported in IE10 Firefox 31, Chrome 37 safari 7.1, iOS Safari 8 and Android 4.4 and has a simple and understandable API. But at this time of writing it has also some serious bugs:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Writing to a closed websocket connection can crash your phone. You have to add some latency to avoid crashing browsers.&lt;/li&gt;&lt;li&gt;Pressing esc in Firefox closes the connection. (fixed in FF20)&lt;/li&gt;&lt;li&gt;Firefox can create ghost connections.&lt;/li&gt;&lt;li&gt;4G, 3G and slower do not suppport Websockets. Fallback is to filter out the mobiles.&lt;/li&gt;&lt;li&gt;Virus scanners, extensions, the user and network server firewalls can block Websockets&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;At this stage the newest technology is not really useful in production environment. It is something to keep an eye on, one day we can use the realtime web.&lt;/p&gt;&lt;p&gt;Rachel Nabors &lt;a href=&#34;https://www.twitter.com/rachelnabors&#34;&gt;@rachelnabors&lt;/a&gt; gave a visually beautiful styled presentation about the state of web animation. Animation improves adoption rate of new interfaces, change can be more easily comprehended when it’s gradual, especially for the young and elderly. You have 3 kinds of animations:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Static animation: start --&amp;gt; finish&lt;/li&gt;&lt;li&gt;Stateful animations: default state --&amp;gt; event --&amp;gt; predefined state&lt;/li&gt;&lt;li&gt;Dynamic animations: current state: 1. factores + event + factors: 1a new state, 1b new state&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Interesting animation libraries to check out: &lt;a href=&#34;http://greensock.com/gsap&#34;&gt;Greensock animation platform&lt;/a&gt; and &lt;a href=&#34;http://julian.com/research/velocity/&#34;&gt;Velocityjs&lt;/a&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&#34;http://www.mirellavanteulingen.nl/img/rachel-nabors-fronteers-2014.jpg&#34; alt=&#34;Rachel Nabors - The State of Web Animation&#34;&gt;&lt;/figure&gt;&lt;p&gt;The mini sessions gave us a glance in game development for the web. There are hundreds of frameworks available, Thomas Palef recommended &lt;a href=&#34;http://phaser.io/&#34;&gt;Phaser&lt;/a&gt;, a free open source HTML5 framework. If you want to get started with game development he advices to start making a really tiny game like ping, space invader or breakout. Once you have the hang of it, start creating another one with a little more complexity, and so on. Until you ar ready to create a real game you might think people want to play.&lt;/p&gt;&lt;h2&gt;Day 2&lt;/h2&gt;&lt;p&gt;Day two started with Nicholas Gallagher &lt;a href=&#34;https://www.twitter.com/necoloas&#34;&gt;@necolas&lt;/a&gt; talking about making the Twitter UI infrastructure. The ui is split up in ui-components like: ui-icon, ui-ProductPage etc. Each component has its own file infrastructure and contains only the code necessary for the component, including tests. For the worksflow they created automatic tasks to test and run the new change: make install, build, test etc. They design for adaptability and define components as the unit of scale.&lt;/p&gt;&lt;p&gt;Dave Olsen shared his experience with optimizing web performance. (Check out slidesearch for the &lt;a href=&#34;http://www.slidesearch.org/slide/optimizing-web-performance-fronteers-edition&#34;&gt;slides&lt;/a&gt;). Do you know that 1.8mb is the average weight of a web page today? 78% are images and javascript. RDW sites whose small screen design weighs the same as the large screen design? And 71% of the users expect your mobile site to load as quickly as your desktop site.&lt;/p&gt;&lt;blockquote&gt;Mobile first means performance first &lt;cite&gt;- Dave Olsen&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;You can diagnose web performance issues with pagespeed insights of Google, Chrome dev tools and &lt;a href=&#34;webpagetest.org&#34;&gt;webpagetest.org&lt;/a&gt;. To optimize for mobile you can reduce asset size, reduce requests and speed up page-render. Try &lt;a href=&#34;redbot.org&#34;&gt;redbot.org&lt;/a&gt; to see if you&#39;re caching. Web performance for javascript:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Avoid using bulky frameworks try microjs.com to find libraries that may be smaller. Javascript also blocks the rendering of the page.&lt;/li&gt;&lt;li&gt;Avoid DOM reflows &amp;amp; repaints. they slow down page render time as well as burn battery.&lt;/li&gt;&lt;li&gt;Use &lt;a href=&#34;http://benhowdle.im/touche/&#34;&gt;touch&lt;/a&gt; or &lt;a href=&#34;https://github.com/ftlabs/fastclick&#34;&gt;fastclick&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;Use CDNs to serve common js libraries to help reduce RTT for requests.&lt;/li&gt;&lt;li&gt;Use service like &lt;a href=&#34;https://www.npmjs.org/package/grunt-penthouse&#34;&gt;penthouse&lt;/a&gt; to find critical CSS.&lt;/li&gt;&lt;li&gt;Also focus on getting a fast initial render.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://perf-tooling.today/&#34;&gt;perf-tooling.today&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://yahoo.github.io/boomerang/doc/&#34;&gt;yahoo.github.io/boomerang/doc/&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Sara Soueidan &lt;a href=&#34;https://www.twitter.com/sarasoeidon&#34;&gt;@sarasoeidon&lt;/a&gt; gave us a rollercoaster ride through animating SVGs with CSS and HTML. It was a great talk with lot of examples. Things to know about using svg:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CSS animations only work inside the svg, when using an img, object, embed, iframe tag, or embedded in CSS as background, but CSS interactions won&#39;t.&lt;/li&gt;&lt;li&gt;When you use inline svg both CSS animations and CSS interactions will work.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://www.w3.org/TR/SVG2/&#34;&gt;SVG2&lt;/a&gt; will contain more attributes which we can use in CSS.&lt;/li&gt;&lt;li&gt;With &lt;a href=&#34;http://www.w3.org/TR/SMIL/&#34;&gt;SMIL&lt;/a&gt; you can e.g. animate attributes and do event handling. At this time of writing SMIL does not work in IE and Opera Mini.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Hell, is not understanding my own code &lt;cite&gt;- Kyle Simpson&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;Everyone at the conference has written code that worked without knowing why. First learn the language in depth and you also need better tools. Kyle Simpson &lt;a href=&#34;https://www.twitter.com/getify&#34;&gt;@getify&lt;/a&gt; gave us a list of handy tools to make your live as JS developer easier. He is working on a &lt;a href=&#34;github.com/getify/esre&#34;&gt;configurable two way formatting tool&lt;/a&gt; to end the discussion of whether or not using semi colons, whitespace vs tabs. Pick the tools that suits you, but be aware there is no such thing as a holy grail for the right toolset. The tools he recommended are:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&#34;http://sweetjs.org&#34;&gt;sweetjs.org&lt;/a&gt; provides macros to javascript developers. Currently being adopted by the Mozilla Foundation.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://esprima.org/test/compare.html&#34;&gt;esprima/acorn&lt;/a&gt; (parser)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://github.com/estools/escodegen&#34;&gt;escodegen&lt;/a&gt; (code generator)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://github.com/estools/escope&#34;&gt;escope/eslevels&lt;/a&gt; (scope analyzer)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://gotwarlost.github.io/istanbul/&#34;&gt;istanbul&lt;/a&gt; (code coverage)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://github.com/estools/estraverse&#34;&gt;estraverse&lt;/a&gt; (analyze AST)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://eslint.org/&#34;&gt;eslint&lt;/a&gt; (pluggable code linting rules)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://jscomplexity.org/complexity&#34;&gt;jscomplexity.org&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Petro Salema closed the conference with an inspiring talk, named &#34;Dream big, think small&#34;.&lt;/p&gt;&lt;/article&gt;
+        On 9 and 10 october was the big event. Two days of inspiring talks and where you meet old friends and make new ones. This article gives a summary of most of the talks. The master of ceremony for this conference was &lt;a href=&#34;http://jakearchibald.com/&#34;&gt;Jake Archibald&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;Day 1&lt;/h2&gt;&lt;p&gt;The first day Heydon Pickering &lt;a href=&#34;https://www.twitter.com/heydonworks&#34;&gt;@heydonworks&lt;/a&gt; talked about best practises on developing with html and CSS. It is all about semantics, it is more readable, understandable and maintainable. For example use &lt;em&gt;[role=&#34;tab&#34;][aria-selected=&#34;true&#34;]&lt;/em&gt; instead of .tab-active. He mentioned that the difference in performance is extremely minimal whether using attributes or class names.&lt;/p&gt;&lt;p&gt;Daniel Espeset &lt;a href=&#34;https://www.twitter.com/danielespeset&#34;&gt;@danielespeset&lt;/a&gt; gave a peak in how they set up their infrastructure for front end development at Etsy.&lt;/p&gt;&lt;p&gt;Arnout Kazemier&#39;s talk was about pushing the realtime web forward. He discussed the pro&#39;s and cons of the latest technology to use for realtime web. For example, Websockets, it is supported in IE10 Firefox 31, Chrome 37 safari 7.1, iOS Safari 8 and Android 4.4 and has a simple and understandable API. But at this time of writing it has also some serious bugs:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Writing to a closed websocket connection can crash your phone. You have to add some latency to avoid crashing browsers.&lt;/li&gt;&lt;li&gt;Pressing esc in Firefox closes the connection. (fixed in FF20)&lt;/li&gt;&lt;li&gt;Firefox can create ghost connections.&lt;/li&gt;&lt;li&gt;4G, 3G and slower do not suppport Websockets. Fallback is to filter out the mobiles.&lt;/li&gt;&lt;li&gt;Virus scanners, extensions, the user and network server firewalls can block Websockets&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;At this stage the newest technology is not really useful in production environment. It is something to keep an eye on, one day we can use the realtime web.&lt;/p&gt;&lt;p&gt;Rachel Nabors &lt;a href=&#34;https://www.twitter.com/rachelnabors&#34;&gt;@rachelnabors&lt;/a&gt; gave a visually beautiful styled presentation about the state of web animation. Animation improves adoption rate of new interfaces, change can be more easily comprehended when it’s gradual, especially for the young and elderly. You have 3 kinds of animations:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Static animation: start --&amp;gt; finish&lt;/li&gt;&lt;li&gt;Stateful animations: default state --&amp;gt; event --&amp;gt; predefined state&lt;/li&gt;&lt;li&gt;Dynamic animations: current state: 1. factores + event + factors: 1a new state, 1b new state&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Interesting animation libraries to check out: &lt;a href=&#34;http://greensock.com/gsap&#34;&gt;Greensock animation platform&lt;/a&gt; and &lt;a href=&#34;http://julian.com/research/velocity/&#34;&gt;Velocityjs&lt;/a&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&#34;/img/rachel-nabors-fronteers-2014.jpg&#34; alt=&#34;Rachel Nabors - The State of Web Animation&#34;&gt;&lt;/figure&gt;&lt;p&gt;The mini sessions gave us a glance in game development for the web. There are hundreds of frameworks available, Thomas Palef recommended &lt;a href=&#34;http://phaser.io/&#34;&gt;Phaser&lt;/a&gt;, a free open source HTML5 framework. If you want to get started with game development he advices to start making a really tiny game like ping, space invader or breakout. Once you have the hang of it, start creating another one with a little more complexity, and so on. Until you ar ready to create a real game you might think people want to play.&lt;/p&gt;&lt;h2&gt;Day 2&lt;/h2&gt;&lt;p&gt;Day two started with Nicholas Gallagher &lt;a href=&#34;https://www.twitter.com/necoloas&#34;&gt;@necolas&lt;/a&gt; talking about making the Twitter UI infrastructure. The ui is split up in ui-components like: ui-icon, ui-ProductPage etc. Each component has its own file infrastructure and contains only the code necessary for the component, including tests. For the worksflow they created automatic tasks to test and run the new change: make install, build, test etc. They design for adaptability and define components as the unit of scale.&lt;/p&gt;&lt;p&gt;Dave Olsen shared his experience with optimizing web performance. (Check out slidesearch for the &lt;a href=&#34;http://www.slidesearch.org/slide/optimizing-web-performance-fronteers-edition&#34;&gt;slides&lt;/a&gt;). Do you know that 1.8mb is the average weight of a web page today? 78% are images and javascript. RDW sites whose small screen design weighs the same as the large screen design? And 71% of the users expect your mobile site to load as quickly as your desktop site.&lt;/p&gt;&lt;blockquote&gt;Mobile first means performance first &lt;cite&gt;- Dave Olsen&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;You can diagnose web performance issues with pagespeed insights of Google, Chrome dev tools and &lt;a href=&#34;webpagetest.org&#34;&gt;webpagetest.org&lt;/a&gt;. To optimize for mobile you can reduce asset size, reduce requests and speed up page-render. Try &lt;a href=&#34;redbot.org&#34;&gt;redbot.org&lt;/a&gt; to see if you&#39;re caching. Web performance for javascript:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Avoid using bulky frameworks try microjs.com to find libraries that may be smaller. Javascript also blocks the rendering of the page.&lt;/li&gt;&lt;li&gt;Avoid DOM reflows &amp;amp; repaints. they slow down page render time as well as burn battery.&lt;/li&gt;&lt;li&gt;Use &lt;a href=&#34;http://benhowdle.im/touche/&#34;&gt;touch&lt;/a&gt; or &lt;a href=&#34;https://github.com/ftlabs/fastclick&#34;&gt;fastclick&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;Use CDNs to serve common js libraries to help reduce RTT for requests.&lt;/li&gt;&lt;li&gt;Use service like &lt;a href=&#34;https://www.npmjs.org/package/grunt-penthouse&#34;&gt;penthouse&lt;/a&gt; to find critical CSS.&lt;/li&gt;&lt;li&gt;Also focus on getting a fast initial render.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://perf-tooling.today/&#34;&gt;perf-tooling.today&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://yahoo.github.io/boomerang/doc/&#34;&gt;yahoo.github.io/boomerang/doc/&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Sara Soueidan &lt;a href=&#34;https://www.twitter.com/sarasoeidon&#34;&gt;@sarasoeidon&lt;/a&gt; gave us a rollercoaster ride through animating SVGs with CSS and HTML. It was a great talk with lot of examples. Things to know about using svg:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CSS animations only work inside the svg, when using an img, object, embed, iframe tag, or embedded in CSS as background, but CSS interactions won&#39;t.&lt;/li&gt;&lt;li&gt;When you use inline svg both CSS animations and CSS interactions will work.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://www.w3.org/TR/SVG2/&#34;&gt;SVG2&lt;/a&gt; will contain more attributes which we can use in CSS.&lt;/li&gt;&lt;li&gt;With &lt;a href=&#34;http://www.w3.org/TR/SMIL/&#34;&gt;SMIL&lt;/a&gt; you can e.g. animate attributes and do event handling. At this time of writing SMIL does not work in IE and Opera Mini.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Hell, is not understanding my own code &lt;cite&gt;- Kyle Simpson&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;Everyone at the conference has written code that worked without knowing why. First learn the language in depth and you also need better tools. Kyle Simpson &lt;a href=&#34;https://www.twitter.com/getify&#34;&gt;@getify&lt;/a&gt; gave us a list of handy tools to make your live as JS developer easier. He is working on a &lt;a href=&#34;github.com/getify/esre&#34;&gt;configurable two way formatting tool&lt;/a&gt; to end the discussion of whether or not using semi colons, whitespace vs tabs. Pick the tools that suits you, but be aware there is no such thing as a holy grail for the right toolset. The tools he recommended are:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&#34;http://sweetjs.org&#34;&gt;sweetjs.org&lt;/a&gt; provides macros to javascript developers. Currently being adopted by the Mozilla Foundation.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://esprima.org/test/compare.html&#34;&gt;esprima/acorn&lt;/a&gt; (parser)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://github.com/estools/escodegen&#34;&gt;escodegen&lt;/a&gt; (code generator)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://github.com/estools/escope&#34;&gt;escope/eslevels&lt;/a&gt; (scope analyzer)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://gotwarlost.github.io/istanbul/&#34;&gt;istanbul&lt;/a&gt; (code coverage)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://github.com/estools/estraverse&#34;&gt;estraverse&lt;/a&gt; (analyze AST)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://eslint.org/&#34;&gt;eslint&lt;/a&gt; (pluggable code linting rules)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://jscomplexity.org/complexity&#34;&gt;jscomplexity.org&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Petro Salema closed the conference with an inspiring talk, named &#34;Dream big, think small&#34;.&lt;/p&gt;&lt;/article&gt;
 </description>
     </item>
     
     <item>
       <title>Django form customization using Crispy Forms</title>
-      <link>http://www.mirellavanteulingen.nl/blog/customize_form_crispy_forms/</link>
+      <link>/blog/customize_form_crispy_forms/</link>
       <pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/customize_form_crispy_forms/</guid>
+      <guid>/blog/customize_form_crispy_forms/</guid>
       <description>&lt;p&gt;At &lt;a href=&#34;http://www.dreamsolution.nl&#34;&gt;Dreamsolution&lt;/a&gt; we regularly use Crispy Forms to generate
     complex forms in Django. I want to share some practical customization examples
     with Crispy Forms using the formhelper API. The examples are how to:
@@ -547,18 +696,22 @@ The labels are positioned absolute and using a SASS loop, the stars can be posit
   you want in the Fieldset layout object, and this can become a long list:
 &lt;/p&gt;&lt;/p&gt;
 
-&lt;pre class=&#34;python&#34; rel=&#34;Python&#34;&gt;&lt;code&gt;Layout(
-  Fieldset(
-      &lt;span class=&#34;string&#34;&gt;&#39;Your legend&#39;&lt;/span&gt;,
-      &lt;span class=&#34;string&#34;&gt;&#39;first_name&#39;&lt;/span&gt;,
-      &lt;span class=&#34;string&#34;&gt;&#39;last_name&#39;&lt;/span&gt;,
-      &lt;span class=&#34;string&#34;&gt;&#39;street&#39;&lt;/span&gt;,
-      &lt;span class=&#34;string&#34;&gt;&#39;house_number&#39;&lt;/span&gt;,
-      &lt;span class=&#34;string&#34;&gt;&#39;addition&#39;&lt;/span&gt;,
-      &lt;span class=&#34;string&#34;&gt;&#39;zip_code&#39;&lt;/span&gt;,
-      &lt;span class=&#34;string&#34;&gt;&#39;city&#39;&lt;/span&gt;
-  )
-)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre rel=&#34;Python&#34;&gt;
+&lt;code&gt;
+Layout(
+    Fieldset(
+        &#39;Your legend&#39;,
+        &#39;first_name&#39;,
+        &#39;last_name&#39;,
+        &#39;street&#39;,
+        &#39;house_number&#39;,
+        &#39;addition&#39;,
+        &#39;zip_code&#39;,
+        &#39;city&#39;
+    )
+)
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;
   There is another way to create fieldsets and or manipulate the layout structure.
@@ -567,16 +720,19 @@ The labels are positioned absolute and using a SASS loop, the stars can be posit
   a fieldset and the rest goes in the second fieldset:
 &lt;/p&gt;
 
-&lt;pre class=&#34;python&#34; rel=&#34;Python&#34;&gt;&lt;code&gt;&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper = FormHelper(form=&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;)
+&lt;pre class=&#34;python&#34;&gt;
+&lt;code&gt;
+self.helper = FormHelper(form=self)
 
-&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper[&lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;:&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;].wrap_together(layout.Fieldset, &lt;span class=&#34;string&#34;&gt;&#39;Your name&#39;&lt;/span&gt;)
-&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper[&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;:&lt;span class=&#34;number&#34;&gt;6&lt;/span&gt;].wrap_together(layout.Fieldset, &lt;span class=&#34;string&#34;&gt;&#39;Your Address&#39;&lt;/span&gt;)
-&lt;/code&gt;&lt;/pre&gt;
+self.helper[0:2].wrap_together(layout.Fieldset, &#39;Your name&#39;)
+self.helper[1:6].wrap_together(layout.Fieldset, &#39;Your Address&#39;)
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;As you can see we only need 2 lines of code to create two fieldsets.&lt;/p&gt;
 
 &lt;figure&gt;
-  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-fieldsets.png&#34; alt=&#34;Example Crispy forms Fieldset&#34;&gt;
+  &lt;img src=&#34;/img/crispy-fieldsets.png&#34; alt=&#34;Example Crispy forms Fieldset&#34;&gt;
   &lt;figcaption&gt;Example Crispy forms Fieldset&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -588,13 +744,15 @@ The labels are positioned absolute and using a SASS loop, the stars can be posit
   two fields the way we want:
 &lt;/p&gt;&lt;/p&gt;
 
-&lt;pre class=&#34;python&#34; rel=&#34;Python&#34;&gt;&lt;code&gt;&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper[&lt;span class=&#34;number&#34;&gt;3&lt;/span&gt;:&lt;span class=&#34;number&#34;&gt;5&lt;/span&gt;].wrap_together(layout.Div, &lt;span class=&#34;crispy-attribute&#34;&gt;css_class&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;housenumber-wrapper&#34;&lt;/span&gt;)
-&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper[&lt;span class=&#34;string&#34;&gt;&#39;house_number&#39;&lt;/span&gt;].wrap(layout.Field, &lt;span class=&#34;crispy-attribute&#34;&gt;wrapper_class&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;housenumber&#34;&lt;/span&gt;)
-&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper[&lt;span class=&#34;string&#34;&gt;&#39;addition&#39;&lt;/span&gt;].wrap(layout.Field, &lt;span class=&#34;crispy-attribute&#34;&gt;wrapper_class&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;addition&#34;&lt;/span&gt;)
+&lt;pre rel=&#34;Python&#34;&gt;
+&lt;code&gt;
+self.helper[3:5].wrap_together(layout.Div, css_class=&#34;housenumber-wrapper&#34;)
+self.helper[&#39;house_number&#39;].wrap(layout.Field, wrapper_class=&#34;housenumber&#34;)
+self.helper[&#39;addition&#39;].wrap(layout.Field, wrapper_class=&#34;addition&#34;)
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;figure&gt;
-  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-field-manipulation-code.png&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;/img/crispy-field-manipulation-code.png&#34; alt=&#34;&#34;&gt;
   &lt;figcaption&gt;Wrapper around 2 fields&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -623,7 +781,7 @@ Now you can style and manipulate the 2 fields without touching the other fields.
   &lt;/li&gt;
 &lt;/ol&gt;
 &lt;figure&gt;
-    &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-field-manipulation.png&#34; alt=&#34;&#34;&gt;
+    &lt;img src=&#34;/img/crispy-field-manipulation.png&#34; alt=&#34;&#34;&gt;
     &lt;figcaption&gt;Example form where the field &#34;Addition&#34; is positioned next to the field &#34;House number&#34;&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;h2&gt;Insert HTML between fields&lt;/h2&gt;
@@ -635,42 +793,48 @@ Now you can style and manipulate the 2 fields without touching the other fields.
   step we created 2 fieldsets:
 &lt;/p&gt;
 
-&lt;pre class=&#34;python&#34; rel=&#34;Python&#34;&gt;&lt;code&gt;&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper.layout[&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;].insert(&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;,layout.HTML(
-  &lt;span class=&#34;string&#34;&gt;&#39;&amp;lt;p&amp;gt;No spaces in the zipcode, please.&amp;lt;/p&amp;gt;&#39;&lt;/span&gt;
+&lt;pre rel=&#34;Python&#34;&gt;
+&lt;code&gt;
+self.helper.layout[1].insert(2,layout.HTML(
+  &#39;&amp;lt;p&amp;gt;No spaces in the zipcode, please.&amp;lt;/p&amp;gt;&#39;
 ))
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;&lt;figure&gt;
-  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-add-content.png&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;/img/crispy-add-content.png&#34; alt=&#34;&#34;&gt;
   &lt;figcaption&gt;Example form with extra content&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;p&gt;
   The complete code with all the examples in the right order:
 &lt;/p&gt;&lt;/p&gt;
 
-&lt;pre class=&#34;python&#34; rel=&#34;Python&#34;&gt;&lt;code&gt;&lt;span class=&#34;comment&#34;&gt;# Wrapping the fields &#34;housenumber and addition&#34;. Assign extra class to the fields&lt;/span&gt;
-&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper[&lt;span class=&#34;number&#34;&gt;3&lt;/span&gt;:&lt;span class=&#34;number&#34;&gt;5]&lt;/span&gt;.wrap_together(layout.Div, &lt;span class=&#34;crispy-attribute&#34;&gt;css_class&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;housenumber-wrapper&#34;&lt;/span&gt;)
-&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper[&lt;span class=&#34;string&#34;&gt;&#39;house_number&#39;&lt;/span&gt;].wrap(layout.Field, &lt;span class=&#34;crispy-attribute&#34;&gt;wrapper_class&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;housenumber&#34;&lt;/span&gt;)
-&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper[&lt;span class=&#34;string&#34;&gt;&#39;addition&#39;&lt;/span&gt;].wrap(layout.Field, &lt;span class=&#34;crispy-attribute&#34;&gt;wrapper_class&lt;/span&gt;=&lt;span class=&#34;string&#34;&gt;&#34;addition&#34;&lt;/span&gt;)
+&lt;pre rel=&#34;Python&#34;&gt;
+&lt;code&gt;
+# Wrapping the fields &#34;housenumber and addition&#34;. Assign extra class to the fields
+self.helper[3:5].wrap_together(layout.Div, css_class=&#34;housenumber-wrapper&#34;)
+self.helper[&#39;house_number&#39;].wrap(layout.Field, wrapper_class=&#34;housenumber&#34;)
+self.helper[&#39;addition&#39;].wrap(layout.Field, wrapper_class=&#34;addition&#34;)
 
-&lt;span class=&#34;comment&#34;&gt;# Create 2 field sets&lt;/span&gt;
-&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper[&lt;span class=&#34;number&#34;&gt;0&lt;/span&gt;:&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;].wrap_together(layout.Fieldset, &lt;span class=&#34;string&#34;&gt;&#39;Your name&#39;&lt;/span&gt;)
-&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper[&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;:&lt;span class=&#34;number&#34;&gt;6&lt;/span&gt;].wrap_together(layout.Fieldset, &lt;span class=&#34;string&#34;&gt;&#39;Your Address&#39;&lt;/span&gt;)
+# Create 2 field sets
+self.helper[0:2].wrap_together(layout.Fieldset, &#39;Your name&#39;)
+self.helper[1:6].wrap_together(layout.Fieldset, &#39;Your Address&#39;)
 
-&lt;span class=&#34;comment&#34;&gt;# insert text above &#34;zipcode&#34;&lt;/span&gt;
-&lt;span class=&#34;statement&#34;&gt;self&lt;/span&gt;.helper.layout[&lt;span class=&#34;number&#34;&gt;1&lt;/span&gt;].insert(&lt;span class=&#34;number&#34;&gt;2&lt;/span&gt;,layout.HTML(
-  &lt;span class=&#34;string&#34;&gt;&#39;&amp;lt;p&amp;gt;No spaces in the zipcode, please.&amp;lt;/p&amp;gt;&#39;&lt;/span&gt;
+# not insert text above &#34;zipcode&#34;
+self.helper.layout[1].insert(2,layout.HTML(
+  &#39;&amp;lt;p&amp;gt;No spaces in the zipcode, please.&amp;lt;/p&amp;gt;&#39;
 ))
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/code&gt;
+&lt;/pre&gt;
 </description>
     </item>
     
     <item>
       <title>Customize Sublime text editor</title>
-      <link>http://www.mirellavanteulingen.nl/blog/customize_sublime/</link>
+      <link>/blog/customize_sublime/</link>
       <pubDate>Wed, 12 Feb 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/customize_sublime/</guid>
+      <guid>/blog/customize_sublime/</guid>
       <description>&lt;p&gt;Last year at the Fronteers conference in Amsterdam, Addy Osmani used Sublime Text Editor in his presentation.
 The editor looked really cool. Right after the conference I installed Sublime and looked around for
 packages which would make my life as front end developer easier and make editing more fun. After a
@@ -706,7 +870,7 @@ how to customize a theme and links to useful documentation. Let&amp;rsquo;s get 
   &lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/packagemanager.png&#34; alt=&#34;Sublime Package manager interface&#34; /&gt;
+  &lt;img src=&#34;/img/packagemanager.png&#34; alt=&#34;Sublime Package manager interface&#34; /&gt;
   &lt;figcaption&gt;Installing packages&lt;/figcaption&gt;
 &lt;/figure&gt;&lt;/p&gt;
 
@@ -788,23 +952,26 @@ in the user settings:&lt;/p&gt;
   the complete list you wish to override.
 &lt;/p&gt;
 
-&lt;pre class=&#34;language-json&#34; rel=&#34;json&#34;&gt;&lt;code&gt;&lt;span class=&#34;punctuation&#34;&gt;{&lt;/span&gt;
-  &lt;span class=&#34;code-indent string&#34;&gt;&#34;font_size&#34;:&lt;/span&gt; &lt;span class=&#34;number&#34;&gt;11&lt;/span&gt;,
-  &lt;span class=&#34;code-indent string&#34;&gt;&#34;bold_folder_labels&#34;:&lt;/span&gt;&lt;span class=&#34;boolean&#34;&gt;true&lt;/span&gt;,
-  &lt;span class=&#34;code-indent string&#34;&gt;&#34;caret_style&#34;:&lt;/span&gt; &#34;phase&#34;, &lt;span class=&#34;comment&#34;&gt;// it will fade in and out rather than blink.&lt;/span&gt;
-  &lt;span class=&#34;code-indent string&#34;&gt;&#34;highlight_line&#34;:&lt;/span&gt; &lt;span class=&#34;boolean&#34;&gt;true&lt;/span&gt;,
-  &lt;span class=&#34;code-indent string&#34;&gt;&#34;ignored_packages&#34;:&lt;/span&gt;
-  &lt;span class=&#34;code-indent token&#34;&gt;[&lt;/span&gt;
-  &lt;span class=&#34;code-indent-2 string&#34;&gt;&#34;Vintage&#34;&lt;/span&gt;
-  &lt;span class=&#34;code-indent token&#34;&gt;]&lt;/span&gt;&lt;span class=&#34;string&#34;&gt;,&lt;/span&gt;
-  &lt;span class=&#34;code-indent string&#34;&gt;&#34;match_tags&#34;:&lt;/span&gt; &lt;span class=&#34;boolean&#34;&gt;true&lt;/span&gt;,
-  &lt;span class=&#34;code-indent comment&#34;&gt;// scroll_past_end is already set in default settings,&lt;/span&gt;
-  &lt;span class=&#34;code-indent comment&#34;&gt;// but on OS X, this value is overridden in the platform specific settings.&lt;/span&gt;
-  &lt;span class=&#34;code-indent comment&#34;&gt;// That&#39;s why you need to place this line in your user settings.&lt;/span&gt;
-  &lt;span class=&#34;code-indent string&#34;&gt;&#34;scroll_past_end&#34;:&lt;/span&gt; &lt;span class=&#34;boolean&#34;&gt;true&lt;/span&gt;,
-  &lt;span class=&#34;code-indent string&#34;&gt;&#34;translate_tabs_to_spaces&#34;:&lt;/span&gt;&lt;span class=&#34;boolean&#34;&gt;true&lt;/span&gt;,
-  &lt;span class=&#34;code-indent string&#34;&gt;&#34;trim_trailing_white_space_on_save&#34;:&lt;/span&gt; &lt;span class=&#34;boolean&#34;&gt;true&lt;/span&gt;
-&lt;span class=&#34;punctuation&#34;&gt;}&lt;/span&gt;&lt;/code&gt;
+&lt;pre rel=&#34;json&#34;&gt;
+&lt;code class=&#34;json&#34;&gt;
+{
+  &#34;font_size&#34;: &lt;span class=&#34;number&#34;&gt;11,
+  &#34;bold_folder_labels&#34;:true,
+  &#34;caret_style&#34;: &#34;phase&#34;, // it will fade in and out rather than blink.
+  &#34;highlight_line&#34;: true,
+  &#34;ignored_packages&#34;:
+  [
+  &#34;Vintage&#34;
+  ]&lt;span class=&#34;string&#34;&gt;,
+  &#34;match_tags&#34;: true,
+  // scroll_past_end is already set in default settings,
+  // but on OS X, this value is overridden in the platform specific settings.
+  // That&#39;s why you need to place this line in your user settings.
+  &#34;scroll_past_end&#34;: true,
+  &#34;translate_tabs_to_spaces&#34;:true,
+  &#34;trim_trailing_white_space_on_save&#34;: true
+}
+&lt;/code&gt;
 &lt;/pre&gt;
 
 &lt;h2&gt;Sublime Key commands&lt;/h2&gt;
@@ -834,15 +1001,18 @@ in the user settings:&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/findfilestring.png&#34; alt=&#34;Find file with class name in Sublime.&#34; /&gt;
+  &lt;img src=&#34;/img/findfilestring.png&#34; alt=&#34;Find file with class name in Sublime.&#34; /&gt;
   &lt;figcaption&gt;Find file with class name in Sublime.&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;h2&gt;Open files via the terminal&lt;/h2&gt;
 &lt;p&gt;
   I mostly use the terminal to navigate to folders and to open it in sublime. To use an easy command for it I created a symbolic link. In OS X the Application is in &#34;/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl&#34;. If it is in another directory use that path in step 2. Open your terminal and type in the following commands:
 &lt;/p&gt;
-&lt;pre class=&#34;language-terminal&#34; rel=&#34;Terminal&#34;&gt;&lt;code&gt;$ cd /usr/local/bin
-$ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime&lt;/code&gt;
+&lt;pre rel=&#34;Terminal&#34;&gt;
+&lt;code class=&#34;dos&#34;&gt;
+$ cd /usr/local/bin
+$ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime
+&lt;/code&gt;
 &lt;/pre&gt;
 &lt;p&gt;That&#39;s it. You can now use the command &lt;em&gt;&#34;sublime&#34;&lt;/em&gt; in your terminal.&lt;/p&gt;
 &lt;h2&gt;Find your theme&lt;/h2&gt;
@@ -864,10 +1034,10 @@ $ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime
     
     <item>
       <title>CSS Day 2013 Amsterdam</title>
-      <link>http://www.mirellavanteulingen.nl/blog/cssday_2013/</link>
+      <link>/blog/cssday_2013/</link>
       <pubDate>Sun, 16 Jun 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/cssday_2013/</guid>
+      <guid>/blog/cssday_2013/</guid>
       <description>
 
 &lt;p&gt;Friday 14 june 2013 in Amsterdam I attended the CSSDay conference. Eight experts talked about 8 different CSS modules. The focus was on techniques of these modules we might not know about and the future of CSS. During the conference I learned that CSS is in very active development. It was an incredible, informative and awesome day. An high standard conference I&amp;rsquo;ve ever attended so far. I hope that there will be another one within 1 or 2 years.&lt;/p&gt;
@@ -882,23 +1052,29 @@ $ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime
 
 &lt;p&gt;When using @font-face the browser will always download the fonts required, even when the user has that font on its machine. You can avoid this to add src: local(&amp;ldquo;font name&amp;rdquo;) to @font-face. When the user has the font on its local machine it will use that one. Example:&lt;/p&gt;
 
-&lt;pre class=&#34;language-css&#34; rel=&#34;CSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;selector&#34;&gt;@font-face&lt;/span&gt; {
-  &lt;span class=&#34;property&#34;&gt;font-family&lt;/span&gt;: &#34;Helvetica W01 Bold&#34;;
-  &lt;span class=&#34;property&#34;&gt;src&lt;/span&gt;: url(&#34;fonts/f70da45a-a05c-490c-ad62-7db4894b012a.eot?#iefix&#34;);
-  &lt;span class=&#34;property&#34;&gt;src&lt;/span&gt;: local(&#34;Helvetica W01 Bold&#34;),
+&lt;pre rel=&#34;CSS&#34;&gt;
+&lt;code class=&#34;css&#34;&gt;
+@font-face {
+  font-family: &#34;Helvetica W01 Bold&#34;;
+  src: url(&#34;fonts/f70da45a-a05c-490c-ad62-7db4894b012a.eot?#iefix&#34;);
+  src: local(&#34;Helvetica W01 Bold&#34;),
         url(&#34;fonts/f70da45a-a05c-490c-ad62-7db4894b012a.eot?#iefix&#34;) format(&#34;eot&#34;),
-  &lt;span class=&#34;comment&#34;&gt;// etc...&lt;/span&gt;
+  /* etc... */
 }&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;Giving the font-family a short name will save a few bites. Although when you use Helvetica don&amp;rsquo;t use the short name H because Microsoft will display it as Arial(?).&lt;br&gt;&lt;/p&gt;
 
 &lt;p&gt;You can also use unicode-range property:&lt;/p&gt;
 
-&lt;pre class=&#34;language-css&#34; rel=&#34;CSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;selector&#34;&gt;@font-face&lt;/span&gt; {
-  &lt;span class=&#34;property&#34;&gt;font-family&lt;/span&gt;: STIXGeneral;
-  &lt;span class=&#34;property&#34;&gt;src&lt;/span&gt;: local(STIXGeneral), url(/stixfonts/STIXGeneral.otf);
+&lt;pre rel=&#34;CSS&#34;&gt;
+&lt;code class=&#34;css&#34;&gt;
+@font-face&lt;/span&gt; {
+  font-family: STIXGeneral;
+  src: local(STIXGeneral), url(/stixfonts/STIXGeneral.otf);
       unicode-range: U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF;
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;h2 id=&#34;css-selectors-bert-bos&#34;&gt;CSS Selectors - Bert Bos&lt;/h2&gt;
 
@@ -952,9 +1128,11 @@ There are 3 types of filters:
 
 &lt;p&gt;Syntax example:&lt;/p&gt;
 
-&lt;pre class=&#34;language-css&#34; rel=&#34;CSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;selector&#34;&gt;.box&lt;/span&gt; {
-  &lt;span class=&#34;property&#34;&gt;-webkit-filter&lt;/span&gt;: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5)) sepia(100%);
-}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre rel=&#34;CSS&#34;&gt;
+&lt;code class=&#34;css&#34;&gt;
+.box { -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5)) sepia(100%); }
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;The difference between the CSS box-shadow property and filter drop-shadow, is that the drop-shadow() filter operates on the entire element.&lt;/p&gt;
 
@@ -971,34 +1149,40 @@ Variables have been the number one developer request since 1998 but they all fai
 
 The specification is written and maintained by Tab Atkins and is still in working draft. Tab is creating a variable type which will be an addition to the variables in LESS/SASS. His new style is limited, you can use it in properties but not in media queries or selectors. However, he says it is very useful for web component theming. For Example:
 
-&lt;pre class=&#34;language-css&#34; rel=&#34;CSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;selector&#34;&gt;:root&lt;/span&gt; {
-  &lt;span class=&#34;property&#34;&gt;var-main-color&lt;/span&gt;: #000;
-}
+&lt;pre rel=&#34;CSS&#34;&gt;
+&lt;code class=&#34;css&#34;&gt;
+:root { var-main-color: #000; }
 
-&lt;span class=&#34;selector&#34;&gt;.foo&lt;/span&gt; {
-  &lt;span class=&#34;property&#34;&gt;color&lt;/span&gt;: var(main-color);
-}&lt;/code&gt;&lt;/pre&gt;
+.foo { color: var(main-color); }
+&lt;/code&gt;
+&lt;/pre&gt;
 
 Tab Atkins also showed how to use calculations and a variable like pi.
 
-&lt;pre class=&#34;language-css&#34; rel=&#34;CSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;selector&#34;&gt;:root&lt;/span&gt; {
-  &lt;span class=&#34;property&#34;&gt;var-phi&lt;/span&gt;: 1.618;
-  &lt;span class=&#34;property&#34;&gt;var-pi&lt;/span&gt;: 3.14159;
+&lt;pre rel=&#34;CSS&#34;&gt;
+&lt;code class=&#34;css&#34;&gt;
+:root {
+    var-phi: 1.618;
+    var-pi: 3.14159;
 }
 
-&lt;span class=&#34;selector&#34;&gt;.foo&lt;/span&gt; {
-  &lt;span class=&#34;property&#34;&gt;width&lt;/span&gt;: calc(300px * var(phi));
-}&lt;/code&gt;&lt;/pre&gt;
+.foo { width: calc(300px * var(phi)); }
+&lt;/code&gt;
+&lt;/pre&gt;
 
 
 An example of a conditional rule is @supports. With @supports you can test whether a property is supported or not. It is similar to Modernizr and other similar libraries.
 
-&lt;pre class=&#34;language-css&#34; rel=&#34;CSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;selector&#34;&gt;@supports&lt;/span&gt; (display: flex) {
-  &lt;span class=&#34;selector&#34;&gt;body, #navigation, #article&lt;/span&gt; {
-    &lt;span class=&#34;property&#34;&gt;display&lt;/span&gt;: flex;
-    &lt;span class=&#34;property&#34;&gt;width&lt;/span&gt;: auto;
-  }
-}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre rel=&#34;CSS&#34;&gt;
+&lt;code class=&#34;css&#34;&gt;
+@supports (display: flex) {
+    body, #navigation, #article {
+        display: flex;
+        width: auto;
+    }
+}
+&lt;/code&gt;
+&lt;/pre&gt;
 
 All the features Tab showed us, really made me wanting it implemented tomorrow. You can find his slides on: &lt;a href=&#34;http://www.xanthir.com/talks/2013-06-14&#34;&gt;xanthir.com&lt;/a&gt; (use chrome and your arrow keys to navigate).
 
@@ -1047,80 +1231,70 @@ Performance:
     
     <item>
       <title>Accessibility is also UX design</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/</link>
+      <link>/fronteers/accessibility-is-ux-design/</link>
       <pubDate>Tue, 08 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/</guid>
+      <guid>/fronteers/accessibility-is-ux-design/</guid>
       <description>&lt;article role=&#34;article&#34; class=&#34;column-content&#34;&gt;&lt;h1&gt;Accessibility is also UX design&lt;/h1&gt;&lt;p class=&#34;subtitle&#34;&gt;UX candy - Johan Huijkman Twitter: @huijkman - Arend van Baarsen&lt;/p&gt;&lt;p&gt;08-01-2013 &lt;br&gt;The presentation was held at &lt;a href=&#34;http://www.q42.nl&#34;&gt;Q42&lt;/a&gt; in The Hague. A nice environment to work and to share knowledge. Johan and Arend went through some sites using the screen reader and showed us some examples how people with visual impairment are experiencing websites. You can test this as well with &lt;a href=&#34;http://www.webformator.de/hollaendisch/index.php&#34;&gt;webformator&lt;/a&gt; for Windows or the Voice over application on the Mac OS.&lt;/p&gt;&lt;p&gt;He also showed google.nl as an example of a really bad accessibility experience. Even the Dutch news site nu.nl is not user friendly. It goes through all the links in the top, banners and links in the left navigation, before it finally starts reading the first news headline. We laughed about it during the presentation but it is quite sad, actually.&lt;/p&gt;&lt;p&gt;As humans we scan the headlines to see what article gets our interest to read. People who needs a screen reader are forced to scan the site lineair.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Missasumption #1: The site should be accessible when javascript is off.&lt;/strong&gt;&lt;br&gt;It should also be accessible when javascript is on! One of the things that I didn&#39;t know is that screen readers read javascript. When you have a carrousel on your site it will read this code.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Missasumption #2: Only a few cannot access your site, so why bother?&lt;/strong&gt;&lt;br&gt;In the Netherlands there are about 4 million users with a form of a disability! You cannot ignore them.&lt;/p&gt;&lt;h2&gt;What can you do to make sites more accessible?&lt;/h2&gt;&lt;p&gt;There are a number of ways to make your site accessible for the users. The easiest way to tackle some problems is using the following tips:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Use a &#34;skip&#34; link, this is the safest way because &lt;a href=&#34;http://www.w3.org/WAI/intro/aria.php&#34;&gt;WAI-ARIA&lt;/a&gt; standard is not completely accepted.&lt;/li&gt;&lt;li&gt;Add help text before the link, for example: &#34;Go directly to...&#34;. It will make it more clear for the user.&lt;/li&gt;&lt;li&gt;Structure your HTML to place the important part (content) in the top section.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;Another thing Johan pointed out is that title tags are &lt;a href=&#34;http://www.w3.org/html/wg/wiki/ChangeProposals/notitlev2#New_information:_Browser_vendors_have_not_made_a_commitment_to_provide_.28input.29_device_independent_access_to_title_attribute_content&#34;&gt;not well supported by browsers&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;It is not just about clean HTML code, it&#39;s about interaction&lt;/h2&gt;&lt;p&gt;Johan gave us 2 more examples to be aware of during development.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;How does someone with a screen reader experience your site? How does this person knows when something on the page has changed?&lt;/strong&gt;&lt;br&gt;Example filling in web forms. When the user makes a mistake in a form, don&#39;t reload the page and loose what was filled in correctly. There are people who have trouble typing. Also place the error message outside and in the top of the form with a link to the field which must be corrected. If the error is in the input field/form it will be ignored by the screen reader.&lt;/p&gt;&lt;p&gt;Another issue is using captcha. Arend let us listen to a captcha example. The screen reader talks jibberish when reading the captcha text. You cannot make any sense of it.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;What about people who has a visual impairment?&lt;/strong&gt;&lt;br&gt;There are people who have to zoom in so badly they only see a part of the site. For example the homepage of the Dutch public transport planner. People who zoom in might try to type in the fields, while this is really just an image, not the form.&lt;/p&gt;&lt;p&gt;And think of people who cannot drag,drop, pinch or zoom. How can you give them a better experience?&lt;/p&gt;&lt;h2&gt;Accessibility label is not the holy grail&lt;/h2&gt;&lt;p&gt;There are a number of accessibility labels in the Netherlands you can achieve for your site: &lt;a href=&#34;http://www.drempelvrij.nl&#34;&gt;drempelvrij.nl&lt;/a&gt;, &lt;a href=&#34;http://accessibility.nl&#34;&gt;accessibility.nl&lt;/a&gt;. When you&#39;re able to get one of these labels, it doesn&#39;t mean that your site is full proof accessible. Q42 created the website for the Dutch public transport travel planner. They made a new version of the travel planner which was still using a table. It was OK, at least good enough to get the accessibility label. But Q42 decided to hire people from &lt;a href=&#34;http://visiris.com&#34;&gt;visiris.com&lt;/a&gt; to test the site. And it turns out that it was not working as it should. They changed the form using spans and divs and it worked like a charm. Johan used the screan reader for the audience to hear the difference between the 2 versions. The final travel planner made much more sense and more useful.&lt;/p&gt;&lt;p&gt;An accessibility label is, what I think a very good start to make your site more accessible, but as Johan pointed out, don&#39;t stare blindly on this label, also ask &lt;em&gt;real&lt;/em&gt; users to test your site.&lt;/p&gt;&lt;h2&gt;Tips for development&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;Think content first (or mobile first). You will avoid a lot of accessibility issues.&lt;/li&gt;&lt;li&gt;Use your common sense.&lt;/li&gt;&lt;li&gt;Use a screen reader to test your site.&lt;/li&gt;&lt;li&gt;Navigate with your keyboard.&lt;/li&gt;&lt;li&gt;If you are a developer, talk to the UX designer and vice versa.&lt;/li&gt;&lt;li&gt;Try the Dutch &lt;a href=&#34;http://www.frankwatching.com/gespot/bartimeus-zien-app-laat-zien-wat-een-slechtziende-ziet/&#34; class=&#34;external-link&#34;&gt;&#34;ZIEN&#34; app&lt;/a&gt; for iPhone or iPad to experience what it&#39;s like when you have a visual impairment.&lt;/li&gt;&lt;li&gt;Q42 created a Chrome extension &lt;a href=&#34;https://chrome.google.com/webstore/search-extensions/see?hl=nl&#34;&gt;&#34;See&#34;&lt;/a&gt;. It lets you view the web as a user with a visual impairment.&lt;/li&gt;&lt;li&gt;In the Netherlands there are about 4 million users with a form of a disability. You can ask them to test your site or hire someone from: &lt;a href=&#34;http://www.viziris.nl&#34;&gt;Viziris.com&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;To be frank, I personally didn&#39;t think much about accessibility. At least not enough. After the presentation about &lt;a href=&#34;../fronteers2012/accessibility&#34;&gt;accessibility&lt;/a&gt; on the Fronteers conference 2012, I did make a start. Every site I start to build (including my own site), I think about the structure first and use my keyboard once in a while for testing. But after this presentation I realized there is a lot more to it than just restructuring the HTML. It is, as Johan stated: &#34;Accessibility is also UX design&#34;.&lt;/p&gt;&lt;/article&gt;
 </description>
     </item>
     
     <item>
       <title>The zoom interface of www.rijksmuseum.nl</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/rijksmuseum/</link>
+      <link>/fronteers/rijksmuseum/</link>
       <pubDate>Tue, 08 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/rijksmuseum/</guid>
+      <guid>/fronteers/rijksmuseum/</guid>
       <description>&lt;article role=&#34;article&#34;&gt;&lt;h1&gt;The zoom interface of www.rijksmuseum.nl&lt;/h1&gt;&lt;p class=&#34;subtitle&#34;&gt;Remco Veldkamp - Twitter: @remcoder&lt;/p&gt;&lt;p&gt;08-01-2013 &lt;br&gt;All 135.000 images of the collection of National Museum Amsterdam are to be admired in ultra high resolution and full screen on every smartphone, tablet and personal computer. Remco talked about the challenges he encountered and how close you can zoom in on a painting.&lt;/p&gt;&lt;h2&gt;Creating tiles&lt;/h2&gt;&lt;p&gt;For the small screen resolutions they created tiles of the paintings. The database contains 125.000 images with a total of 690GB! That&#39;s a lot. To make programming easier, they created the product WorkQueue. With this product they can easily create tiles. For every zoom level there is a scaled version of the tile. To experience the site, it is advised to have wi-fi connection, because of the image data that needs to be downloaded.&lt;/p&gt;&lt;h2&gt;Leaflet for zooming&lt;/h2&gt;&lt;p&gt;For the zoom mechanism Q42 uses &lt;a href=&#34;http://leafletjs.com/&#34;&gt;Leaflet&lt;/a&gt;. This is an open source javascript library for mobile-friendly interactive maps. And it works on iOS and Android. Other mechanisms they use for the zoom magic is CSS transitions and transforms, overlays and markers.&lt;/p&gt;&lt;p&gt;Leaflet works with longitude and latitude coordinates. That doesn&#39;t really make sense for paintings. Remco made some tweaks in the library to be able to work with x and y coordinates. They also had a projection problem. Maps are globe like, for the paintings they needed a square projection.&lt;/p&gt;&lt;h2&gt;Overall impression&lt;/h2&gt;&lt;p&gt;It is very impressive how Q42 managed to build such a user experience. The website has more to offer than zooming on paintings. You can download a painting to the online studio, where you can create snippets from the details of paintings you like most, create posters, post cards etc. It is really a fun and interesting way to experience our &lt;a href=&#34;http://www.rijksmuseum.nl&#34;&gt;National Museum&lt;/a&gt;.&lt;/p&gt;&lt;/article&gt;
 </description>
     </item>
     
     <item>
       <title>There&#39;s a class for that</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/oocss/</link>
+      <link>/fronteers/oocss/</link>
       <pubDate>Tue, 08 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/oocss/</guid>
+      <guid>/fronteers/oocss/</guid>
       <description>&lt;article role=&#34;article&#34;&gt;&lt;h1&gt;There&#39;s a class for that&lt;/h1&gt;&lt;p class=&#34;subtitle&#34;&gt;Elaine Oliver Twitter: @skinkfu&lt;/p&gt;&lt;p&gt;08-01-2013 &lt;br&gt;The presentation was held at &lt;a href=&#34;http://www.q42.nl/&#34;&gt;Q42&lt;/a&gt; in The Hague. Elaine Oliver is an interaction engineer and front end developer. She was part of the project team that created the new website of the &lt;a href=&#34;http://www.rijksmuseum.nl&#34;&gt;Dutch National Museum&lt;/a&gt;. In this presentation she shared her experience about creating the OOCSS architecture, responsive design and CSS unit tests.&lt;/p&gt;&lt;p&gt;If you are not familiar with OOCSS or want to know more about it, I recommend you to read the article &lt;a href=&#34;http://coding.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/&#34;&gt;&#34;An Introduction to Object Oriented CSS&#34;&lt;/a&gt; from Louis Lazaris on Smashing magazine website. Another recommendation is &lt;a href=&#34;http://smacss.com/&#34;&gt;SMACSS&lt;/a&gt;, a style guide to structure your CSS to allow flexibility and maintainability.&lt;/p&gt;&lt;p&gt;Elaine explains that the new site of the Dutch National Museum must be accessible on different devices, browsers and Internet Explorer 8. There was a lot of pressure to make the site pixel perfect, because there were a number of art designers responsible for the design. Plus they were not familiar with designing for flexible screens. During the project the developers came with new ideas and solutions for the site architecture.&lt;/p&gt;&lt;p&gt;Elaine&#39;s goal was to make a flexible and powerful CSS framework, which can be easily used. For example, if another colleague or front end developer wants to make the search function responsive, how cool would it be if you can say: &#34;There&#39;s a class for that.&#34;? To reach this goal, she decided to do it with OOCSS.&lt;/p&gt;&lt;h2&gt;Basics of OOCSS&lt;/h2&gt;&lt;p&gt;Elaine gave the following tips to make your CSS object oriented:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The styles should be content and context independent.&lt;/li&gt;&lt;li&gt;Define one class that has a number of styles, instead of using multiple selectors.&lt;/li&gt;&lt;li&gt;Define good names for the classes and their fuction.&lt;/li&gt;&lt;li&gt;Think in small blocks and give it good and clear names.&lt;/li&gt;&lt;li&gt;Keep it simple where possible.&lt;/li&gt;&lt;li&gt;Keep your target group in mind: people who will use your framework.&lt;/li&gt;&lt;li&gt;Use &#34;js&#34; prefixes or data-role for javascript related CSS.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Can you develop responsive OOCSS?&lt;/strong&gt;&lt;br&gt;Yes you can. Elaine&#39;s tip is to activate a media query based on a class.&lt;/p&gt;&lt;h2&gt;CSS Unit tests&lt;/h2&gt;&lt;p&gt;Elaine was so excited and proud with what she had accomplished, but her colleagues din&#39;t understand the code. To make it easier to read and to use, she decided to create CSS unit tests. She created online documentation of every class with an example of what it does. This kind of documentation is usefull:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;to prevent regression&lt;/li&gt;&lt;li&gt;for documenting styles&lt;/li&gt;&lt;li&gt;to have better communication with colleagues&lt;/li&gt;&lt;li&gt;for prototyping&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;For creating unit tests Elaine used &lt;a href=&#34;http://weblogs.asp.net/scottgu/archive/2010/07/02/introducing-razor.aspx&#34;&gt;Razor templates&lt;/a&gt;, that worked best for her.&lt;/p&gt;&lt;h2&gt;Overall impression&lt;/h2&gt;&lt;p&gt;I noticed she used a huge amount of classes just for simple things as margin:0 auto etc. Some HTML elements had about 8 or 10 classes. I wonder if it would make your life as front end developer easier if an element has so many classes? Isn&#39;t it hard to maintain?&lt;/p&gt;&lt;p&gt;Besides my personal remarks, I really liked the presentation and the experience Elaine had shared with us. It gave me food for thought and ideas how to make my CSS more object oriented. I do was impressed how flexible the framework is that Elaine created, and her unit tests as well. That had cost her an incredibly amount of time and efford.&lt;/p&gt;&lt;/article&gt;
 </description>
     </item>
     
     <item>
       <title>Fronteers Conference 2012</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/conf_2012/</link>
+      <link>/fronteers/conf_2012/</link>
       <pubDate>Sun, 21 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/conf_2012/</guid>
+      <guid>/fronteers/conf_2012/</guid>
       <description></description>
     </item>
     
     <item>
       <title>I can smell your CMS</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/smellyourcms/</link>
+      <link>/conf_2012/smellyourcms/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/smellyourcms/</guid>
+      <guid>/conf_2012/smellyourcms/</guid>
       <description>&lt;p&gt;Phil works as a web developer in London for R/GA. His presentation is to ask yourself and or your customer: do you really need a CMS? He also talks about the role of the web builder (agency) and the customer. It was a great and funny presentation. It really gave me energy and stuff to think about.&lt;/p&gt;&lt;h2&gt;The CMS Paradox&lt;/h2&gt;&lt;p&gt;Usually we give clients what they want, they want a system that is scalable and has lots of features. But the system which has to answer to these demands becomes very complex in the backbone but also for the user. Having a lot of features doesn&#39;t mean it is user friendly.&lt;/p&gt;&lt;p&gt;In the end the customer gets a system which can do a lot but the customer actually use only 20% of it.&lt;/p&gt;&lt;p&gt;We should actually give what the customer really needs.&lt;/p&gt;&lt;p&gt;The responsibility of the agency/developer is:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;To learn by example: view the source.&lt;/li&gt;&lt;li&gt;Craft of code: to move forward as developers and agencies, respect the craft of code.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Example Grolsch.com has a 30MB homepage, just like Beetle.com with lots of scrolling effects.&lt;/p&gt;&lt;p&gt;The CMS paradox is more obvious in large organisations. If you paid a fortune, then you&#39;ll sure it&#39;s a good system!&lt;/p&gt;&lt;p&gt;The CMS paradox is:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;It doesn&#39;t really solve problems.&lt;/li&gt;&lt;li&gt;it is enterprise level&lt;/li&gt;&lt;li&gt;expensive&lt;/li&gt;&lt;li&gt;flexibility doesn&#39;t really give flexibility! It doesn&#39;t always end up in flexible solutions.&lt;/li&gt;&lt;li&gt;Because you have so much choices -&amp;gt; paralysis&lt;/li&gt;&lt;li&gt;cost of system proportional to cost of changes: People need to get trained, the ability to make changes has a cost associated with it.&lt;/li&gt;&lt;li&gt;Most content managers are ending up as a developer.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;It has a powerful workflow. But does the shit get done?&lt;/p&gt;&lt;p&gt;People at the top like the idea of a controlling system, but the CMS is being used by an intern or a developer in the end, not the CEO. People tend to subvert the system because of all the security and controlling workflows.&lt;/p&gt;&lt;h2&gt;Code smell&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;CMS&#39;s don&#39;t just leave a smell, they actually stink!&lt;/strong&gt;&lt;br&gt;Browse on the internet and just look at the url or code and you know that you&#39;re dealing with a CMS. Most CMS&#39;s expose the technology in URLs, such as an url ending in .php or .asp. This is a type of lock in. For example:&lt;br&gt;&lt;a href=&#34;http://eur.burton.com/on/demandware.store/Sites-Burton_EU-Site/default&#34;&gt;http://eur.burton.com/on/demandware.store/Sites-Burton_EU-Site/default&lt;/a&gt; That&#39;s not a cool URL :)&lt;br&gt;Or stinky code: &lt;a href=&#34;http://www.episerver.com/&#34;&gt;http://www.episerver.com/&lt;/a&gt; pages has lots of crap in the HTML, like a hidden&lt;xsl:text&gt;&amp;lt;form&amp;gt;&lt;/xsl:text&gt;tag around everything that includes a hash of the view state.&lt;/p&gt;&lt;p&gt;URL design is a craft and should be part of the CMS when developing a website.&lt;/p&gt;&lt;blockquote&gt;&amp;ldquo;Challenge CMS stink. Fight for the chance to do good on the web.&amp;rdquo; &lt;cite&gt;- Phil Hawksworth&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;Optimisation:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;To serve a good performing web page you want a good base (not a CMS).&lt;/li&gt;&lt;li&gt;Building a site with modules kills performance and leads to a maintenance nightmare and makes Steve Souders cry.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Modularity&lt;xsl:text&gt;&amp;amp;&lt;/xsl:text&gt;flexibility (o really?): With all those modules you end up in a soup, maintenance is a nightmare. And kills performance.&lt;/p&gt;&lt;h2&gt;CMS: the power to ruin their site (Rachel Andrew)&lt;/h2&gt;&lt;p&gt;Core feature: WYSIWIG = Danger. It ruins the layout of the site. We should protect the design experience. We should protect the markup.&lt;/p&gt;&lt;p&gt;WYSYWIG can fuck up designs pretty often, and it&#39;s really hard to do it properly. Instead of WYSIWYG use Markdown. With Markdown you manage the content not the design. In that way, constrains can be enablers. When we are able to get the user to manage content and not design, it will keep the site future friendly and maintainable.&lt;/p&gt;&lt;h2&gt;CMS enhancements&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Challenge the introduction of stink, simplify the implementation of the system. Build CMS more future friendly, like mobile support.&lt;/li&gt;&lt;li&gt;Challenge the customer by asking what content REALLY needs to be dynamic. Think about it.&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Consider NOCMS&lt;/h2&gt;&lt;p&gt;You can use for instance &lt;a href=&#34;http://github.com/mojombo/jekyll&#34;&gt;Jekyll&lt;/a&gt; it uses ruby to spit out static html. Or &lt;a href=&#34;http://grabaperch.com&#34;&gt;Perch CMS&lt;/a&gt;, which focuses on the front end, generating the admin part from the tagged front end design. Combine your website with &lt;a href=&#34;https://www.varnish-cache.org/&#34;&gt;Varnish&lt;/a&gt; to speed it up.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Open Source ain&#39;t free</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/os-aintfree/</link>
+      <link>/conf_2012/os-aintfree/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/os-aintfree/</guid>
+      <guid>/conf_2012/os-aintfree/</guid>
       <description>&lt;p&gt;David DeSandro talked about his personal open source project and shared his experience, problems and solutions he run into when he shared his project with the world. The main subject of this presentation is how you can make money from open source projects. To get paid for the work you share with others.&lt;/p&gt;&lt;p&gt;If you want to do side projects you have to work on something that excites you. It is also a way to market yourself and to build and promote your personal brand. The community gets another tool for its toolkit. And most of these tools are free.&lt;/p&gt;&lt;h2&gt;The culture of free&lt;/h2&gt;&lt;p&gt;The culture of free, has the following components:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;you can view the source&lt;/li&gt;&lt;li&gt;there is no paywall&lt;/li&gt;&lt;li&gt;costs no money to...&lt;/li&gt;&lt;li&gt;you can learn for free&lt;/li&gt;&lt;li&gt;use the resources&lt;/li&gt;&lt;li&gt;and market your stuff&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;It is the ideal environment to be creative.&lt;/p&gt;&lt;p&gt;It feels good to share your code with the world and you like it when others start using it. But there is a downside. People who use your code, they expect that you solve their problems to get your code working. For them it take 5 minutes to send the mail with a support question, but for you it take at least 30 minutes to help them. For David, these support questions were piling up.&lt;/p&gt;&lt;h2&gt;How do you deal with it?&lt;/h2&gt;&lt;p&gt;David asked himself &#34;Why don&#39;t I put a price on my product?&#34; Users have to make a value judgement, how much money is it worth for me.&lt;/p&gt;&lt;p&gt;There are people who are making a money: like the app store, WP premium themes. Is there a market for front-end development resources?&lt;/p&gt;&lt;p&gt;FancyZoom was one of the first pioneers in this field. For $39 you could get a commercial license. David made Isotope as a commercial fill-in plug-in for Masonry with the FancyZoom model.&lt;/p&gt;&lt;p&gt;David didn&#39;t like the available options:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;adopt fancyzoom license model.&lt;/li&gt;&lt;li&gt;still open source = on github.&lt;/li&gt;&lt;li&gt;github donation&lt;/li&gt;&lt;li&gt;Flattr&lt;/li&gt;&lt;li&gt;Generic PayPal donation, but not happy with those donation options.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;And started a company next to his agency for his side projects.&lt;/p&gt;&lt;p&gt;It feels kind a bit against the open source thought, but the results are incredible:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Sold &lt;a href=&#34;http://isotope.metafizzy.co/&#34;&gt;Isotope&lt;/a&gt; for $37 / License (now $25), responsible for 25% of income in 2011.&lt;/li&gt;&lt;li&gt;Able to pay off car loan and student loan.&lt;/li&gt;&lt;li&gt;Impact on quality of life.&lt;/li&gt;&lt;li&gt;At a cost of 20% of my free time.&lt;/li&gt;&lt;li&gt;Also the price allows non technical users to contribute to the product.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Are support emails bugging you? Think about it. If so, ask support fee.&lt;/p&gt;&lt;p&gt;There is a huge market for commercial front-end dev resources. Free&lt;xsl:text&gt;&amp;amp;&lt;/xsl:text&gt;open source ideal doesn&#39;t scale. It is OK to make money out of honest work.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Short notes</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/shortnotes/</link>
+      <link>/conf_2012/shortnotes/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/shortnotes/</guid>
+      <guid>/conf_2012/shortnotes/</guid>
       <description>&lt;p&gt;For the talks I did&#39;t make much notes, are gathered on this page.&lt;/p&gt;&lt;h2 id=&#34;alexgraul&#34;&gt;Using JS to build bigger, better datavis to enlighten and elate&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Alex Graul - Twitter: @alexgraul - Video: &lt;a href=&#34;http://vimeo.com/52851512&#34;&gt;http://vimeo.com/52851512&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Alex makes visualizations for the Guardian.&lt;/p&gt;&lt;p&gt;He showed us a couple of examples to make data more interesting for the people, using animations and interaction. He is co-lead developer of the &lt;a href=&#34;misoproject.com/dataset/&#34;&gt;Miso project&lt;/a&gt;, this is an open source toolkit for creating interactive storytelling and data visualization of content. On the Miso project site you&#39;ll find some examples.&lt;/p&gt;&lt;h2 id=&#34;mathiasbynens&#34;&gt;Ten things I didn&#39;t know about HTML&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Mathias Bynens - Twitter: @mathias - Video: &lt;a href=&#34;http://vimeo.com/52851509&#34;&gt;http://vimeo.com/52851509&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Mathias showed us some funny things he found out using HTML. For example he tried to use a name for setting a background color, for example:&lt;/p&gt;&lt;pre class=&#34;language-html&#34; rel=&#34;HTML&#34;&gt;&lt;code&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;tag&#34;&gt;div&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;bgcolor&lt;/span&gt;=&#34;fronteersconf&#34;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt; Fronteers Conf &lt;span class=&#34;punctuation&#34;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&#34;tag&#34;&gt;div&lt;/span&gt;&lt;span class=&#34;punctuation&#34;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;returns the Fronteers yellow logo color. Or &#34;sick&#34; returns: #000c00. Try it for yourself to find out what your color is. It also gives different results when you remove the spaces in your name: bgcolor=&#34;your name&#34;.&lt;/p&gt;&lt;p&gt;Mathias also advises not to be obsessive about HTML validation. It is build by people and also has bugs. But most of all, functionality is more important than validation.&lt;/p&gt;&lt;blockquote&gt;&amp;ldquo;Validation is a tool, not a goal.&amp;rdquo; &lt;cite&gt;- Mathias Bynens&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;Characters don&#39;t need to be output escaped. The browser will render it OK, It is also DTD valid.&lt;/p&gt;&lt;p&gt;He also found out that &#34;font family&#34; does not need to be quote. It&#39;s rendered correctly:&lt;/p&gt;&lt;pre class=&#34;language-css&#34; rel=&#34;CSS&#34;&gt;&lt;code&gt;&lt;span class=&#34;property&#34;&gt;font-family&lt;/span&gt;: Comic Sans MS;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;But a font name beginning with a number does need quotes.&lt;/p&gt;&lt;h2 id=&#34;leaverou&#34;&gt;More CSS secrets: Another 10 things you may not know about CSS&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Lea Verou - Twitter: @leaverou - Video: &lt;a href=&#34;http://vimeo.com/52882799&#34;&gt;http://vimeo.com/52882799&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Lea showed us some awesome and powerful CSS(3) tricks. After this presentation you&#39;ll be longing for the day that these styles/animations are working cross browser, at least I do. It is amazing what you can accomplish with CSS, without using javascript. Although at the moment we still have to rely on one or the other untill it is available in the most common used browsers.&lt;/p&gt;&lt;p&gt;This presentation is really a must see. You can also check out the presentation of 2011 on: &lt;a href=&#34;http://vimeo.com/31719130&#34;&gt;vimeo&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&#34;peternederlof&#34;&gt;Beyond simple transitions, with a pinch of JavaScript&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Peter Nederlof - @peterlof - Video: &lt;a href=&#34;http://vimeo.com/53317255&#34;&gt;http://vimeo.com/53317255&lt;/a&gt;&lt;/p&gt;&lt;p&gt;To create animations we had to rely on custom javascript tools and libraries. We now can accomplish this with a simple CSS transition. However transitions still have their limits. Peter shows how to step beyond some of these limits.&lt;/p&gt;&lt;h4&gt;Benefits of CSS transitions&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;complete animation engine&lt;/li&gt;&lt;li&gt;no per-frame script calcuations&lt;/li&gt;&lt;li&gt;optimized in every way!&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;You should also use 3d transforms. It has no reflows. It is hardware accelerated, also on mobiles. It is battery friendly and widely supported. Except for IE, of course.&lt;/p&gt;&lt;p&gt;But there is a problem: transitions have no stop. You can&#39;t stop or interrupt an transition. Querying the CSS property values might not always work.&lt;/p&gt;&lt;p&gt;Things to keep in mind:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The transitionEnd event is not fired when a transition is interrupted.&lt;/li&gt;&lt;li&gt;Assigning styles via the javascript Api has a very high specifity.&lt;/li&gt;&lt;li&gt;Make fallbacks for critical cases: like left/top positioning for&lt;xsl:text&gt;&amp;lt;&lt;/xsl:text&gt;IE8, instead of using transformations.&lt;/li&gt;&lt;li&gt;Use progressive enhancement.&lt;/li&gt;&lt;li&gt;And most important, convince your client or project manager that this is OK.&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&#34;rebeccamurphey&#34;&gt;JS Minty Fresh: Identifying and Eliminating Smells in Your Code Base&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Rebecca Murphey - Twitter: @rmurphey - Video: &lt;a href=&#34;http://vimeo.com/53416986&#34;&gt;http://vimeo.com/53416986&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Rebecca talks about javascript code smell and how to solve this. It was a great talk with nice examples. I didn&#39;t even know that you can create html &#34;template&#34; and call it in javascript to make it more clean. That was a nice surpise. The &lt;a href=&#34;http://vimeo.com/53416986&#34;&gt;video&lt;/a&gt; can tell you a lot more than these notes.&lt;/p&gt;&lt;h4&gt;Code smells are a suggestion of a deeper problem&lt;/h4&gt;&lt;p&gt;The harm is that debugging is harder, maintainability suffers and features are hard to add. You never come back to fix it later. So create clean code from the start.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;The smell&lt;/strong&gt;: Repetitive code&lt;br&gt;&lt;strong&gt;The fix&lt;/strong&gt;: A function, object&lt;/p&gt;&lt;p&gt;&lt;strong&gt;The smell&lt;/strong&gt;: complex functions&lt;br&gt;&lt;strong&gt;The fix&lt;/strong&gt;: More&lt;xsl:text&gt;&amp;amp;&lt;/xsl:text&gt;smaller functions:keep functions short and simple and avoid complex if/else logic&lt;/p&gt;&lt;p&gt;&lt;strong&gt;The smell&lt;/strong&gt;: async acrobatics&lt;br&gt;&lt;strong&gt;The fix&lt;/strong&gt;: deferrers:manage and leverage asynchronicity&lt;/p&gt;&lt;p&gt;&lt;strong&gt;The smell&lt;/strong&gt;: html in javascript&lt;br&gt;&lt;strong&gt;The fix&lt;/strong&gt;: place it in the template. You can use _.template function from Underscore.js.&lt;/p&gt;&lt;p&gt;You can download the presentation from: &lt;a href=&#34;http://rmurphey.com/js-minty-fresh/presentation&#34;&gt;Rebecca Murpheys website&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&#34;alexrussell&#34;&gt;What the legacy web is keeping from us&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Alex Russell - Video: &lt;a href=&#34;http://vimeo.com/53373706&#34;&gt;http://vimeo.com/53373706&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Progress is a man-made process, and like most man-made processes progress can be sped up and slowed down. Progress is good for people, for us. However it requires change and how many changes should be made and what changes should be made.&lt;/p&gt;&lt;blockquote&gt;&amp;ldquo;Accessibility is the most important thing! In the computing world.&amp;rdquo; &lt;cite&gt;- Alex Russell&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;Progress delayed is progress denied! For example the canvas tag or rounded cornes, svg. Some took 6-8 years, while it was proposed in the beginning of 2000. Optimistically, new features shipped today will not be usable until 2016!&lt;/p&gt;&lt;p&gt;Users do what they are asked to do. We can change that users start using new browsers.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>The State of HTML5 Video</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/statehtml5video/</link>
-      <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/statehtml5video/</guid>
-      <description>&lt;p&gt;&lt;p&gt;Jeroen Wijering shows how far JWPlayer is in using HTML5. There are some cool features. At the bottom of this article you find some links to demo&amp;rsquo;s.&lt;/p&gt;&lt;blockquote&gt;&amp;ldquo;One thing i would never do again: charge a $15 license for YouTube :)&amp;rdquo; &lt;cite&gt;- Jeroen Wijering&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;JW Player:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Currently JWPlayer is used by over a million websites, including the White House.&lt;/li&gt;&lt;li&gt;First sold to youtube in 1 year of existence.&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;JW6 Player is the first version defaulting to HTML5&lt;/h2&gt;&lt;p&gt;Why html5:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Apple iOS has no Flash support and Android is also stopping with supporting Flash.&lt;/li&gt;&lt;li&gt;Ease of use for developers as easy as inserting an image.&lt;/li&gt;&lt;li&gt;Video as First class citizen:&lt;ul&gt;&lt;li&gt;Accessible for humans and robots,&lt;/li&gt;&lt;li&gt;Existing tools (css styling js scripting)&lt;/li&gt;&lt;li&gt;Fast secure and stable (client&lt;a href=&#34;xsl:text&#34;&gt;xsl:text&lt;/a&gt;&amp;amp;&lt;a href=&#34;http://www.mirellavanteulingen.nl/xsl:text&#34;&gt;/xsl:text&lt;/a&gt;network)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Evolution&lt;/h2&gt;&lt;p&gt;First you had separate players, for example RealPlayer. Then you got Flash embedded players and now with HTML5 it is included. Over 80% of the world supports HTML5 video. 20% is IE8 and feature phones.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&#34;http://gs.statcounter.com&#34;&gt;http://gs.statcounter.com&lt;/a&gt; use of HTML5&lt;/li&gt;&lt;li&gt;current state 80% of world supports html5 video&lt;/li&gt;&lt;li&gt;MP4/web-m support is evenly split&lt;/li&gt;&lt;li&gt;MP4/h.264: most browsers + iOS and Android&lt;/li&gt;&lt;li&gt;web-m: Android, Firefox and Opera&lt;/li&gt;&lt;li&gt;Firefox is going for MP4&lt;/li&gt;&lt;li&gt;Full screen Api:must-have video, except IE for the moment&lt;/li&gt;&lt;li&gt;Chrome will replace h.254 for web-m&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;What can you do with WebVVT?&lt;/h2&gt;&lt;p&gt;&lt;a href=&#34;xsl:text&#34;&gt;xsl:text&lt;/a&gt;&amp;lt;track&amp;gt;&lt;a href=&#34;http://www.mirellavanteulingen.nl/xsl:text&#34;&gt;/xsl:text&lt;/a&gt;and webVTT are interesting innovations, available in Safari 6, Chrome 23 and IE 10. Code is free and usable:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;You can test the demo on: &lt;a href=&#34;http://demo.longtailvideo.com/track_demos/captions.html&#34;&gt;&lt;a href=&#34;xsl:text&#34;&gt;xsl:text&lt;/a&gt;&amp;lt;track&amp;gt;&lt;a href=&#34;http://www.mirellavanteulingen.nl/xsl:text&#34;&gt;/xsl:text&lt;/a&gt;demos&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://demo.longtailvideo.com/track_demos/chapters.html&#34;&gt;Chapter markers are available too in Chrome Canary&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://demo.longtailvideo.com/track_demos/descriptions.html&#34;&gt;Audio descriptions are available as well&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://demo.longtailvideo.com/track_demos/thumbs.html&#34;&gt;Preview thumbs&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://demo.longtailvideo.com/track_demos/page.html&#34;&gt;Page interaction&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://demo.longtailvideo.com/track_demos/search.html&#34;&gt;Video search&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/p&gt;
 </description>
     </item>
     

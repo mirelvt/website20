@@ -20,18 +20,22 @@ description = "At Dreamsolution we regularly use Crispy Forms to generate  compl
   you want in the Fieldset layout object, and this can become a long list:
 </p>
 
-<pre class="python" rel="Python"><code>Layout(
-  Fieldset(
-      <span class="string">'Your legend'</span>,
-      <span class="string">'first_name'</span>,
-      <span class="string">'last_name'</span>,
-      <span class="string">'street'</span>,
-      <span class="string">'house_number'</span>,
-      <span class="string">'addition'</span>,
-      <span class="string">'zip_code'</span>,
-      <span class="string">'city'</span>
-  )
-)</code></pre>
+<pre rel="Python">
+<code>
+Layout(
+    Fieldset(
+        'Your legend',
+        'first_name',
+        'last_name',
+        'street',
+        'house_number',
+        'addition',
+        'zip_code',
+        'city'
+    )
+)
+</code>
+</pre>
 
 <p>
   There is another way to create fieldsets and or manipulate the layout structure.
@@ -40,11 +44,14 @@ description = "At Dreamsolution we regularly use Crispy Forms to generate  compl
   a fieldset and the rest goes in the second fieldset:
 </p>
 
-<pre class="python" rel="Python"><code><span class="statement">self</span>.helper = FormHelper(form=<span class="statement">self</span>)
+<pre class="python">
+<code>
+self.helper = FormHelper(form=self)
 
-<span class="statement">self</span>.helper[<span class="number">0</span>:<span class="number">2</span>].wrap_together(layout.Fieldset, <span class="string">'Your name'</span>)
-<span class="statement">self</span>.helper[<span class="number">1</span>:<span class="number">6</span>].wrap_together(layout.Fieldset, <span class="string">'Your Address'</span>)
-</code></pre>
+self.helper[0:2].wrap_together(layout.Fieldset, 'Your name')
+self.helper[1:6].wrap_together(layout.Fieldset, 'Your Address')
+</code>
+</pre>
 
 <p>As you can see we only need 2 lines of code to create two fieldsets.</p>
 
@@ -61,9 +68,11 @@ description = "At Dreamsolution we regularly use Crispy Forms to generate  compl
   two fields the way we want:
 </p>
 
-<pre class="python" rel="Python"><code><span class="statement">self</span>.helper[<span class="number">3</span>:<span class="number">5</span>].wrap_together(layout.Div, <span class="crispy-attribute">css_class</span>=<span class="string">"housenumber-wrapper"</span>)
-<span class="statement">self</span>.helper[<span class="string">'house_number'</span>].wrap(layout.Field, <span class="crispy-attribute">wrapper_class</span>=<span class="string">"housenumber"</span>)
-<span class="statement">self</span>.helper[<span class="string">'addition'</span>].wrap(layout.Field, <span class="crispy-attribute">wrapper_class</span>=<span class="string">"addition"</span>)
+<pre rel="Python">
+<code>
+self.helper[3:5].wrap_together(layout.Div, css_class="housenumber-wrapper")
+self.helper['house_number'].wrap(layout.Field, wrapper_class="housenumber")
+self.helper['addition'].wrap(layout.Field, wrapper_class="addition")
 </code></pre>
 
 <figure>
@@ -108,10 +117,13 @@ Now you can style and manipulate the 2 fields without touching the other fields.
   step we created 2 fieldsets:
 </p>
 
-<pre class="python" rel="Python"><code><span class="statement">self</span>.helper.layout[<span class="number">1</span>].insert(<span class="number">2</span>,layout.HTML(
-  <span class="string">'&lt;p&gt;No spaces in the zipcode, please.&lt;/p&gt;'</span>
+<pre rel="Python">
+<code>
+self.helper.layout[1].insert(2,layout.HTML(
+  '&lt;p&gt;No spaces in the zipcode, please.&lt;/p&gt;'
 ))
-</code></pre>
+</code>
+</pre>
 
 <figure>
   <img src="/img/crispy-add-content.png" alt="">
@@ -121,17 +133,20 @@ Now you can style and manipulate the 2 fields without touching the other fields.
   The complete code with all the examples in the right order:
 </p>
 
-<pre class="python" rel="Python"><code><span class="comment"># Wrapping the fields "housenumber and addition". Assign extra class to the fields</span>
-<span class="statement">self</span>.helper[<span class="number">3</span>:<span class="number">5]</span>.wrap_together(layout.Div, <span class="crispy-attribute">css_class</span>=<span class="string">"housenumber-wrapper"</span>)
-<span class="statement">self</span>.helper[<span class="string">'house_number'</span>].wrap(layout.Field, <span class="crispy-attribute">wrapper_class</span>=<span class="string">"housenumber"</span>)
-<span class="statement">self</span>.helper[<span class="string">'addition'</span>].wrap(layout.Field, <span class="crispy-attribute">wrapper_class</span>=<span class="string">"addition"</span>)
+<pre rel="Python">
+<code>
+# Wrapping the fields "housenumber and addition". Assign extra class to the fields
+self.helper[3:5].wrap_together(layout.Div, css_class="housenumber-wrapper")
+self.helper['house_number'].wrap(layout.Field, wrapper_class="housenumber")
+self.helper['addition'].wrap(layout.Field, wrapper_class="addition")
 
-<span class="comment"># Create 2 field sets</span>
-<span class="statement">self</span>.helper[<span class="number">0</span>:<span class="number">2</span>].wrap_together(layout.Fieldset, <span class="string">'Your name'</span>)
-<span class="statement">self</span>.helper[<span class="number">1</span>:<span class="number">6</span>].wrap_together(layout.Fieldset, <span class="string">'Your Address'</span>)
+# Create 2 field sets
+self.helper[0:2].wrap_together(layout.Fieldset, 'Your name')
+self.helper[1:6].wrap_together(layout.Fieldset, 'Your Address')
 
-<span class="comment"># insert text above "zipcode"</span>
-<span class="statement">self</span>.helper.layout[<span class="number">1</span>].insert(<span class="number">2</span>,layout.HTML(
-  <span class="string">'&lt;p&gt;No spaces in the zipcode, please.&lt;/p&gt;'</span>
+# not insert text above "zipcode"
+self.helper.layout[1].insert(2,layout.HTML(
+  '&lt;p&gt;No spaces in the zipcode, please.&lt;/p&gt;'
 ))
-</code></pre>
+</code>
+</pre>

@@ -78,6 +78,16 @@
 
             <div class="nav-arrows">
                 
+                    <a href="http://www.mirellavanteulingen.nl/blog/svg-icons-django-template/" class="arrow-prev"
+                        title="How to use svg icons in Django templates?">
+                        <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0.044921875" width="47.8613281" height="47.8613281" rx="3"></rect>
+                                <polygon fill="#FFFFFF" transform="translate(23.862343, 24.294813) scale(-1, 1) translate(-23.862343, -24.294813) " points="15 33.1599091 23.8614086 24.2965271 15.0001039 15.4334048 19.4314314 11 32.7246868 24.2965791 19.4315353 37.5896267"></polygon>
+                            </g>
+                        </svg>
+                    </a>
+                
                 
                     <a href="http://www.mirellavanteulingen.nl/blog/sass_fontcustom/" class="arrow-next"
                             alt="Font icons with Fontcustom and SASS">
@@ -117,156 +127,176 @@ of the tooltip item. I calculate its position using <em>getBoundingClientRect()<
 the tooltip, will appear on the right or left side of the tooltip item. In
 other cases the tooltip appears right below the tooltip item.</p>
 
-<pre class="language-js" rel="Javascript"><code><span class="function-label">var</span> <span class="variable">Tooltip</span> =  {
-    <span class="property">create:</span> <span class="function-label">function</span>(tooltip, elm) {
-        <span class="variable">elm_edges</span> = <span class="variable">elm</span>.getBoundingClientRect(); <span class="comment">// relative to the viewport</span>
-        <span class="variable">tooltip_text</span> = document.createTextNode(<span class="variable">elm</span>.getAttribute(<span class="selector">'data-tooltip'</span>));
-        <span class="variable">tooltip</span>.appendChild(<span class="variable">tooltip_text</span>);
+<pre rel="Javascript">
+<code class="javascript">
+var Tooltip =  {
+    create: function(tooltip, elm) {
+        elm_edges = elm.getBoundingClientRect(); // relative to the viewport
+        tooltip_text = document.createTextNode(elm.getAttribute('data-tooltip'));
+        tooltip.appendChild(tooltip_text);
 
-        <span class="comment">// Remove no-display + set the correct classname based on the position
-        // of the elm.</span>
-        <span class="function-label">if</span> (<span class="variable">elm_edges</span>.<span class="type">left</span> > (<span class="type">window</span>.<span class="type">innerWidth</span> - 100)) {
-            <span class="variable">tooltip</span>.<span class="type">className</span> = <span class="selector">'tooltip-container tooltip-left'</span>;
-        } <span class="function-label">else if</span> ((<span class="variable">elm_edges</span>.<span class="type">left</span> + (<span class="variable">elm_edges</span>.<span class="type">width</span> / 2)) < 100) {
-            <span class="variable">tooltip</span>.<span class="type">className</span> = <span class="selector">'tooltip-container tooltip-right'</span>;
-        } <span class="function-label">else</span> {
-            <span class="variable">tooltip</span>.<span class="type">className</span> = <span class="selector">'tooltip-container tooltip-center'</span>;
+        // Remove no-display + set the correct classname based on the position
+        // of the elm.
+        if (elm_edges.left > (window.innerWidth - 100)) {
+            tooltip.className ='tooltip-container tooltip-left';
+        } else if ((elm_edges.left + (elm_edges.width / 2)) < 100) {
+            tooltip.className = 'tooltip-container tooltip-right';
+        } else {
+            tooltip.className = 'tooltip-container tooltip-center';
         }
     },
-    <span class="property">position:</span> <span class="function-label">function</span>(tooltip, elm) {
-        <span class="function-label">var</span> <span class="variable">elm_top</span> = <span class="variable">elm_edges</span>.<span class="type">top</span> + <span class="variable">elm_edges</span>.<span class="type">height</span> + 10; <span class="comment">// 10 = arrow height</span>
+    position: function(tooltip, elm) {
+        var elm_top = elm_edges.top + elm_edges.height + 10; // 10 = arrow height
 
-        <span class="comment">// position tooltip on the left side of the elm.
-        // 220 = the max width + arrow width of the tooltip.</span>
-        <span class="function-label">if</span> (<span class="variable">elm_edges</span>.<span class="type">left</span> > (<span class="type">window</span>.<span class="type">innerWidth</span> - 100)) {
-            <span class="variable">tooltip</span>.<span class="type">style</span>.<span class="type">left</span> = (<span class="variable">elm_edges</span>.<span class="type">left</span> - 220) + <span class="unit">'px'</span>;
-            <span class="variable">tooltip</span>.<span class="type">style</span>.<span class="type">top</span> = <span class="variable">elm</span>.<span class="type">offsetTop</span> + <span class="unit">'px'</span>;
-        } <span class="function-label">else if</span> ((<span class="variable">elm_edges</span>.<span class="type">left</span> + (<span class="variable">elm_edges</span>.<span class="type">width</span> / 2)) < 100) {
-            <span class="comment">// position tooltip on the right side of the elm.</span>
-            <span class="variable">tooltip</span>.<span class="type">style</span>.<span class="type">left</span> = (<span class="variable">elm_edges</span>.<span class="type">left</span> + <span class="variable">elm_edges</span>.<span class="type">width</span> + 20) + <span class="unit">'px'</span>;
-            <span class="variable">tooltip</span>.<span class="type">style</span>.<span class="type">top</span> = <span class="variable">elm</span>.<span class="type">offsetTop</span> + <span class="unit">'px'</span>;
-        } <span class="function-label">else</span> {
-            <span class="comment">// Position the toolbox in the center of the elm.</span>
-            <span class="function-label">var</span> <span class="variable">centered</span> = (<span class="variable">elm_edges</span>.<span class="type">left</span> + (<span class="variable">elm_edges</span>.<span class="type">width</span> / 2)) - (<span class="variable">tooltip</span>.<span class="type">offsetWidth</span> / 2);
-            <span class="variable">tooltip</span>.<span class="type">style</span>.<span class="type">left</span> = <span class="variable">centered</span> + <span class="unit">'px'</span>;
-            <span class="variable">tooltip</span>.<span class="type">style</span>.<span class="type">top</span> = <span class="variable">elm_top</span> + <span class="unit">'px'</span>;
+        // position tooltip on the left side of the elm.
+        // 220 = the max width + arrow width of the tooltip.
+        if (elm_edges.left > (window.innerWidth - 100)) {
+            tooltip.style.left = (elm_edges.left - 220) + 'px';
+            tooltip.style.top = elm.offsetTop + 'px';
+        } else if ((elm_edges.left + (elm_edges.width / 2)) < 100) {
+            // position tooltip on the right side of the elm.
+            tooltip.style.left = (elm_edges.left + elm_edges.width + 20) + 'px';
+            tooltip.style.top = elm.offsetTop + 'px';
+        } else {
+            // Position the toolbox in the center of the elm.
+            var centered = (elm_edges.left + (elm_edges.width / 2)) - (tooltip.offsetWidth / 2);
+            tooltip.style.left = centered + 'px';
+            tooltip.style.top = elm_top + 'px';
         }
     },
 };
-</code></pre>
+</code>
+</pre>
 
 <p>With the functions <em>showTooltip</em> and <em>hideTooltip</em> the tooltip is visible or
 hidden, using the EventListeners <em>mouseover</em> and <em>mouseout</em>.</p>
 
-<pre rel="Javascript" class="language-js"><code><span class="function-label">function</span> <span class="property">showTooltip</span>(evt) {
-    <span class="function-label">var</span> <span class="variable">item</span> = Object.create(<span class="variable">Tooltip</span>);
-    <span class="variable">item</span>.<span class="property">create</span>(<span class="variable">tooltip</span>, evt.currentTarget);
-    <span class="variable">item</span>.<span class="property">position</span>(<span class="variable">tooltip</span>, evt.currentTarget);
+<pre rel="Javascript">
+<code class="Javascript">
+function showTooltip(evt) {
+    var item = Object.create(Tooltip);
+    item.create(tooltip, evt.currentTarget);
+    item.position(tooltip, evt.currentTarget);
 }
 
-<span class="function-label">function</span> <span class="property">hideTooltip</span>() {
-    <span class="variable">tooltip</span>.<span class="type">className</span> = <span class="selector">'tooltip-container no-display'</span>;
-    <span class="variable">tooltip</span>.removeChild(<span class="variable">tooltip</span>.firstChild);
-    <span class="variable">tooltip</span>.removeAttribute(<span class="selector">'style'</span>);
+function hideTooltip() {
+    tooltip.className = 'tooltip-container no-display';
+    tooltip.removeChild(tooltip.firstChild);
+    tooltip.removeAttribute('style');
 }
 
-<span class="function-label">function</span> <span class="property">onReady</span>() {
-    <span class="variable">tooltip</span> = document.documentElement.querySelector(<span class="selector">'.tooltip-container'</span>);
-    <span class="function-label">var</span> <span class="variable">tooltip_elms</span> = document.documentElement.querySelectorAll(<span class="selector">'[data-tooltip]'</span>);
+function onReady() {
+    tooltip = document.documentElement.querySelector('.tooltip-container');
+    var tooltip_elms = document.documentElement.querySelectorAll('[data-tooltip]');
 
     Array.prototype.forEach.call(tooltip_elms, function(elm) {
-        <span class="variable">elm</span>.addEventListener(<span class="selector">'mouseover'</span>,  showTooltip , false);
-        <span class="variable">elm</span>.addEventListener(<span class="selector">'mouseout'</span>, hideTooltip, false);
+        elm.addEventListener('mouseover',  showTooltip , false);
+        elm.addEventListener('mouseout', hideTooltip, false);
     });
 }
-</code></pre>
+</code>
+</pre>
 
 <p>The CSS handles the tooltip animation using animation keyframes.
 The class names <em>tooltip-left, tooltip-right</em> and <em>tooltip-center</em> positions the
 tooltip arrow.</p>
 
-<pre class="language-scss" rel="SCSS"><code><span class="selector">.tooltip-container</span> {
-    <span class="include">@include transform(translateZ(0))</span>; <span class="comment">// GPU</span>
-    <span class="property">position</span>: absolute;
-    <span class="property">max-width</span>: 200px;
-    <span class="property">padding</span>: 8px 10px 10px;
-    <span class="property">font-size</span>: 1.6rem;
-    <span class="property">background-color</span>: #2d2d2d;
-    <span class="property">color</span>: #fff;
-    <span class="property">border-radius</span>: 4px;
-    <span class="property">opacity</span>: 1; <span class="comment">// scale animation setting</span>
+<pre rel="SCSS">
+<code class="scss">
+.tooltip-container {
+    @include transform(translateZ(0)); // GPU
+    position: absolute;
+    max-width: 200px;
+    padding: 8px 10px 10px;
+    font-size: 1.6rem;
+    background-color: #2d2d2d;
+    color: #fff;
+    border-radius: 4px;
+    opacity: 1; // scale animation setting
 
-    &<span class="selector">[class*=" tooltip-"]</span> {
-        <span class="include">@include animation(tooltip-anim 0.8s)</span>;
+    &[class*=" tooltip-"] {
+        @include animation(tooltip-anim 0.8s);
     }
 
-    &<span class="selector">::after</span> {
-        <span class="property">position</span>: absolute;
-        <span class="property">display</span>: block;
-        <span class="property">content</span>: "";
+    &::after {
+        position: absolute;
+        display: block;
+        content: "";
     }
 
-    <span class="comment">// position arrow on the right of the tooltip</span>
-    &<span class="selector">.tooltip-left::after</span> {
-        <span class="include">@include transform(translateY(-50%))</span>;
-        <span class="property">right</span>: -8px;
-        <span class="property">top</span>: 50%;
-        <span class="property">border</span>: {
-            <span class="property">style</span>: solid;
-            <span class="property">width</span>: 6px 0 6px 8px;
-            <span class="property">color</span>: transparent transparent transparent #2d2d2d;
+    // position arrow on the right of the tooltip
+    &.tooltip-left::after {
+        @include transform(translateY(-50%));
+        right: -8px;
+        top: 50%;
+        border: {
+            style: solid;
+            width: 6px 0 6px 8px;
+            color: transparent transparent transparent #2d2d2d;
         }
     }
 
-    <span class="comment">// position arrow on the left of the tooltip</span>
-    &<span class="selector">.tooltip-right::after</span> {
-        <span class="include">@include transform(translateY(-50%))</span>;
-        <span class="property">left</span>: -8px;
-        <span class="property">top</span>: 50%;
-        <span class="property">border</span>: {
-            <span class="property">style</span>: solid;
-            <span class="property">width</span>: 6px 8px 6px 0;
-            <span class="property">color</span>: transparent #2d2d2d transparent transparent;
+    // position arrow on the left of the tooltip
+    &.tooltip-right::after {
+        @include transform(translateY(-50%));
+        left: -8px;
+        top: 50%;
+        border: {
+            style: solid;
+            width: 6px 8px 6px 0;
+            color: transparent #2d2d2d transparent transparent;
         }
     }
 
-    <span class="comment">// position arrow in the top center of the tooltip</span>
-    &<span class="selector">.tooltip-center::after</span> {
-        <span class="include">@include transform(translateX(-50%))</span>;
-        <span class="property">top</span>: -8px;
-        <span class="property">left</span>: 50%;
-        <span class="property">border</span>: {
-            <span class="property">style</span>: solid;
-            <span class="property">width</span>: 0 6px 8px 6px;
-            <span class="property">color</span>: transparent transparent #2d2d2d transparent;
+    // position arrow in the top center of the tooltip
+    &.tooltip-center::after {
+        @include transform(translateX(-50%));
+        top: -8px;
+        left: 50%;
+        border: {
+            style: solid;
+            width: 0 6px 8px 6px;
+            color: transparent transparent #2d2d2d transparent;
         }
     }
 }
 
-<span class="selector">[data-tooltip]</span> {
-    <span class="property">cursor</span>: pointer;
-    <span class="property">color</span>: #7cb342;
-    <span class="property">display</span>: inline-block;
+[data-tooltip] {
+    cursor: pointer;
+    color: #7cb342;
+    display: inline-block;
 }
 
-<span class="include">@include keyframes(tooltip-anim)</span> {
+@include keyframes(tooltip-anim) {
     0% {
-        <span class="include">@include transform(matrix(0.5, 0, 0, 0.8, 0, 0))</span>;
-        <span class="property">opacity</span>: 0;
+        @include transform(matrix(0.5, 0, 0, 0.8, 0, 0));
+        opacity: 0;
     }
 
-    20% { <span class="include">@include transform(matrix(1.1, 0, 0, 1.1, 0, 0))</span>; }
-    40% { <span class="property">opacity</span>: 1; }
-    70% { <span class="include">@include transform(matrix(1, 0, 0, 1, 0, 0))</span>; }
-    100% { <span class="include">@include transform(matrix(1, 0, 0, 1, 0, 0))</span>; }
-}</code></pre>
+    20% { @include transform(matrix(1.1, 0, 0, 1.1, 0, 0)); }
+    40% { opacity: 1; }
+    70% { @include transform(matrix(1, 0, 0, 1, 0, 0)); }
+    100% { @include transform(matrix(1, 0, 0, 1, 0, 0)); }
+}
+</code>
+</pre>
 
 <p>As you can see, not much code is written to get the tooltip to work. The complete
 code can be found on my <a href="https://github.com/mirelvt/js-css-tooltip">github page</a>
-and I also created a simple demo page <a href="http://www.mirellavanteulingen.nl/demos/tooltip/">demo page</a>.</p>
+and I also created a simple <a href="http://www.mirellavanteulingen.nl/demos/tooltip/">demo page</a>.</p>
 
             </article>
             <div class="nav-arrows">
+                
+                    <a href="http://www.mirellavanteulingen.nl/blog/svg-icons-django-template/" class="arrow-prev"
+                        title="How to use svg icons in Django templates?">
+                        <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0.044921875" width="47.8613281" height="47.8613281" rx="3"></rect>
+                                <polygon fill="#FFFFFF" transform="translate(23.862343, 24.294813) scale(-1, 1) translate(-23.862343, -24.294813) " points="15 33.1599091 23.8614086 24.2965271 15.0001039 15.4334048 19.4314314 11 32.7246868 24.2965791 19.4315353 37.5896267"></polygon>
+                            </g>
+                        </svg>
+                    </a>
                 
                 
                     <a href="http://www.mirellavanteulingen.nl/blog/sass_fontcustom/" class="arrow-next"
@@ -284,6 +314,10 @@ and I also created a simple demo page <a href="http://www.mirellavanteulingen.nl
         <script src="http://www.mirellavanteulingen.nl/js/fastclick.min.js"></script>
 <script src="http://www.mirellavanteulingen.nl/js/base.min.js"></script>
 
+
+
+
+<script src="http://www.mirellavanteulingen.nl/js/highlight.pack.min.js"></script>
 
 
     </body>

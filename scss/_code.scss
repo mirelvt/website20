@@ -39,63 +39,68 @@ code {
     font-family: $font-code;
 }
 
-.comment { color: darken($color-subtitle, 18%); }
-
-.code-indent,
-.code-indent-2 {
-    display: inline-block;
-}
-
-.code-indent { text-indent: $code-indent; }
-.code-indent-2 { text-indent: $code-indent * 2; }
-.boolean,
-.number { color: $c-main; }
-
-.language-css {
-    .selector { color: $c-selector; }
-    .property { color: $c-property; }
-}
-
-.language-html {
-    .attribute { color: $c-selector; }
-    .tag { color: $c-property; }
-}
-
-.language-scss {
-    .selector { color: $c-selector; }
-    .property { color: $c-property; }
-    .variable { color: $c-variable; }
-    .include { color: $c-include; }
-}
-
-.language-js {
-    .property { color: $c-property; }
-    .variable { color: $c-variable; }
-    .function-label { color: $c-include; }
-    .type { color: #795548; }
-
-    .unit,
-    .selector { color: $c-selector; }
-}
-
-.python {
-    .number,
-    .statement {
-        color: $c-selector;
-    }
-
-    .string { color: $c-main; }
-
-    .crispy-attribute {
-        font-style: italic;
-        color: $c-property;
-    }
-}
-
-.language-yml {
-    .selector { color: $c-property; }
-    .property { color: $c-selector; }
-}
+// .comment { color: darken($color-subtitle, 18%); }
+//
+// .code-indent,
+// .code-indent-2 {
+//     display: inline-block;
+// }
+//
+// .code-indent { text-indent: $code-indent; }
+// .code-indent-2 { text-indent: $code-indent * 2; }
+// .boolean,
+// .number { color: $c-main; }
+//
+// .language-css {
+//     .selector { color: $c-selector; }
+//     .property { color: $c-property; }
+// }
+//
+// .language-html {
+//     .attribute { color: $c-selector; }
+//     .tag { color: $c-property; }
+// }
+//
+// .language-scss {
+//     .selector { color: $c-selector; }
+//     .property { color: $c-property; }
+//     .variable { color: $c-variable; }
+//     .include { color: $c-include; }
+// }
+//
+// .language-js {
+//     .property { color: $c-property; }
+//     .variable { color: $c-variable; }
+//     .function-label { color: $c-include; }
+//     .type { color: #795548; }
+//
+//     .unit,
+//     .selector { color: $c-selector; }
+// }
+//
+// .python {
+//     .number,
+//     .statement {
+//         color: $c-selector;
+//     }
+//
+//     .string { color: $c-main; }
+//
+//     .crispy-attribute {
+//         font-style: italic;
+//         color: $c-property;
+//     }
+//
+//     .def { color: $c-property; }
+//
+//     .attribute { color: $c-variable; }
+//     .import { color: $c-include; }
+// }
+//
+// .language-yml {
+//     .selector { color: $c-property; }
+//     .property { color: $c-selector; }
+// }
 
 // @End CODE STYLING
 // =================

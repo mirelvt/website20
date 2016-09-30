@@ -18,23 +18,29 @@ Below you'll find my notes of the conference. When the videos are available I wi
 
 When using @font-face the browser will always download the fonts required, even when the user has that font on its machine. You can avoid this to add src: local("font name") to @font-face. When the user has the font on its local machine it will use that one. Example:
 
-<pre class="language-css" rel="CSS"><code><span class="selector">@font-face</span> {
-  <span class="property">font-family</span>: "Helvetica W01 Bold";
-  <span class="property">src</span>: url("fonts/f70da45a-a05c-490c-ad62-7db4894b012a.eot?#iefix");
-  <span class="property">src</span>: local("Helvetica W01 Bold"),
+<pre rel="CSS">
+<code class="css">
+@font-face {
+  font-family: "Helvetica W01 Bold";
+  src: url("fonts/f70da45a-a05c-490c-ad62-7db4894b012a.eot?#iefix");
+  src: local("Helvetica W01 Bold"),
         url("fonts/f70da45a-a05c-490c-ad62-7db4894b012a.eot?#iefix") format("eot"),
-  <span class="comment">// etc...</span>
+  /* etc... */
 }</code></pre>
 
 Giving the font-family a short name will save a few bites. Although when you use Helvetica don't use the short name H because Microsoft will display it as Arial(?).<br>
 
 <p>You can also use unicode-range property:</p>
 
-<pre class="language-css" rel="CSS"><code><span class="selector">@font-face</span> {
-  <span class="property">font-family</span>: STIXGeneral;
-  <span class="property">src</span>: local(STIXGeneral), url(/stixfonts/STIXGeneral.otf);
+<pre rel="CSS">
+<code class="css">
+@font-face</span> {
+  font-family: STIXGeneral;
+  src: local(STIXGeneral), url(/stixfonts/STIXGeneral.otf);
       unicode-range: U+000-49F, U+2000-27FF, U+2900-2BFF, U+1D400-1D7FF;
-}</code></pre>
+}
+</code>
+</pre>
 
 ## CSS Selectors - Bert Bos
 
@@ -83,9 +89,11 @@ Built-in filters are: blur, brightness, contrast, drop-shadow, grayscale, hue-ro
 
 Syntax example:
 
-<pre class="language-css" rel="CSS"><code><span class="selector">.box</span> {
-  <span class="property">-webkit-filter</span>: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5)) sepia(100%);
-}</code></pre>
+<pre rel="CSS">
+<code class="css">
+.box { -webkit-filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.5)) sepia(100%); }
+</code>
+</pre>
 
 The difference between the CSS box-shadow property and filter drop-shadow, is that the drop-shadow() filter operates on the entire element.
 
@@ -102,34 +110,40 @@ Variables have been the number one developer request since 1998 but they all fai
 
 The specification is written and maintained by Tab Atkins and is still in working draft. Tab is creating a variable type which will be an addition to the variables in LESS/SASS. His new style is limited, you can use it in properties but not in media queries or selectors. However, he says it is very useful for web component theming. For Example:
 
-<pre class="language-css" rel="CSS"><code><span class="selector">:root</span> {
-  <span class="property">var-main-color</span>: #000;
-}
+<pre rel="CSS">
+<code class="css">
+:root { var-main-color: #000; }
 
-<span class="selector">.foo</span> {
-  <span class="property">color</span>: var(main-color);
-}</code></pre>
+.foo { color: var(main-color); }
+</code>
+</pre>
 
 Tab Atkins also showed how to use calculations and a variable like pi.
 
-<pre class="language-css" rel="CSS"><code><span class="selector">:root</span> {
-  <span class="property">var-phi</span>: 1.618;
-  <span class="property">var-pi</span>: 3.14159;
+<pre rel="CSS">
+<code class="css">
+:root {
+    var-phi: 1.618;
+    var-pi: 3.14159;
 }
 
-<span class="selector">.foo</span> {
-  <span class="property">width</span>: calc(300px * var(phi));
-}</code></pre>
+.foo { width: calc(300px * var(phi)); }
+</code>
+</pre>
 
 
 An example of a conditional rule is @supports. With @supports you can test whether a property is supported or not. It is similar to Modernizr and other similar libraries.
 
-<pre class="language-css" rel="CSS"><code><span class="selector">@supports</span> (display: flex) {
-  <span class="selector">body, #navigation, #article</span> {
-    <span class="property">display</span>: flex;
-    <span class="property">width</span>: auto;
-  }
-}</code></pre>
+<pre rel="CSS">
+<code class="css">
+@supports (display: flex) {
+    body, #navigation, #article {
+        display: flex;
+        width: auto;
+    }
+}
+</code>
+</pre>
 
 All the features Tab showed us, really made me wanting it implemented tomorrow. You can find his slides on: <a href="http://www.xanthir.com/talks/2013-06-14">xanthir.com</a> (use chrome and your arrow keys to navigate).
 

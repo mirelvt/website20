@@ -4,3 +4,7 @@
 {{ if in .Params.page_name "About" }}
 <script src="{{ .Site.BaseURL }}js/about_me.min.js"></script>
 {{ end }}
+
+{{ if in .Params.page_name "Blog" }}
+<script src="{{ .Site.BaseURL }}js/highlight.pack.min.js"></script>
+{{ end }}
