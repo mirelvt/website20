@@ -15,7 +15,7 @@ the icon next another element or text. You have to take into account the vertica
 alignment, line-height, letter-spacing etc, after all, it is a font. To position
 it correctly in the latest browsers, you have to do a lot of tweaking.
 
-I was curious if you can use inline svg icons in an maintainable way. After
+I was curious if you can use svg icons in an maintainable way. After
 reading the article on
 <a href="https://css-tricks.com/svg-symbol-good-choice-icons/">CSS-tricks</a>
 about svg symbols and Sara Soueidans' article about
@@ -25,38 +25,39 @@ it with my colleagues to give this technique a chance in one of our projects.
 Because of the great advantages of svg, the decision was easily made.
 
 The project we started to use svg symbols is build with Django Framework.
-The svgs icons are created separately and placed in a folder
+The svg icons are created separately and placed in a folder
 called *svg-icons*. This folder is purely for version control.
 
 In the *templates* directory I created the include template file *include_svg_icon_sprite.html*.
 It is a html file because at the time of writing we still need to support IE and IE does
 not support xlink to an svg file. I include this file in the base template at
-the bottom of te page. Using "include" in the file name we know it is a
+the bottom of the page. Using "include" in the file name we know it is a
 template snippet. In this file I have one svg file which contains all the symbols.
 The symbol contains the svg code copied from each svg icon from the *svg-icons*
 directory.
 
 <pre rel="SVG">
-<code class="html">
-&lt;<span class="tag">svg</span> <span class="attribute">xmlns</span>="http://www.w3.org/2000/svg"
-        <span class="attribute">xmlns:xlink</span>="http://www.w3.org/1999/xlink" <span class="attribute">class</span>="svg-sprite"
-        <span class="attribute">viewBox</span>="0 0 512 512" <span class="attribute">width</span>="512px" <span class="attribute">height</span>="512px"&gt;
-    &lt;<span class="tag">symbol</span> <span class="attribute">id</span>="filter"</span>&gt;
-        &lt;<span class="tag">path</span> <span class="attribute">d</span>="M0 26h512v51.206L307.21 333.213v153.6l-102.404-51.208V333.213L0 77.206V26z" /&gt;
-    &lt;/<span class="tag">symbol</span>&gt;
-    &lt;<span class="tag">symbol</span> <span class="attribute">id</span>="home"&gt;
-        &lt;<span class="tag">path</span> <span class="attribute">d</span>="M512 296l-96-96V56h-64v80l-96-96L0 296v16h64v160h160v-96h64v96h160V312h64v-16z" /&gt;
-    &lt;/<span class="tag">symbol</span>&gt;
-&lt;/<span class="tag">svg</span>&gt;
-</code></pre>
+<code>
+&lt;svg xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite"
+        viewBox="0 0 512 512" width="512px" height="512px"&gt;
+    &lt;symbol id="filter"&gt;
+        &lt;path d="M0 26h512v51.206L307.21 333.213v153.6l-102.404-51.208V333.213L0 77.206V26z" /&gt;
+    &lt;/symbol&gt;
+    &lt;symbol id="home"&gt;
+        &lt;path d="M512 296l-96-96V56h-64v80l-96-96L0 296v16h64v160h160v-96h64v96h160V312h64v-16z" /&gt;
+    &lt;/symbol&gt;
+&lt;/svg&gt;
+</code>
+</pre>
 
 To use a symbol you could place the following code in the template every time you
 need an icon:
 <pre rel="html">
-<code class="html">
-&lt;<span class="tag">svg</span> <span class="attribute">viewBox</span>="0 0 512 512" <span class="attribute">class</span>="icon-home">
-    &lt;<span class="tag">use</span> <span class="attribute">xlink:href</span>="#home"&gt;&lt;/<span class="tag">use</span>&gt;
-&lt;/<span class="tag">svg</span>&gt;
+<code>
+&lt;svg viewBox="0 0 512 512" class="icon-home">
+    &lt;use xlink:href="#home"&gt;&lt;/use&gt;
+&lt;/svg&gt;
 </code></pre>
 
 It is still a lot of typing, to make it easier I created a template tag called
@@ -64,24 +65,23 @@ icon.py. In the djangoproject documentation you can find more information about 
 
 <pre rel="Python">
 <code class="python">
-<span class="def">from</span> django <span class="def">import</span> <span class="import">template</span>
-<span class="def">from</span> django.utils.safestring <span class="def">import</span> <span class="import">mark_safe</span>
-<span class="def">from</span> django.utils.html <span class="def">import</span> <span class="import">format_html</span>
+from django import template
+from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 
-<span class="attribute">register</span> = <span class="import">template</span>.Library()
+register = template.Library()
 
 
-<span class="def">@register.simple_tag(name='svg_icon')</span>
-<span class="def">def svg_icon(icon_name, extra_class='')</span>:
-    <span class="attribute">svg_tag</span> = <span class="import">format_html</span>(<span class="string">'&lt;svg viewBox="0 0 512 512" class="icon-{name} {extra}"&gt;'
+@register.simple_tag(name='svg_icon')
+def svg_icon(icon_name, extra_class=''):
+    svg_tag = format_html(<span class="string">'&lt;svg viewBox="0 0 512 512" class="icon-{name} {extra}"&gt;'
                '&lt;use xlink:href="#{name}" class="sym-{name}"&gt;&lt;/use&gt;'
-               '&lt;/svg&gt;'</span>, name=<span class="attribute">icon_name</span>, extra=<span class="attribute">extra_class</span>)
+               '&lt;/svg&gt;', name=icon_name, extra=extra_class)
 
-    <span class="statement">return</span> <span class="import">mark_safe</span>(<span class="attribute">svg_tag</span>)
+    return mark_safe(svg_tag)
 </code></pre>
 
-To use the icon in your template you only have to load the template tag and then you
-can use the created tag everywhere in you template:
+To use the icon in your template you only have to load the template tag and then you can use the custom tag everywhere in your template:
 
 <pre rel="Django HTML">
 <code class="django">
@@ -99,3 +99,20 @@ can use the created tag everywhere in you template:
     &lt;/li&gt;
 &lt;/ul&gt;
 </code></pre>
+
+Now the icons are in place you have to give the icon a color and a width and height. In this example all the icons get the same styling.
+
+<pre rel="CSS">
+<code>
+[class^="icon-"] {
+    width: 2rem;
+    height: auto;
+    fill: #222;
+}
+</code>
+</pre>
+
+This is a short tutorial how to use svg icons in Django templates. I hope this
+article is useful to you.
+
+

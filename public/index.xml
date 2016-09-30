@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title></title>
-    <link>/</link>
-    <description>Recent content on </description>
+    <title>Mirella van Teulingen</title>
+    <link>http://www.mirellavanteulingen.nl/</link>
+    <description>Recent content on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
     <lastBuildDate>Sun, 02 Oct 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.mirellavanteulingen.nl/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How to use svg icons in Django templates?</title>
-      <link>/blog/svg-icons-django-template/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/svg-icons-django-template/</link>
       <pubDate>Sun, 02 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/blog/svg-icons-django-template/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/svg-icons-django-template/</guid>
       <description>&lt;p&gt;Normally we use icon fonts in our projects, which are created with
 &lt;a href=&#34;https://rsp.github.io/fontcustom/&#34;&gt;Fontcustom&lt;/a&gt;. It is a nice tool to
 generate the font icon from our own svg icons. Using the icon font in the last 3
@@ -23,7 +24,7 @@ the icon next another element or text. You have to take into account the vertica
 alignment, line-height, letter-spacing etc, after all, it is a font. To position
 it correctly in the latest browsers, you have to do a lot of tweaking.&lt;/p&gt;
 
-&lt;p&gt;I was curious if you can use inline svg icons in an maintainable way. After
+&lt;p&gt;I was curious if you can use svg icons in an maintainable way. After
 reading the article on
 &lt;a href=&#34;https://css-tricks.com/svg-symbol-good-choice-icons/&#34;&gt;CSS-tricks&lt;/a&gt;
 about svg symbols and Sara Soueidans&amp;rsquo; article about
@@ -33,38 +34,39 @@ it with my colleagues to give this technique a chance in one of our projects.
 Because of the great advantages of svg, the decision was easily made.&lt;/p&gt;
 
 &lt;p&gt;The project we started to use svg symbols is build with Django Framework.
-The svgs icons are created separately and placed in a folder
+The svg icons are created separately and placed in a folder
 called &lt;em&gt;svg-icons&lt;/em&gt;. This folder is purely for version control.&lt;/p&gt;
 
 &lt;p&gt;In the &lt;em&gt;templates&lt;/em&gt; directory I created the include template file &lt;em&gt;include_svg_icon_sprite.html&lt;/em&gt;.
 It is a html file because at the time of writing we still need to support IE and IE does
 not support xlink to an svg file. I include this file in the base template at
-the bottom of te page. Using &amp;ldquo;include&amp;rdquo; in the file name we know it is a
+the bottom of the page. Using &amp;ldquo;include&amp;rdquo; in the file name we know it is a
 template snippet. In this file I have one svg file which contains all the symbols.
 The symbol contains the svg code copied from each svg icon from the &lt;em&gt;svg-icons&lt;/em&gt;
 directory.&lt;/p&gt;
 
 &lt;pre rel=&#34;SVG&#34;&gt;
-&lt;code class=&#34;html&#34;&gt;
-&amp;lt;&lt;span class=&#34;tag&#34;&gt;svg&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;xmlns&lt;/span&gt;=&#34;http://www.w3.org/2000/svg&#34;
-        &lt;span class=&#34;attribute&#34;&gt;xmlns:xlink&lt;/span&gt;=&#34;http://www.w3.org/1999/xlink&#34; &lt;span class=&#34;attribute&#34;&gt;class&lt;/span&gt;=&#34;svg-sprite&#34;
-        &lt;span class=&#34;attribute&#34;&gt;viewBox&lt;/span&gt;=&#34;0 0 512 512&#34; &lt;span class=&#34;attribute&#34;&gt;width&lt;/span&gt;=&#34;512px&#34; &lt;span class=&#34;attribute&#34;&gt;height&lt;/span&gt;=&#34;512px&#34;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;symbol&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;id&lt;/span&gt;=&#34;filter&#34;&lt;/span&gt;&amp;gt;
-        &amp;lt;&lt;span class=&#34;tag&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;d&lt;/span&gt;=&#34;M0 26h512v51.206L307.21 333.213v153.6l-102.404-51.208V333.213L0 77.206V26z&#34; /&amp;gt;
-    &amp;lt;/&lt;span class=&#34;tag&#34;&gt;symbol&lt;/span&gt;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;symbol&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;id&lt;/span&gt;=&#34;home&#34;&amp;gt;
-        &amp;lt;&lt;span class=&#34;tag&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;d&lt;/span&gt;=&#34;M512 296l-96-96V56h-64v80l-96-96L0 296v16h64v160h160v-96h64v96h160V312h64v-16z&#34; /&amp;gt;
-    &amp;lt;/&lt;span class=&#34;tag&#34;&gt;symbol&lt;/span&gt;&amp;gt;
-&amp;lt;/&lt;span class=&#34;tag&#34;&gt;svg&lt;/span&gt;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;code&gt;
+&amp;lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34;
+        xmlns:xlink=&#34;http://www.w3.org/1999/xlink&#34; class=&#34;svg-sprite&#34;
+        viewBox=&#34;0 0 512 512&#34; width=&#34;512px&#34; height=&#34;512px&#34;&amp;gt;
+    &amp;lt;symbol id=&#34;filter&#34;&amp;gt;
+        &amp;lt;path d=&#34;M0 26h512v51.206L307.21 333.213v153.6l-102.404-51.208V333.213L0 77.206V26z&#34; /&amp;gt;
+    &amp;lt;/symbol&amp;gt;
+    &amp;lt;symbol id=&#34;home&#34;&amp;gt;
+        &amp;lt;path d=&#34;M512 296l-96-96V56h-64v80l-96-96L0 296v16h64v160h160v-96h64v96h160V312h64v-16z&#34; /&amp;gt;
+    &amp;lt;/symbol&amp;gt;
+&amp;lt;/svg&amp;gt;
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;To use a symbol you could place the following code in the template every time you
 need an icon:
 &lt;pre rel=&#34;html&#34;&gt;
-&lt;code class=&#34;html&#34;&gt;
-&amp;lt;&lt;span class=&#34;tag&#34;&gt;svg&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;viewBox&lt;/span&gt;=&amp;ldquo;0 0 512 512&amp;rdquo; &lt;span class=&#34;attribute&#34;&gt;class&lt;/span&gt;=&amp;ldquo;icon-home&amp;rdquo;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;use&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;xlink:href&lt;/span&gt;=&amp;ldquo;#home&amp;rdquo;&amp;gt;&amp;lt;/&lt;span class=&#34;tag&#34;&gt;use&lt;/span&gt;&amp;gt;
-&amp;lt;/&lt;span class=&#34;tag&#34;&gt;svg&lt;/span&gt;&amp;gt;
+&lt;code&gt;
+&amp;lt;svg viewBox=&amp;ldquo;0 0 512 512&amp;rdquo; class=&amp;ldquo;icon-home&amp;rdquo;&amp;gt;
+    &amp;lt;use xlink:href=&amp;ldquo;#home&amp;rdquo;&amp;gt;&amp;lt;/use&amp;gt;
+&amp;lt;/svg&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 
 &lt;p&gt;It is still a lot of typing, to make it easier I created a template tag called
@@ -72,24 +74,23 @@ icon.py. In the djangoproject documentation you can find more information about 
 
 &lt;pre rel=&#34;Python&#34;&gt;
 &lt;code class=&#34;python&#34;&gt;
-&lt;span class=&#34;def&#34;&gt;from&lt;/span&gt; django &lt;span class=&#34;def&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;import&#34;&gt;template&lt;/span&gt;
-&lt;span class=&#34;def&#34;&gt;from&lt;/span&gt; django.utils.safestring &lt;span class=&#34;def&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;import&#34;&gt;mark_safe&lt;/span&gt;
-&lt;span class=&#34;def&#34;&gt;from&lt;/span&gt; django.utils.html &lt;span class=&#34;def&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;import&#34;&gt;format_html&lt;/span&gt;
+from django import template
+from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 
-&lt;span class=&#34;attribute&#34;&gt;register&lt;/span&gt; = &lt;span class=&#34;import&#34;&gt;template&lt;/span&gt;.Library()
+register = template.Library()
 
 
-&lt;span class=&#34;def&#34;&gt;@register.simple_tag(name=&#39;svg_icon&#39;)&lt;/span&gt;
-&lt;span class=&#34;def&#34;&gt;def svg_icon(icon_name, extra_class=&#39;&#39;)&lt;/span&gt;:
-    &lt;span class=&#34;attribute&#34;&gt;svg_tag&lt;/span&gt; = &lt;span class=&#34;import&#34;&gt;format_html&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&#39;&amp;lt;svg viewBox=&#34;0 0 512 512&#34; class=&#34;icon-{name} {extra}&#34;&amp;gt;&#39;
+@register.simple_tag(name=&#39;svg_icon&#39;)
+def svg_icon(icon_name, extra_class=&#39;&#39;):
+    svg_tag = format_html(&lt;span class=&#34;string&#34;&gt;&#39;&amp;lt;svg viewBox=&#34;0 0 512 512&#34; class=&#34;icon-{name} {extra}&#34;&amp;gt;&#39;
                &#39;&amp;lt;use xlink:href=&#34;#{name}&#34; class=&#34;sym-{name}&#34;&amp;gt;&amp;lt;/use&amp;gt;&#39;
-               &#39;&amp;lt;/svg&amp;gt;&#39;&lt;/span&gt;, name=&lt;span class=&#34;attribute&#34;&gt;icon_name&lt;/span&gt;, extra=&lt;span class=&#34;attribute&#34;&gt;extra_class&lt;/span&gt;)
+               &#39;&amp;lt;/svg&amp;gt;&#39;, name=icon_name, extra=extra_class)
 
-    &lt;span class=&#34;statement&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;import&#34;&gt;mark_safe&lt;/span&gt;(&lt;span class=&#34;attribute&#34;&gt;svg_tag&lt;/span&gt;)
+    return mark_safe(svg_tag)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;To use the icon in your template you only have to load the template tag and then you
-can use the created tag everywhere in you template:&lt;/p&gt;
+&lt;p&gt;To use the icon in your template you only have to load the template tag and then you can use the custom tag everywhere in your template:&lt;/p&gt;
 
 &lt;pre rel=&#34;Django HTML&#34;&gt;
 &lt;code class=&#34;django&#34;&gt;
@@ -107,15 +108,30 @@ can use the created tag everywhere in you template:&lt;/p&gt;
     &amp;lt;/li&amp;gt;
 &amp;lt;/ul&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now the icons are in place you have to give the icon a color and a width and height. In this example all the icons get the same styling.&lt;/p&gt;
+
+&lt;pre rel=&#34;CSS&#34;&gt;
+&lt;code&gt;
+[class^=&#34;icon-&#34;] {
+    width: 2rem;
+    height: auto;
+    fill: #222;
+}
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;This is a short tutorial how to use svg icons in Django templates. I hope this
+article is useful to you.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title> A vanilla js and css tooltip</title>
-      <link>/blog/css-js-tooltip/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/css-js-tooltip/</link>
       <pubDate>Wed, 28 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>/blog/css-js-tooltip/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/css-js-tooltip/</guid>
       <description>&lt;p&gt;In february 2016 I was looking for a tooltip plugin which must fix 2 design
 issues: overflow:hidden and the window corners. I also don&amp;rsquo;t want to need jQuery.
 During searching and testing a couple plugins, I thought, why not build one myself?
@@ -302,10 +318,10 @@ and I also created a simple &lt;a href=&#34;http://www.mirellavanteulingen.nl/de
     
     <item>
       <title>Font icons with Fontcustom and SASS</title>
-      <link>/blog/sass_fontcustom/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/sass_fontcustom/</link>
       <pubDate>Sat, 21 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/sass_fontcustom/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/sass_fontcustom/</guid>
       <description>&lt;p&gt;In 2013 and 2014 I used &lt;a href=&#34;http://www.icomoon.io&#34;&gt;Icomoon&lt;/a&gt; to create font icons.
 It is a nice library and tool. You can choose icons from their library and
 they have the feature to upload your own svgs to create the font icon set. It is a great tool if you only need to generate the font icon once. But not when you have to add new ones to the set.
@@ -541,10 +557,10 @@ static/
     
     <item>
       <title>Create clickable rating stars with only SASS and HTML</title>
-      <link>/blog/rating_stars_sass/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/rating_stars_sass/</link>
       <pubDate>Fri, 03 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/rating_stars_sass/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/rating_stars_sass/</guid>
       <description>&lt;p&gt;In May, Roy Tomeij wrote the article &lt;a href=&#34;http://advancedsass.com/articles/configurable-star-rating-without-js.html&#34;&gt;&amp;ldquo;Configurable star rating without JS&amp;rdquo;&lt;/a&gt;. I was thinking how to do this using a font icon instead of a background image and make the stars clickable. I believe it would take less code to write, and it is. I had the code finished a couple of days later in May, but now I&amp;rsquo;ve finally have the time to post my solution. So here we go:
 &lt;h3&gt;HTML structure&lt;/h3&gt;
 &lt;p&gt;
@@ -662,25 +678,25 @@ The labels are positioned absolute and using a SASS loop, the stars can be posit
     
     <item>
       <title>Fronteers Conference 2014</title>
-      <link>/fronteers/conf_2014/</link>
+      <link>http://www.mirellavanteulingen.nl/fronteers/conf_2014/</link>
       <pubDate>Wed, 15 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>/fronteers/conf_2014/</guid>
+      <guid>http://www.mirellavanteulingen.nl/fronteers/conf_2014/</guid>
       <description>&lt;article role=&#34;article&#34;&gt;
     &lt;h1&gt;Fronteers Conference 2014&lt;/h1&gt;
     &lt;p&gt;
         15-10-2014
         &lt;br&gt;
-        On 9 and 10 october was the big event. Two days of inspiring talks and where you meet old friends and make new ones. This article gives a summary of most of the talks. The master of ceremony for this conference was &lt;a href=&#34;http://jakearchibald.com/&#34;&gt;Jake Archibald&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;Day 1&lt;/h2&gt;&lt;p&gt;The first day Heydon Pickering &lt;a href=&#34;https://www.twitter.com/heydonworks&#34;&gt;@heydonworks&lt;/a&gt; talked about best practises on developing with html and CSS. It is all about semantics, it is more readable, understandable and maintainable. For example use &lt;em&gt;[role=&#34;tab&#34;][aria-selected=&#34;true&#34;]&lt;/em&gt; instead of .tab-active. He mentioned that the difference in performance is extremely minimal whether using attributes or class names.&lt;/p&gt;&lt;p&gt;Daniel Espeset &lt;a href=&#34;https://www.twitter.com/danielespeset&#34;&gt;@danielespeset&lt;/a&gt; gave a peak in how they set up their infrastructure for front end development at Etsy.&lt;/p&gt;&lt;p&gt;Arnout Kazemier&#39;s talk was about pushing the realtime web forward. He discussed the pro&#39;s and cons of the latest technology to use for realtime web. For example, Websockets, it is supported in IE10 Firefox 31, Chrome 37 safari 7.1, iOS Safari 8 and Android 4.4 and has a simple and understandable API. But at this time of writing it has also some serious bugs:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Writing to a closed websocket connection can crash your phone. You have to add some latency to avoid crashing browsers.&lt;/li&gt;&lt;li&gt;Pressing esc in Firefox closes the connection. (fixed in FF20)&lt;/li&gt;&lt;li&gt;Firefox can create ghost connections.&lt;/li&gt;&lt;li&gt;4G, 3G and slower do not suppport Websockets. Fallback is to filter out the mobiles.&lt;/li&gt;&lt;li&gt;Virus scanners, extensions, the user and network server firewalls can block Websockets&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;At this stage the newest technology is not really useful in production environment. It is something to keep an eye on, one day we can use the realtime web.&lt;/p&gt;&lt;p&gt;Rachel Nabors &lt;a href=&#34;https://www.twitter.com/rachelnabors&#34;&gt;@rachelnabors&lt;/a&gt; gave a visually beautiful styled presentation about the state of web animation. Animation improves adoption rate of new interfaces, change can be more easily comprehended when it’s gradual, especially for the young and elderly. You have 3 kinds of animations:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Static animation: start --&amp;gt; finish&lt;/li&gt;&lt;li&gt;Stateful animations: default state --&amp;gt; event --&amp;gt; predefined state&lt;/li&gt;&lt;li&gt;Dynamic animations: current state: 1. factores + event + factors: 1a new state, 1b new state&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Interesting animation libraries to check out: &lt;a href=&#34;http://greensock.com/gsap&#34;&gt;Greensock animation platform&lt;/a&gt; and &lt;a href=&#34;http://julian.com/research/velocity/&#34;&gt;Velocityjs&lt;/a&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&#34;/img/rachel-nabors-fronteers-2014.jpg&#34; alt=&#34;Rachel Nabors - The State of Web Animation&#34;&gt;&lt;/figure&gt;&lt;p&gt;The mini sessions gave us a glance in game development for the web. There are hundreds of frameworks available, Thomas Palef recommended &lt;a href=&#34;http://phaser.io/&#34;&gt;Phaser&lt;/a&gt;, a free open source HTML5 framework. If you want to get started with game development he advices to start making a really tiny game like ping, space invader or breakout. Once you have the hang of it, start creating another one with a little more complexity, and so on. Until you ar ready to create a real game you might think people want to play.&lt;/p&gt;&lt;h2&gt;Day 2&lt;/h2&gt;&lt;p&gt;Day two started with Nicholas Gallagher &lt;a href=&#34;https://www.twitter.com/necoloas&#34;&gt;@necolas&lt;/a&gt; talking about making the Twitter UI infrastructure. The ui is split up in ui-components like: ui-icon, ui-ProductPage etc. Each component has its own file infrastructure and contains only the code necessary for the component, including tests. For the worksflow they created automatic tasks to test and run the new change: make install, build, test etc. They design for adaptability and define components as the unit of scale.&lt;/p&gt;&lt;p&gt;Dave Olsen shared his experience with optimizing web performance. (Check out slidesearch for the &lt;a href=&#34;http://www.slidesearch.org/slide/optimizing-web-performance-fronteers-edition&#34;&gt;slides&lt;/a&gt;). Do you know that 1.8mb is the average weight of a web page today? 78% are images and javascript. RDW sites whose small screen design weighs the same as the large screen design? And 71% of the users expect your mobile site to load as quickly as your desktop site.&lt;/p&gt;&lt;blockquote&gt;Mobile first means performance first &lt;cite&gt;- Dave Olsen&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;You can diagnose web performance issues with pagespeed insights of Google, Chrome dev tools and &lt;a href=&#34;webpagetest.org&#34;&gt;webpagetest.org&lt;/a&gt;. To optimize for mobile you can reduce asset size, reduce requests and speed up page-render. Try &lt;a href=&#34;redbot.org&#34;&gt;redbot.org&lt;/a&gt; to see if you&#39;re caching. Web performance for javascript:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Avoid using bulky frameworks try microjs.com to find libraries that may be smaller. Javascript also blocks the rendering of the page.&lt;/li&gt;&lt;li&gt;Avoid DOM reflows &amp;amp; repaints. they slow down page render time as well as burn battery.&lt;/li&gt;&lt;li&gt;Use &lt;a href=&#34;http://benhowdle.im/touche/&#34;&gt;touch&lt;/a&gt; or &lt;a href=&#34;https://github.com/ftlabs/fastclick&#34;&gt;fastclick&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;Use CDNs to serve common js libraries to help reduce RTT for requests.&lt;/li&gt;&lt;li&gt;Use service like &lt;a href=&#34;https://www.npmjs.org/package/grunt-penthouse&#34;&gt;penthouse&lt;/a&gt; to find critical CSS.&lt;/li&gt;&lt;li&gt;Also focus on getting a fast initial render.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://perf-tooling.today/&#34;&gt;perf-tooling.today&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://yahoo.github.io/boomerang/doc/&#34;&gt;yahoo.github.io/boomerang/doc/&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Sara Soueidan &lt;a href=&#34;https://www.twitter.com/sarasoeidon&#34;&gt;@sarasoeidon&lt;/a&gt; gave us a rollercoaster ride through animating SVGs with CSS and HTML. It was a great talk with lot of examples. Things to know about using svg:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CSS animations only work inside the svg, when using an img, object, embed, iframe tag, or embedded in CSS as background, but CSS interactions won&#39;t.&lt;/li&gt;&lt;li&gt;When you use inline svg both CSS animations and CSS interactions will work.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://www.w3.org/TR/SVG2/&#34;&gt;SVG2&lt;/a&gt; will contain more attributes which we can use in CSS.&lt;/li&gt;&lt;li&gt;With &lt;a href=&#34;http://www.w3.org/TR/SMIL/&#34;&gt;SMIL&lt;/a&gt; you can e.g. animate attributes and do event handling. At this time of writing SMIL does not work in IE and Opera Mini.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Hell, is not understanding my own code &lt;cite&gt;- Kyle Simpson&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;Everyone at the conference has written code that worked without knowing why. First learn the language in depth and you also need better tools. Kyle Simpson &lt;a href=&#34;https://www.twitter.com/getify&#34;&gt;@getify&lt;/a&gt; gave us a list of handy tools to make your live as JS developer easier. He is working on a &lt;a href=&#34;github.com/getify/esre&#34;&gt;configurable two way formatting tool&lt;/a&gt; to end the discussion of whether or not using semi colons, whitespace vs tabs. Pick the tools that suits you, but be aware there is no such thing as a holy grail for the right toolset. The tools he recommended are:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&#34;http://sweetjs.org&#34;&gt;sweetjs.org&lt;/a&gt; provides macros to javascript developers. Currently being adopted by the Mozilla Foundation.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://esprima.org/test/compare.html&#34;&gt;esprima/acorn&lt;/a&gt; (parser)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://github.com/estools/escodegen&#34;&gt;escodegen&lt;/a&gt; (code generator)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://github.com/estools/escope&#34;&gt;escope/eslevels&lt;/a&gt; (scope analyzer)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://gotwarlost.github.io/istanbul/&#34;&gt;istanbul&lt;/a&gt; (code coverage)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://github.com/estools/estraverse&#34;&gt;estraverse&lt;/a&gt; (analyze AST)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://eslint.org/&#34;&gt;eslint&lt;/a&gt; (pluggable code linting rules)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://jscomplexity.org/complexity&#34;&gt;jscomplexity.org&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Petro Salema closed the conference with an inspiring talk, named &#34;Dream big, think small&#34;.&lt;/p&gt;&lt;/article&gt;
+        On 9 and 10 october was the big event. Two days of inspiring talks and where you meet old friends and make new ones. This article gives a summary of most of the talks. The master of ceremony for this conference was &lt;a href=&#34;http://jakearchibald.com/&#34;&gt;Jake Archibald&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;Day 1&lt;/h2&gt;&lt;p&gt;The first day Heydon Pickering &lt;a href=&#34;https://www.twitter.com/heydonworks&#34;&gt;@heydonworks&lt;/a&gt; talked about best practises on developing with html and CSS. It is all about semantics, it is more readable, understandable and maintainable. For example use &lt;em&gt;[role=&#34;tab&#34;][aria-selected=&#34;true&#34;]&lt;/em&gt; instead of .tab-active. He mentioned that the difference in performance is extremely minimal whether using attributes or class names.&lt;/p&gt;&lt;p&gt;Daniel Espeset &lt;a href=&#34;https://www.twitter.com/danielespeset&#34;&gt;@danielespeset&lt;/a&gt; gave a peak in how they set up their infrastructure for front end development at Etsy.&lt;/p&gt;&lt;p&gt;Arnout Kazemier&#39;s talk was about pushing the realtime web forward. He discussed the pro&#39;s and cons of the latest technology to use for realtime web. For example, Websockets, it is supported in IE10 Firefox 31, Chrome 37 safari 7.1, iOS Safari 8 and Android 4.4 and has a simple and understandable API. But at this time of writing it has also some serious bugs:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Writing to a closed websocket connection can crash your phone. You have to add some latency to avoid crashing browsers.&lt;/li&gt;&lt;li&gt;Pressing esc in Firefox closes the connection. (fixed in FF20)&lt;/li&gt;&lt;li&gt;Firefox can create ghost connections.&lt;/li&gt;&lt;li&gt;4G, 3G and slower do not suppport Websockets. Fallback is to filter out the mobiles.&lt;/li&gt;&lt;li&gt;Virus scanners, extensions, the user and network server firewalls can block Websockets&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;At this stage the newest technology is not really useful in production environment. It is something to keep an eye on, one day we can use the realtime web.&lt;/p&gt;&lt;p&gt;Rachel Nabors &lt;a href=&#34;https://www.twitter.com/rachelnabors&#34;&gt;@rachelnabors&lt;/a&gt; gave a visually beautiful styled presentation about the state of web animation. Animation improves adoption rate of new interfaces, change can be more easily comprehended when it’s gradual, especially for the young and elderly. You have 3 kinds of animations:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Static animation: start --&amp;gt; finish&lt;/li&gt;&lt;li&gt;Stateful animations: default state --&amp;gt; event --&amp;gt; predefined state&lt;/li&gt;&lt;li&gt;Dynamic animations: current state: 1. factores + event + factors: 1a new state, 1b new state&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Interesting animation libraries to check out: &lt;a href=&#34;http://greensock.com/gsap&#34;&gt;Greensock animation platform&lt;/a&gt; and &lt;a href=&#34;http://julian.com/research/velocity/&#34;&gt;Velocityjs&lt;/a&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&#34;http://www.mirellavanteulingen.nl/img/rachel-nabors-fronteers-2014.jpg&#34; alt=&#34;Rachel Nabors - The State of Web Animation&#34;&gt;&lt;/figure&gt;&lt;p&gt;The mini sessions gave us a glance in game development for the web. There are hundreds of frameworks available, Thomas Palef recommended &lt;a href=&#34;http://phaser.io/&#34;&gt;Phaser&lt;/a&gt;, a free open source HTML5 framework. If you want to get started with game development he advices to start making a really tiny game like ping, space invader or breakout. Once you have the hang of it, start creating another one with a little more complexity, and so on. Until you ar ready to create a real game you might think people want to play.&lt;/p&gt;&lt;h2&gt;Day 2&lt;/h2&gt;&lt;p&gt;Day two started with Nicholas Gallagher &lt;a href=&#34;https://www.twitter.com/necoloas&#34;&gt;@necolas&lt;/a&gt; talking about making the Twitter UI infrastructure. The ui is split up in ui-components like: ui-icon, ui-ProductPage etc. Each component has its own file infrastructure and contains only the code necessary for the component, including tests. For the worksflow they created automatic tasks to test and run the new change: make install, build, test etc. They design for adaptability and define components as the unit of scale.&lt;/p&gt;&lt;p&gt;Dave Olsen shared his experience with optimizing web performance. (Check out slidesearch for the &lt;a href=&#34;http://www.slidesearch.org/slide/optimizing-web-performance-fronteers-edition&#34;&gt;slides&lt;/a&gt;). Do you know that 1.8mb is the average weight of a web page today? 78% are images and javascript. RDW sites whose small screen design weighs the same as the large screen design? And 71% of the users expect your mobile site to load as quickly as your desktop site.&lt;/p&gt;&lt;blockquote&gt;Mobile first means performance first &lt;cite&gt;- Dave Olsen&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;You can diagnose web performance issues with pagespeed insights of Google, Chrome dev tools and &lt;a href=&#34;webpagetest.org&#34;&gt;webpagetest.org&lt;/a&gt;. To optimize for mobile you can reduce asset size, reduce requests and speed up page-render. Try &lt;a href=&#34;redbot.org&#34;&gt;redbot.org&lt;/a&gt; to see if you&#39;re caching. Web performance for javascript:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Avoid using bulky frameworks try microjs.com to find libraries that may be smaller. Javascript also blocks the rendering of the page.&lt;/li&gt;&lt;li&gt;Avoid DOM reflows &amp;amp; repaints. they slow down page render time as well as burn battery.&lt;/li&gt;&lt;li&gt;Use &lt;a href=&#34;http://benhowdle.im/touche/&#34;&gt;touch&lt;/a&gt; or &lt;a href=&#34;https://github.com/ftlabs/fastclick&#34;&gt;fastclick&lt;/a&gt;.&lt;/li&gt;&lt;li&gt;Use CDNs to serve common js libraries to help reduce RTT for requests.&lt;/li&gt;&lt;li&gt;Use service like &lt;a href=&#34;https://www.npmjs.org/package/grunt-penthouse&#34;&gt;penthouse&lt;/a&gt; to find critical CSS.&lt;/li&gt;&lt;li&gt;Also focus on getting a fast initial render.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://perf-tooling.today/&#34;&gt;perf-tooling.today&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://yahoo.github.io/boomerang/doc/&#34;&gt;yahoo.github.io/boomerang/doc/&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Sara Soueidan &lt;a href=&#34;https://www.twitter.com/sarasoeidon&#34;&gt;@sarasoeidon&lt;/a&gt; gave us a rollercoaster ride through animating SVGs with CSS and HTML. It was a great talk with lot of examples. Things to know about using svg:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;CSS animations only work inside the svg, when using an img, object, embed, iframe tag, or embedded in CSS as background, but CSS interactions won&#39;t.&lt;/li&gt;&lt;li&gt;When you use inline svg both CSS animations and CSS interactions will work.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://www.w3.org/TR/SVG2/&#34;&gt;SVG2&lt;/a&gt; will contain more attributes which we can use in CSS.&lt;/li&gt;&lt;li&gt;With &lt;a href=&#34;http://www.w3.org/TR/SMIL/&#34;&gt;SMIL&lt;/a&gt; you can e.g. animate attributes and do event handling. At this time of writing SMIL does not work in IE and Opera Mini.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;blockquote&gt;Hell, is not understanding my own code &lt;cite&gt;- Kyle Simpson&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;Everyone at the conference has written code that worked without knowing why. First learn the language in depth and you also need better tools. Kyle Simpson &lt;a href=&#34;https://www.twitter.com/getify&#34;&gt;@getify&lt;/a&gt; gave us a list of handy tools to make your live as JS developer easier. He is working on a &lt;a href=&#34;github.com/getify/esre&#34;&gt;configurable two way formatting tool&lt;/a&gt; to end the discussion of whether or not using semi colons, whitespace vs tabs. Pick the tools that suits you, but be aware there is no such thing as a holy grail for the right toolset. The tools he recommended are:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&#34;http://sweetjs.org&#34;&gt;sweetjs.org&lt;/a&gt; provides macros to javascript developers. Currently being adopted by the Mozilla Foundation.&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://esprima.org/test/compare.html&#34;&gt;esprima/acorn&lt;/a&gt; (parser)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://github.com/estools/escodegen&#34;&gt;escodegen&lt;/a&gt; (code generator)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://github.com/estools/escope&#34;&gt;escope/eslevels&lt;/a&gt; (scope analyzer)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://gotwarlost.github.io/istanbul/&#34;&gt;istanbul&lt;/a&gt; (code coverage)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;https://github.com/estools/estraverse&#34;&gt;estraverse&lt;/a&gt; (analyze AST)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://eslint.org/&#34;&gt;eslint&lt;/a&gt; (pluggable code linting rules)&lt;/li&gt;&lt;li&gt;&lt;a href=&#34;http://jscomplexity.org/complexity&#34;&gt;jscomplexity.org&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;Petro Salema closed the conference with an inspiring talk, named &#34;Dream big, think small&#34;.&lt;/p&gt;&lt;/article&gt;
 </description>
     </item>
     
     <item>
       <title>Django form customization using Crispy Forms</title>
-      <link>/blog/customize_form_crispy_forms/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/customize_form_crispy_forms/</link>
       <pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/customize_form_crispy_forms/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/customize_form_crispy_forms/</guid>
       <description>&lt;p&gt;At &lt;a href=&#34;http://www.dreamsolution.nl&#34;&gt;Dreamsolution&lt;/a&gt; we regularly use Crispy Forms to generate
     complex forms in Django. I want to share some practical customization examples
     with Crispy Forms using the formhelper API. The examples are how to:
@@ -732,7 +748,7 @@ self.helper[1:6].wrap_together(layout.Fieldset, &#39;Your Address&#39;)
 &lt;p&gt;As you can see we only need 2 lines of code to create two fieldsets.&lt;/p&gt;
 
 &lt;figure&gt;
-  &lt;img src=&#34;/img/crispy-fieldsets.png&#34; alt=&#34;Example Crispy forms Fieldset&#34;&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-fieldsets.png&#34; alt=&#34;Example Crispy forms Fieldset&#34;&gt;
   &lt;figcaption&gt;Example Crispy forms Fieldset&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -752,7 +768,7 @@ self.helper[&#39;addition&#39;].wrap(layout.Field, wrapper_class=&#34;addition&#
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;figure&gt;
-  &lt;img src=&#34;/img/crispy-field-manipulation-code.png&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-field-manipulation-code.png&#34; alt=&#34;&#34;&gt;
   &lt;figcaption&gt;Wrapper around 2 fields&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -781,7 +797,7 @@ Now you can style and manipulate the 2 fields without touching the other fields.
   &lt;/li&gt;
 &lt;/ol&gt;
 &lt;figure&gt;
-    &lt;img src=&#34;/img/crispy-field-manipulation.png&#34; alt=&#34;&#34;&gt;
+    &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-field-manipulation.png&#34; alt=&#34;&#34;&gt;
     &lt;figcaption&gt;Example form where the field &#34;Addition&#34; is positioned next to the field &#34;House number&#34;&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;h2&gt;Insert HTML between fields&lt;/h2&gt;
@@ -802,7 +818,7 @@ self.helper.layout[1].insert(2,layout.HTML(
 &lt;/pre&gt;
 
 &lt;p&gt;&lt;figure&gt;
-  &lt;img src=&#34;/img/crispy-add-content.png&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-add-content.png&#34; alt=&#34;&#34;&gt;
   &lt;figcaption&gt;Example form with extra content&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;p&gt;
@@ -831,10 +847,10 @@ self.helper.layout[1].insert(2,layout.HTML(
     
     <item>
       <title>Customize Sublime text editor</title>
-      <link>/blog/customize_sublime/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/customize_sublime/</link>
       <pubDate>Wed, 12 Feb 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/customize_sublime/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/customize_sublime/</guid>
       <description>&lt;p&gt;Last year at the Fronteers conference in Amsterdam, Addy Osmani used Sublime Text Editor in his presentation.
 The editor looked really cool. Right after the conference I installed Sublime and looked around for
 packages which would make my life as front end developer easier and make editing more fun. After a
@@ -870,7 +886,7 @@ how to customize a theme and links to useful documentation. Let&amp;rsquo;s get 
   &lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;/img/packagemanager.png&#34; alt=&#34;Sublime Package manager interface&#34; /&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/packagemanager.png&#34; alt=&#34;Sublime Package manager interface&#34; /&gt;
   &lt;figcaption&gt;Installing packages&lt;/figcaption&gt;
 &lt;/figure&gt;&lt;/p&gt;
 
@@ -1001,7 +1017,7 @@ in the user settings:&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;/img/findfilestring.png&#34; alt=&#34;Find file with class name in Sublime.&#34; /&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/findfilestring.png&#34; alt=&#34;Find file with class name in Sublime.&#34; /&gt;
   &lt;figcaption&gt;Find file with class name in Sublime.&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;h2&gt;Open files via the terminal&lt;/h2&gt;
@@ -1034,10 +1050,10 @@ $ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime
     
     <item>
       <title>CSS Day 2013 Amsterdam</title>
-      <link>/blog/cssday_2013/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/cssday_2013/</link>
       <pubDate>Sun, 16 Jun 2013 00:00:00 +0000</pubDate>
       
-      <guid>/blog/cssday_2013/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/cssday_2013/</guid>
       <description>
 
 &lt;p&gt;Friday 14 june 2013 in Amsterdam I attended the CSSDay conference. Eight experts talked about 8 different CSS modules. The focus was on techniques of these modules we might not know about and the future of CSS. During the conference I learned that CSS is in very active development. It was an incredible, informative and awesome day. An high standard conference I&amp;rsquo;ve ever attended so far. I hope that there will be another one within 1 or 2 years.&lt;/p&gt;
@@ -1231,69 +1247,69 @@ Performance:
     
     <item>
       <title>Accessibility is also UX design</title>
-      <link>/fronteers/accessibility-is-ux-design/</link>
+      <link>http://www.mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/</link>
       <pubDate>Tue, 08 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>/fronteers/accessibility-is-ux-design/</guid>
+      <guid>http://www.mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/</guid>
       <description>&lt;article role=&#34;article&#34; class=&#34;column-content&#34;&gt;&lt;h1&gt;Accessibility is also UX design&lt;/h1&gt;&lt;p class=&#34;subtitle&#34;&gt;UX candy - Johan Huijkman Twitter: @huijkman - Arend van Baarsen&lt;/p&gt;&lt;p&gt;08-01-2013 &lt;br&gt;The presentation was held at &lt;a href=&#34;http://www.q42.nl&#34;&gt;Q42&lt;/a&gt; in The Hague. A nice environment to work and to share knowledge. Johan and Arend went through some sites using the screen reader and showed us some examples how people with visual impairment are experiencing websites. You can test this as well with &lt;a href=&#34;http://www.webformator.de/hollaendisch/index.php&#34;&gt;webformator&lt;/a&gt; for Windows or the Voice over application on the Mac OS.&lt;/p&gt;&lt;p&gt;He also showed google.nl as an example of a really bad accessibility experience. Even the Dutch news site nu.nl is not user friendly. It goes through all the links in the top, banners and links in the left navigation, before it finally starts reading the first news headline. We laughed about it during the presentation but it is quite sad, actually.&lt;/p&gt;&lt;p&gt;As humans we scan the headlines to see what article gets our interest to read. People who needs a screen reader are forced to scan the site lineair.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Missasumption #1: The site should be accessible when javascript is off.&lt;/strong&gt;&lt;br&gt;It should also be accessible when javascript is on! One of the things that I didn&#39;t know is that screen readers read javascript. When you have a carrousel on your site it will read this code.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Missasumption #2: Only a few cannot access your site, so why bother?&lt;/strong&gt;&lt;br&gt;In the Netherlands there are about 4 million users with a form of a disability! You cannot ignore them.&lt;/p&gt;&lt;h2&gt;What can you do to make sites more accessible?&lt;/h2&gt;&lt;p&gt;There are a number of ways to make your site accessible for the users. The easiest way to tackle some problems is using the following tips:&lt;/p&gt;&lt;ol&gt;&lt;li&gt;Use a &#34;skip&#34; link, this is the safest way because &lt;a href=&#34;http://www.w3.org/WAI/intro/aria.php&#34;&gt;WAI-ARIA&lt;/a&gt; standard is not completely accepted.&lt;/li&gt;&lt;li&gt;Add help text before the link, for example: &#34;Go directly to...&#34;. It will make it more clear for the user.&lt;/li&gt;&lt;li&gt;Structure your HTML to place the important part (content) in the top section.&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;Another thing Johan pointed out is that title tags are &lt;a href=&#34;http://www.w3.org/html/wg/wiki/ChangeProposals/notitlev2#New_information:_Browser_vendors_have_not_made_a_commitment_to_provide_.28input.29_device_independent_access_to_title_attribute_content&#34;&gt;not well supported by browsers&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;It is not just about clean HTML code, it&#39;s about interaction&lt;/h2&gt;&lt;p&gt;Johan gave us 2 more examples to be aware of during development.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;How does someone with a screen reader experience your site? How does this person knows when something on the page has changed?&lt;/strong&gt;&lt;br&gt;Example filling in web forms. When the user makes a mistake in a form, don&#39;t reload the page and loose what was filled in correctly. There are people who have trouble typing. Also place the error message outside and in the top of the form with a link to the field which must be corrected. If the error is in the input field/form it will be ignored by the screen reader.&lt;/p&gt;&lt;p&gt;Another issue is using captcha. Arend let us listen to a captcha example. The screen reader talks jibberish when reading the captcha text. You cannot make any sense of it.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;What about people who has a visual impairment?&lt;/strong&gt;&lt;br&gt;There are people who have to zoom in so badly they only see a part of the site. For example the homepage of the Dutch public transport planner. People who zoom in might try to type in the fields, while this is really just an image, not the form.&lt;/p&gt;&lt;p&gt;And think of people who cannot drag,drop, pinch or zoom. How can you give them a better experience?&lt;/p&gt;&lt;h2&gt;Accessibility label is not the holy grail&lt;/h2&gt;&lt;p&gt;There are a number of accessibility labels in the Netherlands you can achieve for your site: &lt;a href=&#34;http://www.drempelvrij.nl&#34;&gt;drempelvrij.nl&lt;/a&gt;, &lt;a href=&#34;http://accessibility.nl&#34;&gt;accessibility.nl&lt;/a&gt;. When you&#39;re able to get one of these labels, it doesn&#39;t mean that your site is full proof accessible. Q42 created the website for the Dutch public transport travel planner. They made a new version of the travel planner which was still using a table. It was OK, at least good enough to get the accessibility label. But Q42 decided to hire people from &lt;a href=&#34;http://visiris.com&#34;&gt;visiris.com&lt;/a&gt; to test the site. And it turns out that it was not working as it should. They changed the form using spans and divs and it worked like a charm. Johan used the screan reader for the audience to hear the difference between the 2 versions. The final travel planner made much more sense and more useful.&lt;/p&gt;&lt;p&gt;An accessibility label is, what I think a very good start to make your site more accessible, but as Johan pointed out, don&#39;t stare blindly on this label, also ask &lt;em&gt;real&lt;/em&gt; users to test your site.&lt;/p&gt;&lt;h2&gt;Tips for development&lt;/h2&gt;&lt;ol&gt;&lt;li&gt;Think content first (or mobile first). You will avoid a lot of accessibility issues.&lt;/li&gt;&lt;li&gt;Use your common sense.&lt;/li&gt;&lt;li&gt;Use a screen reader to test your site.&lt;/li&gt;&lt;li&gt;Navigate with your keyboard.&lt;/li&gt;&lt;li&gt;If you are a developer, talk to the UX designer and vice versa.&lt;/li&gt;&lt;li&gt;Try the Dutch &lt;a href=&#34;http://www.frankwatching.com/gespot/bartimeus-zien-app-laat-zien-wat-een-slechtziende-ziet/&#34; class=&#34;external-link&#34;&gt;&#34;ZIEN&#34; app&lt;/a&gt; for iPhone or iPad to experience what it&#39;s like when you have a visual impairment.&lt;/li&gt;&lt;li&gt;Q42 created a Chrome extension &lt;a href=&#34;https://chrome.google.com/webstore/search-extensions/see?hl=nl&#34;&gt;&#34;See&#34;&lt;/a&gt;. It lets you view the web as a user with a visual impairment.&lt;/li&gt;&lt;li&gt;In the Netherlands there are about 4 million users with a form of a disability. You can ask them to test your site or hire someone from: &lt;a href=&#34;http://www.viziris.nl&#34;&gt;Viziris.com&lt;/a&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;To be frank, I personally didn&#39;t think much about accessibility. At least not enough. After the presentation about &lt;a href=&#34;../fronteers2012/accessibility&#34;&gt;accessibility&lt;/a&gt; on the Fronteers conference 2012, I did make a start. Every site I start to build (including my own site), I think about the structure first and use my keyboard once in a while for testing. But after this presentation I realized there is a lot more to it than just restructuring the HTML. It is, as Johan stated: &#34;Accessibility is also UX design&#34;.&lt;/p&gt;&lt;/article&gt;
 </description>
     </item>
     
     <item>
       <title>The zoom interface of www.rijksmuseum.nl</title>
-      <link>/fronteers/rijksmuseum/</link>
+      <link>http://www.mirellavanteulingen.nl/fronteers/rijksmuseum/</link>
       <pubDate>Tue, 08 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>/fronteers/rijksmuseum/</guid>
+      <guid>http://www.mirellavanteulingen.nl/fronteers/rijksmuseum/</guid>
       <description>&lt;article role=&#34;article&#34;&gt;&lt;h1&gt;The zoom interface of www.rijksmuseum.nl&lt;/h1&gt;&lt;p class=&#34;subtitle&#34;&gt;Remco Veldkamp - Twitter: @remcoder&lt;/p&gt;&lt;p&gt;08-01-2013 &lt;br&gt;All 135.000 images of the collection of National Museum Amsterdam are to be admired in ultra high resolution and full screen on every smartphone, tablet and personal computer. Remco talked about the challenges he encountered and how close you can zoom in on a painting.&lt;/p&gt;&lt;h2&gt;Creating tiles&lt;/h2&gt;&lt;p&gt;For the small screen resolutions they created tiles of the paintings. The database contains 125.000 images with a total of 690GB! That&#39;s a lot. To make programming easier, they created the product WorkQueue. With this product they can easily create tiles. For every zoom level there is a scaled version of the tile. To experience the site, it is advised to have wi-fi connection, because of the image data that needs to be downloaded.&lt;/p&gt;&lt;h2&gt;Leaflet for zooming&lt;/h2&gt;&lt;p&gt;For the zoom mechanism Q42 uses &lt;a href=&#34;http://leafletjs.com/&#34;&gt;Leaflet&lt;/a&gt;. This is an open source javascript library for mobile-friendly interactive maps. And it works on iOS and Android. Other mechanisms they use for the zoom magic is CSS transitions and transforms, overlays and markers.&lt;/p&gt;&lt;p&gt;Leaflet works with longitude and latitude coordinates. That doesn&#39;t really make sense for paintings. Remco made some tweaks in the library to be able to work with x and y coordinates. They also had a projection problem. Maps are globe like, for the paintings they needed a square projection.&lt;/p&gt;&lt;h2&gt;Overall impression&lt;/h2&gt;&lt;p&gt;It is very impressive how Q42 managed to build such a user experience. The website has more to offer than zooming on paintings. You can download a painting to the online studio, where you can create snippets from the details of paintings you like most, create posters, post cards etc. It is really a fun and interesting way to experience our &lt;a href=&#34;http://www.rijksmuseum.nl&#34;&gt;National Museum&lt;/a&gt;.&lt;/p&gt;&lt;/article&gt;
 </description>
     </item>
     
     <item>
       <title>There&#39;s a class for that</title>
-      <link>/fronteers/oocss/</link>
+      <link>http://www.mirellavanteulingen.nl/fronteers/oocss/</link>
       <pubDate>Tue, 08 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>/fronteers/oocss/</guid>
+      <guid>http://www.mirellavanteulingen.nl/fronteers/oocss/</guid>
       <description>&lt;article role=&#34;article&#34;&gt;&lt;h1&gt;There&#39;s a class for that&lt;/h1&gt;&lt;p class=&#34;subtitle&#34;&gt;Elaine Oliver Twitter: @skinkfu&lt;/p&gt;&lt;p&gt;08-01-2013 &lt;br&gt;The presentation was held at &lt;a href=&#34;http://www.q42.nl/&#34;&gt;Q42&lt;/a&gt; in The Hague. Elaine Oliver is an interaction engineer and front end developer. She was part of the project team that created the new website of the &lt;a href=&#34;http://www.rijksmuseum.nl&#34;&gt;Dutch National Museum&lt;/a&gt;. In this presentation she shared her experience about creating the OOCSS architecture, responsive design and CSS unit tests.&lt;/p&gt;&lt;p&gt;If you are not familiar with OOCSS or want to know more about it, I recommend you to read the article &lt;a href=&#34;http://coding.smashingmagazine.com/2011/12/12/an-introduction-to-object-oriented-css-oocss/&#34;&gt;&#34;An Introduction to Object Oriented CSS&#34;&lt;/a&gt; from Louis Lazaris on Smashing magazine website. Another recommendation is &lt;a href=&#34;http://smacss.com/&#34;&gt;SMACSS&lt;/a&gt;, a style guide to structure your CSS to allow flexibility and maintainability.&lt;/p&gt;&lt;p&gt;Elaine explains that the new site of the Dutch National Museum must be accessible on different devices, browsers and Internet Explorer 8. There was a lot of pressure to make the site pixel perfect, because there were a number of art designers responsible for the design. Plus they were not familiar with designing for flexible screens. During the project the developers came with new ideas and solutions for the site architecture.&lt;/p&gt;&lt;p&gt;Elaine&#39;s goal was to make a flexible and powerful CSS framework, which can be easily used. For example, if another colleague or front end developer wants to make the search function responsive, how cool would it be if you can say: &#34;There&#39;s a class for that.&#34;? To reach this goal, she decided to do it with OOCSS.&lt;/p&gt;&lt;h2&gt;Basics of OOCSS&lt;/h2&gt;&lt;p&gt;Elaine gave the following tips to make your CSS object oriented:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The styles should be content and context independent.&lt;/li&gt;&lt;li&gt;Define one class that has a number of styles, instead of using multiple selectors.&lt;/li&gt;&lt;li&gt;Define good names for the classes and their fuction.&lt;/li&gt;&lt;li&gt;Think in small blocks and give it good and clear names.&lt;/li&gt;&lt;li&gt;Keep it simple where possible.&lt;/li&gt;&lt;li&gt;Keep your target group in mind: people who will use your framework.&lt;/li&gt;&lt;li&gt;Use &#34;js&#34; prefixes or data-role for javascript related CSS.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;Can you develop responsive OOCSS?&lt;/strong&gt;&lt;br&gt;Yes you can. Elaine&#39;s tip is to activate a media query based on a class.&lt;/p&gt;&lt;h2&gt;CSS Unit tests&lt;/h2&gt;&lt;p&gt;Elaine was so excited and proud with what she had accomplished, but her colleagues din&#39;t understand the code. To make it easier to read and to use, she decided to create CSS unit tests. She created online documentation of every class with an example of what it does. This kind of documentation is usefull:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;to prevent regression&lt;/li&gt;&lt;li&gt;for documenting styles&lt;/li&gt;&lt;li&gt;to have better communication with colleagues&lt;/li&gt;&lt;li&gt;for prototyping&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;For creating unit tests Elaine used &lt;a href=&#34;http://weblogs.asp.net/scottgu/archive/2010/07/02/introducing-razor.aspx&#34;&gt;Razor templates&lt;/a&gt;, that worked best for her.&lt;/p&gt;&lt;h2&gt;Overall impression&lt;/h2&gt;&lt;p&gt;I noticed she used a huge amount of classes just for simple things as margin:0 auto etc. Some HTML elements had about 8 or 10 classes. I wonder if it would make your life as front end developer easier if an element has so many classes? Isn&#39;t it hard to maintain?&lt;/p&gt;&lt;p&gt;Besides my personal remarks, I really liked the presentation and the experience Elaine had shared with us. It gave me food for thought and ideas how to make my CSS more object oriented. I do was impressed how flexible the framework is that Elaine created, and her unit tests as well. That had cost her an incredibly amount of time and efford.&lt;/p&gt;&lt;/article&gt;
 </description>
     </item>
     
     <item>
       <title>Fronteers Conference 2012</title>
-      <link>/fronteers/conf_2012/</link>
+      <link>http://www.mirellavanteulingen.nl/fronteers/conf_2012/</link>
       <pubDate>Sun, 21 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>/fronteers/conf_2012/</guid>
+      <guid>http://www.mirellavanteulingen.nl/fronteers/conf_2012/</guid>
       <description></description>
     </item>
     
     <item>
       <title>I can smell your CMS</title>
-      <link>/conf_2012/smellyourcms/</link>
+      <link>http://www.mirellavanteulingen.nl/conf_2012/smellyourcms/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>/conf_2012/smellyourcms/</guid>
+      <guid>http://www.mirellavanteulingen.nl/conf_2012/smellyourcms/</guid>
       <description>&lt;p&gt;Phil works as a web developer in London for R/GA. His presentation is to ask yourself and or your customer: do you really need a CMS? He also talks about the role of the web builder (agency) and the customer. It was a great and funny presentation. It really gave me energy and stuff to think about.&lt;/p&gt;&lt;h2&gt;The CMS Paradox&lt;/h2&gt;&lt;p&gt;Usually we give clients what they want, they want a system that is scalable and has lots of features. But the system which has to answer to these demands becomes very complex in the backbone but also for the user. Having a lot of features doesn&#39;t mean it is user friendly.&lt;/p&gt;&lt;p&gt;In the end the customer gets a system which can do a lot but the customer actually use only 20% of it.&lt;/p&gt;&lt;p&gt;We should actually give what the customer really needs.&lt;/p&gt;&lt;p&gt;The responsibility of the agency/developer is:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;To learn by example: view the source.&lt;/li&gt;&lt;li&gt;Craft of code: to move forward as developers and agencies, respect the craft of code.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Example Grolsch.com has a 30MB homepage, just like Beetle.com with lots of scrolling effects.&lt;/p&gt;&lt;p&gt;The CMS paradox is more obvious in large organisations. If you paid a fortune, then you&#39;ll sure it&#39;s a good system!&lt;/p&gt;&lt;p&gt;The CMS paradox is:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;It doesn&#39;t really solve problems.&lt;/li&gt;&lt;li&gt;it is enterprise level&lt;/li&gt;&lt;li&gt;expensive&lt;/li&gt;&lt;li&gt;flexibility doesn&#39;t really give flexibility! It doesn&#39;t always end up in flexible solutions.&lt;/li&gt;&lt;li&gt;Because you have so much choices -&amp;gt; paralysis&lt;/li&gt;&lt;li&gt;cost of system proportional to cost of changes: People need to get trained, the ability to make changes has a cost associated with it.&lt;/li&gt;&lt;li&gt;Most content managers are ending up as a developer.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;It has a powerful workflow. But does the shit get done?&lt;/p&gt;&lt;p&gt;People at the top like the idea of a controlling system, but the CMS is being used by an intern or a developer in the end, not the CEO. People tend to subvert the system because of all the security and controlling workflows.&lt;/p&gt;&lt;h2&gt;Code smell&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;CMS&#39;s don&#39;t just leave a smell, they actually stink!&lt;/strong&gt;&lt;br&gt;Browse on the internet and just look at the url or code and you know that you&#39;re dealing with a CMS. Most CMS&#39;s expose the technology in URLs, such as an url ending in .php or .asp. This is a type of lock in. For example:&lt;br&gt;&lt;a href=&#34;http://eur.burton.com/on/demandware.store/Sites-Burton_EU-Site/default&#34;&gt;http://eur.burton.com/on/demandware.store/Sites-Burton_EU-Site/default&lt;/a&gt; That&#39;s not a cool URL :)&lt;br&gt;Or stinky code: &lt;a href=&#34;http://www.episerver.com/&#34;&gt;http://www.episerver.com/&lt;/a&gt; pages has lots of crap in the HTML, like a hidden&lt;xsl:text&gt;&amp;lt;form&amp;gt;&lt;/xsl:text&gt;tag around everything that includes a hash of the view state.&lt;/p&gt;&lt;p&gt;URL design is a craft and should be part of the CMS when developing a website.&lt;/p&gt;&lt;blockquote&gt;&amp;ldquo;Challenge CMS stink. Fight for the chance to do good on the web.&amp;rdquo; &lt;cite&gt;- Phil Hawksworth&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;Optimisation:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;To serve a good performing web page you want a good base (not a CMS).&lt;/li&gt;&lt;li&gt;Building a site with modules kills performance and leads to a maintenance nightmare and makes Steve Souders cry.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Modularity&lt;xsl:text&gt;&amp;amp;&lt;/xsl:text&gt;flexibility (o really?): With all those modules you end up in a soup, maintenance is a nightmare. And kills performance.&lt;/p&gt;&lt;h2&gt;CMS: the power to ruin their site (Rachel Andrew)&lt;/h2&gt;&lt;p&gt;Core feature: WYSIWIG = Danger. It ruins the layout of the site. We should protect the design experience. We should protect the markup.&lt;/p&gt;&lt;p&gt;WYSYWIG can fuck up designs pretty often, and it&#39;s really hard to do it properly. Instead of WYSIWYG use Markdown. With Markdown you manage the content not the design. In that way, constrains can be enablers. When we are able to get the user to manage content and not design, it will keep the site future friendly and maintainable.&lt;/p&gt;&lt;h2&gt;CMS enhancements&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Challenge the introduction of stink, simplify the implementation of the system. Build CMS more future friendly, like mobile support.&lt;/li&gt;&lt;li&gt;Challenge the customer by asking what content REALLY needs to be dynamic. Think about it.&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;Consider NOCMS&lt;/h2&gt;&lt;p&gt;You can use for instance &lt;a href=&#34;http://github.com/mojombo/jekyll&#34;&gt;Jekyll&lt;/a&gt; it uses ruby to spit out static html. Or &lt;a href=&#34;http://grabaperch.com&#34;&gt;Perch CMS&lt;/a&gt;, which focuses on the front end, generating the admin part from the tagged front end design. Combine your website with &lt;a href=&#34;https://www.varnish-cache.org/&#34;&gt;Varnish&lt;/a&gt; to speed it up.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Open Source ain&#39;t free</title>
-      <link>/conf_2012/os-aintfree/</link>
+      <link>http://www.mirellavanteulingen.nl/conf_2012/os-aintfree/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>/conf_2012/os-aintfree/</guid>
+      <guid>http://www.mirellavanteulingen.nl/conf_2012/os-aintfree/</guid>
       <description>&lt;p&gt;David DeSandro talked about his personal open source project and shared his experience, problems and solutions he run into when he shared his project with the world. The main subject of this presentation is how you can make money from open source projects. To get paid for the work you share with others.&lt;/p&gt;&lt;p&gt;If you want to do side projects you have to work on something that excites you. It is also a way to market yourself and to build and promote your personal brand. The community gets another tool for its toolkit. And most of these tools are free.&lt;/p&gt;&lt;h2&gt;The culture of free&lt;/h2&gt;&lt;p&gt;The culture of free, has the following components:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;you can view the source&lt;/li&gt;&lt;li&gt;there is no paywall&lt;/li&gt;&lt;li&gt;costs no money to...&lt;/li&gt;&lt;li&gt;you can learn for free&lt;/li&gt;&lt;li&gt;use the resources&lt;/li&gt;&lt;li&gt;and market your stuff&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;It is the ideal environment to be creative.&lt;/p&gt;&lt;p&gt;It feels good to share your code with the world and you like it when others start using it. But there is a downside. People who use your code, they expect that you solve their problems to get your code working. For them it take 5 minutes to send the mail with a support question, but for you it take at least 30 minutes to help them. For David, these support questions were piling up.&lt;/p&gt;&lt;h2&gt;How do you deal with it?&lt;/h2&gt;&lt;p&gt;David asked himself &#34;Why don&#39;t I put a price on my product?&#34; Users have to make a value judgement, how much money is it worth for me.&lt;/p&gt;&lt;p&gt;There are people who are making a money: like the app store, WP premium themes. Is there a market for front-end development resources?&lt;/p&gt;&lt;p&gt;FancyZoom was one of the first pioneers in this field. For $39 you could get a commercial license. David made Isotope as a commercial fill-in plug-in for Masonry with the FancyZoom model.&lt;/p&gt;&lt;p&gt;David didn&#39;t like the available options:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;adopt fancyzoom license model.&lt;/li&gt;&lt;li&gt;still open source = on github.&lt;/li&gt;&lt;li&gt;github donation&lt;/li&gt;&lt;li&gt;Flattr&lt;/li&gt;&lt;li&gt;Generic PayPal donation, but not happy with those donation options.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;And started a company next to his agency for his side projects.&lt;/p&gt;&lt;p&gt;It feels kind a bit against the open source thought, but the results are incredible:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Sold &lt;a href=&#34;http://isotope.metafizzy.co/&#34;&gt;Isotope&lt;/a&gt; for $37 / License (now $25), responsible for 25% of income in 2011.&lt;/li&gt;&lt;li&gt;Able to pay off car loan and student loan.&lt;/li&gt;&lt;li&gt;Impact on quality of life.&lt;/li&gt;&lt;li&gt;At a cost of 20% of my free time.&lt;/li&gt;&lt;li&gt;Also the price allows non technical users to contribute to the product.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Are support emails bugging you? Think about it. If so, ask support fee.&lt;/p&gt;&lt;p&gt;There is a huge market for commercial front-end dev resources. Free&lt;xsl:text&gt;&amp;amp;&lt;/xsl:text&gt;open source ideal doesn&#39;t scale. It is OK to make money out of honest work.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Short notes</title>
-      <link>/conf_2012/shortnotes/</link>
+      <link>http://www.mirellavanteulingen.nl/conf_2012/shortnotes/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>/conf_2012/shortnotes/</guid>
+      <guid>http://www.mirellavanteulingen.nl/conf_2012/shortnotes/</guid>
       <description>&lt;p&gt;For the talks I did&#39;t make much notes, are gathered on this page.&lt;/p&gt;&lt;h2 id=&#34;alexgraul&#34;&gt;Using JS to build bigger, better datavis to enlighten and elate&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Alex Graul - Twitter: @alexgraul - Video: &lt;a href=&#34;http://vimeo.com/52851512&#34;&gt;http://vimeo.com/52851512&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Alex makes visualizations for the Guardian.&lt;/p&gt;&lt;p&gt;He showed us a couple of examples to make data more interesting for the people, using animations and interaction. He is co-lead developer of the &lt;a href=&#34;misoproject.com/dataset/&#34;&gt;Miso project&lt;/a&gt;, this is an open source toolkit for creating interactive storytelling and data visualization of content. On the Miso project site you&#39;ll find some examples.&lt;/p&gt;&lt;h2 id=&#34;mathiasbynens&#34;&gt;Ten things I didn&#39;t know about HTML&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Mathias Bynens - Twitter: @mathias - Video: &lt;a href=&#34;http://vimeo.com/52851509&#34;&gt;http://vimeo.com/52851509&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Mathias showed us some funny things he found out using HTML. For example he tried to use a name for setting a background color, for example:&lt;/p&gt;
 &lt;pre rel=&#34;HTML&#34;&gt;
 &lt;code&gt;

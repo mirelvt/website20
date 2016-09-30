@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blogs on </title>
-    <link>/blog/</link>
-    <description>Recent content in Blogs on </description>
+    <title>Blogs on Mirella van Teulingen</title>
+    <link>http://www.mirellavanteulingen.nl/blog/</link>
+    <description>Recent content in Blogs on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
     <lastBuildDate>Sun, 02 Oct 2016 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://www.mirellavanteulingen.nl/blog/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>How to use svg icons in Django templates?</title>
-      <link>/blog/svg-icons-django-template/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/svg-icons-django-template/</link>
       <pubDate>Sun, 02 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/blog/svg-icons-django-template/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/svg-icons-django-template/</guid>
       <description>&lt;p&gt;Normally we use icon fonts in our projects, which are created with
 &lt;a href=&#34;https://rsp.github.io/fontcustom/&#34;&gt;Fontcustom&lt;/a&gt;. It is a nice tool to
 generate the font icon from our own svg icons. Using the icon font in the last 3
@@ -23,7 +24,7 @@ the icon next another element or text. You have to take into account the vertica
 alignment, line-height, letter-spacing etc, after all, it is a font. To position
 it correctly in the latest browsers, you have to do a lot of tweaking.&lt;/p&gt;
 
-&lt;p&gt;I was curious if you can use inline svg icons in an maintainable way. After
+&lt;p&gt;I was curious if you can use svg icons in an maintainable way. After
 reading the article on
 &lt;a href=&#34;https://css-tricks.com/svg-symbol-good-choice-icons/&#34;&gt;CSS-tricks&lt;/a&gt;
 about svg symbols and Sara Soueidans&amp;rsquo; article about
@@ -33,38 +34,39 @@ it with my colleagues to give this technique a chance in one of our projects.
 Because of the great advantages of svg, the decision was easily made.&lt;/p&gt;
 
 &lt;p&gt;The project we started to use svg symbols is build with Django Framework.
-The svgs icons are created separately and placed in a folder
+The svg icons are created separately and placed in a folder
 called &lt;em&gt;svg-icons&lt;/em&gt;. This folder is purely for version control.&lt;/p&gt;
 
 &lt;p&gt;In the &lt;em&gt;templates&lt;/em&gt; directory I created the include template file &lt;em&gt;include_svg_icon_sprite.html&lt;/em&gt;.
 It is a html file because at the time of writing we still need to support IE and IE does
 not support xlink to an svg file. I include this file in the base template at
-the bottom of te page. Using &amp;ldquo;include&amp;rdquo; in the file name we know it is a
+the bottom of the page. Using &amp;ldquo;include&amp;rdquo; in the file name we know it is a
 template snippet. In this file I have one svg file which contains all the symbols.
 The symbol contains the svg code copied from each svg icon from the &lt;em&gt;svg-icons&lt;/em&gt;
 directory.&lt;/p&gt;
 
 &lt;pre rel=&#34;SVG&#34;&gt;
-&lt;code class=&#34;html&#34;&gt;
-&amp;lt;&lt;span class=&#34;tag&#34;&gt;svg&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;xmlns&lt;/span&gt;=&#34;http://www.w3.org/2000/svg&#34;
-        &lt;span class=&#34;attribute&#34;&gt;xmlns:xlink&lt;/span&gt;=&#34;http://www.w3.org/1999/xlink&#34; &lt;span class=&#34;attribute&#34;&gt;class&lt;/span&gt;=&#34;svg-sprite&#34;
-        &lt;span class=&#34;attribute&#34;&gt;viewBox&lt;/span&gt;=&#34;0 0 512 512&#34; &lt;span class=&#34;attribute&#34;&gt;width&lt;/span&gt;=&#34;512px&#34; &lt;span class=&#34;attribute&#34;&gt;height&lt;/span&gt;=&#34;512px&#34;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;symbol&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;id&lt;/span&gt;=&#34;filter&#34;&lt;/span&gt;&amp;gt;
-        &amp;lt;&lt;span class=&#34;tag&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;d&lt;/span&gt;=&#34;M0 26h512v51.206L307.21 333.213v153.6l-102.404-51.208V333.213L0 77.206V26z&#34; /&amp;gt;
-    &amp;lt;/&lt;span class=&#34;tag&#34;&gt;symbol&lt;/span&gt;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;symbol&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;id&lt;/span&gt;=&#34;home&#34;&amp;gt;
-        &amp;lt;&lt;span class=&#34;tag&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;d&lt;/span&gt;=&#34;M512 296l-96-96V56h-64v80l-96-96L0 296v16h64v160h160v-96h64v96h160V312h64v-16z&#34; /&amp;gt;
-    &amp;lt;/&lt;span class=&#34;tag&#34;&gt;symbol&lt;/span&gt;&amp;gt;
-&amp;lt;/&lt;span class=&#34;tag&#34;&gt;svg&lt;/span&gt;&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;code&gt;
+&amp;lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34;
+        xmlns:xlink=&#34;http://www.w3.org/1999/xlink&#34; class=&#34;svg-sprite&#34;
+        viewBox=&#34;0 0 512 512&#34; width=&#34;512px&#34; height=&#34;512px&#34;&amp;gt;
+    &amp;lt;symbol id=&#34;filter&#34;&amp;gt;
+        &amp;lt;path d=&#34;M0 26h512v51.206L307.21 333.213v153.6l-102.404-51.208V333.213L0 77.206V26z&#34; /&amp;gt;
+    &amp;lt;/symbol&amp;gt;
+    &amp;lt;symbol id=&#34;home&#34;&amp;gt;
+        &amp;lt;path d=&#34;M512 296l-96-96V56h-64v80l-96-96L0 296v16h64v160h160v-96h64v96h160V312h64v-16z&#34; /&amp;gt;
+    &amp;lt;/symbol&amp;gt;
+&amp;lt;/svg&amp;gt;
+&lt;/code&gt;
+&lt;/pre&gt;
 
 &lt;p&gt;To use a symbol you could place the following code in the template every time you
 need an icon:
 &lt;pre rel=&#34;html&#34;&gt;
-&lt;code class=&#34;html&#34;&gt;
-&amp;lt;&lt;span class=&#34;tag&#34;&gt;svg&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;viewBox&lt;/span&gt;=&amp;ldquo;0 0 512 512&amp;rdquo; &lt;span class=&#34;attribute&#34;&gt;class&lt;/span&gt;=&amp;ldquo;icon-home&amp;rdquo;&amp;gt;
-    &amp;lt;&lt;span class=&#34;tag&#34;&gt;use&lt;/span&gt; &lt;span class=&#34;attribute&#34;&gt;xlink:href&lt;/span&gt;=&amp;ldquo;#home&amp;rdquo;&amp;gt;&amp;lt;/&lt;span class=&#34;tag&#34;&gt;use&lt;/span&gt;&amp;gt;
-&amp;lt;/&lt;span class=&#34;tag&#34;&gt;svg&lt;/span&gt;&amp;gt;
+&lt;code&gt;
+&amp;lt;svg viewBox=&amp;ldquo;0 0 512 512&amp;rdquo; class=&amp;ldquo;icon-home&amp;rdquo;&amp;gt;
+    &amp;lt;use xlink:href=&amp;ldquo;#home&amp;rdquo;&amp;gt;&amp;lt;/use&amp;gt;
+&amp;lt;/svg&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
 
 &lt;p&gt;It is still a lot of typing, to make it easier I created a template tag called
@@ -72,24 +74,23 @@ icon.py. In the djangoproject documentation you can find more information about 
 
 &lt;pre rel=&#34;Python&#34;&gt;
 &lt;code class=&#34;python&#34;&gt;
-&lt;span class=&#34;def&#34;&gt;from&lt;/span&gt; django &lt;span class=&#34;def&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;import&#34;&gt;template&lt;/span&gt;
-&lt;span class=&#34;def&#34;&gt;from&lt;/span&gt; django.utils.safestring &lt;span class=&#34;def&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;import&#34;&gt;mark_safe&lt;/span&gt;
-&lt;span class=&#34;def&#34;&gt;from&lt;/span&gt; django.utils.html &lt;span class=&#34;def&#34;&gt;import&lt;/span&gt; &lt;span class=&#34;import&#34;&gt;format_html&lt;/span&gt;
+from django import template
+from django.utils.safestring import mark_safe
+from django.utils.html import format_html
 
-&lt;span class=&#34;attribute&#34;&gt;register&lt;/span&gt; = &lt;span class=&#34;import&#34;&gt;template&lt;/span&gt;.Library()
+register = template.Library()
 
 
-&lt;span class=&#34;def&#34;&gt;@register.simple_tag(name=&#39;svg_icon&#39;)&lt;/span&gt;
-&lt;span class=&#34;def&#34;&gt;def svg_icon(icon_name, extra_class=&#39;&#39;)&lt;/span&gt;:
-    &lt;span class=&#34;attribute&#34;&gt;svg_tag&lt;/span&gt; = &lt;span class=&#34;import&#34;&gt;format_html&lt;/span&gt;(&lt;span class=&#34;string&#34;&gt;&#39;&amp;lt;svg viewBox=&#34;0 0 512 512&#34; class=&#34;icon-{name} {extra}&#34;&amp;gt;&#39;
+@register.simple_tag(name=&#39;svg_icon&#39;)
+def svg_icon(icon_name, extra_class=&#39;&#39;):
+    svg_tag = format_html(&lt;span class=&#34;string&#34;&gt;&#39;&amp;lt;svg viewBox=&#34;0 0 512 512&#34; class=&#34;icon-{name} {extra}&#34;&amp;gt;&#39;
                &#39;&amp;lt;use xlink:href=&#34;#{name}&#34; class=&#34;sym-{name}&#34;&amp;gt;&amp;lt;/use&amp;gt;&#39;
-               &#39;&amp;lt;/svg&amp;gt;&#39;&lt;/span&gt;, name=&lt;span class=&#34;attribute&#34;&gt;icon_name&lt;/span&gt;, extra=&lt;span class=&#34;attribute&#34;&gt;extra_class&lt;/span&gt;)
+               &#39;&amp;lt;/svg&amp;gt;&#39;, name=icon_name, extra=extra_class)
 
-    &lt;span class=&#34;statement&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;import&#34;&gt;mark_safe&lt;/span&gt;(&lt;span class=&#34;attribute&#34;&gt;svg_tag&lt;/span&gt;)
+    return mark_safe(svg_tag)
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;To use the icon in your template you only have to load the template tag and then you
-can use the created tag everywhere in you template:&lt;/p&gt;
+&lt;p&gt;To use the icon in your template you only have to load the template tag and then you can use the custom tag everywhere in your template:&lt;/p&gt;
 
 &lt;pre rel=&#34;Django HTML&#34;&gt;
 &lt;code class=&#34;django&#34;&gt;
@@ -107,15 +108,30 @@ can use the created tag everywhere in you template:&lt;/p&gt;
     &amp;lt;/li&amp;gt;
 &amp;lt;/ul&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now the icons are in place you have to give the icon a color and a width and height. In this example all the icons get the same styling.&lt;/p&gt;
+
+&lt;pre rel=&#34;CSS&#34;&gt;
+&lt;code&gt;
+[class^=&#34;icon-&#34;] {
+    width: 2rem;
+    height: auto;
+    fill: #222;
+}
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;This is a short tutorial how to use svg icons in Django templates. I hope this
+article is useful to you.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title> A vanilla js and css tooltip</title>
-      <link>/blog/css-js-tooltip/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/css-js-tooltip/</link>
       <pubDate>Wed, 28 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>/blog/css-js-tooltip/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/css-js-tooltip/</guid>
       <description>&lt;p&gt;In february 2016 I was looking for a tooltip plugin which must fix 2 design
 issues: overflow:hidden and the window corners. I also don&amp;rsquo;t want to need jQuery.
 During searching and testing a couple plugins, I thought, why not build one myself?
@@ -302,10 +318,10 @@ and I also created a simple &lt;a href=&#34;http://www.mirellavanteulingen.nl/de
     
     <item>
       <title>Font icons with Fontcustom and SASS</title>
-      <link>/blog/sass_fontcustom/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/sass_fontcustom/</link>
       <pubDate>Sat, 21 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/sass_fontcustom/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/sass_fontcustom/</guid>
       <description>&lt;p&gt;In 2013 and 2014 I used &lt;a href=&#34;http://www.icomoon.io&#34;&gt;Icomoon&lt;/a&gt; to create font icons.
 It is a nice library and tool. You can choose icons from their library and
 they have the feature to upload your own svgs to create the font icon set. It is a great tool if you only need to generate the font icon once. But not when you have to add new ones to the set.
@@ -541,10 +557,10 @@ static/
     
     <item>
       <title>Create clickable rating stars with only SASS and HTML</title>
-      <link>/blog/rating_stars_sass/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/rating_stars_sass/</link>
       <pubDate>Fri, 03 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>/blog/rating_stars_sass/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/rating_stars_sass/</guid>
       <description>&lt;p&gt;In May, Roy Tomeij wrote the article &lt;a href=&#34;http://advancedsass.com/articles/configurable-star-rating-without-js.html&#34;&gt;&amp;ldquo;Configurable star rating without JS&amp;rdquo;&lt;/a&gt;. I was thinking how to do this using a font icon instead of a background image and make the stars clickable. I believe it would take less code to write, and it is. I had the code finished a couple of days later in May, but now I&amp;rsquo;ve finally have the time to post my solution. So here we go:
 &lt;h3&gt;HTML structure&lt;/h3&gt;
 &lt;p&gt;
@@ -662,10 +678,10 @@ The labels are positioned absolute and using a SASS loop, the stars can be posit
     
     <item>
       <title>Django form customization using Crispy Forms</title>
-      <link>/blog/customize_form_crispy_forms/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/customize_form_crispy_forms/</link>
       <pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/customize_form_crispy_forms/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/customize_form_crispy_forms/</guid>
       <description>&lt;p&gt;At &lt;a href=&#34;http://www.dreamsolution.nl&#34;&gt;Dreamsolution&lt;/a&gt; we regularly use Crispy Forms to generate
     complex forms in Django. I want to share some practical customization examples
     with Crispy Forms using the formhelper API. The examples are how to:
@@ -717,7 +733,7 @@ self.helper[1:6].wrap_together(layout.Fieldset, &#39;Your Address&#39;)
 &lt;p&gt;As you can see we only need 2 lines of code to create two fieldsets.&lt;/p&gt;
 
 &lt;figure&gt;
-  &lt;img src=&#34;/img/crispy-fieldsets.png&#34; alt=&#34;Example Crispy forms Fieldset&#34;&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-fieldsets.png&#34; alt=&#34;Example Crispy forms Fieldset&#34;&gt;
   &lt;figcaption&gt;Example Crispy forms Fieldset&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -737,7 +753,7 @@ self.helper[&#39;addition&#39;].wrap(layout.Field, wrapper_class=&#34;addition&#
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;figure&gt;
-  &lt;img src=&#34;/img/crispy-field-manipulation-code.png&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-field-manipulation-code.png&#34; alt=&#34;&#34;&gt;
   &lt;figcaption&gt;Wrapper around 2 fields&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -766,7 +782,7 @@ Now you can style and manipulate the 2 fields without touching the other fields.
   &lt;/li&gt;
 &lt;/ol&gt;
 &lt;figure&gt;
-    &lt;img src=&#34;/img/crispy-field-manipulation.png&#34; alt=&#34;&#34;&gt;
+    &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-field-manipulation.png&#34; alt=&#34;&#34;&gt;
     &lt;figcaption&gt;Example form where the field &#34;Addition&#34; is positioned next to the field &#34;House number&#34;&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;h2&gt;Insert HTML between fields&lt;/h2&gt;
@@ -787,7 +803,7 @@ self.helper.layout[1].insert(2,layout.HTML(
 &lt;/pre&gt;
 
 &lt;p&gt;&lt;figure&gt;
-  &lt;img src=&#34;/img/crispy-add-content.png&#34; alt=&#34;&#34;&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/crispy-add-content.png&#34; alt=&#34;&#34;&gt;
   &lt;figcaption&gt;Example form with extra content&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;p&gt;
@@ -816,10 +832,10 @@ self.helper.layout[1].insert(2,layout.HTML(
     
     <item>
       <title>Customize Sublime text editor</title>
-      <link>/blog/customize_sublime/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/customize_sublime/</link>
       <pubDate>Wed, 12 Feb 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blog/customize_sublime/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/customize_sublime/</guid>
       <description>&lt;p&gt;Last year at the Fronteers conference in Amsterdam, Addy Osmani used Sublime Text Editor in his presentation.
 The editor looked really cool. Right after the conference I installed Sublime and looked around for
 packages which would make my life as front end developer easier and make editing more fun. After a
@@ -855,7 +871,7 @@ how to customize a theme and links to useful documentation. Let&amp;rsquo;s get 
   &lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;/img/packagemanager.png&#34; alt=&#34;Sublime Package manager interface&#34; /&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/packagemanager.png&#34; alt=&#34;Sublime Package manager interface&#34; /&gt;
   &lt;figcaption&gt;Installing packages&lt;/figcaption&gt;
 &lt;/figure&gt;&lt;/p&gt;
 
@@ -986,7 +1002,7 @@ in the user settings:&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 &lt;figure&gt;
-  &lt;img src=&#34;/img/findfilestring.png&#34; alt=&#34;Find file with class name in Sublime.&#34; /&gt;
+  &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/findfilestring.png&#34; alt=&#34;Find file with class name in Sublime.&#34; /&gt;
   &lt;figcaption&gt;Find file with class name in Sublime.&lt;/figcaption&gt;
 &lt;/figure&gt;
 &lt;h2&gt;Open files via the terminal&lt;/h2&gt;
@@ -1019,10 +1035,10 @@ $ ln -s /Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl sublime
     
     <item>
       <title>CSS Day 2013 Amsterdam</title>
-      <link>/blog/cssday_2013/</link>
+      <link>http://www.mirellavanteulingen.nl/blog/cssday_2013/</link>
       <pubDate>Sun, 16 Jun 2013 00:00:00 +0000</pubDate>
       
-      <guid>/blog/cssday_2013/</guid>
+      <guid>http://www.mirellavanteulingen.nl/blog/cssday_2013/</guid>
       <description>
 
 &lt;p&gt;Friday 14 june 2013 in Amsterdam I attended the CSSDay conference. Eight experts talked about 8 different CSS modules. The focus was on techniques of these modules we might not know about and the future of CSS. During the conference I learned that CSS is in very active development. It was an incredible, informative and awesome day. An high standard conference I&amp;rsquo;ve ever attended so far. I hope that there will be another one within 1 or 2 years.&lt;/p&gt;
