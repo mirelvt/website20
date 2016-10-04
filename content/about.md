@@ -16,11 +16,9 @@ My name is Mirella van Teulingen and I'm a Dutch front end developer at
 I have the privilege to work in a team of experts in python, javascript
 and design.
 
-The key areas of experience include HTML, CSS, Django templating. I also
-have experience with XML, XSLT, [Plone](http://www.plone.org) and
-Zope Page Templates (templating used in Plone). The last few years I'm
-extending my knowledge with [SASS](http://sass-lang.com/),
-[LESS](http://lesscss.org/), jQuery and javascript.
+The key areas of experience include HTML, CSS, Sass, jQuery, DOM scripting and Django templating.
+I also have experience with XML, XSLT, [Plone](http://www.plone.org) and
+Zope Page Templates (templating language used in Plone).
 
 Detailed information about my working experience can be found on
 [LinkedIn](http://www.linkedin.com/in/mirellavanteulingen).
