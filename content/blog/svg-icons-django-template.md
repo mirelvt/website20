@@ -36,6 +36,10 @@ template snippet. In this file I have one svg file which contains all the symbol
 The symbol contains the svg code copied from each svg icon from the *svg-icons*
 directory.
 
+In the code snippet you'll notice the class *svg-sprite*.
+If you do not hide the svg, all the icons will be displayed. In your
+Sass or css file you set .svg-sprite { display: none; }.
+
 <pre rel="SVG icon sprite">
 <code>
 &lt;svg xmlns="http://www.w3.org/2000/svg"
