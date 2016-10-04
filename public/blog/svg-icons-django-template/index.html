@@ -92,8 +92,8 @@
             </div>
             <article role="article">
                 <h1>How to use svg icons in Django templates?</h1>
-                October 2, 2016 <br>
-                <p>Normally we use icon fonts in our projects, which are created with
+                October 4, 2016 <br>
+                <p>I am accustomed to use icon fonts in our projects at Dreamsolution, which are created with
 <a href="https://rsp.github.io/fontcustom/">Fontcustom</a>. It is a nice tool to
 generate the font icon from our own svg icons. Using the icon font in the last 3
 years I always bump into some styling issues. The icon font has anti-alias and
@@ -123,7 +123,7 @@ template snippet. In this file I have one svg file which contains all the symbol
 The symbol contains the svg code copied from each svg icon from the <em>svg-icons</em>
 directory.</p>
 
-<pre rel="SVG">
+<pre rel="SVG icon sprite">
 <code>
 &lt;svg xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-sprite"
@@ -142,15 +142,30 @@ directory.</p>
 need an icon:
 <pre rel="html">
 <code>
-&lt;svg viewBox=&ldquo;0 0 512 512&rdquo; class=&ldquo;icon-home&rdquo;&gt;
-    &lt;use xlink:href=&ldquo;#home&rdquo;&gt;&lt;/use&gt;
-&lt;/svg&gt;
+&lt;ul&gt;
+    &lt;li&gt;
+        &lt;a href=&ldquo;{% url &ldquo;home&rdquo; %}&rdquo; class=&ldquo;menu-item&rdquo;&gt;
+            &lt;svg viewBox=&ldquo;0 0 512 512&rdquo; class=&ldquo;icon-home&rdquo;&gt;
+                &lt;use xlink:href=&ldquo;#home&rdquo;&gt;&lt;/use&gt;
+            &lt;/svg&gt;
+            Home
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&ldquo;{% url &ldquo;filter&rdquo; %}&rdquo; class=&ldquo;menu-item&rdquo;&gt;
+            &lt;svg viewBox=&ldquo;0 0 512 512&rdquo; class=&ldquo;icon-home&rdquo;&gt;
+                &lt;use xlink:href=&ldquo;#filter&rdquo;&gt;&lt;/use&gt;
+            &lt;/svg&gt;
+            Filter
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
 </code></pre></p>
 
-<p>It is still a lot of typing, to make it easier I created a template tag called
-icon.py. In the djangoproject documentation you can find more information about <a href="https://docs.djangoproject.com/en/1.10/howto/custom-template-tags/#writing-custom-template-tags">custom template tags</a>.</p>
+<p>Instead of typing this every time I need an icon, I created a template tag called
+<em>icon.py</em>. In the djangoproject documentation you can find more information about <a href="https://docs.djangoproject.com/en/1.10/howto/custom-template-tags/#writing-custom-template-tags">custom template tags</a>.</p>
 
-<pre rel="Python">
+<pre rel="icon.py">
 <code class="python">
 from django import template
 from django.utils.safestring import mark_safe
@@ -168,7 +183,10 @@ def svg_icon(icon_name, extra_class=''):
     return mark_safe(svg_tag)
 </code></pre>
 
-<p>To use the icon in your template you only have to load the template tag and then you can use the custom tag everywhere in your template:</p>
+<p>This custom tag has 2 variables, the <em>icon_name</em> and <em>extra_class</em>. If you need
+a specific styling for the icon you can set an extra class. To use the custom
+template tag in your template you have to load the template tag in your Django
+template and you are ready to go:</p>
 
 <pre rel="Django HTML">
 <code class="django">
@@ -187,7 +205,8 @@ def svg_icon(icon_name, extra_class=''):
 &lt;/ul&gt;
 </code></pre>
 
-<p>Now the icons are in place you have to give the icon a color and a width and height. In this example all the icons get the same styling.</p>
+<p>The only thing you now have to do is to give the icon its dimensions and a color.
+In this example all the icons get the same styling.</p>
 
 <pre rel="CSS">
 <code>
@@ -200,7 +219,7 @@ def svg_icon(icon_name, extra_class=''):
 </pre>
 
 <p>This is a short tutorial how to use svg icons in Django templates. I hope this
-article is useful to you.</p>
+article is useful for you.</p>
 
             </article>
             <div class="nav-arrows">
