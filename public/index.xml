@@ -33,7 +33,7 @@
         talk was about progressive enhancement and css by Ire Aderinokun.
     &lt;/p&gt;
     &lt;p&gt;
-        The basics is are:
+        The basics are:
    &lt;/p&gt;
    &lt;ol&gt;
         &lt;li&gt;basic content and functionality should be accessible to all web browsers. &lt;/li&gt;
@@ -78,7 +78,7 @@
         Scott Helme gave an introduction about modern web security standards:
     &lt;/p&gt;
     &lt;ul&gt;
-        &lt;li&gt;&lt;a href=&#34;&#34;https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy&gt;CSP&lt;/a&gt;: Content Security Policy&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy&#34;&gt;CSP&lt;/a&gt;: Content Security Policy&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security&#34;&gt;STS&lt;/a&gt;: Strict Transport Security&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning&#34;&gt;PKP&lt;/a&gt;: Public Key Pins&lt;/li&gt;
         &lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity&#34;&gt;SRI&lt;/a&gt;: Sub Resource Integrity&lt;/li&gt;
