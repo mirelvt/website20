@@ -46,7 +46,7 @@ The symbol contains the svg code copied from each svg icon from the &lt;em&gt;sv
 directory.&lt;/p&gt;
 
 &lt;p&gt;In the code snippet you&amp;rsquo;ll notice the class &lt;em&gt;svg-sprite&lt;/em&gt;.
-If you do not hide the svg with css all the icons will be displayed. In your
+If you do not hide the svg, all the icons will be displayed. In your
 Sass or css file you set .svg-sprite { display: none; }.&lt;/p&gt;
 
 &lt;pre rel=&#34;SVG icon sprite&#34;&gt;

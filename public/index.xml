@@ -6,8 +6,166 @@
     <description>Recent content on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Oct 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Oct 2016 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://www.mirellavanteulingen.nl/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Fronteers Conference 2016</title>
+      <link>http://www.mirellavanteulingen.nl/fronteers/conf_2016/</link>
+      <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.mirellavanteulingen.nl/fronteers/conf_2016/</guid>
+      <description>&lt;article role=&#34;article&#34;&gt;
+    &lt;h1&gt;Fronteers Conference 2016&lt;/h1&gt;
+    &lt;p&gt;
+        Thursday 8 and Friday 9 October was the epic Fronteers conference.
+        The topics were quite diverse from Progressive enhancement to webVR,
+        from svg animations to mind blowing data visualisations. But also the
+        future of the web had been discussed and how to deal with the Asian market
+        which still use feature phones with proxy browser and a horrible data connection.
+        This article is a summary with the highlights of the 2 day event.
+    &lt;/p&gt;
+
+    &lt;h2&gt;Progressive Enhancement and CSS&lt;/h2&gt;
+    &lt;p&gt;
+        We can build a lot of cool things for the web these days, but sometimes
+        it is useful to step back and remind ourselves of the basics. The first
+        talk was about progressive enhancement and css by Ire Aderinokun.
+    &lt;/p&gt;
+    &lt;p&gt;
+        The basics is are:
+   &lt;/p&gt;
+   &lt;ol&gt;
+        &lt;li&gt;basic content and functionality should be accessible to all web browsers. &lt;/li&gt;
+        &lt;li&gt;Mark up should contain all content.&lt;/li&gt;
+        &lt;li&gt;Content should be plain text in the markup&lt;/li&gt;
+        &lt;li&gt;Enhanced layout can be provided by css. Without css the content should still be accessible.&lt;/li&gt;
+        &lt;li&gt;Enhanced behavior can be provided by javascript. Should also work without javascript enabled.&lt;/li&gt;
+        &lt;li&gt;Web browser preferences of the user should be respected.&lt;/li&gt;
+    &lt;/ol&gt;
+    &lt;p&gt;
+        Things can go wrong when javascript is disabled, when a feature is not
+        available yet in the browser or when the browser does not understand the
+        semantic meaning (e.g. html5 tags).
+    &lt;/p&gt;
+    &lt;p&gt;
+        These issues can be fixed by using feature detection, polyfill for unsupported
+        features, role attributes etc. &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/CSS/@supports&#34;&gt;CSS Feature Queries&lt;/a&gt;
+        is also in progress. At time of writing it is available in all latest browsers, except for IE.
+    &lt;/p&gt;
+    &lt;h2&gt;Data visualisations and progressive web apps&lt;/h2&gt;
+    &lt;p&gt;
+        Nadieh Bremer gave us a mind blowing presentation about data visualisations.
+        She explained her design process, the issues she encountered and how she solved
+        them. During her talk she showed us some beautiful and amazing interactive graphics.
+    &lt;/p&gt;
+    &lt;figure&gt;
+        &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/nadieh_bremer.jpg&#34;&gt;
+    &lt;/figure&gt;
+    &lt;p&gt;
+        Nolan Lawson talked about progressive web apps, the interesting part of
+        the presentation was how to serve offline content and how to use multi-threading.
+        The old way for static data is:
+        &lt;a href==&#34;https://www.html5rocks.com/en/tutorials/appcache/beginner/&#34;&gt;appCache&lt;/a&gt;.
+        The new way: &lt;a href=&#34;https://developers.google.com/web/fundamentals/getting-started/primers/service-workers&#34;&gt;Cache API&lt;/a&gt; (Service workers). For dynamic data the
+        old way is &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API&#34;&gt;localStorage&lt;/a&gt; and the new way &lt;a href=&#34;http://blogs.shephertz.com/2014/01/14/html5-learn-how-to-use-indexeddb/&#34;&gt;IndexedDB&lt;/a&gt;.
+    &lt;/p&gt;
+    &lt;p&gt;
+        For multi-threading you can use &lt;a href=&#34;http://www.htmlgoodies.com/html5/tutorials/introducing-html-5-web-workers-bringing-multi-threading-to-javascript.html#fbid=bNp9ZTkylph&#34;&gt;web workers&lt;/a&gt;.
+    &lt;/p&gt;
+    &lt;h2&gt;CSP and functional animations&lt;/h2&gt;
+    &lt;p&gt;
+        Scott Helme gave an introduction about modern web security standards:
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;&#34;https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy&gt;CSP&lt;/a&gt;: Content Security Policy&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/Security/HTTP_strict_transport_security&#34;&gt;STS&lt;/a&gt;: Strict Transport Security&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/Security/Public_Key_Pinning&#34;&gt;PKP&lt;/a&gt;: Public Key Pins&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity&#34;&gt;SRI&lt;/a&gt;: Sub Resource Integrity&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;figure&gt;
+        &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/scott_helme.jpg&#34;&gt;
+    &lt;/figure&gt;
+    &lt;p&gt;
+        Sarah Drasner demonstrated how animations can help the user. She uses the
+        following deployment tools &lt;a href=&#34;https://facebook.github.io/react/&#34;&gt;react&lt;/a&gt;,
+        svg and &lt;a href=&#34;http://greensock.com/&#34;&gt;GSAP&lt;/a&gt;. Animations can be used for:
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Revealing information&lt;/li&gt;
+        &lt;li&gt;Anticipatory cues&lt;/li&gt;
+        &lt;li&gt;Spatial awareness&lt;/li&gt;
+        &lt;li&gt;Immersive animation&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;figure&gt;
+        &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/sara_drasner.jpg&#34;&gt;
+    &lt;/figure&gt;
+    &lt;h2&gt;The future&lt;/h2&gt;
+    &lt;p&gt;
+        Peter Gasston elaborates in his talk &#34;Surveying the landscape&#34; the future
+        of the web. The role of the web has changed a lot since the first web page.
+        It is now an integral part of our culture. People consume web content not
+        only via the browser but also via applications like Facebook. The
+        statistics shows there is a shift from web to apps. But there is
+        hope for us web developers, while 1.6 billion people use Facebook every month,
+        there is over 3 billion people who has access to a web browser. We
+        need to change our mindset of thinking that the web is only viewed via the browser to
+        anything that can access the web.
+    &lt;/p&gt;
+    &lt;p&gt;
+        Jason Grigsby also talks about the future of the web in his talk &#34;Adapting to input&#34;.
+        The development of input is going very fast. First you had a typewriter, 112 years
+        later the mouse, but now every year there is a new invention for input.
+    &lt;/p&gt;
+    &lt;p&gt;
+        We need to get rid off the assumption of touch and desktop. You can&#39;t know
+        which device people are working on and whether they are using the mouse or
+        keyboard. In the future you can have touch and mouse on the same device.
+    &lt;/p&gt;
+    &lt;p&gt;
+        To handle this issue (mouse and touch), browsers are implementing pointer events.
+        At time of writing IE11, Edge, Chrome 55+, Opera 42 supports pointer events.        
+        You can read about &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/CSS/pointer-events&#34;&gt;CSS pointer events&lt;/a&gt;
+        and &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events&#34;&gt;javascript pointer events&lt;/a&gt; on Mozilla developer site.
+    &lt;/p&gt;    
+    &lt;figure&gt;
+        &lt;img src=&#34;http://www.mirellavanteulingen.nl/img/jason_grigsby.jpg&#34;&gt;
+    &lt;/figure&gt;
+    &lt;h2&gt;Accessibility and not Wealthy Western Web&lt;/h2&gt;
+    &lt;p&gt;
+        Leonie Watson demonstrated how to make the web more accessible.
+        Screen readers use accessibility tree in the browser, there are
+        add ons available. ARIA attributes are a polyfill for meaning in HTML &amp; SVG.
+        Pseudo elements content are scanned and read by the screen reader.
+        Flexbox gives issues when messing with the order, don&#39;t use tabindex to solve
+        this problem, it screws up the rest of the tabindex of the content. You can
+        use aria-flowto.
+    &lt;/p&gt;
+    &lt;p&gt;
+        For a couple of frameworks there are accessibility tools available:        
+    &lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;tenon.io&#34;&gt;Tenon API&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;Ember: &lt;a href=&#34;https://github.com/ember-a11y/ember-a11y-testing&#34;&gt;a11y test suite&lt;/a&gt;.&lt;/li&gt;
+        &lt;li&gt;React: react accessibility API&lt;/li&gt;
+        &lt;li&gt;Angular: &lt;a href=&#34;https://docs.angularjs.org/guide/accessibility&#34;&gt;NGARIA&lt;/a&gt; (appears to be awful)&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;p&gt;
+
+        Test your web applications yourself, also zoom in and see if you can still
+        navigate. Main message is &#34;It doesn&#39;t have to be perfect, just a little bit
+        better than yesterday&#34;.
+    &lt;/p&gt;
+    &lt;p&gt;
+        Bruce Lawson showed how the internet is used in Asia. South Eastern Asia
+        is the fast growing market for mobile internet. If you want to serve this market,
+        you have to be aware that they use 2g feature phones which can run proxy browsers.        
+        It costs less MB to place a web app(1.3mb) on the phone than a native one(30mb).
+        Be aware during development what is supported on a proxy browser (Opera mini, UC browser).
+    &lt;/p&gt;    
+&lt;/article&gt;
+</description>
+    </item>
     
     <item>
       <title>How to use svg icons in Django templates?</title>
@@ -46,7 +204,7 @@ The symbol contains the svg code copied from each svg icon from the &lt;em&gt;sv
 directory.&lt;/p&gt;
 
 &lt;p&gt;In the code snippet you&amp;rsquo;ll notice the class &lt;em&gt;svg-sprite&lt;/em&gt;.
-If you do not hide the svg with css all the icons will be displayed. In your
+If you do not hide the svg, all the icons will be displayed. In your
 Sass or css file you set .svg-sprite { display: none; }.&lt;/p&gt;
 
 &lt;pre rel=&#34;SVG icon sprite&#34;&gt;
@@ -1324,28 +1482,6 @@ Performance:
       
       <guid>http://www.mirellavanteulingen.nl/conf_2012/os-aintfree/</guid>
       <description>&lt;p&gt;David DeSandro talked about his personal open source project and shared his experience, problems and solutions he run into when he shared his project with the world. The main subject of this presentation is how you can make money from open source projects. To get paid for the work you share with others.&lt;/p&gt;&lt;p&gt;If you want to do side projects you have to work on something that excites you. It is also a way to market yourself and to build and promote your personal brand. The community gets another tool for its toolkit. And most of these tools are free.&lt;/p&gt;&lt;h2&gt;The culture of free&lt;/h2&gt;&lt;p&gt;The culture of free, has the following components:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;you can view the source&lt;/li&gt;&lt;li&gt;there is no paywall&lt;/li&gt;&lt;li&gt;costs no money to...&lt;/li&gt;&lt;li&gt;you can learn for free&lt;/li&gt;&lt;li&gt;use the resources&lt;/li&gt;&lt;li&gt;and market your stuff&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;It is the ideal environment to be creative.&lt;/p&gt;&lt;p&gt;It feels good to share your code with the world and you like it when others start using it. But there is a downside. People who use your code, they expect that you solve their problems to get your code working. For them it take 5 minutes to send the mail with a support question, but for you it take at least 30 minutes to help them. For David, these support questions were piling up.&lt;/p&gt;&lt;h2&gt;How do you deal with it?&lt;/h2&gt;&lt;p&gt;David asked himself &#34;Why don&#39;t I put a price on my product?&#34; Users have to make a value judgement, how much money is it worth for me.&lt;/p&gt;&lt;p&gt;There are people who are making a money: like the app store, WP premium themes. Is there a market for front-end development resources?&lt;/p&gt;&lt;p&gt;FancyZoom was one of the first pioneers in this field. For $39 you could get a commercial license. David made Isotope as a commercial fill-in plug-in for Masonry with the FancyZoom model.&lt;/p&gt;&lt;p&gt;David didn&#39;t like the available options:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;adopt fancyzoom license model.&lt;/li&gt;&lt;li&gt;still open source = on github.&lt;/li&gt;&lt;li&gt;github donation&lt;/li&gt;&lt;li&gt;Flattr&lt;/li&gt;&lt;li&gt;Generic PayPal donation, but not happy with those donation options.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;And started a company next to his agency for his side projects.&lt;/p&gt;&lt;p&gt;It feels kind a bit against the open source thought, but the results are incredible:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;Sold &lt;a href=&#34;http://isotope.metafizzy.co/&#34;&gt;Isotope&lt;/a&gt; for $37 / License (now $25), responsible for 25% of income in 2011.&lt;/li&gt;&lt;li&gt;Able to pay off car loan and student loan.&lt;/li&gt;&lt;li&gt;Impact on quality of life.&lt;/li&gt;&lt;li&gt;At a cost of 20% of my free time.&lt;/li&gt;&lt;li&gt;Also the price allows non technical users to contribute to the product.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Are support emails bugging you? Think about it. If so, ask support fee.&lt;/p&gt;&lt;p&gt;There is a huge market for commercial front-end dev resources. Free&lt;xsl:text&gt;&amp;amp;&lt;/xsl:text&gt;open source ideal doesn&#39;t scale. It is OK to make money out of honest work.&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Short notes</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/shortnotes/</link>
-      <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
-      
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/shortnotes/</guid>
-      <description>&lt;p&gt;For the talks I did&#39;t make much notes, are gathered on this page.&lt;/p&gt;&lt;h2 id=&#34;alexgraul&#34;&gt;Using JS to build bigger, better datavis to enlighten and elate&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Alex Graul - Twitter: @alexgraul - Video: &lt;a href=&#34;http://vimeo.com/52851512&#34;&gt;http://vimeo.com/52851512&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Alex makes visualizations for the Guardian.&lt;/p&gt;&lt;p&gt;He showed us a couple of examples to make data more interesting for the people, using animations and interaction. He is co-lead developer of the &lt;a href=&#34;misoproject.com/dataset/&#34;&gt;Miso project&lt;/a&gt;, this is an open source toolkit for creating interactive storytelling and data visualization of content. On the Miso project site you&#39;ll find some examples.&lt;/p&gt;&lt;h2 id=&#34;mathiasbynens&#34;&gt;Ten things I didn&#39;t know about HTML&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Mathias Bynens - Twitter: @mathias - Video: &lt;a href=&#34;http://vimeo.com/52851509&#34;&gt;http://vimeo.com/52851509&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Mathias showed us some funny things he found out using HTML. For example he tried to use a name for setting a background color, for example:&lt;/p&gt;
-&lt;pre rel=&#34;HTML&#34;&gt;
-&lt;code&gt;
-&amp;lt;div bgcolor=&#34;fronteersconf&#34;&amp;gt; Fronteers Conf &amp;lt;/div&amp;gt;
-&lt;/code&gt;
-&lt;/pre&gt;
-&lt;p&gt;returns the Fronteers yellow logo color. Or &#34;sick&#34; returns: #000c00. Try it for yourself to find out what your color is. It also gives different results when you remove the spaces in your name: bgcolor=&#34;your name&#34;.&lt;/p&gt;&lt;p&gt;Mathias also advises not to be obsessive about HTML validation. It is build by people and also has bugs. But most of all, functionality is more important than validation.&lt;/p&gt;&lt;blockquote&gt;&amp;ldquo;Validation is a tool, not a goal.&amp;rdquo; &lt;cite&gt;- Mathias Bynens&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;Characters don&#39;t need to be output escaped. The browser will render it OK, It is also DTD valid.&lt;/p&gt;&lt;p&gt;He also found out that &#34;font family&#34; does not need to be quote. It&#39;s rendered correctly:&lt;/p&gt;
-&lt;pre rel=&#34;CSS&#34;&gt;
-&lt;code&gt;
-font-family: Comic Sans MS;
-&lt;/code&gt;
-&lt;/pre&gt;
-&lt;p&gt;But a font name beginning with a number does need quotes.&lt;/p&gt;&lt;h2 id=&#34;leaverou&#34;&gt;More CSS secrets: Another 10 things you may not know about CSS&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Lea Verou - Twitter: @leaverou - Video: &lt;a href=&#34;http://vimeo.com/52882799&#34;&gt;http://vimeo.com/52882799&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Lea showed us some awesome and powerful CSS(3) tricks. After this presentation you&#39;ll be longing for the day that these styles/animations are working cross browser, at least I do. It is amazing what you can accomplish with CSS, without using javascript. Although at the moment we still have to rely on one or the other untill it is available in the most common used browsers.&lt;/p&gt;&lt;p&gt;This presentation is really a must see. You can also check out the presentation of 2011 on: &lt;a href=&#34;http://vimeo.com/31719130&#34;&gt;vimeo&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&#34;peternederlof&#34;&gt;Beyond simple transitions, with a pinch of JavaScript&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Peter Nederlof - @peterlof - Video: &lt;a href=&#34;http://vimeo.com/53317255&#34;&gt;http://vimeo.com/53317255&lt;/a&gt;&lt;/p&gt;&lt;p&gt;To create animations we had to rely on custom javascript tools and libraries. We now can accomplish this with a simple CSS transition. However transitions still have their limits. Peter shows how to step beyond some of these limits.&lt;/p&gt;&lt;h4&gt;Benefits of CSS transitions&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;complete animation engine&lt;/li&gt;&lt;li&gt;no per-frame script calcuations&lt;/li&gt;&lt;li&gt;optimized in every way!&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;You should also use 3d transforms. It has no reflows. It is hardware accelerated, also on mobiles. It is battery friendly and widely supported. Except for IE, of course.&lt;/p&gt;&lt;p&gt;But there is a problem: transitions have no stop. You can&#39;t stop or interrupt an transition. Querying the CSS property values might not always work.&lt;/p&gt;&lt;p&gt;Things to keep in mind:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;The transitionEnd event is not fired when a transition is interrupted.&lt;/li&gt;&lt;li&gt;Assigning styles via the javascript Api has a very high specifity.&lt;/li&gt;&lt;li&gt;Make fallbacks for critical cases: like left/top positioning for&lt;xsl:text&gt;&amp;lt;&lt;/xsl:text&gt;IE8, instead of using transformations.&lt;/li&gt;&lt;li&gt;Use progressive enhancement.&lt;/li&gt;&lt;li&gt;And most important, convince your client or project manager that this is OK.&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&#34;rebeccamurphey&#34;&gt;JS Minty Fresh: Identifying and Eliminating Smells in Your Code Base&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Rebecca Murphey - Twitter: @rmurphey - Video: &lt;a href=&#34;http://vimeo.com/53416986&#34;&gt;http://vimeo.com/53416986&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Rebecca talks about javascript code smell and how to solve this. It was a great talk with nice examples. I didn&#39;t even know that you can create html &#34;template&#34; and call it in javascript to make it more clean. That was a nice surpise. The &lt;a href=&#34;http://vimeo.com/53416986&#34;&gt;video&lt;/a&gt; can tell you a lot more than these notes.&lt;/p&gt;&lt;h4&gt;Code smells are a suggestion of a deeper problem&lt;/h4&gt;&lt;p&gt;The harm is that debugging is harder, maintainability suffers and features are hard to add. You never come back to fix it later. So create clean code from the start.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;The smell&lt;/strong&gt;: Repetitive code&lt;br&gt;&lt;strong&gt;The fix&lt;/strong&gt;: A function, object&lt;/p&gt;&lt;p&gt;&lt;strong&gt;The smell&lt;/strong&gt;: complex functions&lt;br&gt;&lt;strong&gt;The fix&lt;/strong&gt;: More&lt;xsl:text&gt;&amp;amp;&lt;/xsl:text&gt;smaller functions:keep functions short and simple and avoid complex if/else logic&lt;/p&gt;&lt;p&gt;&lt;strong&gt;The smell&lt;/strong&gt;: async acrobatics&lt;br&gt;&lt;strong&gt;The fix&lt;/strong&gt;: deferrers:manage and leverage asynchronicity&lt;/p&gt;&lt;p&gt;&lt;strong&gt;The smell&lt;/strong&gt;: html in javascript&lt;br&gt;&lt;strong&gt;The fix&lt;/strong&gt;: place it in the template. You can use _.template function from Underscore.js.&lt;/p&gt;&lt;p&gt;You can download the presentation from: &lt;a href=&#34;http://rmurphey.com/js-minty-fresh/presentation&#34;&gt;Rebecca Murpheys website&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&#34;alexrussell&#34;&gt;What the legacy web is keeping from us&lt;/h2&gt;&lt;p class=&#34;subtitle&#34;&gt;- Alex Russell - Video: &lt;a href=&#34;http://vimeo.com/53373706&#34;&gt;http://vimeo.com/53373706&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Progress is a man-made process, and like most man-made processes progress can be sped up and slowed down. Progress is good for people, for us. However it requires change and how many changes should be made and what changes should be made.&lt;/p&gt;&lt;blockquote&gt;&amp;ldquo;Accessibility is the most important thing! In the computing world.&amp;rdquo; &lt;cite&gt;- Alex Russell&lt;/cite&gt;&lt;/blockquote&gt;&lt;p&gt;Progress delayed is progress denied! For example the canvas tag or rounded cornes, svg. Some took 6-8 years, while it was proposed in the beginning of 2000. Optimistically, new features shipped today will not be usable until 2016!&lt;/p&gt;&lt;p&gt;Users do what they are asked to do. We can change that users start using new browsers.&lt;/p&gt;
 </description>
     </item>
     
