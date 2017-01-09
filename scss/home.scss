@@ -88,20 +88,6 @@ section {
     }
 }
 
-@include keyframes(menu-anim) {
-    0% {
-        opacity: 0;
-        @include transform(translateY(-100px))
-    }
-
-    50% { opacity: 0; }
-
-    100% {
-        opacity: 1;
-        @include transform(translateY(0));
-    }
-}
-
 @include keyframes(blocks-anim) {
     from {
         opacity: 0.25;
