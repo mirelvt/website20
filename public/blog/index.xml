@@ -1,13 +1,328 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Blog-rsses on Mirella van Teulingen</title>
+    <title>Blogs on Mirella van Teulingen</title>
     <link>http://www.mirellavanteulingen.nl/blog/index.xml</link>
-    <description>Recent content in Blog-rsses on Mirella van Teulingen</description>
+    <description>Recent content in Blogs on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 04 Oct 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 15 Mar 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://www.mirellavanteulingen.nl/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>GNU Make for running tasks</title>
+      <link>http://www.mirellavanteulingen.nl/blog/make-taskrunner/</link>
+      <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.mirellavanteulingen.nl/blog/make-taskrunner/</guid>
+      <description>
+
+&lt;p&gt;Every front end developer have heard of or is using the task runners Grunt, Gulp, Broccoli.
+There are a lot of articles and how to&amp;rsquo;s on the web about these tools. However, there is one that
+doesn&amp;rsquo;t get a lot of attention and that is &lt;a href=&#34;https://www.gnu.org/software/make/&#34;&gt;GNU Make&lt;/a&gt;.
+It was originally created by Stuart Feldman in April 1976. GNU Make is not really popular among front end developers, it has a steep learning curve in comparison with
+Grunt or Gulp and there are not much examples on how to use it for front end development. In this blog post
+I would like to change that, I will show you how you can use GNU Make as a task runner for front end development.&lt;/p&gt;
+
+&lt;p&gt;First of all, what is Make? There is a good description on
+ &lt;a href=&#34;https://en.wikipedia.org/wiki/Make_(software)&#34;&gt;wikipedia&lt;/a&gt;:
+ Make is a build automation tool that automatically builds executable programs and libraries from
+ source code by reading files called Makefiles which specify how to derive the target program.&lt;/p&gt;
+
+&lt;h2 id=&#34;how-to-install-gnu-make&#34;&gt;How to install GNU Make?&lt;/h2&gt;
+
+&lt;p&gt;Let&amp;rsquo;s first install Make. Mac OS comes with GNU Make 3.81, so it is already available.
+I have no experience on installing GNU Make on Linux or Windows, here some articles for these OS&amp;rsquo;s:
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;http://gnuwin32.sourceforge.net/packages/make.htm&#34;&gt;Make for windows&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;https://www.cyberciti.biz/faq/howto-installing-gnu-c-compiler-development-environment-on-ubuntu/&#34;&gt;Make for Ubuntu&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;https://software.opensuse.org/package/make&#34;&gt;openSUSE&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
+
+&lt;p&gt;If you find better tutorials let me know and I will update the urls in this blog post. You can contact me on Twitter @mirelvt.&lt;/p&gt;
+
+&lt;p&gt;To check if it is already installed, open your terminal and run the following code (on Mac):
+&lt;pre rel=&#34;Terminal&#34;&gt;&lt;code&gt;$ which make&lt;/code&gt;&lt;/pre&gt; This will return a path. On my environment it is:
+&lt;pre rel=&#34;Terminal&#34;&gt;&lt;code&gt;$ /user/bin/make&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;create-makefile&#34;&gt;Create Makefile&lt;/h2&gt;
+
+&lt;p&gt;Make works with Makefiles, you place these files in the root of your project. In my examples I will
+create one Makefile to run tasks for:
+&lt;ul&gt;
+    &lt;li&gt;Compiling Sass to css&lt;/li&gt;
+    &lt;li&gt;Minify css&lt;/li&gt;
+&lt;/ul&gt;&lt;/p&gt;
+
+&lt;p&gt;Lets say my folder structure looks like this:
+&lt;pre rel=&#34;Folder structure&#34;&gt;
+&lt;code class=&#34;dts&#34;&gt;FOO-project/
+   static/
+      css/
+         /* here comes the generated css files */
+   scss/
+      base.scss
+      login.scss
+      shop.scss
+      _variables.scss
+      _mixins.scss
+&lt;/code&gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+    &lt;li&gt;
+        Now open your project in your favorite editor and create in the root of your project the Makefile:
+        &lt;strong&gt;Makefile&lt;/strong&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre rel=&#34;Folder structure&#34;&gt;
+&lt;code class=&#34;dts&#34;&gt;FOO-project/
+   static/
+      css/
+         /* here comes the generated css files */
+   scss/
+      base.scss
+      login.scss
+      shop.scss
+      _variables.scss
+      _mixins.scss
+   Makefile
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Open the Makefile in your editor and lets start with creating variables for the css and scss paths:&lt;/p&gt;
+
+&lt;pre rel=&#34;makefile&#34;&gt;
+&lt;code class=&#34;makefile&#34;&gt;CSS_OBJ = static/css
+SASS_OBJ = scss
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Now we create variables which contains:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The Sass dependencies, these are the Sass partials.&lt;/li&gt;
+&lt;li&gt;Variable that will filter out the dependencies for generating .min.css and .src.css. The filter is needed, otherwise Makefile will also create css files for the Sass partials.&lt;/li&gt;
+&lt;li&gt;Variable to create .src.css file names.&lt;/li&gt;
+&lt;li&gt;Variable to create .min.css file names.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre rel=&#34;makefile&#34;&gt;
+&lt;code class=&#34;makefile&#34;&gt;CSS_OBJ = static/css
+SASS_OBJ = scss
+
+CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
+CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The &lt;em&gt;CSS_DEPS&lt;/em&gt; variable uses the wildcard expansion, with this function you get a space seperated list of all files which starts with _ and ends with .scss, in my example these are the Sass partials.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;CSS_SRCS&lt;/em&gt; variable contains the functions: &lt;em&gt;filter-out&lt;/em&gt; and &lt;em&gt;not-dir&lt;/em&gt;.
+
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;filter-out&lt;/em&gt; returns all Sass files which are not partials, in our example it will return base.scss, shop.scss and login.scss.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;not-dir&lt;/em&gt; extracts all but the directory-part of each file name in CSS_DEPS. With &lt;em&gt;not-dir&lt;/em&gt; function you make sure that the Sass partials are left alone.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;CSS_OBJS&lt;/em&gt; contains the &lt;em&gt;patsubst&lt;/em&gt; function: &lt;strong&gt;$(patsubst pattern,replacement,text)&lt;/strong&gt;. The &lt;em&gt;CSS_OBJS&lt;/em&gt; replaces the Sass file names with .src.css from the source files defined in the variable &lt;em&gt;CSS_SRCS&lt;/em&gt; and put them in the css directory.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;CSS_MIN_OBJS&lt;/em&gt; replaces the Sass file names with .min.css from the source files defined in the variable &lt;em&gt;CSS_SRCS&lt;/em&gt; and put them in the css directory.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These 4 variables are used for creating CSS source files (not compressed) and minified CSS files.&lt;/p&gt;
+
+&lt;h2 id=&#34;makefile-rules&#34;&gt;Makefile rules&lt;/h2&gt;
+
+&lt;p&gt;Now we will create the rules for the Makefile. When you have Sass installed you can use its command in the Makefile to create your CSS.&lt;/p&gt;
+
+&lt;p&gt;A rule has the following format:
+&lt;pre rel=&#34;makefile&#34;&gt;
+&lt;code class=&#34;makefile&#34;&gt;targets : prerequisites
+   recipe&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;In our example the first rule is to compile .src.css files with Sass.
+The target is &lt;strong&gt;$(CSS_OBJ)/%.src.css&lt;/strong&gt;, the prerequisites &lt;strong&gt;$(SASS_OBJ)/%.scss $(CSS_DEPS)&lt;/strong&gt; and the recipe &lt;strong&gt;scss $&amp;lt; $@&lt;/strong&gt; . $&amp;lt; and $@ are called automatic variables. These variables have values computed afresh for each rule that is executed. The rule to create .src.css will be executed 3 times: for the base, login and shop. The rule to create .min.css files are also executed 3 times.&lt;/p&gt;
+
+&lt;p&gt;Be aware to use spaces not tabs for indentation. If you use the latter and run make you get the error: &lt;strong&gt;Makefile:18: *** missing separator.  Stop.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre rel=&#34;makefile&#34;&gt;
+&lt;code class=&#34;makefile&#34;&gt;CSS_OBJ = static/css
+SASS_OBJ = scss
+
+CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
+CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
+
+$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+    scss $&lt; $@
+
+$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+    scss --sourcemap=none --style compressed $&lt; $@
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Now that the rules are in place, you need to let make know what to compile. You use targets for this. In your Makefile the &lt;em&gt;all&lt;/em&gt; target is set. This is one of Makes &lt;a href=&#34;https://www.gnu.org/software/make/manual/make.html#Standard-Targets&#34;&gt;standard targets&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre rel=&#34;makefile&#34;&gt;
+&lt;code class=&#34;makefile&#34;&gt;CSS_OBJ = static/css
+SASS_OBJ = scss
+
+CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
+CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
+
+all: $(CSS_MIN_OBJS) $(CSS_OBJS)
+
+$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+    scss $&lt; $@
+
+$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+    scss --sourcemap=none --style compressed $&lt; $@
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Now you can run make in your terminal to compile the CSS files, the output will look like this:&lt;/p&gt;
+
+&lt;pre rel=&#34;Terminal&#34;&gt;&lt;code&gt;$ make
+scss --sourcemap=none --style compressed scss/base.scss static/css/base.min.css
+scss --sourcemap=none --style compressed scss/login.scss static/css/login.min.css
+scss --sourcemap=none --style compressed scss/shop.scss static/css/shop.min.css
+scss scss/base.scss static/css/base.src.css
+scss scss/login.scss static/css/login.src.css
+scss scss/shop.scss static/css/shop.src.css
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;As you can see the order of the compilation is as defined in the &lt;em&gt;all&lt;/em&gt; target. First the minified are compiled then the CSS source files. You can change the order.&lt;/p&gt;
+
+&lt;pre rel=&#34;makefile&#34;&gt;
+&lt;code class=&#34;makefile&#34;&gt;all: $(CSS_OBJS) $(CSS_MIN_OBJS) &lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you run make again you get the message:
+&lt;pre rel=&#34;terminal&#34;&gt;&lt;code&gt;make: Nothing to be done for `all&amp;rsquo;.&lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;This is because there are no changes in the Sass files and the CSS files are also generated. Change something in one of your Sass files or delete the files from the CSS folder and run make again. Now you see that the order of make has changed.&lt;/p&gt;
+
+&lt;h2 id=&#34;make-clean&#34;&gt;Make clean&lt;/h2&gt;
+
+&lt;p&gt;Wouldn&amp;rsquo;t it be nice to clean up the CSS folder via a Make recipe? You can do this by adding the following target and recipe to your Makefile:&lt;/p&gt;
+
+&lt;pre rel=&#34;makefile&#34;&gt;
+&lt;code class=&#34;makefile&#34;&gt;CSS_OBJ = static/css
+SASS_OBJ = scss
+
+CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
+CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
+
+all: $(CSS_OBJS) $(CSS_MIN_OBJS)
+
+$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+    scss $&lt; $@
+
+$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+    scss --sourcemap=none --style compressed $&lt; $@
+
+clean:
+    rm -f $(CSS_OBJS) $(CSS_MIN_OBJS)
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;If you run &lt;strong&gt;make clean&lt;/strong&gt; the CSS files are removed, this should be the output in your terminal:&lt;/p&gt;
+
+&lt;pre rel=&#34;terminal&#34;&gt;&lt;code&gt;$ make clean
+rm -f  static/css/base.src.css  static/css/login.src.css static/css/shop.src.css
+static/css/base.min.css  static/css/login.min.css  static/css/shop.min.css
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;phony&#34;&gt;.PHONY&lt;/h2&gt;
+
+&lt;p&gt;The Makefile is finished, right? Not really. If you create a file with, for example, the name &lt;em&gt;clean&lt;/em&gt; and you run: make clean, clean would always be considered up to date and its recipe would not be executed, because it had no prerequisites. Just try it, create a file named clean and run make clean. You will get the following output in your terminal: &lt;strong&gt;make: `clean&amp;rsquo; is up to date&lt;/strong&gt;. So how to avoid this? &lt;a href=&#34;https://www.gnu.org/software/make/manual/make.html#Phony-Targets&#34;&gt;Phony target&lt;/a&gt; comes to the rescue. With phony target you avoid conflict with a file of the same name and it also improve performance. Add
+&lt;strong&gt;.PHONY: clean all&lt;/strong&gt; to your Makefile and run make clean again. As you can see the clean file triggers no conflict anymore and executes the target.&lt;/p&gt;
+
+&lt;pre rel=&#34;makefile&#34;&gt;
+&lt;code class=&#34;makefile&#34;&gt;CSS_OBJ = static/css
+SASS_OBJ = scss
+
+CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
+CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
+
+all: $(CSS_OBJS) $(CSS_MIN_OBJS)
+
+$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+    scss $&lt; $@
+
+$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+    scss --sourcemap=none --style compressed $&lt; $@
+
+clean:
+    rm -f $(CSS_OBJS) $(CSS_MIN_OBJS)
+
+.PHONY: clean all
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;h2 id=&#34;suffix-rules&#34;&gt;Suffix rules&lt;/h2&gt;
+
+&lt;p&gt;Suffix rules are the old-fashioned way of defining implicit rules for make. They are supported in GNU make for compatibility with old makefiles. Suffix rule definitions are recognized by comparing each rule’s target against a defined list of known suffixes. If you wish to eliminate the default known suffixes instead of just adding to them, write a rule for .SUFFIXES with no prerequisites. By special dispensation, this eliminates all existing prerequisites of .SUFFIXES. You can then write another rule to add the suffixes you want. (Source &lt;a href=&#34;https://www.gnu.org/software/make/manual/make.html#Suffix-Rules&#34;&gt;GNU Manual&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;In our example the only suffixes we want are .min.css and .src.css:&lt;/p&gt;
+
+&lt;pre rel=&#34;makefile&#34;&gt;
+&lt;code class=&#34;makefile&#34;&gt;CSS_OBJ = static/css
+SASS_OBJ = scss
+
+CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
+CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
+
+all: $(CSS_OBJS) $(CSS_MIN_OBJS)
+
+$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+    scss $&lt; $@
+
+$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+    scss --sourcemap=none --style compressed $&lt; $@
+
+clean:
+    rm -f $(CSS_OBJS) $(CSS_MIN_OBJS)
+
+.PHONY: clean all
+
+.SUFFIXES:            # Delete the default suffixes
+.SUFFIXES: .min.css .src.css
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Now you have a simple task runner to create source CSS and minified CSS files with just &lt;strong&gt;23 lines of code&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;h2 id=&#34;run-make-in-atom-or-sublime&#34;&gt;Run make in Atom or Sublime&lt;/h2&gt;
+
+&lt;p&gt;You can use the terminal to run make, but you can perhaps also use your favorite editor, check their site if there is a package available. If you use Sublime or Atom:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Sublime is shipped with its own build tool. You can find the list of build tools in the Tools/Build System menu. To select the build system you want, use the following key command (on Mac): &lt;strong&gt;super+shift+B&lt;/strong&gt;. Once the choice has been made, the selected build system will be remembered for the project. Now you just simply run &lt;strong&gt;super+B&lt;/strong&gt; to compile your css.&lt;/li&gt;
+&lt;li&gt;Atom has a package named &lt;strong&gt;build-make&lt;/strong&gt; which you can install via their package manager. You also need the &lt;strong&gt;atom-build&lt;/strong&gt; package.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You can do a lot more with Make, you can also generate minified js files, generate css with less or generate font icons using fontcustom.
+The options are endless. To get you up and running I shall create in the near future some more Makefile examples which you can use.&lt;/p&gt;
+
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gnu.org/software/make/&#34;&gt;GNU Make&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.gnu.org/software/make/manual/make.html&#34;&gt;GNU Make manual&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>How to use svg icons in Django templates?</title>

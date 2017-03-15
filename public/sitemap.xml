@@ -2,8 +2,8 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.mirellavanteulingen.nl/</loc>
-    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
+    <loc>http://www.mirellavanteulingen.nl/blog/make-taskrunner/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -118,6 +118,30 @@
   
   <url>
     <loc>http://www.mirellavanteulingen.nl/about/</loc>
+  </url>
+  
+  <url>
+    <loc>http://www.mirellavanteulingen.nl/blog/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mirellavanteulingen.nl/conf_2012/</loc>
+    <lastmod>2012-10-05T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mirellavanteulingen.nl/fronteers/</loc>
+    <lastmod>2016-10-10T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mirellavanteulingen.nl/</loc>
+    <lastmod>2017-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
   </url>
   
 </urlset>
