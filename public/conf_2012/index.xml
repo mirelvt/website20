@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Conf_2012s on Mirella van Teulingen</title>
-    <link>http://www.mirellavanteulingen.nl/conf_2012/</link>
-    <description>Recent content in Conf_2012s on Mirella van Teulingen</description>
+    <title>Conf_2012-rsses on Mirella van Teulingen</title>
+    <link>http://www.mirellavanteulingen.nl/conf_2012/index.xml</link>
+    <description>Recent content in Conf_2012-rsses on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Oct 2012 00:00:00 +0000</lastBuildDate>
