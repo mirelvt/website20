@@ -58,7 +58,7 @@ $stars-list: (
     height: 3.6rem;
 
     // Hide radio buttons
-    [type="radio"] { margin-left: -19px; }
+    [type="radio"] { display: none; }
     label { cursor: pointer; }
     .icon-star { font-size: 3rem; }
 }
