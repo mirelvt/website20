@@ -29,8 +29,8 @@ body {
 }
 
 a {
-    @include transition(color 0.25s);
     color: $c-main;
+    transition: color 0.25s;
 
     &:hover { color: $c-hover; }
 
@@ -141,7 +141,7 @@ figure {
     a {
         display: inline-block;
         border-style: solid;
-        @include transition(border-color 0.25s);
+        transition: border-color 0.25s;
     }
 }
 

@@ -23,9 +23,9 @@ section {
     margin: 0 auto;
     border: 2px solid #fff;
     box-shadow: 0 0 4px 0 $c-shadow;
-    @include transition(transform 0.75s ease);
+    transition: transform 0.75s ease;
 
-    &:hover { @include transform(rotateY(5deg))}
+    &:hover {transform: rotateY(5deg); }
 
     img { vertical-align: top; }
 }
@@ -91,12 +91,12 @@ section {
 @include keyframes(blocks-anim) {
     from {
         opacity: 0.25;
-        @include transform(scale(0.7));
+        transform: scale(0.7) translate3d(0, 0, 0);
     }
 
     to {
         opacity: 1;
-        @include transform(scale(1));
+        transform: scale(1) translate3d(0, 0, 0);
     }
 }
 

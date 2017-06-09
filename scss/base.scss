@@ -32,7 +32,7 @@ body {
 .scroll-disabled { overflow: hidden; }
 
 a {
-    @include transition(color 0.25s);
+    transition: color 0.25s;
     color: $c-main;
 
     &:hover { color: $c-hover; }
@@ -198,10 +198,7 @@ figure {
     @include flexbox();
     @include justify-content(center);
     @include align-items(center);
-    @include transition(
-        visibility 400ms ease-in-out,
-        opacity 400ms ease-in-out
-    );
+    transition: visibility 400ms ease-in-out, opacity 400ms ease-in-out;
     position: fixed;
     z-index: 1;
     top: 0;
@@ -213,17 +210,15 @@ figure {
     background-color: rgba(23, 47, 14, 0.95);
 
     ul {
-        @include transition(opacity 500ms 500ms ease-in);
-
         list-style-type: none;
         margin: 0;
         padding: 0;
         opacity: 0;
+        transition: opacity 500ms 500ms ease-in;
     }
 }
 
 [role="menuitem"] {
-    @include transition(opacity 350ms ease-out);
     position: relative;
     width: 25vw;
     min-width: 25rem;
@@ -232,6 +227,7 @@ figure {
     font-size: 3.5rem;
     text-align: center;
     opacity: 0;
+    transition: opacity 350ms ease-out;
 
     @include mq-max(900) {
         font-size: 2.5rem;
@@ -247,17 +243,17 @@ figure {
         &::after {
             display: inline-block;
             opacity: 0;
-            @include transition(all 0.5s);
+            transition: all 0.5s;
         }
 
         &::before {
             content: "{";
-            @include transform(translateX(2rem));
+            transform: translateX(2rem);
         }
 
         &::after {
             content: "}";
-            @include transform(translateX(-2rem));
+            transform: translateX(-2rem);
         }
 
         &.selected,
@@ -265,7 +261,7 @@ figure {
             &::before,
             &::after {
                 opacity: 1;
-                @include transform(translateX(0));
+                transform: translateX(0);
             }
         }
     }
@@ -316,7 +312,7 @@ figure {
             //animate menu items
             @for $i from 1 through 4 {
                 [role="menuitem"]:nth-of-type(#{$i}) {
-                    @include transition-delay(220ms * $i);
+                    transition-delay: 220ms * $i;
                 }
             }
         }
@@ -361,7 +357,7 @@ figure {
     &:hover rect { fill: $c-hover; }
 
     rect {
-        @include transition(fill 0.25s);
+        transition: fill 0.25s;
         fill: $c-main;
     }
 

@@ -21,17 +21,17 @@
 
     &:first-child {
         left: 0;
-        @include transform(rotate(5deg));
+        transform: rotate(5deg);
     }
 
     &:nth-of-type(2) {
         left: 59%;
-        @include transform(rotate(-5deg));
+        transform: rotate(-5deg);
     }
 }
 
 .photo-front {
     top: 10px;
     left: 50%;
-    @include transform(translateX(-50%));
+    transform: translateX(-50%);
 }

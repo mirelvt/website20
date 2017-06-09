@@ -22,7 +22,7 @@ section {
     // Arrow
     &::before {
         position: absolute;
-        @include transform(translateY(50%));
+        transform: translateY(50%);
         left: -20px;
         display: block;
         content: "";

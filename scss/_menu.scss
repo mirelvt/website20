@@ -16,15 +16,15 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        @include transform(translateX(-230px) translateZ(0));
+        transform: translateX(-230px) translateZ(0);
         width: 200px;
         font-size: 1.6rem;
         background-color: $c-main;
-        @include transition(transform 0.5s ease-in-out);
+        transition: transform 0.5s ease-in-out;
         z-index: 2;
 
         &.active {
-            @include transform(translateX(-30px));
+            transform: translateX(-30px);
             box-shadow: 2px 0 6px 0 rgba(#000, 0.5);
         }
     }
@@ -55,19 +55,19 @@
     // Hamburger animation changes which toggles to X icon
     // ---------------------------------------------------
     .hamburger-wrapper {
+        @include flexbox();
         position: absolute;
         top: 0;
-        @include transform(translateX(200px) translateZ(0));
         width: 105px;
-        @include flexbox();
         height: 30px;
         padding: 20px 13px 19px;
+        transform: translateX(200px) translateZ(0);
         color: #fff;
         background-color: $c-main;
         cursor: pointer;
-        @include transition(transform 0.5s ease-in-out);
+        transition: transform 0.5s ease-in-out;
 
-        .active & { @include transform(translateX(0)) }
+        .active & { transform: translateX(0); }
     }
 
     .menu-text {
@@ -82,8 +82,8 @@
         height: 2px;
         @include flex(0, 0, 21px);
         background-color: #fff;
-        @include transform(translateZ(0));
-        @include transition(transform 0.5s, background-color 0.3s);
+        transform: translateZ(0);
+        transition: transform 0.5s, background-color 0.3s;
 
         &::after,
         &::before {
@@ -93,7 +93,7 @@
             height: 2px;
             content: "";
             background-color: #fff;
-            @include transition(transform 0.5s, background-color 0.3s);
+            transition: transform 0.5s, background-color 0.3s;
         }
 
         &::after { top: 6px; }
@@ -102,8 +102,8 @@
         &.active {
             background-color: transparent;
 
-            &::before { @include transform(translateY(6px) rotate(45deg)) }
-            &::after { @include transform(translateY(-6px) rotate(-45deg)) }
+            &::before { transform: translateY(6px) rotate(45deg); }
+            &::after { transform: translateY(-6px) rotate(-45deg); }
         }
     }
     // @End  hamburger icon animation

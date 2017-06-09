@@ -127,6 +127,11 @@
   </url>
   
   <url>
+    <loc>http://www.mirellavanteulingen.nl/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://www.mirellavanteulingen.nl/conf_2012/</loc>
     <lastmod>2012-10-05T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -141,6 +146,11 @@
   <url>
     <loc>http://www.mirellavanteulingen.nl/</loc>
     <lastmod>2017-03-15T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.mirellavanteulingen.nl/tags/</loc>
     <priority>0</priority>
   </url>
   

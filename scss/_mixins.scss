@@ -34,57 +34,11 @@
 }
 // ========
 
-@mixin calc($property, $expression) {
-    #{$property}: -webkit-calc(#{$expression});
-    #{$property}: calc(#{$expression});
-}
-
 @mixin gradient($deg-prefix, $deg, $arguments...) {
     background: -webkit-linear-gradient($deg-prefix, $arguments);
     background: -o-linear-gradient($deg-prefix, $arguments);
     background: -ms-linear-gradient($deg-prefix, $arguments);
     background: linear-gradient($deg, $arguments);
-}
-
-// Transition Mixin
-// ----------------
-// To create transition with vendor prefixes http://sassmeister.com/gist/9208634
-// This function loops through all arguments and check if we have transform as
-// attribute, if so, add prefixes.
-@function prefix-args($arg, $prefix) {
-    $result: ();
-
-    @each $i in $arg {
-        @if $i == transform {
-            $result: append($result, #{$prefix$i});
-        } @else { $result: append($result, $i); }
-    }
-    @return $result;
-}
-
-// General prefix mixin
-@mixin prefix($property, $args...) {
-    @each $prefix in ("-webkit-", "-ms-", "") {
-        $settings: null;
-        @each $arg in nth($args, 1) {
-            $settings: ($settings, prefix-args($arg, $prefix));
-        }
-        #{$prefix}#{$property}: $settings;
-    }
-}
-
-@mixin transition($args...) {
-    @include prefix(transition, $args);
-}
-
-@mixin transition-delay($args...) {
-    @include prefix(transition-delay, $args);
-}
-
-@mixin transform($values...) {
-    -ms-transform: $values;
-    -webkit-transform: $values;
-    transform: $values;
 }
 
 @mixin keyframes($anim-name) {
