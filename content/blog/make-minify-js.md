@@ -3,7 +3,7 @@ css = "css/blog.min.css"
 date = "2017-06-09"
 page_name = "Blog"
 title = "Minify javascript with GNU Make"
-description = ""
+description = "In my former blog post I wrote an introduction how to set up Makefile to generate CSS and minify CSS from Sass files. In this blog post I will extend the Makefile with a rule for generating minified javascript files."
 +++
 
 In my former blog post I wrote an <a href="/blog/make-taskrunner">introduction how to
