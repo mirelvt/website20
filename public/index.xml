@@ -6,10 +6,21 @@
     <description>Recent content on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 15 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Jun 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.mirellavanteulingen.nl/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Minify javascript with GNU Make</title>
+      <link>http://www.mirellavanteulingen.nl/blog/make-minify-js/</link>
+      <pubDate>Fri, 09 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.mirellavanteulingen.nl/blog/make-minify-js/</guid>
+      <description>In my former blog post I wrote an introduction how to set up Makefile to generate CSS and minify CSS from Sass files. In this blog post I will extend the Makefile with a rule for generating minified javascript files.
+My folder structure and Makefile looks like this:
+FOO-project/ static/ css/ /* here comes the generated css files */ js/ base.src.js /* the minified js files will also be placed in this directory */ scss/ base.</description>
+    </item>
     
     <item>
       <title>GNU Make for running tasks</title>

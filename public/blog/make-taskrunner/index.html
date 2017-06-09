@@ -78,6 +78,16 @@
 
             <div class="nav-arrows">
                 
+                    <a href="http://www.mirellavanteulingen.nl/blog/make-minify-js/" class="arrow-prev"
+                        title="Minify javascript with GNU Make">
+                        <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0.044921875" width="47.8613281" height="47.8613281" rx="3"></rect>
+                                <polygon fill="#FFFFFF" transform="translate(23.862343, 24.294813) scale(-1, 1) translate(-23.862343, -24.294813) " points="15 33.1599091 23.8614086 24.2965271 15.0001039 15.4334048 19.4314314 11 32.7246868 24.2965791 19.4315353 37.5896267"></polygon>
+                            </g>
+                        </svg>
+                    </a>
+                
                 
                     <a href="http://www.mirellavanteulingen.nl/blog/svg-icons-django-template/" class="arrow-next"
                             alt="How to use svg icons in Django templates?">
@@ -173,7 +183,7 @@ create one Makefile to run tasks for:
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 </code>
 </pre>
 
@@ -188,10 +198,10 @@ SASS_OBJ = scss
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 
-CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
-CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_DEPS = $(wildcard $(SASS_SRCS)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_SRCS)/*.scss)))
 CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
 CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
 </code>
@@ -221,23 +231,23 @@ CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
    recipe</code></pre></p>
 
 <p>In our example the first rule is to compile .src.css files with Sass.
-The target is <strong>$(CSS_OBJ)/%.src.css</strong>, the prerequisites <strong>$(SASS_OBJ)/%.scss $(CSS_DEPS)</strong> and the recipe <strong>scss $&lt; $@</strong> . $&lt; and $@ are called automatic variables. These variables have values computed afresh for each rule that is executed. The rule to create .src.css will be executed 3 times: for the base, login and shop. The rule to create .min.css files are also executed 3 times.</p>
+The target is <strong>$(CSS_OBJ)/%.src.css</strong>, the prerequisites <strong>$(SASS_SRCS)/%.scss $(CSS_DEPS)</strong> and the recipe <strong>scss $&lt; $@</strong> . $&lt; and $@ are called automatic variables. These variables have values computed afresh for each rule that is executed. The rule to create .src.css will be executed 3 times: for the base, login and shop. The rule to create .min.css files are also executed 3 times.</p>
 
 <p>Be aware to use spaces not tabs for indentation. If you use the latter and run make you get the error: <strong>Makefile:18: *** missing separator.  Stop.</strong></p>
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 
-CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
-CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_DEPS = $(wildcard $(SASS_SRCS)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_SRCS)/*.scss)))
 CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
 CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
 
-$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.src.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss $< $@
 
-$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.min.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss --sourcemap=none --style compressed $< $@
 </code>
 </pre>
@@ -246,19 +256,19 @@ $(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 
-CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
-CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_DEPS = $(wildcard $(SASS_SRCS)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_SRCS)/*.scss)))
 CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
 CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
 
 all: $(CSS_MIN_OBJS) $(CSS_OBJS)
 
-$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.src.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss $< $@
 
-$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.min.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss --sourcemap=none --style compressed $< $@
 </code>
 </pre>
@@ -290,19 +300,19 @@ scss scss/shop.scss static/css/shop.src.css
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 
-CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
-CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_DEPS = $(wildcard $(SASS_SRCS)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_SRCS)/*.scss)))
 CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
 CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
 
 all: $(CSS_OBJS) $(CSS_MIN_OBJS)
 
-$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.src.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss $< $@
 
-$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.min.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss --sourcemap=none --style compressed $< $@
 
 clean:
@@ -324,19 +334,19 @@ static/css/base.min.css  static/css/login.min.css  static/css/shop.min.css
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 
-CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
-CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_DEPS = $(wildcard $(SASS_SRCS)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_SRCS)/*.scss)))
 CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
 CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
 
 all: $(CSS_OBJS) $(CSS_MIN_OBJS)
 
-$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.src.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss $< $@
 
-$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.min.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss --sourcemap=none --style compressed $< $@
 
 clean:
@@ -354,19 +364,19 @@ clean:
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 
-CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
-CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_DEPS = $(wildcard $(SASS_SRCS)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_SRCS)/*.scss)))
 CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
 CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
 
 all: $(CSS_OBJS) $(CSS_MIN_OBJS)
 
-$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.src.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss $< $@
 
-$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.min.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss --sourcemap=none --style compressed $< $@
 
 clean:
@@ -381,7 +391,7 @@ clean:
 
 <p>Now you have a simple task runner to create source CSS and minified CSS files with just <strong>23 lines of code</strong>!</p>
 
-<h2 id="run-make-in-atom-or-sublime">Run make in Atom or Sublime</h2>
+<h2 id="run-make-in-sublime-or-atom">Run make in Sublime or Atom</h2>
 
 <p>You can use the terminal to run make, but you can perhaps also use your favorite editor, check their site if there is a package available. If you use Sublime or Atom:</p>
 
@@ -402,6 +412,16 @@ The options are endless. To get you up and running I shall create in the near fu
 
             </article>
             <div class="nav-arrows">
+                
+                    <a href="http://www.mirellavanteulingen.nl/blog/make-minify-js/" class="arrow-prev"
+                        title="Minify javascript with GNU Make">
+                        <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0.044921875" width="47.8613281" height="47.8613281" rx="3"></rect>
+                                <polygon fill="#FFFFFF" transform="translate(23.862343, 24.294813) scale(-1, 1) translate(-23.862343, -24.294813) " points="15 33.1599091 23.8614086 24.2965271 15.0001039 15.4334048 19.4314314 11 32.7246868 24.2965791 19.4315353 37.5896267"></polygon>
+                            </g>
+                        </svg>
+                    </a>
                 
                 
                     <a href="http://www.mirellavanteulingen.nl/blog/svg-icons-django-template/" class="arrow-next"

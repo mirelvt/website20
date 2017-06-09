@@ -87,7 +87,7 @@ Open the Makefile in your editor and lets start with creating variables for the 
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 </code>
 </pre>
 
@@ -100,10 +100,10 @@ Now we create variables which contains:
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 
-CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
-CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_DEPS = $(wildcard $(SASS_SRCS)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_SRCS)/*.scss)))
 CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
 CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
 </code>
@@ -129,23 +129,23 @@ A rule has the following format:
    recipe</code></pre>
 
 In our example the first rule is to compile .src.css files with Sass.
-The target is **$(CSS_OBJ)/%.src.css**, the prerequisites **$(SASS_OBJ)/%.scss $(CSS_DEPS)** and the recipe **scss $< $@** . $< and $@ are called automatic variables. These variables have values computed afresh for each rule that is executed. The rule to create .src.css will be executed 3 times: for the base, login and shop. The rule to create .min.css files are also executed 3 times.
+The target is **$(CSS_OBJ)/%.src.css**, the prerequisites **$(SASS_SRCS)/%.scss $(CSS_DEPS)** and the recipe **scss $< $@** . $< and $@ are called automatic variables. These variables have values computed afresh for each rule that is executed. The rule to create .src.css will be executed 3 times: for the base, login and shop. The rule to create .min.css files are also executed 3 times.
 
 Be aware to use spaces not tabs for indentation. If you use the latter and run make you get the error: <strong>Makefile:18: *** missing separator.  Stop.</strong>
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 
-CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
-CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_DEPS = $(wildcard $(SASS_SRCS)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_SRCS)/*.scss)))
 CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
 CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
 
-$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.src.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss $< $@
 
-$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.min.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss --sourcemap=none --style compressed $< $@
 </code>
 </pre>
@@ -154,19 +154,19 @@ Now that the rules are in place, you need to let make know what to compile. You 
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 
-CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
-CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_DEPS = $(wildcard $(SASS_SRCS)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_SRCS)/*.scss)))
 CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
 CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
 
 all: $(CSS_MIN_OBJS) $(CSS_OBJS)
 
-$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.src.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss $< $@
 
-$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.min.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss --sourcemap=none --style compressed $< $@
 </code>
 </pre>
@@ -198,19 +198,19 @@ Wouldn't it be nice to clean up the CSS folder via a Make recipe? You can do thi
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 
-CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
-CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_DEPS = $(wildcard $(SASS_SRCS)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_SRCS)/*.scss)))
 CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
 CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
 
 all: $(CSS_OBJS) $(CSS_MIN_OBJS)
 
-$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.src.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss $< $@
 
-$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.min.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss --sourcemap=none --style compressed $< $@
 
 clean:
@@ -232,19 +232,19 @@ The Makefile is finished, right? Not really. If you create a file with, for exam
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 
-CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
-CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_DEPS = $(wildcard $(SASS_SRCS)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_SRCS)/*.scss)))
 CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
 CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
 
 all: $(CSS_OBJS) $(CSS_MIN_OBJS)
 
-$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.src.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss $< $@
 
-$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.min.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss --sourcemap=none --style compressed $< $@
 
 clean:
@@ -263,19 +263,19 @@ In our example the only suffixes we want are .min.css and .src.css:
 
 <pre rel="makefile">
 <code class="makefile">CSS_OBJ = static/css
-SASS_OBJ = scss
+SASS_SRCS = scss
 
-CSS_DEPS = $(wildcard $(SASS_OBJ)/_*.scss)
-CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_OBJ)/*.scss)))
+CSS_DEPS = $(wildcard $(SASS_SRCS)/_*.scss)
+CSS_SRCS = $(filter-out _%, $(notdir $(wildcard $(SASS_SRCS)/*.scss)))
 CSS_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.src.css, $(CSS_SRCS))
 CSS_MIN_OBJS = $(patsubst %.scss, $(CSS_OBJ)/%.min.css, $(CSS_SRCS))
 
 all: $(CSS_OBJS) $(CSS_MIN_OBJS)
 
-$(CSS_OBJ)/%.src.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.src.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss $< $@
 
-$(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
+$(CSS_OBJ)/%.min.css: $(SASS_SRCS)/%.scss $(CSS_DEPS)
     scss --sourcemap=none --style compressed $< $@
 
 clean:
@@ -290,7 +290,7 @@ clean:
 
 Now you have a simple task runner to create source CSS and minified CSS files with just **23 lines of code**!
 
-Run make in Atom or Sublime
+Run make in Sublime or Atom
 ---------------------------
 
 You can use the terminal to run make, but you can perhaps also use your favorite editor, check their site if there is a package available. If you use Sublime or Atom:
