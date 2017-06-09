@@ -15,7 +15,6 @@
 
     function onDocumentLoaded() {
         createScrollComponent(document.getElementById('toggle-menu'));
-        FastClick.attach(document.body);
         hljs.initHighlightingOnLoad();
     }
 
