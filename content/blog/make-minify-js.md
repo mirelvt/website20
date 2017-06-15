@@ -127,7 +127,7 @@ clean:
 .PHONY: clean all
 
 .SUFFIXES:            # Delete the default suffixes
-.SUFFIXES: .min.css .src.css
+.SUFFIXES: .min.css .src.css .min.js
 </code>
 </pre>
 
