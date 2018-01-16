@@ -77,10 +77,9 @@ front end techniques, which everyone can attend for a small fee.
 
 ## Personal life
 
-In my personal life I'm living together with my boyfriend and my 2
-British Shorthair cats, Tolstoj and Frummel in Wateringen, a small village
-near The Hague and Delft. When I'm not working, reading professional
-literature or fiddling in code I can often be found down the gym.
+I live with my husband and my 2 British Shorthair cats, Tolstoj and Frummel in Wateringen,
+a small village near The Hague and Delft. When I'm not working, reading professional
+literature or fiddling in code I can often be found down the gym or on my motorcycle (Kawasaki er6f).
 To compensate being between 4 walls all day, I mostly go by bike to work.
 It is a nice bike ride of 10km through the typical Dutch landscape.
 My interests also include reading common history, sci-fi, fantasy and thrillers.
