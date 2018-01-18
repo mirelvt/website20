@@ -75,9 +75,7 @@ section {
         opacity: 0;
         @for $i from 1 through 3 {
             &:nth-child(#{$i}) {
-                @include animation(
-                    blocks-anim 0.75s ease-out (0.75s + (0.25 * $i)) forwards
-                    );
+                animation: blocks-anim 0.75s ease-out (0.75s + (0.25 * $i)) forwards;
             }
         }
     }
@@ -88,7 +86,7 @@ section {
     }
 }
 
-@include keyframes(blocks-anim) {
+@keyframes blocks-anim {
     from {
         opacity: 0.25;
         transform: scale(0.7) translate3d(0, 0, 0);

@@ -41,7 +41,7 @@
 
         &.selected {
             background-color: darken($c-main, 10%);
-            border-bottom: 1px solid hsla(0, 0, 25%, 0.25);
+            border-bottom-color: hsla(0, 0, 25%, 0.25);
         }
 
         &:hover { color: #fff; }
@@ -144,11 +144,10 @@
             display: block;
             height: 1px;
             content: "";
-            @include gradient(left, to right,
-              rgba($c-main, 0) 0,
-              $c-main 25%,
-              $c-main 75%,
-              rgba($c-main, 0) 100%);
+            background: linear-gradient(to right, rgba($c-main, 0) 0,
+                $c-main 25%,
+                $c-main 75%,
+                rgba($c-main, 0) 100%);
         }
 
         &::before { top: 0; }

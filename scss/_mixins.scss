@@ -2,11 +2,7 @@
 @import "_flexbox";
 
 @mixin perspective($value:200px, $origin: 50% 0) {
-    -moz-perspective-origin: $origin;
-    -moz-perspective: $value;
-    -webkit-perspective-origin: $origin;
     -webkit-perspective: $value;
-    perspective-origin: origin;
     perspective: $value;
 }
 
@@ -33,30 +29,6 @@
     -webkit-text-size-adjust: 100%;
 }
 // ========
-
-@mixin gradient($deg-prefix, $deg, $arguments...) {
-    background: -webkit-linear-gradient($deg-prefix, $arguments);
-    background: -o-linear-gradient($deg-prefix, $arguments);
-    background: -ms-linear-gradient($deg-prefix, $arguments);
-    background: linear-gradient($deg, $arguments);
-}
-
-@mixin keyframes($anim-name) {
-    @keyframes #{$anim-name} {
-        @content;
-    }
-    @-webkit-keyframes #{$anim-name} {
-        @content;
-    }
-}
-
-@mixin animation($values...) {
-    // name, duration, timing-function, delay, direction, iteration-count, fill-mode, play-state
-    -webkit-animation: $values;
-    -moz-animation: $values;
-    -o-animation: $values;
-    animation: $values;
-}
 
 // EM units are used for mediaqueries, see blog post: http://zellwk.com/blog/media-query-units/
 // 400 ÷ 16 = 25
