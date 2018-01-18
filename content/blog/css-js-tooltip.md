@@ -26,8 +26,8 @@ Based on the position of the tooltip item in the viewport, the class names:
 The tooltip container gets positioned on the left, right or center bottom side
 of the tooltip item. I calculate its position using *getBoundingClientRect()* function.
 
-If the tooltip item is positioned near the edges of left or right side of the viewport
-the tooltip, will appear on the right or left side of the tooltip item. In
+If the tooltip item is positioned near the edges of the left or right side of the viewport,
+the tooltip will appear on the right or left side of the tooltip item. In
 other cases the tooltip appears right below the tooltip item.
 
 <pre rel="Javascript">
