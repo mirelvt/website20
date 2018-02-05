@@ -2,7 +2,7 @@
 css = "css/blog.min.css"
 date = "2018-02-04"
 page_name = "Blog"
-title = "Sublime Text editor Part 2"
+title = "Sublime Text, VSCode, Atom"
 description = "Since 2013 I'm using SublimeText editor and wrote an how to about it to get you up and running. Now 5 years later I'm still using it. I've tested Atom and VSCode as well, but keep returning to SublimeText. In this post I'll explain what packages I need for my environment and why I still like SublimeText over Atom or VSCode."
 +++
 
