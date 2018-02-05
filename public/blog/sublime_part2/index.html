@@ -1,0 +1,358 @@
+    <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    
+    
+        <meta name="description" content="Since 2013 I&#39;m using SublimeText editor and wrote an how to about it to get you up and running. Now 5 years later I&#39;m still using it. I&#39;ve tested Atom and VSCode as well, but keep returning to SublimeText. In this post I&#39;ll explain what packages I need for my environment and why I still like SublimeText over Atom or VSCode.">
+    
+
+    
+    
+        <title>Mirella van Teulingen - Sublime Text editor Part 2 </title>
+    
+
+    <link rel="icon" type="image/png" href="http://www.mirellavanteulingen.nl/img/favicon.png"/>
+
+    
+
+    <link rel="stylesheet" href="http://www.mirellavanteulingen.nl/css/blog.min.css">
+
+</head>
+    <body>
+        <input type="checkbox" name="menu" id="toggle-menu" class="toggle-menu">
+<nav role="navigation">
+    <label class="hamburger-wrapper" for="toggle-menu">
+        <div class="hamburger"></div>
+        <div class="menu-text">Menu</div>
+    </label>
+    <div class="menu">
+        <ul>
+            
+            <li role="menuitem" >
+                <a href="http://www.mirellavanteulingen.nl/"
+                    
+                    
+                        
+                    >
+                    Home
+                </a>
+            </li>
+            
+            <li role="menuitem" >
+                <a href="http://www.mirellavanteulingen.nl/blog/"
+                    
+                    
+                        class="selected"
+                    >
+                    Blog
+                </a>
+            </li>
+            
+            <li role="menuitem" >
+                <a href="http://www.mirellavanteulingen.nl/fronteers/"
+                    
+                    
+                        
+                    >
+                    Fronteers
+                </a>
+            </li>
+            
+            <li role="menuitem" >
+                <a href="http://www.mirellavanteulingen.nl/about/"
+                    
+                    
+                        
+                    >
+                    About me
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</nav>
+<div class="visualwrapper">
+
+            <div class="nav-arrows">
+                
+                
+                    <a href="http://www.mirellavanteulingen.nl/blog/make-minify-js/" class="arrow-next"
+                            alt="Minify javascript with GNU Make">
+                        <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0.044921875" width="47.8613281" height="47.8613281" rx="3"></rect>
+                                <polygon fill="#FFFFFF" points="15.953776 32.8406817 24.8151846 23.9772997 15.9538799 15.1141774 20.3852074 10.6807726 33.6784628 23.9773517 20.3853113 37.2703993"></polygon>
+                            </g>
+                        </svg>
+                    </a>
+                
+            </div>
+            <article role="article">
+                <h1>Sublime Text editor Part 2</h1>
+                February 4, 2018 <br>
+                
+
+<p>Since 2013 I&rsquo;m using SublimeText editor and wrote an how to about it to get you up and running. Now 5 years later I&rsquo;m still using it. I&rsquo;ve tested <a href="https://atom.io/">Atom</a> and <a href="https://code.visualstudio.com/">VSCode</a> as well, but keep returning to <a href="https://www.sublimetext.com/">SublimeText</a>. In this post I&rsquo;ll explain what packages I need for my
+environment and why I still like <a href="https://www.sublimetext.com/">SublimeText</a> over <a href="https://atom.io/">Atom</a> or <a href="https://code.visualstudio.com/">VSCode</a>.</p>
+
+<p>Sublime Text 3 is officially out since September 2017. If you have a license for Sublime2 you can upgrade for a small fee to version 3. For the hard work and effort the developers put in this &ldquo;Sublime&rdquo; editor I happily pay this small fee for the upgrade. On their <a href="https://www.sublimetext.com/blog/">blog</a> the SublimeText team dedicated a special page with a list of improvements: <a href="https://www.sublimetext.com/2to3">2.0 to 3.0 changes</a>.</p>
+
+<h2 id="testing-atom-and-vscode">Testing Atom and VSCode</h2>
+
+<p>Last year I got interested in other editors and tested Atom and VSCode both for 2 weeks seperately.</p>
+
+<p>My basic development requirements for an editor are:</p>
+
+<ol>
+<li>syntax highlighting for:
+
+<ul>
+<li>SCSS</li>
+<li>Javascript</li>
+<li>Django templates</li>
+<li>Python files</li>
+</ul></li>
+<li>Linting for:
+
+<ul>
+<li>SCSS: scsslint</li>
+<li>Javascript: eslint</li>
+</ul></li>
+<li>Build tool:
+
+<ul>
+<li>Run Make via the editor</li>
+</ul></li>
+<li>Version control:
+
+<ul>
+<li>Mercurial integration</li>
+</ul></li>
+<li>Packages:
+
+<ul>
+<li>Emmet</li>
+<li>Django snippets</li>
+</ul></li>
+</ol>
+
+<p>And of course key bindings and &ldquo;Goto anything&rdquo; feature as in SublimeText.</p>
+
+<h2 id="atom">Atom</h2>
+
+<p>First I started with Atom. How much work did it take to get my minimum setup configured in Atom?</p>
+
+<h3 id="django-make">Django &amp; Make</h3>
+
+<p>After installation, I opened an django html template and start typing html tags. I find the autocompletion suggestions quite annoying but I need it to be able to use django snippet completion.</p>
+
+<p>Syntax higlighting for Javascript, Python and SCSS comes with the default Atom installation. But for Django templating I installed:</p>
+
+<ul>
+<li>Django-templates</li>
+<li>set-syntax</li>
+</ul>
+
+<p>And:</p>
+
+<ul>
+<li>Emmet</li>
+<li>python-tools (goto definition etc.)</li>
+</ul>
+
+<p>To be able to run Make via the editor you need the following packages:</p>
+
+<ul>
+<li>build</li>
+<li>busy-signal (build dependency)</li>
+<li>build-make</li>
+</ul>
+
+<p>Use cmd+alt+b to run make.</p>
+
+<h3 id="mercurial-integration">Mercurial integration</h3>
+
+<p>I installed <a href="https://atom.io/packages/atom-hg">atom-hg</a>, but I only see in the tree view which files are changed with the default branch. The readme is very summier. There is no option to see the diff. However, there is a simple package to commit your changes: <a href="https://atom.io/packages/hg-commit">hg-commit</a>. It shows the files which are modified but you can still not see the diff. Also the input field for writing a commit is only 1 row. You can&rsquo;t write a good summary. Conclusion: the setup in Atom for mercurial integration is not satisfied.</p>
+
+<h3 id="linting">Linting</h3>
+
+<p>To install linter packages for Javascript and SCSS you need:</p>
+
+<ul>
+<li>linter.</li>
+<li>linter-eslint, it will also ask to install its dependencies.</li>
+<li>linter-scsslint.</li>
+</ul>
+
+<p>Restart Atom and the linters work. I assume you already have installed the packages for <a href="https://eslint.org/docs/user-guide/getting-started">eslint</a> and <a href="https://github.com/brigade/scss-lint">scss-lint</a> and configured the linting options.</p>
+
+<h2 id="vscode">VSCode</h2>
+
+<p>Emmet and &ldquo;Go to Definition&rdquo; is by default available in VSCode.</p>
+
+<h3 id="django-make-1">Django &amp; Make</h3>
+
+<p>To be up and running with Django syntax highlighting and code snippets you need to install:</p>
+
+<ul>
+<li>Djaneiro</li>
+</ul>
+
+<p>You can run Make via the integrated terminal in VSCode. I also tried the extension makeRunner, but that extension does not work, it is not updated since 2015. Another option
+is to create a task in VSCode. With cmd+shift+B you run the VSCode tasks. Example tasks.json:
+<pre rel="json">
+<code class="json">
+{
+    <span class="hljs-comment">// See <a href="https://go.microsoft.com/fwlink/?LinkId=733558">https://go.microsoft.com/fwlink/?LinkId=733558</a>
+    // for the documentation about the tasks.json format</span>
+    &ldquo;version&rdquo;: &ldquo;2.0.0&rdquo;,
+    &ldquo;tasks&rdquo;: [
+        {
+            &ldquo;label&rdquo;: &ldquo;make&rdquo;,
+            &ldquo;type&rdquo;: &ldquo;shell&rdquo;,
+            &ldquo;command&rdquo;: &ldquo;make&rdquo;,
+            &ldquo;group&rdquo;: &ldquo;build&rdquo;,
+            &ldquo;problemMatcher&rdquo;: []
+        }
+    ]
+}
+</code>
+</pre></p>
+
+<p>Downside in VSCode is that the configuration file can not be defined globally. This feature
+is on the <a href="https://github.com/Microsoft/vscode/issues/1435">radar</a> at the dev team of Microsoft.</p>
+
+<p>You&rsquo;ll find the task.json in your project directory in the .vscode folder. To use Make
+via Task runner you need to copy this file into every project.</p>
+
+<h3 id="mercurial-integration-1">Mercurial integration</h3>
+
+<p>You can install the extension:</p>
+
+<ul>
+<li>HG</li>
+</ul>
+
+<p>And you are good to go! All basic options are available with this extension: push, pull,  merge, commit, view diff etc.</p>
+
+<h3 id="linting-1">Linting</h3>
+
+<p>To install linter packages for Javascript and SCSS you need:</p>
+
+<ul>
+<li>linter-eslint.</li>
+<li>linter-scsslint.</li>
+</ul>
+
+<h2 id="sublimetext">SublimeText</h2>
+
+<p>After installing SublimeText, the first package you need to have is the Package manager.
+You can install it via cmd+shift+P and search for Package manager. Syntax highlighting for Python and &ldquo;Go to definition&rdquo; is by default available in Sublime.</p>
+
+<h3 id="django-make-2">Django &amp; Make</h3>
+
+<p>To be up and running with Django syntax highlighting and code snippets, SCSS highlighting and Emmet, you need to install:</p>
+
+<ul>
+<li>Djaneiro</li>
+<li>Sass (Syntax-highlighting-for-sass)</li>
+<li>Emmet for Sublime Text</li>
+</ul>
+
+<p>For Make you don&rsquo;t need to install anything. Just hit cmd+shift+B to see the build
+options and choose Make. The chosen option is saved. If you need to build again you only
+use the keys: cmd+B.</p>
+
+<h3 id="mercurial-integration-2">Mercurial integration</h3>
+
+<p>Unfortunately there are no fullstack packages for Mercurial integration. You have a nice one for Sublime2 from <a href="https://github.com/guillermooo/Mercurial">guillermooo</a> but it is not upgraded to Sublime3.</p>
+
+<p>To compare changes you can install:</p>
+
+<ul>
+<li>EasyDiff package (Free).</li>
+<li>Sublimerge ($35 and has merge options).</li>
+</ul>
+
+<p>I have configured Sublime as my default editor for commit messages in my .bash_profile:
+<pre>
+<code>
+export HGEDITOR=&ldquo;subl -w&rdquo;
+export VISUAL=&ldquo;subl -w&rdquo;
+</code>
+</pre></p>
+
+<p>If you like Atom, just change &ldquo;subl&rdquo; into &ldquo;atom&rdquo; in your .bash_profile.
+Conclusion: the setup in Sublime for mercurial integration is not completely satisfied.</p>
+
+<h3 id="linting-2">Linting</h3>
+
+<p>To install linter packages for Javascript and SCSS you need:</p>
+
+<ul>
+<li>Sublimelinter.</li>
+<li>Sublimelinter-contrib-scss-lint.</li>
+<li>Sublimelinter-eslint.</li>
+</ul>
+
+<h2 id="how-fast-are-atom-vscode-and-sublime">How fast are Atom, VSCode and Sublime?</h2>
+
+<p>I did a simple test by opening a project folder, &ldquo;goto&rdquo; file and scroll in a large file.
+I used a stopwatch to test the speed. I opened a project folder via the terminal and waited until the project is loaded in the editor. These are my findings:</p>
+
+<p>Opening project folder:</p>
+
+<ul>
+<li>Atom 5 seconds.</li>
+<li>VSCode 3 seconds.</li>
+<li>Sublime &lt;2 seconds.</li>
+</ul>
+
+<p>Opening a file using the &ldquo;go to&rdquo; dropdown is also faster in Sublime, compared with Atom and VSCode:</p>
+
+<ul>
+<li>VSCode 0.6 seconds.</li>
+<li>Atom 0.6 seconds.</li>
+<li>Sublime: it opens directly the selected file.</li>
+</ul>
+
+<p>Opening and scrolling a large file didn&rsquo;t get any issues so far in all 3 editors.</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<ol>
+<li>Both VSCode and Atom are free, Sublime costs $80.</li>
+<li>To be up and running, VSCode is the fastest, second place Sublime, third Atom.</li>
+<li>Sublime is the fasted editor, second VSCode, third Atom.</li>
+<li>All 3 editors have lots of packages and themes to install.</li>
+</ol>
+
+<p>In the end you choose and use the editor you like to work with. For me it is still Sublime.
+It fits my developer needs, despite its lack of Mercurial support, however VSCode is heading to be my favorite editor. I really like its Mercurial integration, the keybindings are easy to learn and is fast enough. One important issue for me to stick with Sublime and not switching to VSCode is the lack of global settings for e.g Make. Atom costs more effort to setup and is too slow for my taste.</p>
+
+            </article>
+            <div class="nav-arrows">
+                
+                
+                    <a href="http://www.mirellavanteulingen.nl/blog/make-minify-js/" class="arrow-next"
+                            alt="Minify javascript with GNU Make">
+                        <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0.044921875" width="47.8613281" height="47.8613281" rx="3"></rect>
+                                <polygon fill="#FFFFFF" points="15.953776 32.8406817 24.8151846 23.9772997 15.9538799 15.1141774 20.3852074 10.6807726 33.6784628 23.9773517 20.3853113 37.2703993"></polygon>
+                            </g>
+                        </svg>
+                    </a>
+                
+            </div>
+        </div>
+        <script src="http://www.mirellavanteulingen.nl/js/highlight.pack.min.js"></script>
+<script src="http://www.mirellavanteulingen.nl/js/base.min.js"></script>
+
+
+
+    </body>
+</html>

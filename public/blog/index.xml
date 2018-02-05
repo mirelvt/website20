@@ -6,10 +6,20 @@
     <description>Recent content in Blogs on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Jun 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 04 Feb 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.mirellavanteulingen.nl/blog/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Sublime Text editor Part 2</title>
+      <link>http://www.mirellavanteulingen.nl/blog/sublime_part2/</link>
+      <pubDate>Sun, 04 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.mirellavanteulingen.nl/blog/sublime_part2/</guid>
+      <description>Since 2013 I&amp;rsquo;m using SublimeText editor and wrote an how to about it to get you up and running. Now 5 years later I&amp;rsquo;m still using it. I&amp;rsquo;ve tested Atom and VSCode as well, but keep returning to SublimeText. In this post I&amp;rsquo;ll explain what packages I need for my environment and why I still like SublimeText over Atom or VSCode.
+Sublime Text 3 is officially out since September 2017.</description>
+    </item>
     
     <item>
       <title>Minify javascript with GNU Make</title>
