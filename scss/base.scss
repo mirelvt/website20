@@ -371,4 +371,9 @@ figure {
     }
 }
 
+.old {
+    text-decoration: line-through;
+    color: $color-subtitle;
+}
+
 @import "_fonts";
