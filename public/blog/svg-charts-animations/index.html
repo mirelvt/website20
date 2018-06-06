@@ -1,0 +1,509 @@
+    <!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    
+    
+        <meta name="description" content="There are a lot of libraries around to create svg and svg animations like Greensock, Raphael, SnapSVG, SVG.js. In my case I want to see how far you get with basic browser support. In this article I will show you some simple svg solutions and the issues I bumped into during development.">
+    
+
+    
+    
+        <title>Mirella van Teulingen - Create SVG charts and animations without a JS Library </title>
+    
+
+    <link rel="icon" type="image/png" href="http://www.mirellavanteulingen.nl/img/favicon.png"/>
+
+    
+
+    <link rel="stylesheet" href="http://www.mirellavanteulingen.nl/css/blog.min.css">
+
+</head>
+    <body>
+        <input type="checkbox" name="menu" id="toggle-menu" class="toggle-menu">
+<nav role="navigation">
+    <label class="hamburger-wrapper" for="toggle-menu">
+        <div class="hamburger"></div>
+        <div class="menu-text">Menu</div>
+    </label>
+    <div class="menu">
+        <ul>
+            
+            <li role="menuitem" >
+                <a href="http://www.mirellavanteulingen.nl/"
+                    
+                    
+                        
+                    >
+                    Home
+                </a>
+            </li>
+            
+            <li role="menuitem" >
+                <a href="http://www.mirellavanteulingen.nl/blog/"
+                    
+                    
+                        class="selected"
+                    >
+                    Blog
+                </a>
+            </li>
+            
+            <li role="menuitem" >
+                <a href="http://www.mirellavanteulingen.nl/fronteers/"
+                    
+                    
+                        
+                    >
+                    Fronteers
+                </a>
+            </li>
+            
+            <li role="menuitem" >
+                <a href="http://www.mirellavanteulingen.nl/about/"
+                    
+                    
+                        
+                    >
+                    About me
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+</nav>
+<div class="visualwrapper">
+
+            <div class="nav-arrows">
+                
+                
+                    <a href="http://www.mirellavanteulingen.nl/blog/js_for_frontenddev/" class="arrow-next"
+                            alt="Javascript for Frontend Developers">
+                        <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0.044921875" width="47.8613281" height="47.8613281" rx="3"></rect>
+                                <polygon fill="#FFFFFF" points="15.953776 32.8406817 24.8151846 23.9772997 15.9538799 15.1141774 20.3852074 10.6807726 33.6784628 23.9773517 20.3853113 37.2703993"></polygon>
+                            </g>
+                        </svg>
+                    </a>
+                
+            </div>
+            <article role="article">
+                <h1>Create SVG charts and animations without a JS Library</h1>
+                June 3, 2018 <br>
+                
+
+<p>At Dreamsolution we need to visualize a lot of data using bar charts, pie charts, counters etc. Most of the time
+we use the <a href="https://www.highcharts.com/">Highcharts</a> library for the charts. Now I had some use cases
+where a library as Highcharts is overdone. The question was how can I create a simple pie and bar chart without
+using a library (Highcharts, Greensock, Raphael, SnapSVG and SVG.js)?</p>
+
+<h2 id="use-case-pie-chart-bar-chart">Use case: pie chart, bar chart</h2>
+
+<p>The designer already created a mockup how the bar and pie chart should look like, only thing
+I need to do is to make it work on the web. The values for the charts come from the database, so
+using CSS animations in a separate file would not do the trick. (Unless you can serve your solution to the latest greatest browers,
+using CSS custom properties).</p>
+
+<p>You can also use inline CSS to be able to work with dynamic values,
+but if you have a <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP">CSP</a> in place,
+then inline CSS are blocked due to security reasons.</p>
+
+<p>It was time to start playing with <a href="https://www.w3.org/TR/SVG/animate.html#RelationshipToSMILAnimation">SMIL</a>.</p>
+
+<h2 id="pie-chart">Pie chart</h2>
+
+<p>I create a pie chart and animate the stroke-dasharray using the animate tag. Looks pretty clean and readable.</p>
+
+<pre rel="svg">
+<code>
+&lt;svg viewbox="0 0 400 400"&gt;
+    &lt;!-- main circle --&gt;
+    &lt;circle fill="#ccc" cx="200" cy="200" r="200" /&gt;
+    &lt;!-- circle where the dash-stroke will be animated --&gt;
+    &lt;circle cx="200" cy="200" r="160" transform="rotate(-90, 200, 200)"
+            stroke-dasharray="0, 1000" stroke="#7cb342" data-fallback="edge"&gt;
+        &lt;animate attributeName="stroke-dasharray" dur="1s"
+                to="300,1000" fill="freeze" /&gt;
+    &lt;/circle&gt;
+    &lt;!-- Inner circle --&gt;
+    &lt;circle cx="200" cy="200" r="160" fill="#fff" /&gt;
+&lt;/svg&gt;
+</code>
+</pre>
+
+<h3 id="demo-pie-chart">Demo pie chart:</h3>
+
+<p><button data-trigger="startanimation">Start animation</button>
+<div class="svg-piechart-example">
+    <svg viewbox="0 0 400 400">
+        <!-- main circle -->
+        <circle fill="#ccc" cx="200" cy="200" r="200" />
+        <!-- circle where the dash-stroke will be animated -->
+        <circle cx="200" cy="200" r="160" transform="rotate(-90, 200, 200)"
+                stroke-dasharray="0, 1000" stroke="#7cb342" stroke-width="80" data-fallback="edge">
+            <animate attributeName="stroke-dasharray" dur="1s"
+                    to="300,1000" fill="freeze" begin="startanimation" />
+        </circle>
+        <!-- Inner circle -->
+        <circle cx="200" cy="200" r="160" fill="#fff" />
+        <text x="115" y="230" textAnchor="middle" font-size="100" fill="#3c4946">30%</text>
+    </svg>
+</div></p>
+
+<p>If you also want the percentage (counter) be animated the code looks like this:</p>
+
+<pre rel="svg">
+<code>
+&lt;svg viewbox="0 0 400 400"&gt;
+    &lt;defs&gt;
+        &lt;!-- Clip path creates a clipping region that defines what part of
+        an element should be displayed in svg.
+        Only the correct portion of the text is shown, the rest is hidden.--&gt;
+        &lt;clipPath id="counter-clippath"&gt;
+            &lt;rect x="50" y="0" width="320" height="72" /&gt;
+        &lt;/clipPath&gt;
+    &lt;/defs&gt;
+    &lt;!-- main circle --&gt;
+    &lt;circle fill="#ccc" cx="200" cy="200" r="200" /&gt;
+    &lt;!-- circle where the dash-stroke will be animated --&gt;
+    &lt;circle cx="200" cy="200" r="160" transform="rotate(-90, 200, 200)"
+            stroke-dasharray="0, 1000" stroke="#7cb342" stroke-width="80" data-fallback="edge"&gt;
+        &lt;animate attributeName="stroke-dasharray" dur="1s"
+                to="300,1000" fill="freeze" /&gt;
+    &lt;/circle&gt;
+    &lt;!-- Inner circle --&gt;
+    &lt;circle cx="200" cy="200" r="160" fill="#fff" /&gt;
+    &lt;g class="counter-clippath" clip-path="url(#counter-clippath)"
+        transform="translate(0, 165)"&gt;
+        &lt;g class="move-svg-text"&gt;
+            &lt;animateTransform attributeName="transform" type="translate"
+                dur="1s" calcMode="discrete" values="0 0; 0 -90; 0 -180; 0 -270; 0 -360; 0 -450; 0 -540" fill="freeze" /&gt;
+            &lt;text x="200" y="70" text-anchor="middle" font-size="100" fill="#3c4946"&gt;1%&lt;/text&gt;
+            &lt;text x="200" y="160" text-anchor="middle" font-size="100" fill="#3c4946"&gt;3%&lt;/text&gt;
+            &lt;text x="200" y="250" text-anchor="middle" font-size="100" fill="#3c4946"&gt;5%&lt;/text&gt;
+            &lt;text x="200" y="340" text-anchor="middle" font-size="100" fill="#3c4946"&gt;7%&lt;/text&gt;
+            &lt;text x="200" y="430" text-anchor="middle" font-size="100" fill="#3c4946"&gt;9%&lt;/text&gt;
+            &lt;text x="200" y="520" text-anchor="middle" font-size="100" fill="#3c4946"&gt;11%&lt;/text&gt;
+            &lt;text x="200" y="610" text-anchor="middle" font-size="100" fill="#3c4946"&gt;13%&lt;/text&gt;
+        &lt;/g&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</code>
+</pre>
+
+<p><button data-trigger="startanimation">Start animation</button>
+<div class="svg-piechart-example">
+    <svg viewbox="0 0 400 400">
+        <defs>
+<!--             Clip path creates a clipping region that defines what part of
+            an element should be displayed in svg.
+            Only the correct portion of the text is shown, the rest is hidden.
+            NOTE: Edge does not support svg animate (SMIL). See:
+            https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/5254111/ -->
+            <clipPath id="counter-clippath">
+                <!-- <rect x="40" y="140" width="320" height="120" /> -->
+                <rect x="50" y="0" width="320" height="72" />
+            </clipPath>
+        </defs>
+        <!-- main circle -->
+        <circle fill="#ccc" cx="200" cy="200" r="200" />
+        <!-- circle where the dash-stroke will be animated -->
+        <circle cx="200" cy="200" r="160" transform="rotate(-90, 200, 200)"
+                stroke-dasharray="0, 1000" stroke="#7cb342" stroke-width="80" data-fallback="edge">
+            <animate attributeName="stroke-dasharray" dur="1s"
+                    to="300,1000" fill="freeze" begin="startanimation" />
+        </circle>
+        <!-- Inner circle -->
+        <circle cx="200" cy="200" r="160" fill="#fff" />
+        <g class="counter-clippath" clip-path="url(#counter-clippath)"
+            transform="translate(0, 165)">
+            <g class="move-svg-text">
+                <animateTransform attributeName="transform" type="translate"
+                    dur="1s" calcMode="discrete" begin="startanimation" values="0 0; 0 -90; 0 -180; 0 -270; 0 -360; 0 -450; 0 -540" fill="freeze" />
+                <text x="200" y="70" text-anchor="middle" font-size="100" fill="#3c4946">1%</text>
+                <text x="200" y="160" text-anchor="middle" font-size="100" fill="#3c4946">3%</text>
+                <text x="200" y="250" text-anchor="middle" font-size="100" fill="#3c4946">5%</text>
+                <text x="200" y="340" text-anchor="middle" font-size="100" fill="#3c4946">7%</text>
+                <text x="200" y="430" text-anchor="middle" font-size="100" fill="#3c4946">9%</text>
+                <text x="200" y="520" text-anchor="middle" font-size="100" fill="#3c4946">11%</text>
+                <text x="200" y="610" text-anchor="middle" font-size="100" fill="#3c4946">13%</text>
+            </g>
+        </g>
+    </svg>
+</div></p>
+
+<h2 id="demo-bar-chart">Demo bar chart</h2>
+
+<p>The code for a simple bar chart:
+<pre>
+<code>
+&lt;svg viewBox=&ldquo;0 0 190 165&rdquo;&gt;
+    &lt;g transform=&ldquo;translate(20, 0)&rdquo;&gt;
+        &lt;line class=&ldquo;barchart_line bar-1&rdquo;
+                x1=&ldquo;0&rdquo; y1=&ldquo;150&rdquo;
+                x2=&ldquo;0&rdquo; y2=&ldquo;0&rdquo;
+                stroke-width=&ldquo;19&rdquo; stroke-dasharray=&ldquo;0, 150&rdquo;&gt;
+            &lt;animate attributeName=&ldquo;stroke-dasharray&rdquo; dur=&ldquo;2s&rdquo;
+                    from=&ldquo;0, 150&rdquo;
+                    to=&ldquo;150, 150&rdquo;
+                    begin=&ldquo;startanimation+200ms&rdquo;
+                    fill=&ldquo;freeze&rdquo; restart=&ldquo;whenNotActive&rdquo; /&gt;
+        &lt;/line&gt;
+        &lt;text x=&ldquo;0&rdquo; y=&ldquo;158&rdquo; class=&ldquo;bar-legend&rdquo; text-anchor=&ldquo;middle&rdquo;&gt;14 may&lt;/text&gt;
+    &lt;/g&gt;
+    &lt;g transform=&ldquo;translate(45, 0)&rdquo;&gt;
+        &lt;line class=&ldquo;barchart_line bar-2&rdquo;
+                x1=&ldquo;0&rdquo; y1=&ldquo;150&rdquo;
+                x2=&ldquo;0&rdquo; y2=&ldquo;0&rdquo;
+                stroke-width=&ldquo;19&rdquo; stroke-dasharray=&ldquo;0, 150&rdquo;&gt;
+            &lt;animate attributeName=&ldquo;stroke-dasharray&rdquo; dur=&ldquo;2s&rdquo;
+                    from=&ldquo;0, 150&rdquo;
+                    to=&ldquo;50, 150&rdquo;
+                    begin=&ldquo;startanimation+400ms&rdquo;
+                    fill=&ldquo;freeze&rdquo; restart=&ldquo;whenNotActive&rdquo; /&gt;
+        &lt;/line&gt;
+        &lt;text x=&ldquo;0&rdquo; y=&ldquo;158&rdquo; class=&ldquo;bar-legend&rdquo; text-anchor=&ldquo;middle&rdquo;&gt;15 may&lt;/text&gt;
+    &lt;/g&gt;
+    &lt;g transform=&ldquo;translate(70, 0)&rdquo;&gt;
+        &lt;line class=&ldquo;barchart_line bar-3&rdquo;
+                x1=&ldquo;0&rdquo; y1=&ldquo;150&rdquo;
+                x2=&ldquo;0&rdquo; y2=&ldquo;0&rdquo;
+                stroke-width=&ldquo;19&rdquo; stroke-dasharray=&ldquo;0, 150&rdquo;&gt;
+            &lt;animate attributeName=&ldquo;stroke-dasharray&rdquo; dur=&ldquo;2s&rdquo;
+                    from=&ldquo;0, 150&rdquo;
+                    to=&ldquo;80, 150&rdquo;
+                    begin=&ldquo;startanimation+600ms&rdquo;
+                    fill=&ldquo;freeze&rdquo; restart=&ldquo;whenNotActive&rdquo; /&gt;
+        &lt;/line&gt;
+        &lt;text x=&ldquo;0&rdquo; y=&ldquo;158&rdquo; class=&ldquo;bar-legend&rdquo; text-anchor=&ldquo;middle&rdquo;&gt;16 may&lt;/text&gt;
+    &lt;/g&gt;
+    &lt;g transform=&ldquo;translate(95, 0)&rdquo;&gt;
+        &lt;line class=&ldquo;barchart_line bar-4&rdquo;
+                x1=&ldquo;0&rdquo; y1=&ldquo;150&rdquo;
+                x2=&ldquo;0&rdquo; y2=&ldquo;0&rdquo;
+                stroke-width=&ldquo;19&rdquo; stroke-dasharray=&ldquo;0, 150&rdquo;&gt;
+            &lt;animate attributeName=&ldquo;stroke-dasharray&rdquo; dur=&ldquo;2s&rdquo;
+                    from=&ldquo;0, 150&rdquo;
+                    to=&ldquo;110, 150&rdquo;
+                    begin=&ldquo;startanimation+800ms&rdquo;
+                    fill=&ldquo;freeze&rdquo; restart=&ldquo;whenNotActive&rdquo; /&gt;
+        &lt;/line&gt;
+        &lt;text x=&ldquo;0&rdquo; y=&ldquo;158&rdquo; class=&ldquo;bar-legend&rdquo; text-anchor=&ldquo;middle&rdquo;&gt;17 may&lt;/text&gt;
+    &lt;/g&gt;
+    &lt;g transform=&ldquo;translate(120, 0)&rdquo;&gt;
+        &lt;line class=&ldquo;barchart_line bar-5&rdquo;
+                x1=&ldquo;0&rdquo; y1=&ldquo;150&rdquo;
+                x2=&ldquo;0&rdquo; y2=&ldquo;0&rdquo;
+                stroke-width=&ldquo;19&rdquo; stroke-dasharray=&ldquo;0, 150&rdquo;&gt;
+            &lt;animate attributeName=&ldquo;stroke-dasharray&rdquo; dur=&ldquo;2s&rdquo;
+                    from=&ldquo;0, 150&rdquo;
+                    to=&ldquo;80, 150&rdquo;
+                    begin=&ldquo;startanimation+1000ms&rdquo;
+                    fill=&ldquo;freeze&rdquo; restart=&ldquo;whenNotActive&rdquo; /&gt;
+        &lt;/line&gt;
+        &lt;text x=&ldquo;0&rdquo; y=&ldquo;158&rdquo; class=&ldquo;bar-legend&rdquo; text-anchor=&ldquo;middle&rdquo;&gt;18 may&lt;/text&gt;
+    &lt;/g&gt;
+    &lt;g transform=&ldquo;translate(145, 0)&rdquo;&gt;
+        &lt;line class=&ldquo;barchart_line bar-6&rdquo;
+                x1=&ldquo;0&rdquo; y1=&ldquo;150&rdquo;
+                x2=&ldquo;0&rdquo; y2=&ldquo;0&rdquo;
+                stroke-width=&ldquo;19&rdquo; stroke-dasharray=&ldquo;0, 150&rdquo;&gt;
+            &lt;animate attributeName=&ldquo;stroke-dasharray&rdquo; dur=&ldquo;2s&rdquo;
+                    from=&ldquo;0, 150&rdquo;
+                    to=&ldquo;140, 150&rdquo;
+                    begin=&ldquo;startanimation+1200ms&rdquo;
+                    fill=&ldquo;freeze&rdquo; restart=&ldquo;whenNotActive&rdquo; /&gt;
+        &lt;/line&gt;
+        &lt;text x=&ldquo;0&rdquo; y=&ldquo;158&rdquo; class=&ldquo;bar-legend&rdquo; text-anchor=&ldquo;middle&rdquo;&gt;19 may&lt;/text&gt;
+    &lt;/g&gt;
+    &lt;g transform=&ldquo;translate(170, 0)&rdquo;&gt;
+        &lt;line class=&ldquo;barchart_line bar-7&rdquo;
+                x1=&ldquo;0&rdquo; y1=&ldquo;150&rdquo;
+                x2=&ldquo;0&rdquo; y2=&ldquo;0&rdquo;
+                stroke-width=&ldquo;19&rdquo; stroke-dasharray=&ldquo;0, 150&rdquo;&gt;
+            &lt;animate attributeName=&ldquo;stroke-dasharray&rdquo; dur=&ldquo;2s&rdquo;
+                    from=&ldquo;0, 150&rdquo;
+                    to=&ldquo;70, 150&rdquo;
+                    begin=&ldquo;startanimation+1400ms&rdquo; fill=&ldquo;freeze&rdquo; restart=&ldquo;whenNotActive&rdquo; /&gt;
+        &lt;/line&gt;
+        &lt;text x=&ldquo;0&rdquo; y=&ldquo;158&rdquo; class=&ldquo;bar-legend&rdquo; text-anchor=&ldquo;middle&rdquo;&gt;20 may&lt;/text&gt;
+    &lt;/g&gt;
+&lt;/svg&gt;
+</code>
+</pre></p>
+
+<p><button data-trigger="startanimation">Start animation</button>
+<div class="svg-bar-example">
+    <svg viewBox="0 0 190 165">
+        <g transform="translate(20, 0)">
+            <!-- reset bar -->
+            <line class="barchart_line bar-1"
+                    x1="0" y1="150"
+                    x2="0" y2="0"
+                    stroke-width="19" stroke-dasharray="0, 150">
+                <animate attributeName="stroke-dasharray" dur="100ms"
+                    from="0, 150" to="0, 150" begin="startanimation" restart="whenNotActive"
+                    fill="freeze" />
+                <animate attributeName="stroke-dasharray" dur="2s"
+                        from="0, 150" to="150, 150"
+                        begin="startanimation+200ms" restart="whenNotActive" fill="freeze" />
+            </line>
+            <text x="0" y="158" class="bar-legend" text-anchor="middle">14 may</text>
+        </g>
+        <g transform="translate(45, 0)">
+            <line class="barchart_line bar-2"
+                    x1="0" y1="150"
+                    x2="0" y2="0"
+                    stroke-width="19" stroke-dasharray="0, 150">
+                <animate attributeName="stroke-dasharray" dur="100ms"
+                    from="0, 150" to="0, 150" begin="startanimation" restart="whenNotActive"
+                    fill="freeze" />
+                <animate attributeName="stroke-dasharray" dur="2s"
+                        from="0, 150" to="50, 150"
+                        begin="startanimation+400ms" restart="whenNotActive" fill="freeze" />
+            </line>
+            <text x="0" y="158" class="bar-legend" text-anchor="middle">15 may</text>
+        </g>
+        <g transform="translate(70, 0)">
+            <line class="barchart_line bar-3"
+                    x1="0" y1="150"
+                    x2="0" y2="0"
+                    stroke-width="19" stroke-dasharray="0, 150">
+                <animate attributeName="stroke-dasharray" dur="100ms"
+                        from="0, 150" to="0, 150"
+                        begin="startanimation" restart="whenNotActive" fill="freeze" />
+                <animate attributeName="stroke-dasharray" dur="2s"
+                        from="0, 150" to="80, 150"
+                        begin="startanimation+600ms" restart="whenNotActive" fill="freeze" />
+            </line>
+            <text x="0" y="158" class="bar-legend" text-anchor="middle">16 may</text>
+        </g>
+        <g transform="translate(95, 0)">
+            <line class="barchart_line bar-4"
+                    x1="0" y1="150"
+                    x2="0" y2="0"
+                    stroke-width="19" stroke-dasharray="0, 150">
+                <animate attributeName="stroke-dasharray" dur="100ms"
+                        from="0, 150" to="0, 150"
+                        begin="startanimation" restart="whenNotActive" fill="freeze" />
+                <animate attributeName="stroke-dasharray" dur="2s"
+                        from="0, 150" to="110, 150"
+                        begin="startanimation+800ms" restart="whenNotActive" fill="freeze" />
+            </line>
+            <text x="0" y="158" class="bar-legend" text-anchor="middle">17 may</text>
+        </g>
+        <g transform="translate(120, 0)">
+            <line class="barchart_line bar-5"
+                    x1="0" y1="150"
+                    x2="0" y2="0"
+                    stroke-width="19" stroke-dasharray="0, 150">
+                <animate attributeName="stroke-dasharray" dur="500ms"
+                        from="0, 150" to="0, 150"
+                        begin="startanimation" fill="freeze" />
+                <animate attributeName="stroke-dasharray" dur="2s"
+                        from="0, 150" to="80, 150"
+                        begin="startanimation+1000ms" restart="whenNotActive" fill="freeze" />
+            </line>
+            <text x="0" y="158" class="bar-legend" text-anchor="middle">18 may</text>
+        </g>
+        <g transform="translate(145, 0)">
+            <line class="barchart_line bar-6"
+                    x1="0" y1="150"
+                    x2="0" y2="0"
+                    stroke-width="19" stroke-dasharray="0, 150">
+                <animate attributeName="stroke-dasharray" dur="100ms"
+                        from="0, 150" to="0, 150"
+                        begin="startanimation" restart="whenNotActive" fill="freeze" />
+                <animate attributeName="stroke-dasharray" dur="2s"
+                        from="0, 150" to="140, 150"
+                        begin="startanimation+1200ms" restart="whenNotActive" fill="freeze" />
+            </line>
+            <text x="0" y="158" class="bar-legend" text-anchor="middle">19 may</text>
+        </g>
+        <g transform="translate(170, 0)">
+            <line class="barchart_line bar-7"
+                    x1="0" y1="150"
+                    x2="0" y2="0"
+                    stroke-width="19" stroke-dasharray="0, 150">
+                <animate attributeName="stroke-dasharray" dur="100ms"
+                        from="0, 150" to="0, 150"
+                        begin="startanimation" restart="whenNotActive" fill="freeze" />
+                <animate attributeName="stroke-dasharray" dur="2s"
+                        from="0, 150" to="70, 150"
+                        begin="startanimation+1400ms" restart="whenNotActive" fill="freeze" />
+            </line>
+            <text x="0" y="158" class="bar-legend" text-anchor="middle">20 may</text>
+        </g>
+    </svg>
+</div></p>
+
+<h1 id="issues">Issues:</h1>
+
+<p>As you can see it is easy to create simple pie chart and bar chart svg with animation without using a library. However I did bump into some issues in Edge and Firefox.</p>
+
+<p>It turns out that <a href="https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/5254111/">Microsoft Edge does not support SMIL</a>, while <a href="https://caniuse.com/#search=SMIL">other browsers</a> do.</p>
+
+<p>If the animation is not a deal breaker you can set the end state of the stroke-dasharray for Edge by using Javascript. You check if SMIL is not supported and do your thing for IE, Edge:
+<pre>
+<code>
+var has_smil = Boolean(document.createElementNS) &amp;&amp;
+        (/SVGAnimate/).test(document.createElementNS(&lsquo;<a href="https://www.w3.org/2000/svg'">https://www.w3.org/2000/svg'</a>, &lsquo;animate&rsquo;));
+// fallback for IE + Edge which don&rsquo;t support SMIL animation. Set directly the elm end state.
+if (!has_smil) {
+    var elm = document.querySelector(&rsquo;[data-fallback=&ldquo;edge&rdquo;]&lsquo;);
+    var a = elm.querySelector(&lsquo;animate&rsquo;);
+    var end_state = a.getAttribute(&lsquo;to&rsquo;);
+    elm.setAttribute(a.getAttribute(&lsquo;attributeName&rsquo;), end_state);
+}
+</code>
+</pre></p>
+
+<h3 id="firefox-and-csp">Firefox and CSP</h3>
+
+<p>When you are using CSP, you can get inline-css CSP error in Firefox when animating the following SVG attributes:</p>
+
+<ul>
+<li>stroke</li>
+<li>stroke-dasharray</li>
+<li>fill</li>
+</ul>
+
+<p>Somehow Firefox renders these svg attributes used in the animation, as CSS. If you animate the width, or height of an svg element then Firefox has no issues. I reported this bug at <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1459872">Bugzilla</a>. Depending on your project you can use for Firefox the iframe workaround: load the svg in an iframe with a less strict CSP.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Can you use SMIL for production sites? If you don&rsquo;t need to fully support Edge and can use the iframe workaround for Firefox when working with a CSP,
+or if you use chromebit for narrowcasting, then yes you can. For cross browser support you still need a library.</p>
+
+<p>I hope that in the near future all the major browsers will support SMIL. It is easy to use and <a href="https://www.w3.org/TR/SMIL3/">SMIL3.0</a> is available since 2008. For more examples go to <a href="https://css-tricks.com/guide-svg-animations-smil/">CSS Tricks</a>.</p>
+
+            </article>
+            <div class="nav-arrows">
+                
+                
+                    <a href="http://www.mirellavanteulingen.nl/blog/js_for_frontenddev/" class="arrow-next"
+                            alt="Javascript for Frontend Developers">
+                        <svg viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <rect x="0" y="0.044921875" width="47.8613281" height="47.8613281" rx="3"></rect>
+                                <polygon fill="#FFFFFF" points="15.953776 32.8406817 24.8151846 23.9772997 15.9538799 15.1141774 20.3852074 10.6807726 33.6784628 23.9773517 20.3853113 37.2703993"></polygon>
+                            </g>
+                        </svg>
+                    </a>
+                
+            </div>
+        </div>
+        <script src="http://www.mirellavanteulingen.nl/js/highlight.pack.min.js"></script>
+<script src="http://www.mirellavanteulingen.nl/js/base.min.js"></script>
+
+
+
+
+<script src="http://www.mirellavanteulingen.nl/js/blog.min.js"></script>
+
+
+    </body>
+</html>

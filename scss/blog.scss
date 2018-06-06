@@ -91,4 +91,49 @@ $stars-list: (
     }
 }
 
+.svg-piechart-example {
+    width: 60vw;
+    height: 40vh;
+    margin-top: 4vh;
+    margin-bottom: 4vh;
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+// bar chart example
+.svg-bar-example {
+    max-width: 45vw;
+    height: auto;
+    margin-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.bar-legend { font-size: 6px; }
+.barchart_line { stroke: rgba($c-shadow, 0.5); }
+
+.bar-6,
+.bar-7 { stroke: $c-main; }
+
+button {
+    padding: 0.5rem 1rem;
+    font-family: $font-main;
+    font-size: 1.8rem;
+    color: #fff;
+    background-color: $c-main;
+    border: none;
+    border-radius: 0.4rem;
+    transition: background-color 0.3s;
+
+    &:hover { background-color: $c-hover; }
+}
+
 @import "_print";

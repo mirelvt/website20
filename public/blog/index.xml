@@ -6,15 +6,25 @@
     <description>Recent content in Blogs on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Feb 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 03 Jun 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://www.mirellavanteulingen.nl/blog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Create SVG charts and animations without a JS Library</title>
+      <link>http://www.mirellavanteulingen.nl/blog/svg-charts-animations/</link>
+      <pubDate>Sun, 03 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.mirellavanteulingen.nl/blog/svg-charts-animations/</guid>
+      <description>At Dreamsolution we need to visualize a lot of data using bar charts, pie charts, counters etc. Most of the time we use the Highcharts library for the charts. Now I had some use cases where a library as Highcharts is overdone. The question was how can I create a simple pie and bar chart without using a library (Highcharts, Greensock, Raphael, SnapSVG and SVG.js)?
+Use case: pie chart, bar chart The designer already created a mockup how the bar and pie chart should look like, only thing I need to do is to make it work on the web.</description>
+    </item>
+    
+    <item>
       <title>Javascript for Frontend Developers</title>
       <link>http://www.mirellavanteulingen.nl/blog/js_for_frontenddev/</link>
-      <pubDate>Sun, 11 Feb 2018 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 28 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>http://www.mirellavanteulingen.nl/blog/js_for_frontenddev/</guid>
       <description> If you want to learn javascript, hopefully the list of resources below will help you to achieve your goals. Enjoy coding!
