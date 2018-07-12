@@ -17,7 +17,7 @@ JS_PUBLIC_OBJS = $(wildcard public/js/*.min.js)
 all: $(CSS_MIN_OBJS) $(JS_MIN_OBJS)
 
 $(CSS_OBJ)/%.min.css: $(SASS_OBJ)/%.scss $(CSS_DEPS)
-	scss --sourcemap=none --style compressed $< $@
+	sass --no-source-map --style compressed $< $@
 
 $(OBJ)/js/%.min.js: $(JS_OBJ)/%.src.js
 	uglifyjs --comments -c hoist_vars=true,join_vars=true -m -r '$$' -o $@ $<
