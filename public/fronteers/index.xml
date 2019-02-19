@@ -2,50 +2,50 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Fronteers on Mirella van Teulingen</title>
-    <link>http://www.mirellavanteulingen.nl/fronteers/</link>
+    <link>https://mirellavanteulingen.nl/fronteers/</link>
     <description>Recent content in Fronteers on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 10 Oct 2016 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.mirellavanteulingen.nl/fronteers/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mirellavanteulingen.nl/fronteers/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Fronteers Conference 2016</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/conf_2016/</link>
+      <link>https://mirellavanteulingen.nl/fronteers/conf_2016/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/conf_2016/</guid>
+      <guid>https://mirellavanteulingen.nl/fronteers/conf_2016/</guid>
       <description>Fronteers Conference 2016  Thursday 8 and Friday 9 October was the epic Fronteers conference. The topics were quite diverse from Progressive enhancement to webVR, from svg animations to mind blowing data visualisations. But also the future of the web had been discussed and how to deal with the Asian market which still use feature phones with proxy browser and a horrible data connection. This article is a summary with the highlights of the 2 day event.</description>
     </item>
     
     <item>
       <title>Fronteers Conference 2014</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/conf_2014/</link>
+      <link>https://mirellavanteulingen.nl/fronteers/conf_2014/</link>
       <pubDate>Wed, 15 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/conf_2014/</guid>
+      <guid>https://mirellavanteulingen.nl/fronteers/conf_2014/</guid>
       <description>Fronteers Conference 2014  15-10-2014 On 9 and 10 october was the big event. Two days of inspiring talks and where you meet old friends and make new ones. This article gives a summary of most of the talks. The master of ceremony for this conference was Jake Archibald.
 Day 1The first day Heydon Pickering @heydonworks talked about best practises on developing with html and CSS. It is all about semantics, it is more readable, understandable and maintainable.</description>
     </item>
     
     <item>
       <title>Accessibility is also UX design</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/</link>
+      <link>https://mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/</link>
       <pubDate>Tue, 08 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/</guid>
+      <guid>https://mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/</guid>
       <description>Accessibility is also UX designUX candy - Johan Huijkman Twitter: @huijkman - Arend van Baarsen
 08-01-2013 The presentation was held at Q42 in The Hague. A nice environment to work and to share knowledge. Johan and Arend went through some sites using the screen reader and showed us some examples how people with visual impairment are experiencing websites. You can test this as well with webformator for Windows or the Voice over application on the Mac OS.</description>
     </item>
     
     <item>
       <title>The zoom interface of www.rijksmuseum.nl</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/rijksmuseum/</link>
+      <link>https://mirellavanteulingen.nl/fronteers/rijksmuseum/</link>
       <pubDate>Tue, 08 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/rijksmuseum/</guid>
+      <guid>https://mirellavanteulingen.nl/fronteers/rijksmuseum/</guid>
       <description>The zoom interface of www.rijksmuseum.nlRemco Veldkamp - Twitter: @remcoder
 08-01-2013 All 135.000 images of the collection of National Museum Amsterdam are to be admired in ultra high resolution and full screen on every smartphone, tablet and personal computer. Remco talked about the challenges he encountered and how close you can zoom in on a painting.
 Creating tilesFor the small screen resolutions they created tiles of the paintings. The database contains 125.</description>
@@ -53,10 +53,10 @@ Creating tilesFor the small screen resolutions they created tiles of the paintin
     
     <item>
       <title>There&#39;s a class for that</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/oocss/</link>
+      <link>https://mirellavanteulingen.nl/fronteers/oocss/</link>
       <pubDate>Tue, 08 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/oocss/</guid>
+      <guid>https://mirellavanteulingen.nl/fronteers/oocss/</guid>
       <description>There&#39;s a class for thatElaine Oliver Twitter: @skinkfu
 08-01-2013 The presentation was held at Q42 in The Hague. Elaine Oliver is an interaction engineer and front end developer. She was part of the project team that created the new website of the Dutch National Museum. In this presentation she shared her experience about creating the OOCSS architecture, responsive design and CSS unit tests.
 If you are not familiar with OOCSS or want to know more about it, I recommend you to read the article &#34;</description>
@@ -64,10 +64,10 @@ If you are not familiar with OOCSS or want to know more about it, I recommend yo
     
     <item>
       <title>Fronteers Conference 2012</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/conf_2012/</link>
+      <link>https://mirellavanteulingen.nl/fronteers/conf_2012/</link>
       <pubDate>Sun, 21 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/conf_2012/</guid>
+      <guid>https://mirellavanteulingen.nl/fronteers/conf_2012/</guid>
       <description></description>
     </item>
     

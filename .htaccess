@@ -1,0 +1,144 @@
+# -- MOD DEFLATE --
+#<ifmodule mod_deflate.c>
+#AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+#</ifmodule>
+# -- END MOD DEFLATE --
+
+# -- MOD GZIP --
+<IfModule mod_gzip.c>
+mod_gzip_minimum_file_size 500
+mod_gzip_maximum_file_size 500000
+mod_gzip_include file \.html$
+mod_gzip_include file \.css$
+mod_gzip_include file \.js$
+mod_gzip_include file \.php$
+mod_gzip_include file \.png$
+mod_gzip_include file \.jpg$
+mod_gzip_include file \.gif$
+mod_gzip_item_include mime ^text/html$
+mod_gzip_item_include mime ^text/plain$
+mod_gzip_item_include mime ^text/css$
+mod_gzip_item_include mime ^application/javascript$
+mod_gzip_item_include mime ^application/x-javascript$
+mod_gzip_item_include mime ^application/rss+xml$
+mod_gzip_item_include mime ^application/atom_xml$
+mod_gzip_item_include mime ^image/
+</IfModule>
+# -- END MOD GZIP --
+
+# ----------------------------------------------------------------------
+# Expires headers (for better cache control)
+# ----------------------------------------------------------------------
+
+# These are pretty far-future expires headers.
+# They assume you control versioning with filename-based cache busting
+# Additionally, consider that outdated proxies may miscache
+# www.stevesouders.com/blog/2008/08/23/revving-filenames-dont-use-querystring/
+
+# If you don't use filenames to version, lower the CSS and JS to something like
+# "access plus 1 week".
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+
+# Perhaps better to whitelist expires rules? Perhaps.
+  ExpiresDefault "access plus 1 month"
+
+# cache.appcache needs re-requests in FF 3.6 (thanks Remy ~Introducing HTML5)
+  ExpiresByType text/cache-manifest "access plus 0 seconds"
+
+# Your document html
+  ExpiresByType text/html "access plus 5 minutes"
+
+# Data
+  ExpiresByType application/json "access plus 0 seconds"
+  ExpiresByType application/xml "access plus 0 seconds"
+  ExpiresByType text/xml "access plus 0 seconds"
+
+# Feed
+  ExpiresByType application/atom+xml "access plus 1 hour"
+  ExpiresByType application/rss+xml "access plus 1 hour"
+
+# Favicon (cannot be renamed)
+  ExpiresByType image/x-icon "access plus 1 week"
+
+# Media: images, video, audio
+  ExpiresByType audio/ogg "access plus 1 month"
+  ExpiresByType image/gif "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType video/mp4 "access plus 1 month"
+  ExpiresByType video/ogg "access plus 1 month"
+  ExpiresByType video/webm "access plus 1 month"
+
+# HTC files (css3pie)
+  ExpiresByType text/x-component "access plus 1 month"
+
+# Webfonts
+  ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+  ExpiresByType application/x-font-ttf "access plus 1 month"
+  ExpiresByType application/x-font-woff "access plus 1 month"
+  ExpiresByType font/opentype "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+
+# CSS and JavaScript
+  ExpiresByType text/javascript "access plus 6 months"
+  ExpiresByType application/javascript "access plus 6 months"
+  ExpiresByType application/x-javascript "access plus 6 months"
+  ExpiresByType text/css "access plus 6 months"
+
+</IfModule>
+
+# "-Indexes" will have Apache block users from browsing folders without a
+# default document Usually you should leave this activated, because you
+# shouldn't allow everybody to surf through every folder on your server (which
+# includes rather private places like CMS system folders).
+<IfModule mod_autoindex.c>
+  Options -Indexes
+</IfModule>
+
+# Block access to "hidden" directories or files whose names begin with a
+# period. This includes directories used by version control systems such as
+# Subversion or Git.
+<IfModule mod_rewrite.c>
+  RewriteCond %{SCRIPT_FILENAME} -d [OR]
+  RewriteCond %{SCRIPT_FILENAME} -f
+  RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://mirellavanteulingen.nl/$1 [R=301,L]
+
+# Block access to backup and source files. These files may be left by some
+# text/html editors and pose a great security danger, when anyone can access
+# them.
+<FilesMatch "(\.(bak|config|dist|fla|inc|ini|log|psd|sh|sql|swp)|~)$">
+  Order allow,deny
+  Deny from all
+  Satisfy All
+</FilesMatch>
+
+# Increase cookie security
+<IfModule mod_php5.c>
+  php_value session.cookie_httponly true
+</IfModule>
+
+# Provide Specific Index Page (Set the default handler)
+DirectoryIndex index.html
+
+# Redirect old file path to new file path
+Redirect http://mirellavanteulingen.nl/fronteers/index.html https://mirellavanteulingen.nl/fronteers/
+Redirect http://mirellavanteulingen.nl/blog/index.html https://mirellavanteulingen.nl/blog/
+Redirect http://mirellavanteulingen.nl/fronteers/oocss.html https://mirellavanteulingen.nl/fronteers/oocss/
+Redirect http://mirellavanteulingen.nl/fronteers/rijksmuseum.html https://mirellavanteulingen.nl/fronteers/rijksmuseum/
+Redirect http://mirellavanteulingen.nl/fronteers/accessibility-is-ux-design.html https://mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/
+Redirect http://mirellavanteulingen.nl/fronteers/fronteers2012 https://mirellavanteulingen.nl/conf_2012/
+Redirect http://mirellavanteulingen.nl/fronteers/fronteers2012/responsive-design.html https://mirellavanteulingen.nl/conf_2012/adapting-responsive-design/
+Redirect http://mirellavanteulingen.nl/fronteers/fronteers2012/developer-toolbelt.html https://mirellavanteulingen.nl/conf_2012/developer-toolbelt/
+Redirect http://mirellavanteulingen.nl/fronteers/fronteers2012/pixelisnotapixel.html https://mirellavanteulingen.nl/conf_2012/pixelisnotapixel/
+Redirect http://mirellavanteulingen.nl/fronteers/fronteers2012/style-guides.html https://mirellavanteulingen.nl/conf_2012/styleguides/
+Redirect http://mirellavanteulingen.nl/blog/customize-sublime.html https://mirellavanteulingen.nl/blog/customize_sublime/
+
+# Error pages
+ErrorDocument 404 https://www.mirellavanteulingen.nl/404.html

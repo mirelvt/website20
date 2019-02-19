@@ -2,51 +2,51 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mirella van Teulingen</title>
-    <link>http://www.mirellavanteulingen.nl/</link>
+    <link>https://mirellavanteulingen.nl/</link>
     <description>Recent content on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 03 Jun 2018 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.mirellavanteulingen.nl/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mirellavanteulingen.nl/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Create SVG charts and animations without a JS Library</title>
-      <link>http://www.mirellavanteulingen.nl/blog/svg-charts-animations/</link>
+      <link>https://mirellavanteulingen.nl/blog/svg-charts-animations/</link>
       <pubDate>Sun, 03 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/svg-charts-animations/</guid>
+      <guid>https://mirellavanteulingen.nl/blog/svg-charts-animations/</guid>
       <description>At Dreamsolution we need to visualize a lot of data using bar charts, pie charts, counters etc. Most of the time we use the Highcharts library for the charts. Now I had some use cases where a library as Highcharts is overdone. The question was how can I create a simple pie and bar chart without using a library (Highcharts, Greensock, Raphael, SnapSVG and SVG.js)?
 Use case: pie chart, bar chart The designer already created a mockup how the bar and pie chart should look like, only thing I need to do is to make it work on the web.</description>
     </item>
     
     <item>
       <title>Javascript for Frontend Developers</title>
-      <link>http://www.mirellavanteulingen.nl/blog/js_for_frontenddev/</link>
+      <link>https://mirellavanteulingen.nl/blog/js_for_frontenddev/</link>
       <pubDate>Wed, 28 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/js_for_frontenddev/</guid>
+      <guid>https://mirellavanteulingen.nl/blog/js_for_frontenddev/</guid>
       <description> If you want to learn javascript, hopefully the list of resources below will help you to achieve your goals. Enjoy coding!
 Books  PPK on Javascript DOM enlightenment Eloquent javascript A smarter way to learn javascript You don&amp;rsquo;t know javascript  Blogs  Quirksmode blog javascript.com Smashing magazine - javascript A List Apart - javascript   Other  Mozilla Developer - Event reference Mozilla Developer - CustomEvent Mozilla Developer - Ajax Mozilla - Developer Web Animations API PlainJS  </description>
     </item>
     
     <item>
       <title>Sublime Text, VSCode, Atom</title>
-      <link>http://www.mirellavanteulingen.nl/blog/sublime_part2/</link>
+      <link>https://mirellavanteulingen.nl/blog/sublime_part2/</link>
       <pubDate>Sun, 04 Feb 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/sublime_part2/</guid>
+      <guid>https://mirellavanteulingen.nl/blog/sublime_part2/</guid>
       <description>Since 2013 I&amp;rsquo;m using SublimeText editor and wrote an how to about it to get you up and running. Now 5 years later I&amp;rsquo;m still using it. I&amp;rsquo;ve tested Atom and VSCode as well, but keep returning to SublimeText. In this post I&amp;rsquo;ll explain what packages I need for my environment and why I still like SublimeText over Atom or VSCode.
 Sublime Text 3 is officially out since September 2017.</description>
     </item>
     
     <item>
       <title>Minify javascript with GNU Make</title>
-      <link>http://www.mirellavanteulingen.nl/blog/make-minify-js/</link>
+      <link>https://mirellavanteulingen.nl/blog/make-minify-js/</link>
       <pubDate>Fri, 09 Jun 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/make-minify-js/</guid>
+      <guid>https://mirellavanteulingen.nl/blog/make-minify-js/</guid>
       <description>In my former blog post I wrote an introduction how to set up Makefile to generate CSS and minify CSS from Sass files. In this blog post I will extend the Makefile with a rule for generating minified javascript files.
 My folder structure and Makefile looks like this:
 FOO-project/ static/ css/ /* here comes the generated css files */ js/ base.src.js /* the minified js files will also be placed in this directory */ scss/ base.</description>
@@ -54,112 +54,112 @@ FOO-project/ static/ css/ /* here comes the generated css files */ js/ base.src.
     
     <item>
       <title>GNU Make for running tasks</title>
-      <link>http://www.mirellavanteulingen.nl/blog/make-taskrunner/</link>
+      <link>https://mirellavanteulingen.nl/blog/make-taskrunner/</link>
       <pubDate>Wed, 15 Mar 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/make-taskrunner/</guid>
+      <guid>https://mirellavanteulingen.nl/blog/make-taskrunner/</guid>
       <description>Every front end developer have heard of or is using the task runners Grunt, Gulp, Broccoli. There are a lot of articles and how to&amp;rsquo;s on the web about these tools. However, there is one that doesn&amp;rsquo;t get a lot of attention and that is GNU Make. It was originally created by Stuart Feldman in April 1976. GNU Make is not really popular among front end developers, it has a steep learning curve in comparison with Grunt or Gulp and there are not much examples on how to use it for front end development.</description>
     </item>
     
     <item>
       <title>Fronteers Conference 2016</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/conf_2016/</link>
+      <link>https://mirellavanteulingen.nl/fronteers/conf_2016/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/conf_2016/</guid>
+      <guid>https://mirellavanteulingen.nl/fronteers/conf_2016/</guid>
       <description>Fronteers Conference 2016  Thursday 8 and Friday 9 October was the epic Fronteers conference. The topics were quite diverse from Progressive enhancement to webVR, from svg animations to mind blowing data visualisations. But also the future of the web had been discussed and how to deal with the Asian market which still use feature phones with proxy browser and a horrible data connection. This article is a summary with the highlights of the 2 day event.</description>
     </item>
     
     <item>
       <title>How to use svg icons in Django templates?</title>
-      <link>http://www.mirellavanteulingen.nl/blog/svg-icons-django-template/</link>
+      <link>https://mirellavanteulingen.nl/blog/svg-icons-django-template/</link>
       <pubDate>Tue, 04 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/svg-icons-django-template/</guid>
+      <guid>https://mirellavanteulingen.nl/blog/svg-icons-django-template/</guid>
       <description>I am accustomed to use icon fonts in our projects at Dreamsolution, which are created with Fontcustom. It is a nice tool to generate the font icon from our own svg icons. Using the icon font in the last 3 years I always bump into some styling issues. The icon font has anti-alias and doesn&amp;rsquo;t get as sharp as vector images. The most annoying thing is positioning the icon next another element or text.</description>
     </item>
     
     <item>
       <title> A vanilla js and css tooltip</title>
-      <link>http://www.mirellavanteulingen.nl/blog/css-js-tooltip/</link>
+      <link>https://mirellavanteulingen.nl/blog/css-js-tooltip/</link>
       <pubDate>Wed, 28 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/css-js-tooltip/</guid>
+      <guid>https://mirellavanteulingen.nl/blog/css-js-tooltip/</guid>
       <description>In february 2016 I was looking for a tooltip plugin which must fix 2 design issues: overflow:hidden and the window corners. I also don&amp;rsquo;t want to need jQuery. During searching and testing a couple plugins, I thought, why not build one myself? It is a fun way to learn more about javascript and css animations.
 In the same month I was also reading the book: this &amp;amp; Object prototypes, from the series You don&amp;rsquo;t know javascript.</description>
     </item>
     
     <item>
       <title>Font icons with Fontcustom and SASS</title>
-      <link>http://www.mirellavanteulingen.nl/blog/sass_fontcustom/</link>
+      <link>https://mirellavanteulingen.nl/blog/sass_fontcustom/</link>
       <pubDate>Sat, 21 Nov 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/sass_fontcustom/</guid>
+      <guid>https://mirellavanteulingen.nl/blog/sass_fontcustom/</guid>
       <description>In 2013 and 2014 I used Icomoon to create font icons. It is a nice library and tool. You can choose icons from their library and they have the feature to upload your own svgs to create the font icon set. It is a great tool if you only need to generate the font icon once. But not when you have to add new ones to the set.  At Dreamsolution the company where I&amp;rsquo;m employed, the development and design goes in iterations.</description>
     </item>
     
     <item>
       <title>Create clickable rating stars with only SASS and HTML</title>
-      <link>http://www.mirellavanteulingen.nl/blog/rating_stars_sass/</link>
+      <link>https://mirellavanteulingen.nl/blog/rating_stars_sass/</link>
       <pubDate>Fri, 03 Jul 2015 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/rating_stars_sass/</guid>
+      <guid>https://mirellavanteulingen.nl/blog/rating_stars_sass/</guid>
       <description>In May, Roy Tomeij wrote the article &amp;ldquo;Configurable star rating without JS&amp;rdquo;. I was thinking how to do this using a font icon instead of a background image and make the stars clickable. I believe it would take less code to write, and it is. I had the code finished a couple of days later in May, but now I&amp;rsquo;ve finally have the time to post my solution. So here we go: HTML structure  I place the radio buttons in reversed order in the DOM to be able to do the hover + checked state in the right order with SASS.</description>
     </item>
     
     <item>
       <title>Fronteers Conference 2014</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/conf_2014/</link>
+      <link>https://mirellavanteulingen.nl/fronteers/conf_2014/</link>
       <pubDate>Wed, 15 Oct 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/conf_2014/</guid>
+      <guid>https://mirellavanteulingen.nl/fronteers/conf_2014/</guid>
       <description>Fronteers Conference 2014  15-10-2014 On 9 and 10 october was the big event. Two days of inspiring talks and where you meet old friends and make new ones. This article gives a summary of most of the talks. The master of ceremony for this conference was Jake Archibald.
 Day 1The first day Heydon Pickering @heydonworks talked about best practises on developing with html and CSS. It is all about semantics, it is more readable, understandable and maintainable.</description>
     </item>
     
     <item>
       <title>Django form customization using Crispy Forms</title>
-      <link>http://www.mirellavanteulingen.nl/blog/customize_form_crispy_forms/</link>
+      <link>https://mirellavanteulingen.nl/blog/customize_form_crispy_forms/</link>
       <pubDate>Sun, 21 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/customize_form_crispy_forms/</guid>
+      <guid>https://mirellavanteulingen.nl/blog/customize_form_crispy_forms/</guid>
       <description>At Dreamsolution we regularly use Crispy Forms to generate complex forms in Django. I want to share some practical customization examples with Crispy Forms using the formhelper API. The examples are how to:  create Fieldsets wrap fields together insert HTML between fields  Create Fieldsets  In Crispy forms you can define a layout and structure the fields using the Fieldset layout object. However this means you have to add every field you want in the Fieldset layout object, and this can become a long list:  Layout( Fieldset( &#39;Your legend&#39;, &#39;first_name&#39;, &#39;last_name&#39;, &#39;street&#39;, &#39;house_number&#39;, &#39;addition&#39;, &#39;zip_code&#39;, &#39;city&#39; ) )    There is another way to create fieldsets and or manipulate the layout structure.</description>
     </item>
     
     <item>
       <title>Customize Sublime text editor</title>
-      <link>http://www.mirellavanteulingen.nl/blog/customize_sublime/</link>
+      <link>https://mirellavanteulingen.nl/blog/customize_sublime/</link>
       <pubDate>Wed, 12 Feb 2014 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/customize_sublime/</guid>
+      <guid>https://mirellavanteulingen.nl/blog/customize_sublime/</guid>
       <description>Last year at the Fronteers conference in Amsterdam, Addy Osmani used Sublime Text Editor in his presentation. The editor looked really cool. Right after the conference I installed Sublime and looked around for packages which would make my life as front end developer easier and make editing more fun. After a month of playing with Sublime, I decided to leave TextMate (used it since 2005) and use Sublime as my new main editor.</description>
     </item>
     
     <item>
       <title>CSS Day 2013 Amsterdam</title>
-      <link>http://www.mirellavanteulingen.nl/blog/cssday_2013/</link>
+      <link>https://mirellavanteulingen.nl/blog/cssday_2013/</link>
       <pubDate>Sun, 16 Jun 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/blog/cssday_2013/</guid>
+      <guid>https://mirellavanteulingen.nl/blog/cssday_2013/</guid>
       <description>Friday 14 june 2013 in Amsterdam I attended the CSSDay conference. Eight experts talked about 8 different CSS modules. The focus was on techniques of these modules we might not know about and the future of CSS. During the conference I learned that CSS is in very active development. It was an incredible, informative and awesome day. An high standard conference I&amp;rsquo;ve ever attended so far. I hope that there will be another one within 1 or 2 years.</description>
     </item>
     
     <item>
       <title>Accessibility is also UX design</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/</link>
+      <link>https://mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/</link>
       <pubDate>Tue, 08 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/</guid>
+      <guid>https://mirellavanteulingen.nl/fronteers/accessibility-is-ux-design/</guid>
       <description>Accessibility is also UX designUX candy - Johan Huijkman Twitter: @huijkman - Arend van Baarsen
 08-01-2013 The presentation was held at Q42 in The Hague. A nice environment to work and to share knowledge. Johan and Arend went through some sites using the screen reader and showed us some examples how people with visual impairment are experiencing websites. You can test this as well with webformator for Windows or the Voice over application on the Mac OS.</description>
     </item>
     
     <item>
       <title>The zoom interface of www.rijksmuseum.nl</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/rijksmuseum/</link>
+      <link>https://mirellavanteulingen.nl/fronteers/rijksmuseum/</link>
       <pubDate>Tue, 08 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/rijksmuseum/</guid>
+      <guid>https://mirellavanteulingen.nl/fronteers/rijksmuseum/</guid>
       <description>The zoom interface of www.rijksmuseum.nlRemco Veldkamp - Twitter: @remcoder
 08-01-2013 All 135.000 images of the collection of National Museum Amsterdam are to be admired in ultra high resolution and full screen on every smartphone, tablet and personal computer. Remco talked about the challenges he encountered and how close you can zoom in on a painting.
 Creating tilesFor the small screen resolutions they created tiles of the paintings. The database contains 125.</description>
@@ -167,10 +167,10 @@ Creating tilesFor the small screen resolutions they created tiles of the paintin
     
     <item>
       <title>There&#39;s a class for that</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/oocss/</link>
+      <link>https://mirellavanteulingen.nl/fronteers/oocss/</link>
       <pubDate>Tue, 08 Jan 2013 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/oocss/</guid>
+      <guid>https://mirellavanteulingen.nl/fronteers/oocss/</guid>
       <description>There&#39;s a class for thatElaine Oliver Twitter: @skinkfu
 08-01-2013 The presentation was held at Q42 in The Hague. Elaine Oliver is an interaction engineer and front end developer. She was part of the project team that created the new website of the Dutch National Museum. In this presentation she shared her experience about creating the OOCSS architecture, responsive design and CSS unit tests.
 If you are not familiar with OOCSS or want to know more about it, I recommend you to read the article &#34;</description>
@@ -178,39 +178,39 @@ If you are not familiar with OOCSS or want to know more about it, I recommend yo
     
     <item>
       <title>Fronteers Conference 2012</title>
-      <link>http://www.mirellavanteulingen.nl/fronteers/conf_2012/</link>
+      <link>https://mirellavanteulingen.nl/fronteers/conf_2012/</link>
       <pubDate>Sun, 21 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/fronteers/conf_2012/</guid>
+      <guid>https://mirellavanteulingen.nl/fronteers/conf_2012/</guid>
       <description></description>
     </item>
     
     <item>
       <title>I can smell your CMS</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/smellyourcms/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/smellyourcms/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/smellyourcms/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/smellyourcms/</guid>
       <description>Phil works as a web developer in London for R/GA. His presentation is to ask yourself and or your customer: do you really need a CMS? He also talks about the role of the web builder (agency) and the customer. It was a great and funny presentation. It really gave me energy and stuff to think about.
 The CMS ParadoxUsually we give clients what they want, they want a system that is scalable and has lots of features.</description>
     </item>
     
     <item>
       <title>Open Source ain&#39;t free</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/os-aintfree/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/os-aintfree/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/os-aintfree/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/os-aintfree/</guid>
       <description>David DeSandro talked about his personal open source project and shared his experience, problems and solutions he run into when he shared his project with the world. The main subject of this presentation is how you can make money from open source projects. To get paid for the work you share with others.
 If you want to do side projects you have to work on something that excites you. It is also a way to market yourself and to build and promote your personal brand.</description>
     </item>
     
     <item>
       <title>Short notes</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/shortnotes/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/shortnotes/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/shortnotes/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/shortnotes/</guid>
       <description>For the talks I did&#39;t make much notes, are gathered on this page.
 Using JS to build bigger, better datavis to enlighten and elate- Alex Graul - Twitter: @alexgraul - Video: http://vimeo.com/52851512
 Alex makes visualizations for the Guardian.
@@ -219,10 +219,10 @@ He showed us a couple of examples to make data more interesting for the people, 
     
     <item>
       <title>The State of HTML5 Video</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/statehtml5video/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/statehtml5video/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/statehtml5video/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/statehtml5video/</guid>
       <description>Jeroen Wijering shows how far JWPlayer is in using HTML5. There are some cool features. At the bottom of this article you find some links to demo&amp;rsquo;s.
 &amp;ldquo;One thing i would never do again: charge a $15 license for YouTube :)&amp;rdquo; - Jeroen WijeringJW Player:
 Currently JWPlayer is used by over a million websites, including the White House.First sold to youtube in 1 year of existence.JW6 Player is the first version defaulting to HTML5Why html5:</description>
@@ -230,10 +230,10 @@ Currently JWPlayer is used by over a million websites, including the White House
     
     <item>
       <title>A Pixel is not a pixel</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/pixelisnotapixel/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/pixelisnotapixel/</link>
       <pubDate>Thu, 04 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/pixelisnotapixel/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/pixelisnotapixel/</guid>
       <description>This was a fast paced and interesting presentation. I&#39;ve learned a lot about pixels and where you can run into presenation issues on devices. I&#39;ve heard of Peter-Paul Koch but never seen or attended his presentations. It was a great experience and worth while!
 Let&#39;s start:
 You have 3 kinds of pixels:
@@ -242,28 +242,28 @@ css: like width:20px. Their size may be increased or decreased.device: The actua
     
     <item>
       <title>Accessibility on the web</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/accessibility/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/accessibility/</link>
       <pubDate>Thu, 04 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/accessibility/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/accessibility/</guid>
       <description>What is the best way to talk about accessibility? To invite people with a disability who wants to share how they experience the web. Instead of someone telling us what people with a disability need. I really find this the best way to learn how we can change things for the better. I liked the examples they gave as well. You see and understand their frustration when something isn&#39;t working on the web.</description>
     </item>
     
     <item>
       <title>Adapting to Responsive Design</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/adapting-responsive-design/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/adapting-responsive-design/</link>
       <pubDate>Thu, 04 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/adapting-responsive-design/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/adapting-responsive-design/</guid>
       <description>&#34;Responsive design is the red pill from the Matrix. We&#39;ve been living in a conceptual hallucination of control. While &#39;pixel perfect&#39; is the blue pill.&#34; In the early years we used DTP for setting up the boundaries of Web pages. It is something we knew how it works, something we hold on to. We didn&#39;t really know how to handle the internet. Fixed width and height and it should look exact the same as the print.</description>
     </item>
     
     <item>
       <title>Style guides are the new Photoshop</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/styleguides/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/styleguides/</link>
       <pubDate>Thu, 04 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/styleguides/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/styleguides/</guid>
       <description>I liked Stephen&#39;s chapter in Smashing book #3, so I was really looking forward to see this presentation. Stephen&#39;s presentation is about changing the process of building and designing systems.
 His first advise is to manage clients expectations by designing in the browser instead of creating a static design in Photoshop. This way the customer learns to live with constraints.
 The disadvantages of PhotoshopWhat are the disadvantages of Photoshop, according to Stephen Hay?</description>
@@ -271,20 +271,20 @@ The disadvantages of PhotoshopWhat are the disadvantages of Photoshop, according
     
     <item>
       <title>The New And Improved Developer Toolbelt</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/developer-toolbelt/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/developer-toolbelt/</link>
       <pubDate>Thu, 04 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/developer-toolbelt/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/developer-toolbelt/</guid>
       <description>Addy Osmani showed us a lot of interesting tools which will help developers to build fast and great applications.
 First he explains that tools must change if they can&#39;t evolve.You should also choose your tools well. The less time you can spend on repetitive tasks the more time you can spend on development. This also means that you have to ask yourself once in a while, if the tools you use are the best there are.</description>
     </item>
     
     <item>
       <title>About me</title>
-      <link>http://www.mirellavanteulingen.nl/about/</link>
+      <link>https://mirellavanteulingen.nl/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/about/</guid>
+      <guid>https://mirellavanteulingen.nl/about/</guid>
       <description>About me My name is Mirella van Teulingen and I&amp;rsquo;m a Dutch front end developer at Dreamsolution in Delft, where I have the privilege to work in a team of experts in python, javascript and design.
 The key areas of experience include HTML, CSS, Sass, DOM scripting, jQuery and Django templating. I also have experience with XML, XSLT, Plone and Zope Page Templates (templating language used in Plone).</description>
     </item>

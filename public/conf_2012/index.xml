@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Conf_2012s on Mirella van Teulingen</title>
-    <link>http://www.mirellavanteulingen.nl/conf_2012/</link>
+    <link>https://mirellavanteulingen.nl/conf_2012/</link>
     <description>Recent content in Conf_2012s on Mirella van Teulingen</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Oct 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="http://www.mirellavanteulingen.nl/conf_2012/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://mirellavanteulingen.nl/conf_2012/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>I can smell your CMS</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/smellyourcms/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/smellyourcms/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/smellyourcms/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/smellyourcms/</guid>
       <description>Phil works as a web developer in London for R/GA. His presentation is to ask yourself and or your customer: do you really need a CMS? He also talks about the role of the web builder (agency) and the customer. It was a great and funny presentation. It really gave me energy and stuff to think about.
 The CMS ParadoxUsually we give clients what they want, they want a system that is scalable and has lots of features.</description>
     </item>
     
     <item>
       <title>Open Source ain&#39;t free</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/os-aintfree/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/os-aintfree/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/os-aintfree/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/os-aintfree/</guid>
       <description>David DeSandro talked about his personal open source project and shared his experience, problems and solutions he run into when he shared his project with the world. The main subject of this presentation is how you can make money from open source projects. To get paid for the work you share with others.
 If you want to do side projects you have to work on something that excites you. It is also a way to market yourself and to build and promote your personal brand.</description>
     </item>
     
     <item>
       <title>Short notes</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/shortnotes/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/shortnotes/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/shortnotes/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/shortnotes/</guid>
       <description>For the talks I did&#39;t make much notes, are gathered on this page.
 Using JS to build bigger, better datavis to enlighten and elate- Alex Graul - Twitter: @alexgraul - Video: http://vimeo.com/52851512
 Alex makes visualizations for the Guardian.
@@ -45,10 +45,10 @@ He showed us a couple of examples to make data more interesting for the people, 
     
     <item>
       <title>The State of HTML5 Video</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/statehtml5video/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/statehtml5video/</link>
       <pubDate>Fri, 05 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/statehtml5video/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/statehtml5video/</guid>
       <description>Jeroen Wijering shows how far JWPlayer is in using HTML5. There are some cool features. At the bottom of this article you find some links to demo&amp;rsquo;s.
 &amp;ldquo;One thing i would never do again: charge a $15 license for YouTube :)&amp;rdquo; - Jeroen WijeringJW Player:
 Currently JWPlayer is used by over a million websites, including the White House.First sold to youtube in 1 year of existence.JW6 Player is the first version defaulting to HTML5Why html5:</description>
@@ -56,10 +56,10 @@ Currently JWPlayer is used by over a million websites, including the White House
     
     <item>
       <title>A Pixel is not a pixel</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/pixelisnotapixel/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/pixelisnotapixel/</link>
       <pubDate>Thu, 04 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/pixelisnotapixel/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/pixelisnotapixel/</guid>
       <description>This was a fast paced and interesting presentation. I&#39;ve learned a lot about pixels and where you can run into presenation issues on devices. I&#39;ve heard of Peter-Paul Koch but never seen or attended his presentations. It was a great experience and worth while!
 Let&#39;s start:
 You have 3 kinds of pixels:
@@ -68,28 +68,28 @@ css: like width:20px. Their size may be increased or decreased.device: The actua
     
     <item>
       <title>Accessibility on the web</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/accessibility/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/accessibility/</link>
       <pubDate>Thu, 04 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/accessibility/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/accessibility/</guid>
       <description>What is the best way to talk about accessibility? To invite people with a disability who wants to share how they experience the web. Instead of someone telling us what people with a disability need. I really find this the best way to learn how we can change things for the better. I liked the examples they gave as well. You see and understand their frustration when something isn&#39;t working on the web.</description>
     </item>
     
     <item>
       <title>Adapting to Responsive Design</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/adapting-responsive-design/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/adapting-responsive-design/</link>
       <pubDate>Thu, 04 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/adapting-responsive-design/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/adapting-responsive-design/</guid>
       <description>&#34;Responsive design is the red pill from the Matrix. We&#39;ve been living in a conceptual hallucination of control. While &#39;pixel perfect&#39; is the blue pill.&#34; In the early years we used DTP for setting up the boundaries of Web pages. It is something we knew how it works, something we hold on to. We didn&#39;t really know how to handle the internet. Fixed width and height and it should look exact the same as the print.</description>
     </item>
     
     <item>
       <title>Style guides are the new Photoshop</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/styleguides/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/styleguides/</link>
       <pubDate>Thu, 04 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/styleguides/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/styleguides/</guid>
       <description>I liked Stephen&#39;s chapter in Smashing book #3, so I was really looking forward to see this presentation. Stephen&#39;s presentation is about changing the process of building and designing systems.
 His first advise is to manage clients expectations by designing in the browser instead of creating a static design in Photoshop. This way the customer learns to live with constraints.
 The disadvantages of PhotoshopWhat are the disadvantages of Photoshop, according to Stephen Hay?</description>
@@ -97,10 +97,10 @@ The disadvantages of PhotoshopWhat are the disadvantages of Photoshop, according
     
     <item>
       <title>The New And Improved Developer Toolbelt</title>
-      <link>http://www.mirellavanteulingen.nl/conf_2012/developer-toolbelt/</link>
+      <link>https://mirellavanteulingen.nl/conf_2012/developer-toolbelt/</link>
       <pubDate>Thu, 04 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>http://www.mirellavanteulingen.nl/conf_2012/developer-toolbelt/</guid>
+      <guid>https://mirellavanteulingen.nl/conf_2012/developer-toolbelt/</guid>
       <description>Addy Osmani showed us a lot of interesting tools which will help developers to build fast and great applications.
 First he explains that tools must change if they can&#39;t evolve.You should also choose your tools well. The less time you can spend on repetitive tasks the more time you can spend on development. This also means that you have to ask yourself once in a while, if the tools you use are the best there are.</description>
     </item>
