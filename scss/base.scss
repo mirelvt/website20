@@ -1,22 +1,16 @@
 @import "_mixins";
-@import "flexbox";
 
 * { box-sizing: border-box; }
 
 // * 1: Computes to 10px by the browsers so we can use rem the nice way
 // * 2: Specifies a size adjustment for displaying text content on smartphones.
-// * 3: Improve text-rendering in Webkit browsers and firefox on OSX.
-// * 4: Set the kerning and ligatures for current and future browsers.
-//      Smashing Book #4 Chapter 9.
 
-:root {
-    @include text-adjust; // * 2 *
-    @include font-smoothing; // * 3 *
-    @include font-kerning; // * 4 *
-    @include font-feature-settings; // * 4 *
+html {
     height: 100%;
     font-size: 62.5%; // * 1 *
     color: $c-text;
+    text-size-adjust: 100%; // * 2 *
+    font-feature-settings: "liga", "kern";
     background-color: #fff;
 }
 
@@ -153,8 +147,8 @@ figure {
 
 
 .hamburger-wrapper {
-    @include flexbox();
-    @include align-items(center);
+    display: flex;
+    align-items: center;;
     position: relative;
     margin-left: auto;
     width: 8.5rem;
@@ -170,7 +164,7 @@ figure {
 }
 
 .hamburger {
-    @include flex(0, 0, 21px);
+    flex: 0 0 21px;
     transform: translateZ(0);
     transition: transform 0.5s, background-color 0.3s;
     position: relative;
@@ -196,9 +190,9 @@ figure {
 // ------------------------------
 
 .menu {
-    @include flexbox();
-    @include justify-content(center);
-    @include align-items(center);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: visibility 400ms ease-in-out, opacity 400ms ease-in-out;
     position: fixed;
     z-index: 1;
@@ -350,8 +344,8 @@ figure {
 }
 
 .read-more {
-    @include flexbox();
-    @include align-items(center);
+    display: flex;
+    align-items: center;
     margin-top: 0.8rem;
     text-decoration: none;
 

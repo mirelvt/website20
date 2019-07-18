@@ -1,34 +1,4 @@
 @import "_variables";
-@import "_flexbox";
-
-@mixin perspective($value:200px, $origin: 50% 0) {
-    -webkit-perspective: $value;
-    perspective: $value;
-}
-
-// Mixins for font
-@mixin font-kerning() {
-    -webkit-font-kerning: normal;
-    -moz-font-kerning: normal;
-    font-kerning: normal;
-}
-
-@mixin font-feature-settings() {
-    -webkit-font-feature-settings: "liga";
-    -moz-font-feature-settings: "liga", "kern";
-    font-feature-settings: "liga", "kern";
-}
-
-@mixin font-smoothing() {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-@mixin text-adjust() {
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-}
-// ========
 
 // EM units are used for mediaqueries, see blog post: http://zellwk.com/blog/media-query-units/
 // 400 ÷ 16 = 25

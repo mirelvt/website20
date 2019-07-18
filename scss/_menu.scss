@@ -1,5 +1,4 @@
 @import "mixins";
-@import "flexbox";
 
 // ====
 // MENU
@@ -55,7 +54,7 @@
     // Hamburger animation changes which toggles to X icon
     // ---------------------------------------------------
     .hamburger-wrapper {
-        @include flexbox();
+        display: flex;
         position: absolute;
         top: 0;
         width: 105px;
@@ -71,7 +70,7 @@
     }
 
     .menu-text {
-        @include flex-grow(1);
+        flex-grow: 1;
         margin-top: -10px;
         margin-left: 10px;
     }
@@ -80,7 +79,7 @@
         position: relative;
         width: 20px;
         height: 2px;
-        @include flex(0, 0, 21px);
+        flex: 0 0 21px;
         background-color: #fff;
         transform: translateZ(0);
         transition: transform 0.5s, background-color 0.3s;

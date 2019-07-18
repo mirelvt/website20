@@ -2,11 +2,10 @@
 
 @import "variables";
 @import "mixins";
-@import "flexbox";
 
 section {
     @include mq-min(900) {
-        @include flexbox();
+        display: flex;
         padding-top: 50px;
     }
 }
@@ -42,31 +41,31 @@ section {
     }
 
     &-visual {
-        @include perspective();
+        perspective: 200px;
         margin-bottom: 2rem;
     }
 
     @include mq-max(467) {
-        @include justify-content(center);
+        justify-content: center;
     }
 
     @include mq-max(900) {
-        @include flexbox();
-        @include flex-flow(row wrap);
+        display: flex;
+        flex-flow: row wrap;
         margin-bottom: 2rem;
 
         &-visual {
             margin-right: 2rem;
-            @include flex(0, 0, 12.5rem);
+            flex: 0 0 12.5rem;
         }
 
-        &-text { @include flex(1, 0, 25rem); }
+        &-text { flex: 1 0 25rem; }
 
         h2 { margin-top: 0; }
     }
 
     @include mq-min(900) {
-        @include flex(1);
+        flex: 1;
         margin: 0 2.5vw;
     }
 
@@ -78,23 +77,23 @@ section {
                 animation: blocks-anim 0.75s ease-out (0.75s + (0.25 * $i)) forwards;
             }
         }
+
+        @keyframes blocks-anim {
+            from {
+                opacity: 0.25;
+                transform: scale(0.7) translate3d(0, 0, 0);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translate3d(0, 0, 0);
+            }
+        }
     }
 
     .read-more {
         position: absolute;
         bottom: 1rem;
-    }
-}
-
-@keyframes blocks-anim {
-    from {
-        opacity: 0.25;
-        transform: scale(0.7) translate3d(0, 0, 0);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translate3d(0, 0, 0);
     }
 }
 
