@@ -26,7 +26,7 @@ Enjoy coding!
 - <a href="http://alistapart.com/topic/javascript">A List Apart - javascript </a>
 
 ## Other
-
+- <a href="https://courseduck.com/programming/javascript/">Courseduck - javascript courses</a>
 - <a href="https://developer.mozilla.org/en-US/docs/Web/Events">Mozilla Developer - Event reference</a>
 - <a href="https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent">Mozilla Developer - CustomEvent</a>
 - <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX">Mozilla Developer - Ajax</a>

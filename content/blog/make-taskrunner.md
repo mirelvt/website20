@@ -306,18 +306,3 @@ Documentation
 
 - <a href="https://www.gnu.org/software/make/">GNU Make</a>
 - <a href="https://www.gnu.org/software/make/manual/make.html">GNU Make manual</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
